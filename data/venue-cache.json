@@ -1,0 +1,100 @@
+{
+ "space mare street": {
+  "lat": 51.5384194,
+  "lng": -0.0575702,
+  "postcode": "E8 3RH",
+  "area": "Hackney"
+ },
+ "annka kultys": null,
+ "cockpit studios": {
+  "lat": 51.4784787,
+  "lng": -0.0207478,
+  "postcode": "SE8 3DZ",
+  "area": "Deptford"
+ },
+ "old royal naval college": {
+  "lat": 51.4817844,
+  "lng": -0.0066319,
+  "postcode": "SE10 9QD",
+  "area": "East Greenwich"
+ },
+ "soas": {
+  "lat": 51.5217888,
+  "lng": -0.1286377,
+  "postcode": "WC1H 0XG",
+  "area": "Bloomsbury"
+ },
+ "raf museum": {
+  "lat": 51.5980125,
+  "lng": -0.2389297,
+  "postcode": "NW9 5FA",
+  "area": "Colindale"
+ },
+ "last tuesday society and viktor wynd museum": null,
+ "guildhall art and roman amphitheatre": null,
+ "canada house": null,
+ "brown collection": {
+  "lat": 51.5173689,
+  "lng": -0.1504618,
+  "postcode": "W1U 2AF",
+  "area": "Marylebone"
+ },
+ "piano nobile": {
+  "lat": 51.5099893,
+  "lng": -0.2104681,
+  "postcode": "W11 4LW",
+  "area": "Notting Hill"
+ },
+ "philip mould": null,
+ "ben uri": null,
+ "korean cultural centre uk": {
+  "lat": 51.5072823,
+  "lng": -0.1255856,
+  "postcode": "WC2N 5DA",
+  "area": "Covent Garden"
+ },
+ "czech centre": null,
+ "linnean society of": null,
+ "royal kennel club art": null,
+ "ucl art museum": {
+  "lat": 51.5243862,
+  "lng": -0.1331998,
+  "postcode": "WC1E 6BT",
+  "area": "St Pancras"
+ },
+ "quentin blake centre for illustration": {
+  "lat": 51.528594,
+  "lng": -0.1076445,
+  "postcode": "EC1R 1AG",
+  "area": "Clerkenwell"
+ },
+ "four corners": null,
+ "sat 14 nov 2026 11 00 sun 22 nov 2026 17 00": null,
+ "online": {
+  "lat": 51.501385,
+  "lng": -0.2849707,
+  "postcode": "W3 9BD",
+  "area": "London Borough of Ealing"
+ },
+ "stanley hall": {
+  "lat": 51.4001164,
+  "lng": -0.0755514,
+  "postcode": "SE25 6EG",
+  "area": "South Norwood"
+ },
+ "society room": null,
+ "assembly hall": {
+  "lat": 51.3797783,
+  "lng": 0.019603,
+  "postcode": "BR2 7RA",
+  "area": "Hayes"
+ },
+ "living room": {
+  "lat": 51.512509,
+  "lng": -0.134416,
+  "postcode": "W1F 0HB",
+  "area": "Soho"
+ },
+ "stanley arts": null,
+ "lsw": null
+}

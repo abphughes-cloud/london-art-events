@@ -1,0 +1,996 @@
+{
+  "generated_at": "2026-11-14T11:35:46.955Z",
+  "note": "Sites checked once each for JSON-LD Event data, a Tribe Events API or an iCal link.",
+  "checked": 121,
+  "found": 4,
+  "with_events_in_window": 3,
+  "events_in_window": 45,
+  "by_method": {
+    "tribe": 4
+  },
+  "by_status": {
+    "no feed": 103,
+    "feed found": 4,
+    "unreachable (fetch failed)": 9,
+    "unreachable (HTTP 403)": 4,
+    "unreachable (HTTP 404)": 1
+  },
+  "sites": [
+    {
+      "name": "Studio Voltaire",
+      "url": "https://studiovoltaire.org/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Gasworks",
+      "url": "https://www.gasworks.org.uk/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "The Showroom",
+      "url": "https://www.theshowroom.org/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Autograph",
+      "url": "https://autograph.org.uk/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Cubitt",
+      "url": "https://www.cubittartists.org.uk/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Matt's Gallery",
+      "url": "https://www.mattsgallery.org/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Raven Row",
+      "url": "https://www.ravenrow.org/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "PEER",
+      "url": "https://www.peeruk.org/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Beaconsfield",
+      "url": "https://beaconsfield.ltd.uk/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Auto Italia",
+      "url": "https://autoitaliasoutheast.org/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "arebyte",
+      "url": "https://www.arebyte.com/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "APT Gallery",
+      "url": "https://www.aptstudios.org/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Deptford X",
+      "url": "https://deptfordx.org/",
+      "status": "feed found",
+      "method": "tribe",
+      "total": 0,
+      "in_window": 0,
+      "feed_url": "https://deptfordx.org/",
+      "area": "Deptford"
+    },
+    {
+      "name": "Lewisham Arthouse",
+      "url": "https://www.lewishamarthouse.org.uk/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Hart's Lane Studios",
+      "url": "https://www.hartslane.org/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "The Bomb Factory",
+      "url": "https://www.bombfactory.org.uk/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "ASC Studios",
+      "url": "https://www.ascstudios.co.uk/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Artsadmin",
+      "url": "https://www.artsadmin.co.uk/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Rich Mix",
+      "url": "https://richmix.org.uk/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Stanley Arts",
+      "url": "https://www.stanleyarts.org/",
+      "status": "feed found",
+      "method": "tribe",
+      "total": 34,
+      "in_window": 34,
+      "feed_url": "https://www.stanleyarts.org/",
+      "area": "South Norwood"
+    },
+    {
+      "name": "The Albany",
+      "url": "https://www.thealbany.org.uk/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Bernie Grant Arts Centre",
+      "url": "https://www.berniegrantcentre.co.uk/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Poplar Union",
+      "url": "https://poplarunion.com/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "JW3",
+      "url": "https://www.jw3.org.uk/",
+      "status": "unreachable (fetch failed)",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Horniman Museum",
+      "url": "https://www.horniman.ac.uk/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "William Morris Gallery",
+      "url": "https://www.wmgallery.org.uk/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Dulwich Picture Gallery",
+      "url": "https://www.dulwichpicturegallery.org.uk/",
+      "status": "unreachable (HTTP 403)",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Pump House Gallery",
+      "url": "https://pumphousegallery.org.uk/",
+      "status": "unreachable (fetch failed)",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Orleans House Gallery",
+      "url": "https://www.orleanshousegallery.org/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "The Photographers' Gallery",
+      "url": "https://thephotographersgallery.org.uk/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Estorick Collection",
+      "url": "https://www.estorickcollection.com/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Zabludowicz Collection",
+      "url": "https://www.zabludowiczcollection.com/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Quentin Blake Centre for Illustration",
+      "url": "https://www.qbcentre.org.uk/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "The Cartoon Museum",
+      "url": "https://www.cartoonmuseum.org/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Fashion and Textile Museum",
+      "url": "https://fashiontextilemuseum.org/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Crafts Council",
+      "url": "https://www.craftscouncil.org.uk/",
+      "status": "unreachable (HTTP 403)",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Drawing Room",
+      "url": "https://drawingroom.org.uk/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Royal Drawing School",
+      "url": "https://www.royaldrawingschool.org/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Candid Arts Trust",
+      "url": "https://www.candidarts.com/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Espacio Gallery",
+      "url": "https://www.espaciogallery.com/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Turning Earth",
+      "url": "https://www.turningearth.org/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "The Kiln Rooms",
+      "url": "https://www.thekilnrooms.com/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "East London Printmakers",
+      "url": "https://www.eastlondonprintmakers.co.uk/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Print Club London",
+      "url": "https://printclublondon.com/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "London Centre for Book Arts",
+      "url": "https://londonbookarts.org/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Makerversity",
+      "url": "https://makerversity.org/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Blackhorse Workshop",
+      "url": "https://www.blackhorseworkshop.co.uk/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Building BloQs",
+      "url": "https://buildingbloqs.com/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Arts Catalyst",
+      "url": "https://www.artscatalyst.org/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Delfina Foundation",
+      "url": "https://www.delfinafoundation.com/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "The Mosaic Rooms",
+      "url": "https://mosaicrooms.org/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "iniva",
+      "url": "https://iniva.org/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "198 Contemporary Arts and Learning",
+      "url": "https://www.198.org.uk/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Black Cultural Archives",
+      "url": "https://blackculturalarchives.org/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "The Tabernacle",
+      "url": "https://www.thetabernaclew11.com/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Wellcome Collection",
+      "url": "https://wellcomecollection.org/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Museum of the Home",
+      "url": "https://www.museumofthehome.org.uk/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Design Museum",
+      "url": "https://designmuseum.org/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Royal Academy of Arts",
+      "url": "https://www.royalacademy.org.uk/",
+      "status": "unreachable (HTTP 403)",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "National Portrait Gallery",
+      "url": "https://www.npg.org.uk/",
+      "status": "unreachable (HTTP 403)",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Saatchi Gallery",
+      "url": "https://www.saatchigallery.com/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Newport Street Gallery",
+      "url": "https://www.newportstreetgallery.com/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Somerset House",
+      "url": "https://www.somersethouse.org.uk/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "The Courtauld",
+      "url": "https://courtauld.ac.uk/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "artsdepot",
+      "url": "https://www.artsdepot.co.uk/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Riverside Studios",
+      "url": "https://riversidestudios.co.uk/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Watermans",
+      "url": "https://www.watermans.org.uk/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Woolwich Works",
+      "url": "https://www.woolwich.works/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Trinity Buoy Wharf",
+      "url": "https://www.trinitybuoywharf.com/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Chats Palace",
+      "url": "https://chatspalace.co.uk/",
+      "status": "unreachable (fetch failed)",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Morley College",
+      "url": "https://www.morleycollege.ac.uk/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Mary Ward Centre",
+      "url": "https://www.marywardcentre.ac.uk/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Heatherley School of Fine Art",
+      "url": "https://www.heatherleys.org/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Art Academy London",
+      "url": "https://artacademy.org.uk/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Chisenhale Gallery",
+      "url": "https://chisenhale.org.uk/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Camden Art Centre",
+      "url": "https://camdenartcentre.org/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "South London Gallery",
+      "url": "https://www.southlondongallery.org/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Whitechapel Gallery",
+      "url": "https://www.whitechapelgallery.org/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Peckham Platform",
+      "url": "https://www.peckhamplatform.com/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Copeland Gallery",
+      "url": "https://copelandpark.com/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Bold Tendencies",
+      "url": "https://boldtendencies.com/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Hackney Arts Centre (EartH)",
+      "url": "https://earthackney.co.uk/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "The Art House Lewisham",
+      "url": "https://www.artcatford.com/",
+      "status": "unreachable (fetch failed)",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Brixton Library / Lambeth Libraries",
+      "url": "https://www.lambeth.gov.uk/events",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Tower Hamlets Arts & Events",
+      "url": "https://www.towerhamletsarts.org.uk/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Hackney Circle",
+      "url": "https://www.hackneycircle.org/",
+      "status": "unreachable (fetch failed)",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Love Hackney events",
+      "url": "https://www.lovehackney.uk/whats-on",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Wandsworth Arts Fringe",
+      "url": "https://www.wandsworthart.com/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Southwark Park Galleries",
+      "url": "https://southwarkparkgalleries.org/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Café Gallery / Dilston Gallery",
+      "url": "https://www.dilstongallery.org/",
+      "status": "unreachable (fetch failed)",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Kingsgate Workshops",
+      "url": "https://kingsgateworkshops.org.uk/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "The Koppel Project",
+      "url": "https://thekoppelproject.com/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Hypha Studios",
+      "url": "https://hyphastudios.com/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Second Floor Studios & Arts",
+      "url": "https://www.secondfloor.co.uk/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Art in Perpetuity Trust",
+      "url": "https://www.aptstudios.org/whats-on",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Morden Hall / Wimbledon Art Studios",
+      "url": "https://www.wimbledonartstudios.co.uk/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Kindred Studios",
+      "url": "https://www.kindredstudios.co.uk/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Barbican Arts Group Trust (ArtWorks Project Space)",
+      "url": "https://www.bagt.org.uk/",
+      "status": "unreachable (fetch failed)",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Walthamstow Wetlands / William Morris Big Local",
+      "url": "https://www.e17arttrail.co.uk/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Tottenham Art Classes",
+      "url": "https://www.tottenhamartclasses.com/",
+      "status": "unreachable (fetch failed)",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "London Drawing Group",
+      "url": "https://www.londondrawinggroup.com/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "London Sculpture Workshop",
+      "url": "https://www.londonsculptureworkshop.org/",
+      "status": "feed found",
+      "method": "tribe",
+      "total": 2,
+      "in_window": 2,
+      "feed_url": "https://www.londonsculptureworkshop.org/",
+      "area": "Thamesmead"
+    },
+    {
+      "name": "Thames Barrier Print Studio",
+      "url": "https://thamesbarrierprintstudio.co.uk/",
+      "status": "unreachable (fetch failed)",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Sonsoles Print Studio",
+      "url": "https://www.sonsolesprintstudio.co.uk/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "The Art Pavilion Mile End",
+      "url": "https://www.towerhamlets.gov.uk/lgnl/leisure_and_culture/arts_and_entertainment/Art_Pavilion.aspx",
+      "status": "unreachable (HTTP 404)",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Hackney Museum",
+      "url": "https://hackney-museum.hackney.gov.uk/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Bruce Castle Museum",
+      "url": "https://www.brucecastle.org/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Pitzhanger Manor & Gallery",
+      "url": "https://www.pitzhanger.org.uk/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Gunnersbury Park Museum",
+      "url": "https://www.visitgunnersbury.org/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Kingston Museum / Stanley Picker Gallery",
+      "url": "https://www.stanleypickergallery.org/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "The Art House / Open House Twickenham",
+      "url": "https://www.richmond.gov.uk/arts",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Harrow Arts Centre",
+      "url": "https://harrowarts.com/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Compass Gallery / Redbridge",
+      "url": "https://visionrcl.org.uk/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Valence House",
+      "url": "https://valencehousecollections.co.uk/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Freud Museum",
+      "url": "https://www.freud.org.uk/",
+      "status": "feed found",
+      "method": "tribe",
+      "total": 9,
+      "in_window": 9,
+      "feed_url": "https://www.freud.org.uk/",
+      "area": "Hampstead"
+    },
+    {
+      "name": "Ben Uri Gallery",
+      "url": "https://benuri.org/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Kenwood / Burgh House",
+      "url": "https://www.burghhouse.org.uk/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Lauderdale House",
+      "url": "https://www.lauderdalehouse.org.uk/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Omnibus Theatre / Clapham",
+      "url": "https://www.omnibus-clapham.org/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Battersea Arts Centre",
+      "url": "https://bac.org.uk/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    },
+    {
+      "name": "Brixton House",
+      "url": "https://brixtonhouse.co.uk/",
+      "status": "no feed",
+      "method": null,
+      "total": 0,
+      "in_window": 0
+    }
+  ]
+}

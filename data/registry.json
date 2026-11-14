@@ -1,3 +1,50 @@
 [
-  { "name": "SET", "url": "https://setspace.uk/", "method": "tribe", "priority": 2, "venue": "SET", "artFilter": true, "tags": ["artist-run", "independent"] }
+  {
+    "name": "SET",
+    "url": "https://setspace.uk/",
+    "method": "tribe",
+    "priority": 2,
+    "venue": "SET",
+    "artFilter": true,
+    "tags": [
+      "artist-run",
+      "independent"
+    ]
+  },
+  {
+    "name": "Stanley Arts",
+    "url": "https://www.stanleyarts.org/",
+    "method": "tribe",
+    "priority": 2,
+    "venue": "Stanley Arts",
+    "area": "South Norwood",
+    "artFilter": true,
+    "tags": [
+      "community"
+    ]
+  },
+  {
+    "name": "London Sculpture Workshop",
+    "url": "https://www.londonsculptureworkshop.org/",
+    "method": "tribe",
+    "priority": 2,
+    "venue": "London Sculpture Workshop",
+    "area": "Thamesmead",
+    "artFilter": true,
+    "tags": [
+      "community"
+    ]
+  },
+  {
+    "name": "Freud Museum",
+    "url": "https://www.freud.org.uk/",
+    "method": "tribe",
+    "priority": 2,
+    "venue": "Freud Museum",
+    "area": "Hampstead",
+    "artFilter": true,
+    "tags": [
+      "community"
+    ]
+  }
 ]

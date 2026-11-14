@@ -12,7 +12,11 @@ import * as artrabbit from "./adapters/artrabbit.js";
 import * as galleriesnow from "./adapters/galleriesnow.js";
 import * as ianvisits from "./adapters/ianvisits.js";
 import * as space from "./adapters/space.js";
+import * as artscalendar from "./adapters/artscalendar.js";
+import * as wearelewisham from "./adapters/wearelewisham.js";
+import { smallSources } from "./adapters/small.js";
 import { fetchRegistryEntry, toSourceRow } from "./adapters/generic.js";
+import { locate } from "./locate.js";
 import { normalize, londonToday, addDays } from "./normalize.js";
 import { dedupe } from "./dedupe.js";
 import { extractEvents, enrichEvents } from "./extract.js";
@@ -39,32 +43,39 @@ const adapters = [
   [galleriesnow, {}],
   [ianvisits, { days }],
   [space, {}],
+  [artscalendar, {}],
+  [wearelewisham, {}],
+  ...smallSources.map((s) => [s, {}]),
 ];
-for (const [adapter, opts] of adapters) {
+// Sources are different websites, so they run side by side; each still paces its own requests.
+await Promise.all(adapters.map(async ([adapter, opts]) => {
   try {
-    console.log(`${adapter.source.name}…`);
     const rows = (await adapter.fetchEvents(opts)).map((r) => normalize(r)).filter(Boolean);
-    console.log(`  ${rows.length} records`);
+    console.log(`${adapter.source.name}: ${rows.length} records`);
     all.push(...rows);
     sourceRows.push({ ...adapter.source, last_count: rows.length });
   } catch (err) {
-    console.warn(`  skipped: ${err.message}`);
+    console.warn(`${adapter.source.name}: skipped: ${err.message}`);
   }
-}
+}));
 
 // Registry sources: one row in data/registry.json each, read by the generic iCal / JSON-LD / Tribe readers.
 const registryFile = new URL("../data/registry.json", import.meta.url);
 const registry = fs.existsSync(registryFile) ? JSON.parse(fs.readFileSync(registryFile, "utf8")) : [];
-for (const entry of registry) {
-  try {
-    const rows = (await fetchRegistryEntry(entry, { today, horizon })).map((r) => normalize(r)).filter(Boolean);
-    console.log(`${entry.name} (${entry.method}): ${rows.length} records`);
-    all.push(...rows);
-    sourceRows.push(toSourceRow(entry, rows.length));
-  } catch (err) {
-    console.warn(`${entry.name}: skipped: ${err.message}`);
+let nextEntry = 0;
+await Promise.all(Array.from({ length: 10 }, async () => {
+  while (nextEntry < registry.length) {
+    const entry = registry[nextEntry++];
+    try {
+      const rows = (await fetchRegistryEntry(entry, { today, horizon })).map((r) => normalize(r)).filter(Boolean);
+      console.log(`${entry.name} (${entry.method}): ${rows.length} records`);
+      all.push(...rows);
+      sourceRows.push(toSourceRow(entry, rows.length));
+    } catch (err) {
+      console.warn(`${entry.name}: skipped: ${err.message}`);
+    }
   }
-}
+}));
 
 if (useAI) {
   for (const s of llmSources) {
@@ -84,6 +95,11 @@ if (useAI) {
 
 const inWindow = all.filter((e) => (e.end_date || e.start_date) >= today && e.start_date <= horizon);
 let { events, merged } = dedupe(inWindow);
+
+// Quality gate: every event needs a venue and a place in London (see locate.js).
+const located = await locate(events, { offline: args.includes("--offline") });
+console.log(`Location clean-up: ${located.dropped} dropped (no venue or no findable London location), ${located.lookups} new venue look-ups.`);
+events = located.events;
 
 if (useAI) {
   console.log("Tagging art forms and tags with Claude…");

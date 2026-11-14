@@ -31,6 +31,23 @@ export async function probeSite({ name, url, area }, { today = londonToday(), da
   const ld = parseJsonLd(html, entry);
   if (ld.length) hits.push({ method: "jsonld", url, total: ld.length, in_window: inWindow(ld, today, horizon) });
 
+  // Events usually live one click in: follow the site's own "What's on" / "Events" link once.
+  if (!ld.length) {
+    const link = [...html.matchAll(/<a[^>]+href=["']([^"'#]+)["'][^>]*>([\s\S]{0,200}?)<\/a>/gi)]
+      .map((m) => ({ href: m[1], label: m[2].replace(/<[^>]+>/g, " ").trim() }))
+      .find((l) => /^(what'?s on|what’s on|events?|exhibitions?( (&|and) events)?|programme|calendar|whats on)$/i.test(l.label)
+        || /\/(whats-on|what-s-on|events|whatson|programme)\/?$/i.test(l.href));
+    try {
+      const sub = link && new URL(link.href.replace(/&amp;/g, "&"), url);
+      if (sub && sub.host === new URL(url).host && sub.href !== url) {
+        const subHtml = await politeGet(sub.href);
+        const rows = parseJsonLd(subHtml, entry, sub.href);
+        if (rows.length) hits.push({ method: "jsonld", url: sub.href, total: rows.length, in_window: inWindow(rows, today, horizon) });
+        html += subHtml; // so the Tribe / iCal checks below see this page too
+      }
+    } catch { /* what's-on page not readable */ }
+  }
+
   if (/tribe-events|tribe_events|the-events-calendar/.test(html)) {
     try {
       const json = JSON.parse(await politeGet(tribeUrl(url, today, horizon), "application/json"));

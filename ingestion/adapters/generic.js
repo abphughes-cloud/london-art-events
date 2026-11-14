@@ -14,7 +14,7 @@ const robotsCache = new Map();
 
 async function rawFetch(url, accept) {
   const host = new URL(url).host;
-  const wait = (lastHit.get(host) || 0) + 1100 - Date.now();
+  const wait = (lastHit.get(host) || 0) + 500 - Date.now();
   if (wait > 0) await sleep(wait);
   lastHit.set(host, Date.now());
   return fetch(url, {
