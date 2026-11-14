@@ -1,0 +1,67 @@
+{
+  "medium": [
+    "painting",
+    "drawing",
+    "printmaking",
+    "photography",
+    "sculpture",
+    "ceramics",
+    "textiles",
+    "installation",
+    "film and video",
+    "digital",
+    "performance",
+    "illustration",
+    "craft and design",
+    "mixed media"
+  ],
+  "style": [
+    "abstract",
+    "figurative",
+    "conceptual",
+    "minimal",
+    "expressive",
+    "surreal",
+    "pop and graphic",
+    "documentary",
+    "decorative and pattern",
+    "street and urban",
+    "folk and outsider"
+  ],
+  "subject": [
+    "portrait and body",
+    "landscape and nature",
+    "city and architecture",
+    "identity and community",
+    "politics and protest",
+    "everyday life",
+    "myth and spirituality",
+    "science and technology",
+    "pure form and colour"
+  ],
+  "mood": [
+    "calm",
+    "playful",
+    "dark",
+    "provocative",
+    "intimate",
+    "spectacular"
+  ],
+  "period": [
+    "historic",
+    "modern",
+    "contemporary",
+    "emerging"
+  ],
+  "format": [
+    "look",
+    "make",
+    "listen",
+    "meet"
+  ],
+  "scale": [
+    "grassroots",
+    "independent",
+    "institution"
+  ]
+}

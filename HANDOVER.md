@@ -97,3 +97,13 @@ node --input-type=module -e "import fs from 'node:fs';import './ingestion/env.js
 ```
 
 Then `node ingestion/prune.js` and check the count.
+
+## Taste tags (added last, for the personalisation engine)
+
+- Supabase also has an **`artworks`** table (147 rows, added by the partner; National Gallery of Art open-access works that users swipe on).
+- Events and artworks now share one vocabulary, stored as **prefixed tags inside the existing `tags` array**: `medium:`, `style:`, `subject:`, `mood:`, `period:` on both; events also get `format:` (look / make / listen / meet) and `scale:` (grassroots / independent / institution). The allowed values are in `data/taxonomy.json`.
+- Nothing else was changed: existing tags were kept and the new ones added after them. On artworks only the `tags` column was written.
+- Code: `ingestion/taste-tags.js` (rules, no imports, usable in the app; `tasteVector(tags)` turns tags into `{ medium: [...], ... }`), applied by `node ingestion/apply-taste-tags.js` (`--dry` to preview). `npm run seed` now adds the event tags automatically; re-run the apply script if artworks are added.
+- These are keyword rules with best-guess defaults, not judgement. Roughly 40% of events fell back to defaults (`medium:mixed media`, `style:conceptual`, `subject:identity and community`, `mood:calm`), so those values are over-represented and should be down-weighted in ranking.
+- Artworks are all historic or modern paintings, prints, drawings and photographs; events are almost all contemporary. **Match on mood, subject and style, not period or medium alone.**
+- Not done: the ranking in `ranking/rank.js` does not read the prefixed tags yet.

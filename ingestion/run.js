@@ -17,6 +17,7 @@ import * as wearelewisham from "./adapters/wearelewisham.js";
 import { smallSources } from "./adapters/small.js";
 import { fetchRegistryEntry, toSourceRow } from "./adapters/generic.js";
 import { locate } from "./locate.js";
+import { tasteTagsForEvent } from "./taste-tags.js";
 import { normalize, londonToday, addDays } from "./normalize.js";
 import { dedupe } from "./dedupe.js";
 import { extractEvents, enrichEvents } from "./extract.js";
@@ -124,7 +125,7 @@ if (useAI) {
   try { events = await enrichEvents(events); }
   catch (err) { console.warn(`  Claude tagging failed (${err.message}); using keyword tags only.`); }
 }
-events = events.map(keywordTags);
+events = events.map(keywordTags).map((e) => ({ ...e, tags: tasteTagsForEvent(e) }));
 
 events.sort((a, b) => a.start_date.localeCompare(b.start_date) || a.title.localeCompare(b.title));
 events = events.map(({ also_listed_on, ...e }, i) => ({ id: stableId(e.dedupe_key), ...e }));
