@@ -56,7 +56,9 @@ function bgOf(g) {
 }
 
 export default function London({ all, ratings, saved, onSave, onPlan, onBack }) {
-  const picks = useMemo(() => londonPicks(all, ratings), [all, ratings]);
+  const [oz, setOz] = useState(0); // re-measure walking times when your location arrives
+  useEffect(() => { const f = () => setOz((x) => x + 1); window.addEventListener('mooncalf-origin', f); return () => window.removeEventListener('mooncalf-origin', f); }, []);
+  const picks = useMemo(() => londonPicks(all, ratings), [all, ratings, oz]); // eslint-disable-line react-hooks/exhaustive-deps
   const W8 = useMemo(() => tasteWeights(all, ratings), [all, ratings]);
   const RIVER = useMemo(() => { fitTo(picks); return thames(); }, [picks]);
   const [fi, setFi] = useState(0);
@@ -261,7 +263,8 @@ function TopMap({ w, fav, onPlan, picks, fi, onPick }) {
                             <p>{runs(e)}</p>
                             {(artists[e.id] || []).length > 0 && <p>{artists[e.id].slice(0, 6).join(', ')}</p>}
                             <div className="ltop-btns">
-                              <a className="ltop-plan" href={e.url || `https://www.google.com/search?q=${encodeURIComponent(`${card} London`)}`} target="_blank" rel="noopener noreferrer" onClick={(ev) => { ev.stopPropagation(); onPlan({ ...g, t: e.t, img: e.img, url: e.url }); }}>Plan visit</a>
+                              <button className="ltop-plan" onClick={(ev) => { ev.stopPropagation(); onPlan({ ...g, t: e.t, img: e.img, url: e.url }); }}>Plan visit</button>
+                              <a className="ltop-maps" href={e.url || `https://www.google.com/search?q=${encodeURIComponent(`${card} London`)}`} target="_blank" rel="noopener noreferrer" onClick={(ev) => ev.stopPropagation()}>Website</a>
                               <a className="ltop-maps" href={maps} target="_blank" rel="noopener noreferrer" onClick={(ev) => ev.stopPropagation()}>Directions</a>
                             </div>
                           </div>

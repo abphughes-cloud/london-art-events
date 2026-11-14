@@ -2,6 +2,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import events from '../data/events.json';
 import { tick } from '../lib/haptics';
+import { askOrigin, getOrigin, km as kmTo } from '../lib/origin';
 
 // Nearby shows as bars under the map, nearest first; the bar at the top of the list opens as you scroll (keerthi 15:46).
 const LONDON = { lat: 51.5074, lng: -0.1278 };
@@ -13,7 +14,7 @@ const km = (a, b) => {
   const h = Math.sin(dLat / 2) ** 2 + Math.cos(a.lat * rad) * Math.cos(b.lat * rad) * Math.sin(dLng / 2) ** 2;
   return 2 * R * Math.asin(Math.sqrt(h));
 };
-const away = (d) => { const m = Math.round(d * 12); return m > 60 ? `${d.toFixed(1)} km` : `${Math.max(1, m)} min walk`; };
+const away = (d) => { const m = Math.max(1, Math.round(d * 12)); return m > 60 ? `${d.toFixed(1)} km` : `${Math.max(1, m)} min walk`; };
 const runs = (e) => {
   const f = (s) => new Date(s + 'T12:00:00').toLocaleDateString('en-GB', { day: 'numeric', month: 'short' });
   if (e.s && e.e) return `${f(e.s)} – ${f(e.e)}`;
@@ -29,13 +30,11 @@ export default function NearList({ w, rated, onPlan, onFocus }) {
   const box = useRef(null);
 
   useEffect(() => {
-    if (asked || typeof navigator === 'undefined' || !navigator.geolocation) return;
-    asked = true;
-    navigator.geolocation.getCurrentPosition(
-      (p) => setMe({ lat: p.coords.latitude, lng: p.coords.longitude }),
-      () => {},
-      { timeout: 4000, maximumAge: 600000 },
-    );
+    setMe(getOrigin());
+    const f = () => setMe(getOrigin());
+    window.addEventListener('mooncalf-origin', f);
+    askOrigin();
+    return () => window.removeEventListener('mooncalf-origin', f);
   }, []);
 
   const list = useMemo(() => {
@@ -48,7 +47,7 @@ export default function NearList({ w, rated, onPlan, onFocus }) {
       if (better) by.set(e.v, e);
     }
     return [...by.values()]
-      .map((e) => ({ e, d: km(me, { lat: e.lat, lng: e.lng }), pct: rated ? Math.min(99, Math.round((score(e) / 4) * 100)) : null, img: e.img || (events.find((x) => x.v === e.v && x.img) || {}).img }))
+      .map((e) => ({ e, d: kmTo(me, { lat: e.lat, lng: e.lng }), pct: rated ? Math.min(99, Math.round((score(e) / 4) * 100)) : null, img: e.img || (events.find((x) => x.v === e.v && x.img) || {}).img }))
       .sort((a, b) => a.d - b.d)
       .slice(0, 15);
   }, [me, w, rated]);
@@ -99,8 +98,8 @@ export default function NearList({ w, rated, onPlan, onFocus }) {
             </div>
             {i === top && (
               <div className="nb-btns">
-                <a className="nb-plan" href={e.url || `https://www.google.com/search?q=${encodeURIComponent(`${e.v} London`)}`} target="_blank" rel="noopener noreferrer"
-                  onClick={(ev) => { ev.stopPropagation(); onPlan({ id: e.v, v: e.v, t: e.t, img: e.img, lat: e.lat, lng: e.lng, url: e.url, walk: Math.round(d * 12) }); }}>Plan visit</a>
+                <button className="nb-plan" onClick={(ev) => { ev.stopPropagation(); onPlan({ id: e.v, v: e.v, t: e.t, img: e.img, lat: e.lat, lng: e.lng, url: e.url, walk: Math.max(1, Math.round(d * 12)) }); }}>Plan visit</button>
+                <a className="nb-dir" href={e.url || `https://www.google.com/search?q=${encodeURIComponent(`${e.v} London`)}`} target="_blank" rel="noopener noreferrer" onClick={(ev) => ev.stopPropagation()}>Website</a>
                 <a className="nb-dir" href={`https://www.google.com/maps/dir/?api=1&destination=${e.lat},${e.lng}`} target="_blank" rel="noopener noreferrer" onClick={(ev) => ev.stopPropagation()}>Directions</a>
               </div>
             )}

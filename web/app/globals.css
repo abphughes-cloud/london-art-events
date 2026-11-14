@@ -585,3 +585,8 @@ a.ltop-plan, a.ltop-maps { text-decoration: none; }
 /* Plan visit sheet sits above the gallery page (audit) */
 .plan { z-index: 2100; }
 .pnote { text-transform: none; letter-spacing: 0; font-size: 13px; }
+
+/* Plan visit | Website | Directions, one row, 44px, 14px (keerthi 15:59) */
+.ltop-btns, .nb-btns { gap: 8px; }
+.ltop-plan, .ltop-maps, .nb-plan, .nb-dir { box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center; height: 44px; min-height: 44px; padding: 0 12px; font-size: 14px; white-space: nowrap; flex: 1 1 auto; border-radius: 22px; }
+.nb-plan { background: #ffd84d; color: #151515; font-weight: 600; }

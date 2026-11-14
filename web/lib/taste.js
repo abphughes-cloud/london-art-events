@@ -1,3 +1,4 @@
+import { minutesTo } from './origin';
 import events from '../data/events.json';
 
 // The bundled artworks carry plain mood words; map them onto the shared
@@ -42,9 +43,8 @@ export function tasteWeights(all, ratings) {
 }
 
 const CENTRE = { lat: 51.5036, lng: -0.1143 }; // Waterloo, until location is known
-export function walkMin(lat, lng, from = CENTRE) {
-  const km = Math.hypot((lat - from.lat) * 111, (lng - from.lng) * 69.4);
-  return Math.max(3, Math.round(km * 1.25 * 12));
+export function walkMin(lat, lng) {
+  return minutesTo(lat, lng); // same origin and formula everywhere (lib/origin.js)
 }
 
 // London art events ranked by how well what's on matches your taste.
