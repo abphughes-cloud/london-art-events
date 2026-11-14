@@ -193,6 +193,9 @@ function TopMap({ w, fav, onPlan, picks, fi, onPick }) {
       // the yellow Thames line is off (keerthi 15:45); to restore: L.polyline(TH, { color: '#f0c95a', weight: 5, opacity: 0.95, lineCap: 'round', lineJoin: 'round', smoothFactor: 1.5, interactive: false }).addTo(m);
       m.attributionControl.setPrefix(false);
       map.current = m; layer.current = L.layerGroup().addTo(m); setReady(true);
+      // the map box changes height as the layout settles; re-measure so no dot hides under the list
+      [300, 900].forEach((t) => setTimeout(() => { if (map.current) map.current.invalidateSize(); }, t));
+      window.addEventListener('resize', () => { if (map.current) map.current.invalidateSize(); });
     };
     if (window.L) go();
     else {
