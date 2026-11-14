@@ -1,0 +1,283 @@
+[
+ {
+  "name": "Studio Voltaire",
+  "url": "https://studiovoltaire.org/",
+  "area": "Clapham"
+ },
+ {
+  "name": "Gasworks",
+  "url": "https://www.gasworks.org.uk/",
+  "area": "Vauxhall"
+ },
+ {
+  "name": "The Showroom",
+  "url": "https://www.theshowroom.org/",
+  "area": "Marylebone"
+ },
+ {
+  "name": "Autograph",
+  "url": "https://autograph.org.uk/",
+  "area": "Shoreditch"
+ },
+ {
+  "name": "Cubitt",
+  "url": "https://www.cubittartists.org.uk/",
+  "area": "Islington"
+ },
+ {
+  "name": "Matt's Gallery",
+  "url": "https://www.mattsgallery.org/",
+  "area": "Nine Elms"
+ },
+ {
+  "name": "PEER",
+  "url": "https://www.peeruk.org/",
+  "area": "Hoxton"
+ },
+ {
+  "name": "Beaconsfield",
+  "url": "https://beaconsfield.ltd.uk/",
+  "area": "Vauxhall"
+ },
+ {
+  "name": "Auto Italia",
+  "url": "https://autoitaliasoutheast.org/",
+  "area": "Bethnal Green"
+ },
+ {
+  "name": "arebyte",
+  "url": "https://www.arebyte.com/",
+  "area": "Canning Town"
+ },
+ {
+  "name": "APT Gallery",
+  "url": "https://www.aptstudios.org/",
+  "area": "Deptford"
+ },
+ {
+  "name": "Deptford X",
+  "url": "https://deptfordx.org/",
+  "area": "Deptford"
+ },
+ {
+  "name": "Lewisham Arthouse",
+  "url": "https://www.lewishamarthouse.org.uk/",
+  "area": "New Cross"
+ },
+ {
+  "name": "Hart's Lane Studios",
+  "url": "https://www.hartslane.org/",
+  "area": "New Cross"
+ },
+ {
+  "name": "The Bomb Factory",
+  "url": "https://www.bombfactory.org.uk/",
+  "area": "Archway"
+ },
+ {
+  "name": "ASC Studios",
+  "url": "https://www.ascstudios.co.uk/"
+ },
+ {
+  "name": "Poplar Union",
+  "url": "https://poplarunion.com/",
+  "area": "Poplar"
+ },
+ {
+  "name": "Drawing Room",
+  "url": "https://drawingroom.org.uk/",
+  "area": "Bermondsey"
+ },
+ {
+  "name": "Royal Drawing School",
+  "url": "https://www.royaldrawingschool.org/",
+  "area": "Shoreditch"
+ },
+ {
+  "name": "Candid Arts Trust",
+  "url": "https://www.candidarts.com/",
+  "area": "Angel"
+ },
+ {
+  "name": "Turning Earth",
+  "url": "https://www.turningearth.org/",
+  "area": "Hoxton"
+ },
+ {
+  "name": "The Kiln Rooms",
+  "url": "https://www.thekilnrooms.com/",
+  "area": "Peckham"
+ },
+ {
+  "name": "East London Printmakers",
+  "url": "https://www.eastlondonprintmakers.co.uk/",
+  "area": "Stepney"
+ },
+ {
+  "name": "Print Club London",
+  "url": "https://printclublondon.com/",
+  "area": "Dalston"
+ },
+ {
+  "name": "London Centre for Book Arts",
+  "url": "https://londonbookarts.org/",
+  "area": "Hackney Wick"
+ },
+ {
+  "name": "Blackhorse Workshop",
+  "url": "https://www.blackhorseworkshop.co.uk/",
+  "area": "Walthamstow"
+ },
+ {
+  "name": "The Mosaic Rooms",
+  "url": "https://mosaicrooms.org/",
+  "area": "Earl's Court"
+ },
+ {
+  "name": "iniva",
+  "url": "https://iniva.org/",
+  "area": "Pimlico"
+ },
+ {
+  "name": "198 Contemporary Arts and Learning",
+  "url": "https://www.198.org.uk/",
+  "area": "Brixton"
+ },
+ {
+  "name": "Black Cultural Archives",
+  "url": "https://blackculturalarchives.org/",
+  "area": "Brixton"
+ },
+ {
+  "name": "Morley College",
+  "url": "https://www.morleycollege.ac.uk/",
+  "area": "Waterloo"
+ },
+ {
+  "name": "Heatherley School of Fine Art",
+  "url": "https://www.heatherleys.org/",
+  "area": "Chelsea"
+ },
+ {
+  "name": "Art Academy London",
+  "url": "https://artacademy.org.uk/",
+  "area": "Borough"
+ },
+ {
+  "name": "Chisenhale Gallery",
+  "url": "https://chisenhale.org.uk/",
+  "area": "Bow"
+ },
+ {
+  "name": "Camden Art Centre",
+  "url": "https://camdenartcentre.org/",
+  "area": "Hampstead"
+ },
+ {
+  "name": "South London Gallery",
+  "url": "https://www.southlondongallery.org/",
+  "area": "Peckham"
+ },
+ {
+  "name": "Whitechapel Gallery",
+  "url": "https://www.whitechapelgallery.org/",
+  "area": "Whitechapel"
+ },
+ {
+  "name": "Peckham Platform",
+  "url": "https://www.peckhamplatform.com/",
+  "area": "Peckham"
+ },
+ {
+  "name": "Southwark Park Galleries",
+  "url": "https://southwarkparkgalleries.org/",
+  "area": "Bermondsey"
+ },
+ {
+  "name": "Kingsgate Workshops",
+  "url": "https://kingsgateworkshops.org.uk/",
+  "area": "Kilburn"
+ },
+ {
+  "name": "The Koppel Project",
+  "url": "https://thekoppelproject.com/",
+  "area": "Soho"
+ },
+ {
+  "name": "Hypha Studios",
+  "url": "https://hyphastudios.com/"
+ },
+ {
+  "name": "Second Floor Studios & Arts",
+  "url": "https://www.secondfloor.co.uk/",
+  "area": "Deptford"
+ },
+ {
+  "name": "Morden Hall / Wimbledon Art Studios",
+  "url": "https://www.wimbledonartstudios.co.uk/",
+  "area": "Wimbledon"
+ },
+ {
+  "name": "Kindred Studios",
+  "url": "https://www.kindredstudios.co.uk/",
+  "area": "Shepherd's Bush"
+ },
+ {
+  "name": "London Drawing Group",
+  "url": "https://www.londondrawinggroup.com/"
+ },
+ {
+  "name": "Sonsoles Print Studio",
+  "url": "https://www.sonsolesprintstudio.co.uk/",
+  "area": "Peckham"
+ },
+ {
+  "name": "Pitzhanger Manor & Gallery",
+  "url": "https://www.pitzhanger.org.uk/",
+  "area": "Ealing"
+ },
+ {
+  "name": "Kingston Museum / Stanley Picker Gallery",
+  "url": "https://www.stanleypickergallery.org/",
+  "area": "Kingston"
+ },
+ {
+  "name": "Ben Uri Gallery",
+  "url": "https://benuri.org/",
+  "area": "St John's Wood"
+ },
+ {
+  "name": "Kenwood / Burgh House",
+  "url": "https://www.burghhouse.org.uk/",
+  "area": "Hampstead"
+ },
+ {
+  "name": "Lauderdale House",
+  "url": "https://www.lauderdalehouse.org.uk/",
+  "area": "Highgate"
+ },
+ {
+  "name": "Old Diorama Arts Centre",
+  "url": "https://www.olddiorama.com/upcoming-events",
+  "area": "Euston"
+ },
+ {
+  "name": "Royal College of Art",
+  "url": "https://www.rca.ac.uk/news-and-events/events/"
+ },
+ {
+  "name": "Slade School of Fine Art",
+  "url": "https://www.ucl.ac.uk/slade/events",
+  "area": "Bloomsbury"
+ },
+ {
+  "name": "City and Guilds of London Art School",
+  "url": "https://www.cityandguildsartschool.ac.uk/",
+  "area": "Kennington"
+ },
+ {
+  "name": "UAL Camberwell Shows",
+  "url": "https://www.arts.ac.uk/colleges/camberwell-college-of-arts/whats-on/camberwell-shows",
+  "area": "Camberwell"
+ }
+]

@@ -1,0 +1,1388 @@
+{
+ "note": "Events read from venues' own what's-on pages by Claude in a Claude Code session (no API). Page text saved by ingestion/fetch-pages.js.",
+ "read_at": "2026-11-14T12:00:00.000Z",
+ "sources": {
+  "APT Gallery": "https://www.aptstudios.org/",
+  "arebyte Gallery": "https://www.arebyte.com/",
+  "Auto Italia": "https://autoitaliasoutheast.org/",
+  "Autograph": "https://autograph.org.uk/",
+  "Ben Uri Gallery": "https://benuri.org/",
+  "Blackhorse Workshop": "https://www.blackhorseworkshop.co.uk/",
+  "Camden Art Centre": "https://camdenartcentre.org/",
+  "Chisenhale Gallery": "https://chisenhale.org.uk/",
+  "Drawing Room": "https://drawingroom.org.uk/",
+  "East London Printmakers": "https://www.eastlondonprintmakers.co.uk/",
+  "Gasworks": "https://www.gasworks.org.uk/",
+  "Heatherley School of Fine Art": "https://www.heatherleys.org/",
+  "iniva": "https://iniva.org/",
+  "Lauderdale House": "https://www.lauderdalehouse.org.uk/",
+  "Lewisham Arthouse": "https://www.lewishamarthouse.org.uk/",
+  "Matt's Gallery": "https://www.mattsgallery.org/",
+  "Old Diorama Arts Centre": "https://www.olddiorama.com/upcoming-events",
+  "Pitzhanger Manor & Gallery": "https://www.pitzhanger.org.uk/",
+  "Poplar Union": "https://poplarunion.com/",
+  "South London Gallery": "https://www.southlondongallery.org/",
+  "Southwark Park Galleries": "https://southwarkparkgalleries.org/",
+  "The Kiln Rooms": "https://www.thekilnrooms.com/open-studios",
+  "The Koppel Project": "https://thekoppelproject.com/events",
+  "The Mosaic Rooms": "https://mosaicrooms.org/",
+  "The Showroom": "https://www.theshowroom.org/",
+  "UAL Camberwell Shows": "https://www.arts.ac.uk/colleges/camberwell-college-of-arts/whats-on/camberwell-shows",
+  "Whitechapel Gallery": "https://www.whitechapelgallery.org/"
+ },
+ "events": [
+  {
+   "title": "Common Ghosts",
+   "event_type": "exhibition",
+   "start_date": "2026-11-05",
+   "end_date": "2026-11-15",
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "APT Gallery",
+   "postcode": "SE8 4SA",
+   "area": "Deptford",
+   "price_type": "free",
+   "price_min_gbp": 0,
+   "art_forms": [],
+   "tags": [
+    "artist-run",
+    "artist studios",
+    "read from venue page"
+   ],
+   "source_name": "APT Gallery",
+   "source_url": "https://www.aptstudios.org/20262027commonghosts"
+  },
+  {
+   "title": "Uncanny Waters: Weathering",
+   "event_type": "exhibition",
+   "start_date": "2026-11-19",
+   "end_date": "2026-11-28",
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "APT Gallery",
+   "postcode": "SE8 4SA",
+   "area": "Deptford",
+   "price_type": "free",
+   "price_min_gbp": 0,
+   "art_forms": [],
+   "tags": [
+    "artist-run",
+    "artist studios",
+    "read from venue page"
+   ],
+   "source_name": "APT Gallery",
+   "source_url": "https://www.aptstudios.org/#uncanny-waters-weathering-2026-11-19"
+  },
+  {
+   "title": "Opening: Uncanny Waters: Weathering",
+   "event_type": "private_view",
+   "start_date": "2026-11-19",
+   "end_date": null,
+   "start_time": "18:00",
+   "end_time": "20:00",
+   "venue_name": "APT Gallery",
+   "postcode": "SE8 4SA",
+   "area": "Deptford",
+   "price_type": "free",
+   "price_min_gbp": 0,
+   "art_forms": [],
+   "tags": [
+    "artist-run",
+    "artist studios",
+    "read from venue page"
+   ],
+   "source_name": "APT Gallery",
+   "source_url": "https://www.aptstudios.org/#opening-uncanny-waters-weathering-2026-11-19"
+  },
+  {
+   "title": "Digital Worlds, Alternative Futures: Skawennati, Wendi Yan and Kinnari Saraiya",
+   "event_type": "talk",
+   "start_date": "2026-11-14",
+   "end_date": null,
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "arebyte Gallery",
+   "postcode": "E14 0LG",
+   "area": "London City Island",
+   "art_forms": [],
+   "tags": [
+    "digital art",
+    "independent",
+    "read from venue page"
+   ],
+   "source_name": "arebyte Gallery",
+   "source_url": "https://www.arebyte.com/events/artist-talks-performance-slipstream"
+  },
+  {
+   "title": "Exhibition Tour – SLIPSTREAM: Uncharted Realities & the Eternal Now",
+   "event_type": "tour",
+   "start_date": "2026-11-28",
+   "end_date": null,
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "arebyte Gallery",
+   "postcode": "E14 0LG",
+   "area": "London City Island",
+   "art_forms": [],
+   "tags": [
+    "digital art",
+    "independent",
+    "read from venue page"
+   ],
+   "source_name": "arebyte Gallery",
+   "source_url": "https://www.arebyte.com/events/slipstream-exhibition-tour2"
+  },
+  {
+   "title": "Introduction to Blender: Character Development with Sophie Rogers",
+   "event_type": "workshop",
+   "start_date": "2026-12-05",
+   "end_date": null,
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "arebyte Gallery",
+   "postcode": "E14 0LG",
+   "area": "London City Island",
+   "art_forms": [],
+   "tags": [
+    "digital art",
+    "independent",
+    "read from venue page"
+   ],
+   "source_name": "arebyte Gallery",
+   "source_url": "https://www.arebyte.com/events/introduction-to-blender-sophie-rogers"
+  },
+  {
+   "title": "SUUTOO: MAGIC SYSTEM",
+   "event_type": "exhibition",
+   "start_date": "2026-11-27",
+   "end_date": "2027-02-28",
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "Auto Italia",
+   "postcode": "E2 9JS",
+   "area": "Bethnal Green",
+   "price_type": "free",
+   "price_min_gbp": 0,
+   "art_forms": [],
+   "tags": [
+    "artist-run",
+    "emerging artists",
+    "read from venue page"
+   ],
+   "source_name": "Auto Italia",
+   "source_url": "https://autoitaliasoutheast.org/projects/magic-system/"
+  },
+  {
+   "title": "Preview: MAGIC SYSTEM",
+   "event_type": "private_view",
+   "start_date": "2026-11-26",
+   "end_date": null,
+   "start_time": "18:00",
+   "end_time": "20:00",
+   "venue_name": "Auto Italia",
+   "postcode": "E2 9JS",
+   "area": "Bethnal Green",
+   "price_type": "free",
+   "price_min_gbp": 0,
+   "art_forms": [],
+   "tags": [
+    "artist-run",
+    "emerging artists",
+    "read from venue page"
+   ],
+   "source_name": "Auto Italia",
+   "source_url": "https://autoitaliasoutheast.org/events/preview-magic-system/"
+  },
+  {
+   "title": "Crip Scripts: writing workshop with Kat Benedict",
+   "event_type": "workshop",
+   "start_date": "2026-12-01",
+   "end_date": null,
+   "start_time": "18:30",
+   "end_time": "20:00",
+   "venue_name": "Auto Italia",
+   "postcode": "E2 9JS",
+   "area": "Bethnal Green",
+   "art_forms": [],
+   "tags": [
+    "artist-run",
+    "emerging artists",
+    "read from venue page"
+   ],
+   "source_name": "Auto Italia",
+   "source_url": "https://autoitaliasoutheast.org/events/crip-scripts/"
+  },
+  {
+   "title": "Voices for Dissent, Voices for Desire: Creative Writing Workshop",
+   "event_type": "workshop",
+   "start_date": "2026-11-14",
+   "end_date": null,
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "Autograph",
+   "postcode": "EC2A 3BA",
+   "area": "Shoreditch",
+   "price_type": "paid",
+   "price_min_gbp": 10,
+   "art_forms": [],
+   "tags": [
+    "photography",
+    "independent",
+    "read from venue page"
+   ],
+   "source_name": "Autograph",
+   "source_url": "https://autograph.org.uk/#voices-for-dissent-voices-for-desire-cre-2026-11-14"
+  },
+  {
+   "title": "The Land and Body: Feminist and Indigenous Conversations",
+   "event_type": "talk",
+   "start_date": "2026-11-18",
+   "end_date": null,
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "Autograph",
+   "postcode": "EC2A 3BA",
+   "area": "Shoreditch",
+   "price_type": "free",
+   "price_min_gbp": 0,
+   "art_forms": [],
+   "tags": [
+    "photography",
+    "independent",
+    "read from venue page"
+   ],
+   "source_name": "Autograph",
+   "source_url": "https://autograph.org.uk/events/land-and-body-feminist-and-indigenous-conversations"
+  },
+  {
+   "title": "Language, Law and Queer Belonging: Talk",
+   "event_type": "talk",
+   "start_date": "2026-12-09",
+   "end_date": null,
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "Autograph",
+   "postcode": "EC2A 3BA",
+   "area": "Shoreditch",
+   "price_type": "paid",
+   "price_min_gbp": 5,
+   "art_forms": [],
+   "tags": [
+    "photography",
+    "independent",
+    "read from venue page"
+   ],
+   "source_name": "Autograph",
+   "source_url": "https://autograph.org.uk/#language-law-and-queer-belonging-talk-2026-12-09"
+  },
+  {
+   "title": "The Abbey Art Centre as Postwar Refuge: 1946–56",
+   "event_type": "exhibition",
+   "start_date": "2026-10-07",
+   "end_date": "2026-12-18",
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "Ben Uri Gallery",
+   "postcode": "NW8 0RH",
+   "area": "St John's Wood",
+   "art_forms": [],
+   "tags": [
+    "independent",
+    "read from venue page"
+   ],
+   "source_name": "Ben Uri Gallery",
+   "source_url": "https://benuri.org/#the-abbey-art-centre-as-postwar-refuge-1-2026-10-07"
+  },
+  {
+   "title": "Introduction to Woodturning",
+   "event_type": "workshop",
+   "start_date": "2026-11-14",
+   "end_date": "2026-11-15",
+   "start_time": "10:00",
+   "end_time": "16:30",
+   "venue_name": "Blackhorse Workshop",
+   "postcode": "E17 6BX",
+   "area": "Walthamstow",
+   "price_type": "paid",
+   "price_min_gbp": 295,
+   "art_forms": [
+    "craft"
+   ],
+   "tags": [
+    "makers",
+    "craft",
+    "community workshop",
+    "read from venue page"
+   ],
+   "source_name": "Blackhorse Workshop",
+   "source_url": "https://www.blackhorseworkshop.co.uk/course/?id=984"
+  },
+  {
+   "title": "Blacksmithing Day (inc. Forge Induction)",
+   "event_type": "workshop",
+   "start_date": "2026-11-15",
+   "end_date": null,
+   "start_time": "10:00",
+   "end_time": "17:00",
+   "venue_name": "Blackhorse Workshop",
+   "postcode": "E17 6BX",
+   "area": "Walthamstow",
+   "price_type": "paid",
+   "price_min_gbp": 195,
+   "art_forms": [
+    "craft"
+   ],
+   "tags": [
+    "makers",
+    "craft",
+    "community workshop",
+    "read from venue page"
+   ],
+   "source_name": "Blackhorse Workshop",
+   "source_url": "https://www.blackhorseworkshop.co.uk/course/?id=987"
+  },
+  {
+   "title": "Introduction to Machine Shop: Chopping Board",
+   "event_type": "workshop",
+   "start_date": "2026-11-15",
+   "end_date": null,
+   "start_time": "10:00",
+   "end_time": "16:30",
+   "venue_name": "Blackhorse Workshop",
+   "postcode": "E17 6BX",
+   "area": "Walthamstow",
+   "price_type": "paid",
+   "price_min_gbp": 145,
+   "art_forms": [
+    "craft"
+   ],
+   "tags": [
+    "makers",
+    "craft",
+    "community workshop",
+    "read from venue page"
+   ],
+   "source_name": "Blackhorse Workshop",
+   "source_url": "https://www.blackhorseworkshop.co.uk/course/?id=976"
+  },
+  {
+   "title": "Introduction to Blacksmithing (three Tuesday evenings)",
+   "event_type": "workshop",
+   "start_date": "2026-11-10",
+   "end_date": "2026-11-24",
+   "start_time": "18:30",
+   "end_time": "21:30",
+   "venue_name": "Blackhorse Workshop",
+   "postcode": "E17 6BX",
+   "area": "Walthamstow",
+   "price_type": "paid",
+   "price_min_gbp": 215,
+   "art_forms": [
+    "craft"
+   ],
+   "tags": [
+    "makers",
+    "craft",
+    "community workshop",
+    "read from venue page"
+   ],
+   "source_name": "Blackhorse Workshop",
+   "source_url": "https://www.blackhorseworkshop.co.uk/course/?id=993"
+  },
+  {
+   "title": "Blackhorse Workshop Xmas Makers Market 2026",
+   "event_type": "fair",
+   "start_date": "2026-12-02",
+   "end_date": null,
+   "start_time": "18:00",
+   "end_time": "21:00",
+   "venue_name": "Blackhorse Workshop",
+   "postcode": "E17 6BX",
+   "area": "Walthamstow",
+   "price_type": "free",
+   "price_min_gbp": 0,
+   "art_forms": [
+    "craft"
+   ],
+   "tags": [
+    "makers",
+    "craft",
+    "community workshop",
+    "read from venue page"
+   ],
+   "source_name": "Blackhorse Workshop",
+   "source_url": "https://www.blackhorseworkshop.co.uk/course/?id=1041"
+  },
+  {
+   "title": "Liz Larner: A hard line to bend",
+   "event_type": "exhibition",
+   "start_date": "2026-09-11",
+   "end_date": "2027-01-17",
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "Camden Art Centre",
+   "postcode": "NW3 6DG",
+   "area": "Hampstead",
+   "price_type": "free",
+   "price_min_gbp": 0,
+   "art_forms": [],
+   "tags": [
+    "read from venue page"
+   ],
+   "source_name": "Camden Art Centre",
+   "source_url": "https://camdenartcentre.org/whats-on/a-hard-line-to-bend"
+  },
+  {
+   "title": "Life Drawing Short Course",
+   "event_type": "workshop",
+   "start_date": "2026-11-19",
+   "end_date": "2026-12-10",
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "Camden Art Centre",
+   "postcode": "NW3 6DG",
+   "area": "Hampstead",
+   "art_forms": [],
+   "tags": [
+    "read from venue page"
+   ],
+   "source_name": "Camden Art Centre",
+   "source_url": "https://camdenartcentre.org/whats-on/life-drawing-short-course-autumn-2026"
+  },
+  {
+   "title": "Zine Making Workshop",
+   "event_type": "workshop",
+   "start_date": "2026-11-21",
+   "end_date": null,
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "Camden Art Centre",
+   "postcode": "NW3 6DG",
+   "area": "Hampstead",
+   "art_forms": [],
+   "tags": [
+    "read from venue page"
+   ],
+   "source_name": "Camden Art Centre",
+   "source_url": "https://camdenartcentre.org/whats-on/zine-making-workshop-6"
+  },
+  {
+   "title": "Natural Dyes Study Group",
+   "event_type": "workshop",
+   "start_date": "2026-11-22",
+   "end_date": null,
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "Camden Art Centre",
+   "postcode": "NW3 6DG",
+   "area": "Hampstead",
+   "art_forms": [],
+   "tags": [
+    "read from venue page"
+   ],
+   "source_name": "Camden Art Centre",
+   "source_url": "https://camdenartcentre.org/whats-on/natural-dyes-study-group"
+  },
+  {
+   "title": "Ikebana-Inspired Wreath Making Workshop",
+   "event_type": "workshop",
+   "start_date": "2026-12-05",
+   "end_date": null,
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "Camden Art Centre",
+   "postcode": "NW3 6DG",
+   "area": "Hampstead",
+   "art_forms": [],
+   "tags": [
+    "read from venue page"
+   ],
+   "source_name": "Camden Art Centre",
+   "source_url": "https://camdenartcentre.org/whats-on/ikebana-inspired-wreath-making-workshop"
+  },
+  {
+   "title": "Introduction to Natural Dyes",
+   "event_type": "workshop",
+   "start_date": "2026-12-06",
+   "end_date": null,
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "Camden Art Centre",
+   "postcode": "NW3 6DG",
+   "area": "Hampstead",
+   "art_forms": [],
+   "tags": [
+    "read from venue page"
+   ],
+   "source_name": "Camden Art Centre",
+   "source_url": "https://camdenartcentre.org/whats-on/introduction-to-natural-dyes-2"
+  },
+  {
+   "title": "Wakaliga Uganda: Kibuuka Omumbaale",
+   "event_type": "exhibition",
+   "start_date": "2026-11-14",
+   "end_date": "2026-12-06",
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "Chisenhale Gallery",
+   "postcode": "E3 5QZ",
+   "area": "Bow",
+   "price_type": "free",
+   "price_min_gbp": 0,
+   "art_forms": [],
+   "tags": [
+    "emerging artists",
+    "independent",
+    "read from venue page"
+   ],
+   "source_name": "Chisenhale Gallery",
+   "source_url": "https://chisenhale.org.uk/project/wakaliga-uganda/"
+  },
+  {
+   "title": "Curatorial Tour: Kibuuka Omumbaale with Tosia Leniarska",
+   "event_type": "tour",
+   "start_date": "2026-12-03",
+   "end_date": null,
+   "start_time": "19:00",
+   "end_time": "20:30",
+   "venue_name": "Chisenhale Gallery",
+   "postcode": "E3 5QZ",
+   "area": "Bow",
+   "art_forms": [],
+   "tags": [
+    "emerging artists",
+    "independent",
+    "read from venue page"
+   ],
+   "source_name": "Chisenhale Gallery",
+   "source_url": "https://chisenhale.org.uk/whats-on/tour-of-kibuuka-omumbaale-with-tosia-leniarska-curator-exhibitions-and-events/"
+  },
+  {
+   "title": "Listening to the earth",
+   "event_type": "exhibition",
+   "start_date": "2026-09-24",
+   "end_date": "2026-12-13",
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "Drawing Room",
+   "postcode": null,
+   "area": "Bermondsey",
+   "price_type": "free",
+   "price_min_gbp": 0,
+   "art_forms": [
+    "drawing"
+   ],
+   "tags": [
+    "drawing",
+    "independent",
+    "read from venue page"
+   ],
+   "source_name": "Drawing Room",
+   "source_url": "https://drawingroom.org.uk/exhibition/listening-to-the-earth/"
+  },
+  {
+   "title": "In Conversation: Emii Alrai and Tanoa Sasraku",
+   "event_type": "talk",
+   "start_date": "2026-11-20",
+   "end_date": null,
+   "start_time": "17:00",
+   "end_time": "20:30",
+   "venue_name": "Drawing Room",
+   "postcode": null,
+   "area": "Bermondsey",
+   "art_forms": [
+    "drawing"
+   ],
+   "tags": [
+    "drawing",
+    "independent",
+    "read from venue page"
+   ],
+   "source_name": "Drawing Room",
+   "source_url": "https://drawingroom.org.uk/event/in-conversation-emii-alrai-and-tanoa-sasraku/"
+  },
+  {
+   "title": "Life Drawing with Early Masterworks: The Colour of Being",
+   "event_type": "workshop",
+   "start_date": "2026-11-27",
+   "end_date": null,
+   "start_time": "18:45",
+   "end_time": "21:00",
+   "venue_name": "Drawing Room",
+   "postcode": null,
+   "area": "Bermondsey",
+   "art_forms": [
+    "drawing"
+   ],
+   "tags": [
+    "drawing",
+    "independent",
+    "read from venue page"
+   ],
+   "source_name": "Drawing Room",
+   "source_url": "https://drawingroom.org.uk/event/life-drawing-the-colour-of-being-with-early-masterworks/"
+  },
+  {
+   "title": "Late Night: Ways of Listening",
+   "event_type": "other",
+   "start_date": "2026-12-03",
+   "end_date": null,
+   "start_time": "18:30",
+   "end_time": "21:30",
+   "venue_name": "Drawing Room",
+   "postcode": null,
+   "area": "Bermondsey",
+   "art_forms": [
+    "drawing"
+   ],
+   "tags": [
+    "drawing",
+    "independent",
+    "read from venue page"
+   ],
+   "source_name": "Drawing Room",
+   "source_url": "https://drawingroom.org.uk/event/late-night-ways-of-listening/"
+  },
+  {
+   "title": "RISO Greetings Cards and Envelopes Workshop with Chloe Cooper",
+   "event_type": "workshop",
+   "start_date": "2026-12-13",
+   "end_date": null,
+   "start_time": "14:00",
+   "end_time": "17:00",
+   "venue_name": "Drawing Room",
+   "postcode": null,
+   "area": "Bermondsey",
+   "art_forms": [
+    "drawing"
+   ],
+   "tags": [
+    "drawing",
+    "independent",
+    "read from venue page"
+   ],
+   "source_name": "Drawing Room",
+   "source_url": "https://drawingroom.org.uk/event/riso-card-and-envelope-workshop-with-chole-cooper/"
+  },
+  {
+   "title": "East London Printmakers Winter Open Studio",
+   "event_type": "open_studio",
+   "start_date": "2026-11-22",
+   "end_date": null,
+   "start_time": "12:00",
+   "end_time": "16:00",
+   "venue_name": "East London Printmakers",
+   "postcode": "E3 4RR",
+   "area": "Mile End",
+   "price_type": "free",
+   "price_min_gbp": 0,
+   "art_forms": [
+    "printmaking"
+   ],
+   "tags": [
+    "print studio",
+    "artist-run",
+    "read from venue page"
+   ],
+   "source_name": "East London Printmakers",
+   "source_url": "https://www.eastlondonprintmakers.co.uk/#east-london-printmakers-winter-open-stud-2026-11-22"
+  },
+  {
+   "title": "Paloma Contreras Lomas: Disco Inferno",
+   "event_type": "exhibition",
+   "start_date": "2026-10-01",
+   "end_date": "2026-12-13",
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "Gasworks",
+   "postcode": "SE11 5RH",
+   "area": "Vauxhall",
+   "price_type": "free",
+   "price_min_gbp": 0,
+   "art_forms": [],
+   "tags": [
+    "artist residencies",
+    "emerging artists",
+    "read from venue page"
+   ],
+   "source_name": "Gasworks",
+   "source_url": "https://www.gasworks.org.uk/#paloma-contreras-lomas-disco-inferno-2026-10-01"
+  },
+  {
+   "title": "Gasworks Winter Open Studios 2026",
+   "event_type": "open_studio",
+   "start_date": "2026-12-05",
+   "end_date": null,
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "Gasworks",
+   "postcode": "SE11 5RH",
+   "area": "Vauxhall",
+   "price_type": "free",
+   "price_min_gbp": 0,
+   "art_forms": [],
+   "tags": [
+    "artist residencies",
+    "emerging artists",
+    "read from venue page"
+   ],
+   "source_name": "Gasworks",
+   "source_url": "https://www.gasworks.org.uk/events/winter-open-studios-2026/"
+  },
+  {
+   "title": "Artist In Conversation: Tim Benson",
+   "event_type": "talk",
+   "start_date": "2026-11-16",
+   "end_date": null,
+   "start_time": "17:00",
+   "end_time": "18:00",
+   "venue_name": "Heatherley School of Fine Art",
+   "postcode": "SW10 0RN",
+   "area": "Chelsea",
+   "art_forms": [],
+   "tags": [
+    "art school",
+    "read from venue page"
+   ],
+   "source_name": "Heatherley School of Fine Art",
+   "source_url": "https://www.heatherleys.org/events/artist-in-conversation-tim-benson/"
+  },
+  {
+   "title": "Andrew Pierre Hart: if you like rice, you’ll understand – Collective Noise",
+   "event_type": "exhibition",
+   "start_date": "2026-10-01",
+   "end_date": "2026-12-11",
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "Chelsea College of Arts",
+   "postcode": "SW1P 4JU",
+   "area": "Pimlico",
+   "price_type": "free",
+   "price_min_gbp": 0,
+   "art_forms": [],
+   "tags": [
+    "art school",
+    "independent",
+    "read from venue page"
+   ],
+   "source_name": "iniva",
+   "source_url": "https://iniva.org/programme/projects/if-you-like-rice-youll-understand-collective-noise/"
+  },
+  {
+   "title": "TrAIN Open Lecture: Andrew Pierre Hart",
+   "event_type": "talk",
+   "start_date": "2026-11-25",
+   "end_date": null,
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "Chelsea College of Arts",
+   "postcode": "SW1P 4JU",
+   "area": "Pimlico",
+   "art_forms": [],
+   "tags": [
+    "art school",
+    "independent",
+    "read from venue page"
+   ],
+   "source_name": "iniva",
+   "source_url": "https://iniva.org/programme/events/train-open-lecture/"
+  },
+  {
+   "title": "Film Screening: The Stuart Hall Project (2013)",
+   "event_type": "screening",
+   "start_date": "2026-12-11",
+   "end_date": null,
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "Chelsea College of Arts",
+   "postcode": "SW1P 4JU",
+   "area": "Pimlico",
+   "art_forms": [],
+   "tags": [
+    "art school",
+    "independent",
+    "read from venue page"
+   ],
+   "source_name": "iniva",
+   "source_url": "https://iniva.org/programme/events/the-stuart-hall-project-2013/"
+  },
+  {
+   "title": "Highgate Watercolour Group Exhibition 2026",
+   "event_type": "exhibition",
+   "start_date": "2026-10-21",
+   "end_date": "2026-11-16",
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "Lauderdale House",
+   "postcode": "N6 5HG",
+   "area": "Highgate",
+   "price_type": "free",
+   "price_min_gbp": 0,
+   "art_forms": [],
+   "tags": [
+    "community",
+    "local artists",
+    "read from venue page"
+   ],
+   "source_name": "Lauderdale House",
+   "source_url": "https://www.lauderdalehouse.org.uk/whats-on/highgate-watercolour-group-2026"
+  },
+  {
+   "title": "Harington, Where We Grow",
+   "event_type": "exhibition",
+   "start_date": "2026-10-28",
+   "end_date": "2026-12-03",
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "Lauderdale House",
+   "postcode": "N6 5HG",
+   "area": "Highgate",
+   "price_type": "free",
+   "price_min_gbp": 0,
+   "art_forms": [],
+   "tags": [
+    "community",
+    "local artists",
+    "read from venue page"
+   ],
+   "source_name": "Lauderdale House",
+   "source_url": "https://www.lauderdalehouse.org.uk/whats-on/harington-where-we-grow"
+  },
+  {
+   "title": "THIRTEEN 2026 (photography group show)",
+   "event_type": "exhibition",
+   "start_date": "2026-11-18",
+   "end_date": "2026-12-21",
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "Lauderdale House",
+   "postcode": "N6 5HG",
+   "area": "Highgate",
+   "price_type": "free",
+   "price_min_gbp": 0,
+   "art_forms": [],
+   "tags": [
+    "community",
+    "local artists",
+    "read from venue page"
+   ],
+   "source_name": "Lauderdale House",
+   "source_url": "https://www.lauderdalehouse.org.uk/whats-on/thirteen-2026"
+  },
+  {
+   "title": "Botanical Illustration with Alison Day (Mondays)",
+   "event_type": "workshop",
+   "start_date": "2026-10-05",
+   "end_date": "2026-12-14",
+   "start_time": "13:00",
+   "end_time": "14:30",
+   "venue_name": "Lewisham Arthouse",
+   "postcode": "SE14 6PD",
+   "area": "New Cross",
+   "art_forms": [],
+   "tags": [
+    "artist-run",
+    "community",
+    "read from venue page"
+   ],
+   "source_name": "Lewisham Arthouse",
+   "source_url": "https://www.lewishamarthouse.org.uk/#botanical-illustration-with-alison-day-m-2026-10-05"
+  },
+  {
+   "title": "Imogen Stidworthy: Skydde",
+   "event_type": "exhibition",
+   "start_date": "2026-09-30",
+   "end_date": "2026-11-22",
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "Matt's Gallery",
+   "postcode": "SW11 7AN",
+   "area": "Nine Elms",
+   "price_type": "free",
+   "price_min_gbp": 0,
+   "art_forms": [],
+   "tags": [
+    "independent",
+    "read from venue page"
+   ],
+   "source_name": "Matt's Gallery",
+   "source_url": "https://www.mattsgallery.org/exhibitions/imogen-stidworthy-"
+  },
+  {
+   "title": "Arts & Homelessness International Scratch Night with One Roof",
+   "event_type": "performance",
+   "start_date": "2026-12-04",
+   "end_date": null,
+   "start_time": "18:30",
+   "end_time": null,
+   "venue_name": "Old Diorama Arts Centre",
+   "postcode": "NW1 3FE",
+   "area": "Euston",
+   "art_forms": [],
+   "tags": [
+    "community",
+    "grassroots",
+    "read from venue page"
+   ],
+   "source_name": "Old Diorama Arts Centre",
+   "source_url": "https://www.olddiorama.com/upcoming-events#arts-homelessness-international-scratch--2026-12-04"
+  },
+  {
+   "title": "Old Diorama Festive Gathering (Neighbourhood Makeshop)",
+   "event_type": "other",
+   "start_date": "2026-12-10",
+   "end_date": null,
+   "start_time": "18:00",
+   "end_time": null,
+   "venue_name": "Old Diorama Arts Centre",
+   "postcode": "NW1 3FE",
+   "area": "Euston",
+   "price_type": "free",
+   "price_min_gbp": 0,
+   "art_forms": [],
+   "tags": [
+    "community",
+    "grassroots",
+    "read from venue page"
+   ],
+   "source_name": "Old Diorama Arts Centre",
+   "source_url": "https://www.olddiorama.com/upcoming-events#old-diorama-festive-gathering-neighbourh-2026-12-10"
+  },
+  {
+   "title": "Peter Blake: In the Studio",
+   "event_type": "exhibition",
+   "start_date": "2026-11-25",
+   "end_date": "2027-04-18",
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "Pitzhanger Manor & Gallery",
+   "postcode": "W5 5EQ",
+   "area": "Ealing",
+   "art_forms": [],
+   "tags": [
+    "read from venue page"
+   ],
+   "source_name": "Pitzhanger Manor & Gallery",
+   "source_url": "https://www.pitzhanger.org.uk/whatson/peter-blake/"
+  },
+  {
+   "title": "Big Ideas for Little Lives: Trash into Treasure!",
+   "event_type": "workshop",
+   "start_date": "2026-11-24",
+   "end_date": null,
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "Poplar Union",
+   "postcode": "E14 6TL",
+   "area": "Poplar",
+   "art_forms": [],
+   "tags": [
+    "community",
+    "family",
+    "read from venue page"
+   ],
+   "source_name": "Poplar Union",
+   "source_url": "https://poplarunion.com/event/big-ideas-for-little-lives-trash-into-treasure/"
+  },
+  {
+   "title": "Dispersion: Celebrating Practice-Led Research (MA Fine Art research festival)",
+   "event_type": "exhibition",
+   "start_date": "2026-11-13",
+   "end_date": "2026-11-15",
+   "start_time": "12:00",
+   "end_time": "18:00",
+   "venue_name": "South London Gallery",
+   "postcode": "SE5 8UH",
+   "area": "Peckham",
+   "price_type": "free",
+   "price_min_gbp": 0,
+   "art_forms": [],
+   "tags": [
+    "read from venue page"
+   ],
+   "source_name": "South London Gallery",
+   "source_url": "https://www.southlondongallery.org/events/ma-fine-art-research-festival-2026/"
+  },
+  {
+   "title": "Film Screening: South by South",
+   "event_type": "screening",
+   "start_date": "2026-11-18",
+   "end_date": null,
+   "start_time": "18:30",
+   "end_time": "20:45",
+   "venue_name": "South London Gallery",
+   "postcode": "SE5 8UH",
+   "area": "Peckham",
+   "art_forms": [],
+   "tags": [
+    "read from venue page"
+   ],
+   "source_name": "South London Gallery",
+   "source_url": "https://www.southlondongallery.org/events/film-screening-south-by-south-2/"
+  },
+  {
+   "title": "Ways of Wellbeing: Art & Creative Health",
+   "event_type": "workshop",
+   "start_date": "2026-11-19",
+   "end_date": null,
+   "start_time": "10:00",
+   "end_time": "13:00",
+   "venue_name": "South London Gallery",
+   "postcode": "SE5 8UH",
+   "area": "Peckham",
+   "price_type": "free",
+   "price_min_gbp": 0,
+   "art_forms": [],
+   "tags": [
+    "read from venue page"
+   ],
+   "source_name": "South London Gallery",
+   "source_url": "https://www.southlondongallery.org/events/ways-of-wellbeing-art-creative-health/"
+  },
+  {
+   "title": "Family Space with Sadie St Hilaire",
+   "event_type": "workshop",
+   "start_date": "2026-11-28",
+   "end_date": null,
+   "start_time": "11:00",
+   "end_time": "13:00",
+   "venue_name": "South London Gallery",
+   "postcode": "SE5 8UH",
+   "area": "Peckham",
+   "art_forms": [],
+   "tags": [
+    "read from venue page"
+   ],
+   "source_name": "South London Gallery",
+   "source_url": "https://www.southlondongallery.org/#family-space-with-sadie-st-hilaire-2026-11-28"
+  },
+  {
+   "title": "Kang Seung Lee: Weeds of Cultivation",
+   "event_type": "exhibition",
+   "start_date": "2026-12-11",
+   "end_date": "2027-03-28",
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "South London Gallery",
+   "postcode": "SE5 8UH",
+   "area": "Peckham",
+   "price_type": "free",
+   "price_min_gbp": 0,
+   "art_forms": [],
+   "tags": [
+    "read from venue page"
+   ],
+   "source_name": "South London Gallery",
+   "source_url": "https://www.southlondongallery.org/#kang-seung-lee-weeds-of-cultivation-2026-12-11"
+  },
+  {
+   "title": "Preview: Southwark Park Galleries Annual Open (42nd year)",
+   "event_type": "private_view",
+   "start_date": "2026-11-21",
+   "end_date": null,
+   "start_time": "13:00",
+   "end_time": "16:00",
+   "venue_name": "Southwark Park Galleries",
+   "postcode": "SE16 2UA",
+   "area": "Bermondsey",
+   "price_type": "free",
+   "price_min_gbp": 0,
+   "art_forms": [],
+   "tags": [
+    "community",
+    "open submission",
+    "emerging artists",
+    "read from venue page"
+   ],
+   "source_name": "Southwark Park Galleries",
+   "source_url": "https://southwarkparkgalleries.org/#preview-southwark-park-galleries-annual--2026-11-21"
+  },
+  {
+   "title": "The Kiln Rooms Christmas Sale",
+   "event_type": "fair",
+   "start_date": "2026-11-27",
+   "end_date": "2026-11-29",
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "The Kiln Rooms",
+   "postcode": null,
+   "area": "Peckham",
+   "price_type": "free",
+   "price_min_gbp": 0,
+   "art_forms": [
+    "ceramics"
+   ],
+   "tags": [
+    "ceramics studio",
+    "makers",
+    "read from venue page"
+   ],
+   "source_name": "The Kiln Rooms",
+   "source_url": "https://www.thekilnrooms.com/open-studios"
+  },
+  {
+   "title": "UP, LEFT, DOWN, RIGHT",
+   "event_type": "exhibition",
+   "start_date": "2026-12-03",
+   "end_date": "2026-12-08",
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "The Koppel Project Annex",
+   "postcode": "SE1 6NT",
+   "area": "Elephant and Castle",
+   "price_type": "free",
+   "price_min_gbp": 0,
+   "art_forms": [],
+   "tags": [
+    "artist studios",
+    "emerging artists",
+    "read from venue page"
+   ],
+   "source_name": "The Koppel Project",
+   "source_url": "https://thekoppelproject.com/events/up-left-down-right"
+  },
+  {
+   "title": "Private view: UP, LEFT, DOWN, RIGHT",
+   "event_type": "private_view",
+   "start_date": "2026-12-03",
+   "end_date": null,
+   "start_time": "18:00",
+   "end_time": "22:00",
+   "venue_name": "The Koppel Project Annex",
+   "postcode": "SE1 6NT",
+   "area": "Elephant and Castle",
+   "price_type": "free",
+   "price_min_gbp": 0,
+   "art_forms": [],
+   "tags": [
+    "artist studios",
+    "emerging artists",
+    "read from venue page"
+   ],
+   "source_name": "The Koppel Project",
+   "source_url": "https://thekoppelproject.com/events#private-view-up-left-down-right-2026-12-03"
+  },
+  {
+   "title": "sounding towards - -",
+   "event_type": "exhibition",
+   "start_date": "2026-07-08",
+   "end_date": "2026-11-29",
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "The Mosaic Rooms",
+   "postcode": "SW5 0SW",
+   "area": "Earl's Court",
+   "price_type": "free",
+   "price_min_gbp": 0,
+   "art_forms": [],
+   "tags": [
+    "independent",
+    "read from venue page"
+   ],
+   "source_name": "The Mosaic Rooms",
+   "source_url": "https://mosaicrooms.org/#sounding-towards-2026-07-08"
+  },
+  {
+   "title": "Launch Event: Decolonizing the Page",
+   "event_type": "talk",
+   "start_date": "2026-11-14",
+   "end_date": null,
+   "start_time": "15:00",
+   "end_time": null,
+   "venue_name": "The Mosaic Rooms",
+   "postcode": "SW5 0SW",
+   "area": "Earl's Court",
+   "art_forms": [],
+   "tags": [
+    "independent",
+    "read from venue page"
+   ],
+   "source_name": "The Mosaic Rooms",
+   "source_url": "https://mosaicrooms.org/#launch-event-decolonizing-the-page-2026-11-14"
+  },
+  {
+   "title": "Performance: In the Presence of the Absent Bird by Hoda Siahtiri",
+   "event_type": "performance",
+   "start_date": "2026-11-25",
+   "end_date": null,
+   "start_time": "19:00",
+   "end_time": null,
+   "venue_name": "The Mosaic Rooms",
+   "postcode": "SW5 0SW",
+   "area": "Earl's Court",
+   "art_forms": [],
+   "tags": [
+    "independent",
+    "read from venue page"
+   ],
+   "source_name": "The Mosaic Rooms",
+   "source_url": "https://mosaicrooms.org/#performance-in-the-presence-of-the-absen-2026-11-25"
+  },
+  {
+   "title": "Tiny Fridays with Zareen Islam",
+   "event_type": "workshop",
+   "start_date": "2026-11-27",
+   "end_date": null,
+   "start_time": "12:00",
+   "end_time": "16:00",
+   "venue_name": "The Mosaic Rooms",
+   "postcode": "SW5 0SW",
+   "area": "Earl's Court",
+   "art_forms": [],
+   "tags": [
+    "independent",
+    "read from venue page"
+   ],
+   "source_name": "The Mosaic Rooms",
+   "source_url": "https://mosaicrooms.org/#tiny-fridays-with-zareen-islam-2026-11-27"
+  },
+  {
+   "title": "Workshop: Earl’s Court Soundwalk",
+   "event_type": "workshop",
+   "start_date": "2026-11-29",
+   "end_date": null,
+   "start_time": "12:00",
+   "end_time": null,
+   "venue_name": "The Mosaic Rooms",
+   "postcode": "SW5 0SW",
+   "area": "Earl's Court",
+   "art_forms": [],
+   "tags": [
+    "independent",
+    "read from venue page"
+   ],
+   "source_name": "The Mosaic Rooms",
+   "source_url": "https://mosaicrooms.org/#workshop-earl-s-court-soundwalk-2026-11-29"
+  },
+  {
+   "title": "Play Lab: Lum’a with Niki Kohandel",
+   "event_type": "workshop",
+   "start_date": "2026-12-04",
+   "end_date": "2026-12-05",
+   "start_time": "11:00",
+   "end_time": "18:00",
+   "venue_name": "The Mosaic Rooms",
+   "postcode": "SW5 0SW",
+   "area": "Earl's Court",
+   "art_forms": [],
+   "tags": [
+    "independent",
+    "read from venue page"
+   ],
+   "source_name": "The Mosaic Rooms",
+   "source_url": "https://mosaicrooms.org/#play-lab-lum-a-with-niki-kohandel-2026-12-04"
+  },
+  {
+   "title": "Tiny Fridays with Zareen Islam",
+   "event_type": "workshop",
+   "start_date": "2026-12-11",
+   "end_date": null,
+   "start_time": "12:00",
+   "end_time": "16:00",
+   "venue_name": "The Mosaic Rooms",
+   "postcode": "SW5 0SW",
+   "area": "Earl's Court",
+   "art_forms": [],
+   "tags": [
+    "independent",
+    "read from venue page"
+   ],
+   "source_name": "The Mosaic Rooms",
+   "source_url": "https://mosaicrooms.org/#tiny-fridays-with-zareen-islam-2026-12-11"
+  },
+  {
+   "title": "Polisonics: Community Listening in Action",
+   "event_type": "talk",
+   "start_date": "2026-11-19",
+   "end_date": null,
+   "start_time": "18:30",
+   "end_time": "20:30",
+   "venue_name": "The Showroom",
+   "postcode": "NW8 8PQ",
+   "area": "Marylebone",
+   "art_forms": [],
+   "tags": [
+    "independent",
+    "read from venue page"
+   ],
+   "source_name": "The Showroom",
+   "source_url": "https://theshowroom.org/events/polisonics-community-listening-in-action"
+  },
+  {
+   "title": "Gregory Sholette: The Radical Unpresent",
+   "event_type": "talk",
+   "start_date": "2026-12-03",
+   "end_date": null,
+   "start_time": "18:30",
+   "end_time": "20:30",
+   "venue_name": "The Showroom",
+   "postcode": "NW8 8PQ",
+   "area": "Marylebone",
+   "art_forms": [],
+   "tags": [
+    "independent",
+    "read from venue page"
+   ],
+   "source_name": "The Showroom",
+   "source_url": "https://theshowroom.org/events/gregory-sholette-the-radical-unpresent"
+  },
+  {
+   "title": "Private view (open to all): Camberwell Postgraduate Design Show",
+   "event_type": "private_view",
+   "start_date": "2026-11-24",
+   "end_date": null,
+   "start_time": "18:00",
+   "end_time": "21:00",
+   "venue_name": "Camberwell College of Arts",
+   "postcode": "SE5 8UF",
+   "area": "Camberwell",
+   "price_type": "free",
+   "price_min_gbp": 0,
+   "art_forms": [],
+   "tags": [
+    "art school",
+    "student show",
+    "emerging artists",
+    "read from venue page"
+   ],
+   "source_name": "UAL Camberwell Shows",
+   "source_url": "https://www.arts.ac.uk/colleges/camberwell-college-of-arts/whats-on/camberwell-shows#private-view-open-to-all-camberwell-post-2026-11-24"
+  },
+  {
+   "title": "Art Futures: Platforms for Dissent with Tania Bruguera and Pankaj Mishra",
+   "event_type": "talk",
+   "start_date": "2026-11-19",
+   "end_date": null,
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "Whitechapel Gallery",
+   "postcode": "E1 7QX",
+   "area": "Whitechapel",
+   "price_type": "paid",
+   "price_min_gbp": 15,
+   "art_forms": [],
+   "tags": [
+    "read from venue page"
+   ],
+   "source_name": "Whitechapel Gallery",
+   "source_url": "https://www.whitechapelgallery.org/events/art-futures-platforms-for-dissent/"
+  },
+  {
+   "title": "BSL Tour: Cecilia Vicuña",
+   "event_type": "tour",
+   "start_date": "2026-11-25",
+   "end_date": null,
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "Whitechapel Gallery",
+   "postcode": "E1 7QX",
+   "area": "Whitechapel",
+   "art_forms": [],
+   "tags": [
+    "read from venue page"
+   ],
+   "source_name": "Whitechapel Gallery",
+   "source_url": "https://www.whitechapelgallery.org/events/bsl-tour-cecilia-vicuna/"
+  }
+ ]
+}

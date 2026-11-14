@@ -96,5 +96,11 @@
   "area": "Soho"
  },
  "stanley arts": null,
- "lsw": null
+ "lsw": null,
+ "kiln rooms": {
+  "lat": 51.4698669,
+  "lng": -0.0669787,
+  "postcode": "SE15 3SN",
+  "area": "Peckham"
+ }
 }

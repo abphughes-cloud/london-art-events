@@ -2,8 +2,8 @@
 > seed
 > node ingestion/run.js
 
-GalleriesNow: 151 records
 SPACE Studios: 24 records
+GalleriesNow: 151 records
 Cockpit Studios: 8 records
 Pigment Press: 13 records
 Goldsmiths School of Art: 1 records
@@ -12,15 +12,16 @@ Eat Work Art: 16 records
 Thames-Side Studios: 3 records
 Arts Calendar: 171 records
 ArtRabbit: 105 records
-We Are Lewisham: 20 records
 IanVisits: 567 records
+We Are Lewisham: 20 records
 SET (tribe): 18 records
 Freud Museum (tribe): 3 records
 London Sculpture Workshop (tribe): 3 records
 Stanley Arts (tribe): 35 records
-Location clean-up: 48 dropped (no venue or no findable London location), 0 new venue look-ups.
+Read from venue pages: 68 records from 27 venues
+Location clean-up: 47 dropped (no venue or no findable London location), 1 new venue look-ups.
 
-477 events (2026-11-14 to 2026-12-31), 573 duplicates merged.
-exhibition: 324, workshop: 114, performance: 2, fair: 6, other: 9, screening: 2, talk: 7, tour: 3, private_view: 6, open_studio: 4
-By source (after dedupe): GalleriesNow 132, Arts Calendar 112, ArtRabbit 97, IanVisits 48, Stanley Arts 20, SET 18, We Are Lewisham 17, Cockpit Studios 8, UAL Shows 7, Pigment Press 6, SPACE Studios 4, Freud Museum 3, Thames-Side Studios 2, Eat Work Art 2, Goldsmiths School of Art 1
+538 events (2026-11-14 to 2026-12-31), 581 duplicates merged.
+exhibition: 336, workshop: 135, performance: 4, fair: 8, other: 11, screening: 4, talk: 17, tour: 6, private_view: 11, open_studio: 6
+By source (after dedupe): GalleriesNow 132, Arts Calendar 112, ArtRabbit 97, IanVisits 49, Stanley Arts 20, SET 18, We Are Lewisham 17, Cockpit Studios 8, The Mosaic Rooms 7, UAL Shows 7, Pigment Press 6, Blackhorse Workshop 5, Camden Art Centre 5, SPACE Studios 4, South London Gallery 4, Drawing Room 4, iniva 3, Lauderdale House 3, APT Gallery 3, arebyte Gallery 3, Freud Museum 3, Auto Italia 3, Gasworks 2, Autograph 2, Whitechapel Gallery 2, The Showroom 2, Thames-Side Studios 2, Eat Work Art 2, The Koppel Project 2, Old Diorama Arts Centre 2, Lewisham Arthouse 1, Heatherley School of Fine Art 1, Goldsmiths School of Art 1, Southwark Park Galleries 1, East London Printmakers 1, Poplar Union 1, UAL Camberwell Shows 1, The Kiln Rooms 1, Chisenhale Gallery 1
 Wrote data/events.json and data/seed.sql

@@ -77,6 +77,24 @@ await Promise.all(Array.from({ length: 10 }, async () => {
   }
 }));
 
+// Events read from venues' own what's-on pages (free text no parser handles). For this build they were
+// read by Claude in a Claude Code session from the page text saved by fetch-pages.js; see data/read-events.json.
+const readFile = new URL("../data/read-events.json", import.meta.url);
+if (fs.existsSync(readFile)) {
+  const read = JSON.parse(fs.readFileSync(readFile, "utf8"));
+  const counts = {};
+  for (const r of read.events) {
+    const row = normalize({ confidence: 0.6, scraped_at: read.read_at, ...r });
+    if (!row) continue;
+    all.push(row);
+    counts[row.source_name] = (counts[row.source_name] || 0) + 1;
+  }
+  for (const [name, n] of Object.entries(counts)) {
+    sourceRows.push({ name, url: read.sources[name] || read.events.find((e) => e.source_name === name).source_url, method: "llm_extract", priority: 2, last_count: n });
+  }
+  console.log(`Read from venue pages: ${Object.values(counts).reduce((a, b) => a + b, 0)} records from ${Object.keys(counts).length} venues`);
+}
+
 if (useAI) {
   for (const s of llmSources) {
     try {
