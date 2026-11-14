@@ -1,6 +1,6 @@
 # For the front end
 
-This repo holds the data side (scrapers, Supabase schema, ranking). **Put the website in a `web/` folder** at the top of this repo. Vercel is set to deploy from `web/`, so every push to `main` goes live automatically, and every other branch gets its own preview link.
+This repo holds the data side (scrapers, Supabase schema, ranking). **Put the website in the `web/` folder** (replace the placeholder README if you like). Vercel project `london-art-events` (live at https://london-art-events.vercel.app) deploys from `web/`, so every push to `main` goes live automatically, and every other branch gets its own preview link.
 
 ## Supabase
 
