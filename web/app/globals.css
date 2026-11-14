@@ -569,3 +569,15 @@ a.ltop-plan, a.ltop-maps { text-decoration: none; }
 .vl-tile b { display: block; font-size: 12px; font-weight: 500; color: #fff; line-height: 1.25; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .vl-tile span { display: block; font-size: 11px; color: rgba(255,255,255,.6); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .vl-art-empty { margin: 8px 18px; }
+
+/* tutorial footer on iPhone Safari: own solid strip, proper Next pill (keerthi 15:56) */
+.tour { height: 100dvh; bottom: auto; }
+.tour-strip { position: fixed; left: 0; right: 0; bottom: 0; height: calc(env(safe-area-inset-bottom, 0px) + 76px); background: rgba(0,0,0,.88); z-index: 2; }
+.tour-foot { position: fixed; z-index: 3; left: 16px; right: 16px; bottom: calc(env(safe-area-inset-bottom, 0px) + 16px); display: flex; justify-content: space-between; align-items: center; }
+.tour-skip { font-size: 15px; color: #fff; min-height: 44px; padding: 0 4px; }
+.tour-next { display: inline-flex; align-items: center; justify-content: center; flex: none; min-width: 84px; height: 44px; padding: 0 20px; border-radius: 22px; white-space: nowrap; background: #ffd84d; color: #151515; font: 600 16px/1 var(--grotesk); }
+.tour-bar { bottom: calc(env(safe-area-inset-bottom, 0px) + 96px); }
+/* nearby bar with no picture: no empty block */
+.nb-probe { display: none; }
+.nb.noimg { background: #1b1915; }
+.nb.big.noimg { height: 150px; }

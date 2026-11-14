@@ -24,7 +24,7 @@ function measure(s) {
   if (b.width < 2 || b.height < 2) return null; // never show an empty ring
   const W = window.innerWidth, H = window.innerHeight;
   const left = Math.max(4, b.left - PAD), top = Math.max(4, b.top - PAD);
-  const right = Math.min(W - 4, b.right + PAD), bottom = Math.min(H - 4, b.bottom + PAD);
+  const right = Math.min(W - 4, b.right + PAD), bottom = Math.min(H - 4 - 92, b.bottom + PAD); // stop above the footer strip
   return { left, top, width: right - left, height: bottom - top };
 }
 
@@ -79,6 +79,7 @@ export default function Tour({ onDone }) {
         <div className="tour-bar"><span /></div>
       )}
       <div key={i} className="tour-line" style={{ top }}>{s.text}</div>
+      <div className="tour-strip" />
       <div className="tour-foot">
         <button className="tour-skip" onClick={(e) => { e.stopPropagation(); onDone(); }}>Skip</button>
         <span className="tour-dots">{STEPS.map((_, k) => <i key={k} className={k === i ? 'on' : ''} />)}</span>

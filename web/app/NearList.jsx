@@ -25,6 +25,7 @@ export default function NearList({ w, rated, onPlan, onFocus }) {
   const [me, setMe] = useState(LONDON);
   const [top, setTop] = useState(0);
   const [moved, setMoved] = useState(false);
+  const [bad, setBad] = useState({}); // venues whose picture failed to load
   const box = useRef(null);
 
   useEffect(() => {
@@ -47,7 +48,7 @@ export default function NearList({ w, rated, onPlan, onFocus }) {
       if (better) by.set(e.v, e);
     }
     return [...by.values()]
-      .map((e) => ({ e, d: km(me, { lat: e.lat, lng: e.lng }), pct: rated ? Math.min(99, Math.round((score(e) / 4) * 100)) : null }))
+      .map((e) => ({ e, d: km(me, { lat: e.lat, lng: e.lng }), pct: rated ? Math.min(99, Math.round((score(e) / 4) * 100)) : null, img: e.img || (events.find((x) => x.v === e.v && x.img) || {}).img }))
       .sort((a, b) => a.d - b.d)
       .slice(0, 15);
   }, [me, w, rated]);
@@ -86,13 +87,14 @@ export default function NearList({ w, rated, onPlan, onFocus }) {
   return (
     <>
       <div ref={box} className="lbands near">
-        {list.map(({ e, d, pct }, i) => (
-          <div key={e.v} className={`nb ${i === top ? 'big' : ''}`} onClick={() => open(i)}>
-            <div className="nb-img" style={e.img ? { backgroundImage: `url("${e.img}")` } : undefined} />
+        {list.map(({ e, d, pct, img }, i) => (
+          <div key={e.v} className={`nb ${i === top ? 'big' : ''} ${!img || bad[e.v] ? 'noimg' : ''}`} onClick={() => open(i)}>
+            {img && !bad[e.v] && <img className="nb-probe" src={img} alt="" onError={() => setBad((b) => ({ ...b, [e.v]: true }))} />}
+            <div className="nb-img" style={img && !bad[e.v] ? { backgroundImage: `url("${img}")` } : undefined} />
             <div className="nb-shade" />
             <div className="nb-text">
               <b>{e.t}</b>
-              <span><u className="nb-venue" onClick={(ev) => { if (i !== top) return; ev.stopPropagation(); window.dispatchEvent(new CustomEvent('mooncalf-open-gallery', { detail: e.v })); }}>{e.v}</u> · {away(d)}{pct != null ? ` · ${pct}% match` : ''}</span>
+              <span><u className="nb-venue" onClick={(ev) => { if (i !== top) return; ev.stopPropagation(); window.dispatchEvent(new CustomEvent('mooncalf-open-gallery', { detail: e.v })); }}>{e.v}</u> · {away(d)}{rated && pct > 0 ? ` · ${pct}% match` : ''}</span>
               {i === top && runs(e) && <span className="nb-dates">{runs(e)}</span>}
             </div>
             {i === top && (
