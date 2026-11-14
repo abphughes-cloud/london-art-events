@@ -1,13 +1,17 @@
 'use client';
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { londonPicks } from '../lib/taste';
+import { londonPicks, tasteWeights, walkMin } from '../lib/taste';
 import { tick, pattern } from '../lib/haptics';
 import { Back } from './Icons';
 import Plan from './Plan';
 import events from '../data/events.json';
+import artists from '../data/artists.json';
 
 // every venue with something free on, for the map across the top
 const VENUES = (() => { const m = new Map(); events.forEach((e) => { if (e.lat && e.lng && !m.has(e.v)) m.set(e.v, [e.lat, e.lng]); }); return [...m.entries()]; })();
+const SHOWS = (() => { const m = {}; events.forEach((e) => { (m[e.v] = m[e.v] || []).push(e); }); return m; })();
+const fmtD = (d) => { if (!d) return ''; const x = new Date(d + 'T12:00:00'); return x.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' }) + (x.getFullYear() > new Date().getFullYear() ? ` ${x.getFullYear()}` : ''); };
+const runs = (e) => (e.e && e.e < '2030' ? `${fmtD(e.s)} – ${fmtD(e.e)}` : e.s ? `From ${fmtD(e.s)}` : '');
 
 // Screen 3 (3.a): free London galleries ranked by how well what's on matches
 // your taste. Bars first; the top-right icon folds them into lights on a map.
@@ -51,6 +55,7 @@ function bgOf(g) {
 
 export default function London({ all, ratings, saved, onSave, onPlan, onBack }) {
   const picks = useMemo(() => londonPicks(all, ratings), [all, ratings]);
+  const W8 = useMemo(() => tasteWeights(all, ratings), [all, ratings]);
   const RIVER = useMemo(() => { fitTo(picks); return thames(); }, [picks]);
   const [fi, setFi] = useState(0);
   const [view, setView] = useState('list');
@@ -118,7 +123,7 @@ export default function London({ all, ratings, saved, onSave, onPlan, onBack }) 
         </div>
         <div className="lvig" />
       </div>
-      <TopMap picks={picks} fi={fi} onPick={(i, el) => pick(i, el)} />
+      <TopMap w={W8} fav={picks[0]?.art} onPlan={setPlan} picks={picks} fi={fi} onPick={(i) => { setFi(i); tick(6); }} />
       <div ref={box} className={`bands lbands ${view === 'map' ? 'folded' : ''} ${open ? 'fading' : ''}`}>
         {picks.map((p, i) => (
           <div key={p.id} className={`band ${i === fi ? 'focus' : ''} ${open && open.g.id !== p.id ? 'vanish' : ''}`}
@@ -160,8 +165,12 @@ export default function London({ all, ratings, saved, onSave, onPlan, onBack }) 
 
 // Map across the top: black, the gold Thames, a light for every London spot;
 // your taste-matched picks glow brighter and open on tap.
-function TopMap({ picks, fi, onPick }) {
+// the taste tags this show shares with what you rated highly, strongest first
+const matchOf = (e, w) => (e.tags || []).filter((t) => /^(style|subject|mood|medium):/.test(t) && t !== 'medium:painting' && (w[t] || 0) > 0.3)
+  .sort((a, b) => w[b] - w[a]).slice(0, 2).map((t) => t.split(':')[1]);
+function TopMap({ w, fav, onPlan, picks, fi, onPick }) {
   const W = 360, H = 200;
+  const [card, setCard] = useState(null); // venue name
   const pts = VENUES.map(([, ll]) => ll).concat(picks.map((p) => [p.lat, p.lng]));
   const la = pts.map((p) => p[0]).sort((a, b) => a - b), lo = pts.map((p) => p[1]).sort((a, b) => a - b);
   const q = (arr, f) => arr[Math.floor((arr.length - 1) * f)];
@@ -176,13 +185,47 @@ function TopMap({ picks, fi, onPick }) {
     <div className="ltop">
       <svg viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="xMidYMid slice" className="ltop-svg">
         <path d={d} fill="none" stroke="#f0c95a" strokeWidth="2.2" strokeLinecap="round" opacity=".85" />
-        {VENUES.map(([v, [lat, lng]]) => { const [x, y] = P(lat, lng); return <circle key={v} cx={x} cy={y} r="1.3" className="ltop-dot" style={{ animationDelay: `${(x * 37 + y * 11) % 3000}ms` }} />; })}
+        {VENUES.map(([v, [lat, lng]]) => { const [x, y] = P(lat, lng); return (
+          <g key={v} className="ltop-spot" onClick={() => { setCard(v); tick(8); }}>
+            <circle cx={x} cy={y} r="7" fill="transparent" />
+            <circle cx={x} cy={y} r={card === v ? 3 : 1.3} className={`ltop-dot ${card === v ? 'on' : ''} ${(SHOWS[v] || []).some((e) => matchOf(e, w).length) ? 'match' : ''}`} style={{ animationDelay: `${(x * 37 + y * 11) % 3000}ms` }} />
+          </g>); })}
         {picks.map((p, i) => { const [x, y] = P(p.lat, p.lng); return (
-          <g key={p.id} className={`ltop-pick ${i === fi ? 'on' : ''}`} onClick={(e) => onPick(i, e.currentTarget)}>
+          <g key={p.id} className={`ltop-pick ${i === fi ? 'on' : ''}`} onClick={() => { setCard(p.v); onPick(i); }}>
             <circle cx={x} cy={y} r="12" fill="transparent" />
             <circle cx={x} cy={y} r={i === fi ? 4.2 : 2.8} className="ltop-glow" />
           </g>); })}
       </svg>
+      {card && (() => {
+        const shows = (SHOWS[card] || []).slice(0, 3), ll = (VENUES.find(([v]) => v === card) || [])[1] || [];
+        const addr = shows[0]?.addr;
+        const maps = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(addr ? `${card}, ${addr}` : `${ll[0]},${ll[1]}`)}`;
+        const first = shows[0] || {};
+        const g = { id: card, v: card, t: first.t, img: first.img, lat: ll[0], lng: ll[1], url: first.url, walk: walkMin(ll[0], ll[1]), art: fav };
+        const score = Math.max(0, Math.min(1, Math.max(0, ...shows.map((e) => (e.tags || []).reduce((a, t) => a + Math.max(0, w[t] || 0), 0))) / 4));
+        const soon = shows.some((e) => e.e && (new Date(e.e) - Date.now()) / 864e5 <= 5);
+        const best = shows.map((e) => ({ e, m: matchOf(e, w) })).sort((x, y) => y.m.length - x.m.length)[0] || { e: first, m: [] };
+        const ev = best.e;
+        const days = ev.e ? Math.ceil((new Date(ev.e + 'T18:00:00') - Date.now()) / 864e5) : 99;
+        const area = (ev.addr || '').split(',').slice(-2, -1)[0]?.trim().split(' ')[0] || '';
+        return (
+          <div className="ltop-card" onClick={() => setCard(null)}>
+            <div className="ltop-img" style={{ backgroundImage: ev.img ? `url("${ev.img}"), url("${fav?.thumb}")` : `url("${fav?.thumb}")` }}>
+              {best.m.length > 0 && <i className="ltop-pill">Matched for you · {best.m[0]}</i>}
+              {days <= 5 && <i className="ltop-pill end">Ends in {days} day{days === 1 ? '' : 's'}</i>}
+            </div>
+            <h3 className="ltop-title">{ev.t}</h3>
+            <div className="ltop-sub">{card}{area ? ` · ${area}` : ''}</div>
+            {(artists[ev.id] || []).length > 0 && <div className="ltop-sub">{artists[ev.id].join(', ')}</div>}
+            <div className="ltop-row"><span>{runs(ev)}</span><b>Free</b></div>
+            <div className="ltop-fitrow"><span>Your match</span><div className="ltop-fit"><i style={{ width: `${Math.round(score * 100)}%` }} /></div></div>
+            <div className="ltop-btns">
+              <button className="ltop-plan" onClick={(e) => { e.stopPropagation(); onPlan({ ...g, t: ev.t, img: ev.img, url: ev.url }); }}>Plan visit</button>
+              <a className="ltop-maps" href={maps} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()}>Open in Google Maps ↗</a>
+            </div>
+          </div>
+        );
+      })()}
     </div>
   );
 }

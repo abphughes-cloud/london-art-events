@@ -28,6 +28,7 @@ export default function Plan({ g, onClose, onSave }) {
   const [d, setD] = useState(2);
   const [s, setS] = useState(2);
   const [m, setM] = useState(0);
+  const [saved, setSaved] = useState(false);
   const gs = useRef(null);
   const mins = Math.round(g.walk * MODES[m][2]);
   const hourQ = (dq, k) => { const x = (k - 8.5) / 4.2; return Math.max(0.1, Math.min(1, (1 - 0.8 * Math.exp(-x * x)) * (0.45 + dq * 0.65))); }; // busiest early afternoon
