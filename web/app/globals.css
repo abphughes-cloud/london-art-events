@@ -484,3 +484,12 @@ button { background: none; border: 0; color: inherit; cursor: pointer; }
 
 /* no yellow river line anywhere (keerthi 15:45) */
 .lriver { display: none; }
+
+/* plain little yellow dots, no flicker or glow (keerthi 15:45); 32px tap area comes from the marker icon size */
+.mdot, .mdot.m, .mrank, .llight, .ltop-dot { animation: none !important; box-shadow: none !important; filter: none !important; }
+.mdot::before, .mdot::after, .mrank::before, .mrank::after { animation: none !important; box-shadow: none !important; }
+.mdot, .mdot.m { width: 8px; height: 8px; margin: 12px; background: #ffd84d; opacity: 1; }
+.mrank { width: 11px; height: 11px; margin: 10.5px; font-size: 0; background: #ffd84d; opacity: 1; }
+.mdot.on, .mrank.on { background: #fff; }
+.llight { background: #ffd84d; opacity: 1; }
+.ltop-dot { fill: #ffd84d; opacity: 1; }

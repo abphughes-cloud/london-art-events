@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 // A gold ring hugs the real element; steps without an element show a small drawing instead.
 const STEPS = [
   { sel: '.tabs', text: 'Three tabs: Visit, Discover and Visit log.' },
-  { sel: '.ltop', text: 'Each light is a gallery. Tap one.', tap: true },
+  { sel: '.ltop', text: 'Each yellow dot is a gallery. Tap one.', tap: true },
   { demo: 'x', text: 'You’ll see its shows. Tap x to go back to the map.' },
   { sel: '.lbands .band', alt: '.lgrab', text: 'Your best matches, ranked by your taste.' },
   { sel: '.lgrab', text: 'Pull this down to see the whole map.' },
