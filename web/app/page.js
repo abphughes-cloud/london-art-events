@@ -1,4 +1,4 @@
-import Mooncalf from './Mooncalf';
+import Shell from './Shell';
 export default function Page() {
-  return <Mooncalf />;
+  return <Shell />;
 }

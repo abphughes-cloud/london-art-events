@@ -76,7 +76,7 @@ document.getElementById("map").innerHTML=`<defs><filter id="rg" x="-20%" y="-20%
 
 const sw=document.createElement("label");sw.style.cssText="position:fixed;left:-9999px";sw.innerHTML='<input type="checkbox" switch>';document.body.appendChild(sw);
 function buzz(ms){try{if(navigator.vibrate){navigator.vibrate(ms);return}sw.click()}catch(e){}}
-let SP=1,run=0;
+const BASE=.874;let SP=BASE,run=0; // whole film ~2s shorter, every part scaled the same
 const wait=ms=>new Promise(r=>setTimeout(r,ms*SP));
 const anim=(el,k,o)=>el.animate(k,{fill:"forwards",...o,duration:o.duration*SP,delay:(o.delay||0)*SP}).finished;
 // camera: put local point (x,y) at the screen centre at scale s
@@ -89,7 +89,7 @@ async function play(){
   // 1 · map and bar breathe in (short)
   anim(document.getElementById("map"),[{opacity:0},{opacity:1}],{duration:1200,easing:"ease-out"});
   await anim(bar,[{opacity:0,filter:"blur(6px)"},{opacity:1,filter:"blur(0)"}],{duration:1200,delay:300,easing:"ease-out"});
-  if(!alive())return;await wait(2100);
+  if(!alive())return;await wait(1100);
   // 2 · one straight push in to the first colour at the left end
   anim(document.getElementById("map"),[{opacity:1},{opacity:.25}],{duration:2900,easing:"ease-in"});anim(document.getElementById("lights"),[{opacity:1},{opacity:0}],{duration:2400,easing:"ease-in"});
   await anim(stage,[{transform:cam(150,310,1)},{transform:cam(cellX(0),BY,8.4)}],{duration:3100,easing:"cubic-bezier(.55,0,.75,.75)"});
@@ -98,7 +98,7 @@ async function play(){
   const cube=bar.children[0],r=cube.getBoundingClientRect(),pr=ph.getBoundingClientRect(),bw=ph.clientLeft;
   const t=Math.max(0,r.top-pr.top-bw),l=Math.max(0,r.left-pr.left-bw),iw=ph.clientWidth,ih=ph.clientHeight;
   const full=document.createElement("div");full.className="full";
-  const PAN=[];for(let k=0;k<48;k++)PAN.push(REAL[k%REAL.length]); // real paintings stream past
+  const PAN=[];for(let k=0;k<42;k++)PAN.push(REAL[k%REAL.length]); // real paintings stream past
   full.innerHTML=`<div class="track">${PAN.map(c=>`<div class="panel"><i style="background:url(art/${c}.jpg) center/cover"></i></div>`).join("")}</div>`;ph.insertBefore(full,document.getElementById("glow"));
   const track=full.firstChild;buzz(14);
   await anim(full,[{clipPath:`inset(${t}px ${Math.max(0,iw-l-r.width)}px ${Math.max(0,ih-t-r.height)}px ${l}px)`},{clipPath:"inset(0px 0px 0px 0px)"}],{duration:900,easing:"cubic-bezier(.15,.55,.25,1)"});
@@ -115,7 +115,7 @@ async function play(){
   anim(document.getElementById("logo"),[{opacity:0},{opacity:1}],{duration:1200,delay:300});
   await anim(document.getElementById("word"),[{opacity:0,filter:"blur(12px)",transform:"translateY(8px)"},{opacity:1,filter:"blur(0)",transform:"none"}],{duration:1400,easing:"cubic-bezier(.2,.8,.2,1)"});
 }
-document.getElementById("re").onclick=()=>{SP=1;play()};
+document.getElementById("re").onclick=()=>{SP=BASE;play()};
 document.getElementById("slow").onclick=()=>{SP=2.2;play()};
 function fit(){const k=Math.max(innerWidth/300,innerHeight/620);ph.style.transform=`translate(-50%,-50%) scale(${k})`}
 fit();addEventListener("resize",fit);

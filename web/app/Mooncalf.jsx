@@ -5,9 +5,11 @@ import RateScreen from './RateScreen';
 import TasteScreen from './TasteScreen';
 import London from './London';
 import Visits from './Visits';
+import Listen from './Listen';
 import Grain from './Grain';
 
 const DECK_SIZE = 12;
+const TASTE_AFTER = 5; // ratings before your taste opens
 const STORE = 'mooncalf.ratings.v1';
 const VSTORE = 'mooncalf.visits.v1';
 const SSTORE = 'mooncalf.saved.v1';
@@ -29,6 +31,7 @@ export default function Mooncalf() {
   const [view, setView] = useState('rate'); // discover: rate | london ; you: taste | visits
   const [visits, setVisits] = useState([]);
   const [saved, setSaved] = useState({});
+  const [listen, setListen] = useState(null);
   const [film, setFilm] = useState(0); // 0 none, 1 playing, 2 fading out
 
   useEffect(() => {
@@ -46,6 +49,7 @@ export default function Mooncalf() {
       }
     };
     window.addEventListener('message', onMsg);
+    window.addEventListener('mooncalf-listen', (e) => setListen(e.detail));
     loadArtworks().then(setAll);
     loadPodcasts().then(setPods);
   }, []);
@@ -92,7 +96,7 @@ export default function Mooncalf() {
           deck={deck}
           ratings={ratings}
           onRate={rate}
-          sessionGoal={DECK_SIZE}
+          sessionGoal={TASTE_AFTER}
           onDone={() => { setTab('you'); setView('taste'); }}
         />
       )}
@@ -132,6 +136,16 @@ export default function Mooncalf() {
         </button>
       </nav>
       <Grain />
+      {listen && (
+        <Listen
+          key={listen.art.id}
+          art={listen.art}
+          rect={listen.rect}
+          url={pods[listen.art.id]}
+          onClose={() => setListen(null)}
+          onLondon={() => { setListen(null); setTab('discover'); setView('london'); }}
+        />
+      )}
       {film > 0 && (
         <iframe className={`film ${film === 2 ? 'out' : ''}`} src="/film/index.html" title="Mooncalf" />
       )}

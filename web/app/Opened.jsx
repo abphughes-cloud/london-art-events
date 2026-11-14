@@ -4,7 +4,7 @@ import ArtFrame from './ArtFrame';
 import Bands from './Bands';
 import RatingSweep from './RatingSweep';
 import { moreLikeThis } from '../lib/data';
-import { toggleStory } from '../lib/audio';
+import { openListen, hasStory } from './Listen';
 import { pattern, tick } from '../lib/haptics';
 import { Back, Speaker, useNowPlaying } from './Icons';
 
@@ -118,8 +118,8 @@ export default function Opened({ layer, all, pods, rating, onRate, onOpen, onClo
           <h2 className="panel-title">{art.title}</h2>
           <p className="meta">{art.artist}{art.year ? ` · ${art.year}` : ''}</p>
           <p className="story">{art.story}</p>
-          {pods[art.id] && (
-            <button className="panel-listen" aria-label="Listen" onClick={() => toggleStory(art, pods[art.id])}>
+          {hasStory(art.id, pods) && (
+            <button className="panel-listen" aria-label="Listen" onClick={(e) => openListen(art, e.currentTarget)}>
               <Speaker active={now === art.id} />
             </button>
           )}

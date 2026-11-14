@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
 import { tick } from '../lib/haptics';
-import { toggleStory } from '../lib/audio';
+import { openListen, hasStory } from './Listen';
 import { Lines, Speaker, useNowPlaying } from './Icons';
 
 // 2.e taste bands: one bar per artwork. Vertical scroll/swipe moves focus
@@ -78,8 +78,8 @@ export default function Bands({ items, pods, onOpen, fading, grow = true, scroll
           <div className="band-img" style={{ backgroundImage: `url("${a.thumb}")` }} />
           <span className="band-name">{a.title}</span>
           <div className="band-icons" onClick={(e) => e.stopPropagation()}>
-            {pods[a.id] && (
-              <button aria-label="Listen" onClick={() => toggleStory(a, pods[a.id])}>
+            {hasStory(a.id, pods) && (
+              <button aria-label="Listen" onClick={(e) => openListen(a, e.currentTarget)}>
                 <Speaker active={now === a.id} />
               </button>
             )}

@@ -3,8 +3,8 @@ import { useMemo, useRef, useState } from 'react';
 import { tick, pattern } from '../lib/haptics';
 import { Back } from './Icons';
 
-// Screen 4 (4.a time sweep): the gallery full-bleed, the week as thin standing
-// bars (taller = quieter), drag sideways anywhere for the time, tick saves.
+// Screen 4 (4.b quiet-day bars): the week as strips of the gallery's art, longer =
+// quieter. Tap a day to open it, slide along its hour lines for the time, tap again or tick to save.
 const SLOTS = 16; // half hours from 10:00 to 18:00
 const clock = (m) => `${String(Math.floor(m / 60)).padStart(2, '0')}:${String(m % 60).padStart(2, '0')}`;
 const at = (s) => 600 + s * 30;
@@ -28,26 +28,38 @@ export default function Plan({ g, onClose, onSave }) {
   const [d, setD] = useState(2);
   const [s, setS] = useState(2);
   const [m, setM] = useState(0);
-  const [drag, setDrag] = useState(false);
-  const [saved, setSaved] = useState(false);
   const gs = useRef(null);
-  const v = s / SLOTS;
   const mins = Math.round(g.walk * MODES[m][2]);
-
-  const down = (e) => { gs.current = { x: e.clientX, s0: s, moved: false }; };
-  const move = (e) => {
-    const st = gs.current; if (!st) return;
-    const dx = e.clientX - st.x;
-    if (!st.moved && Math.abs(dx) > 8) { st.moved = true; setDrag(true); }
-    if (!st.moved) return;
-    const n = Math.max(0, Math.min(SLOTS, Math.round(st.s0 + (dx / (0.8 * window.innerWidth)) * SLOTS)));
+  const hourQ = (dq, k) => { const x = (k - 8.5) / 4.2; return Math.max(0.1, Math.min(1, (1 - 0.8 * Math.exp(-x * x)) * (0.45 + dq * 0.65))); }; // busiest early afternoon
+  const hrsRef = useRef([]);
+  const setTime = (e) => {
+    const el = hrsRef.current[d]; if (!el) return;
+    const b = el.getBoundingClientRect();
+    const n = Math.max(0, Math.min(SLOTS, Math.round(((e.clientX - b.left) / b.width) * SLOTS)));
     if (n !== s) { setS(n); tick(n === SLOTS ? 28 : 7); }
   };
-  const up = () => { if (gs.current?.moved) pattern([10, 30, 20]); gs.current = null; setDrag(false); };
+  const down = (e) => { gs.current = { x: e.clientX, y: e.clientY, mode: null, acc: 0, row: e.target.closest('.prow') }; };
+  const move = (e) => {
+    const st = gs.current; if (!st) return;
+    const dx = e.clientX - st.x, dy = e.clientY - st.y;
+    if (!st.mode && (Math.abs(dx) > 7 || Math.abs(dy) > 7)) st.mode = st.row && +st.row.dataset.i === d && Math.abs(dx) > Math.abs(dy) ? 'time' : 'day';
+    if (st.mode === 'time') setTime(e);
+    else if (st.mode === 'day') {
+      st.acc += -(e.clientY - st.y) * 1.2; st.y = e.clientY;
+      if (Math.abs(st.acc) > 46) { const n = Math.max(0, Math.min(6, d + Math.sign(st.acc))); st.acc = 0; if (n !== d) { setD(n); tick(7); } }
+    }
+  };
+  const up = (e) => {
+    const st = gs.current; gs.current = null; if (!st) return;
+    if (st.mode === 'time') { pattern([10, 30, 20]); return; }
+    if (st.mode || !st.row) return;
+    const i = +st.row.dataset.i;
+    if (i !== d) { setD(i); tick(7); return; }
+    const b = st.row.getBoundingClientRect();
+    if (e.clientY > b.bottom - 84) setTime(e); else save(); // second tap opens it, as in 2.e
+  };
+  const wheel = (e) => { const n = Math.max(0, Math.min(6, d + Math.sign(e.deltaY))); if (n !== d) { setD(n); tick(7); } };
 
-  // the half-circle: same family as the rating mark
-  const R = 100, f = 0.12 + 0.88 * v, a = Math.PI * (1 - f);
-  const px = R + R * Math.cos(a), py = R - R * Math.sin(a);
   const accent = g.art?.accent || '#f4d35e';
   const save = () => {
     const day = days[d];
@@ -58,8 +70,6 @@ export default function Plan({ g, onClose, onSave }) {
 
   return (
     <div className="plan" onPointerDown={down} onPointerMove={move} onPointerUp={up} onPointerCancel={up}>
-      <div className="art-drift" style={{ backgroundImage: g.img ? `url("${g.img}"), url("${g.art?.thumb}")` : `url("${g.art?.thumb}")` }} />
-      <div className="pdusk" style={{ opacity: Math.pow(Math.max(0, (v - 0.4) / 0.6), 1.5) * 0.62 }} />
       <div className="pscrim" />
       <h1 className="title ptitle">{g.v}</h1>
       <button className="back" aria-label="Back" onClick={onClose}><Back /></button>
@@ -74,21 +84,19 @@ export default function Plan({ g, onClose, onSave }) {
           </button>
         ))}
       </div>
-      <div className="pweek">
+      <div className="plist" onWheel={wheel}>
         {days.map((x, i) => (
-          <button key={i} className={i === d ? 'on' : ''} onClick={() => { setD(i); tick(8); }}>
-            <em className="tiny">{x.n}</em>
-            <b style={{ height: 10 + x.q * 40, background: i === d ? accent : undefined }} />
-            <span className="tiny">{x.label}</span>
-          </button>
+          <div key={i} data-i={i} className={`prow ${i === d ? 'big' : ''}`} style={{ '--q': `${Math.round(x.q * 100)}%` }}>
+            <div className="pband" style={{ animationDelay: `${0.1 + i * 0.1}s` }}>
+              <div className="pbart" style={{ top: -40 - i * 56, backgroundImage: g.img ? `url("${g.img}"), url("${g.art?.thumb}")` : `url("${g.art?.thumb}")`, animationDelay: `-${i * 3}s` }} />
+              <div className="phrs" ref={(el) => { hrsRef.current[i] = el; }}>
+                {Array.from({ length: SLOTS + 1 }, (_, k) => <u key={k} className={i === d && k === s ? 'on' : ''} style={{ '--h': `${(6 + hourQ(x.q, k) * 36).toFixed(1)}px` }} />)}
+              </div>
+              <span className="ptl tiny" style={{ left: `calc(14px + ${(s / SLOTS) * 100}% - ${(s / SLOTS) * 28}px)` }}>{clock(at(s))}</span>
+            </div>
+            <span className="pdl tiny">{x.label}<i> {x.n}</i></span>
+          </div>
         ))}
-      </div>
-      <div className="ptime tiny" style={{ left: `calc(50% + ${(px - R) * 1.15}px)`, bottom: 64 + (R - py) * 1.15 }}>{clock(at(s))}</div>
-      <div className={`psemi ${drag ? 'show' : ''}`}>
-        <svg viewBox={`0 0 ${2 * R} ${R}`} width={2 * R} height={R}>
-          {drag && <path d={`M 0 ${R} A ${R} ${R} 0 0 1 ${2 * R} ${R} Z`} fill="rgba(150,150,150,.38)" />}
-          <path d={`M 0 ${R} A ${R} ${R} 0 0 1 ${px.toFixed(1)} ${py.toFixed(1)} Q ${px.toFixed(1)} ${R} ${(R + (px - R) * 0.15).toFixed(1)} ${R} Z`} fill={accent} />
-        </svg>
       </div>
       {saved && (
         <div className="psaved" onClick={onClose}>
