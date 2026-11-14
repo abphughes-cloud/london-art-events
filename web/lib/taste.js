@@ -47,28 +47,31 @@ export function walkMin(lat, lng, from = CENTRE) {
   return Math.max(3, Math.round(km * 1.25 * 12));
 }
 
-// London galleries ranked by how well what's on matches your taste.
-export function londonPicks(all, ratings, n = 8) {
+// London art events ranked by how well what's on matches your taste.
+export function londonPicks(all, ratings, n = 12) {
   const w = tasteWeights(all, ratings);
+  const rated = Math.max(1, Object.keys(ratings).length);
   const top = all.filter((a) => ratings[a.id] != null).sort((x, y) => ratings[y.id] - ratings[x.id]);
   const byVenue = {};
   events.forEach((e) => {
     const ts = e.tags.filter((t) => /^(medium|style|subject|mood):/.test(t));
     let s = 0;
-    ts.forEach((t) => { s += w[t] || 0; });
+    // concentration of overlap: how much of this show's tags you rated up
+    ts.forEach((t) => { if (t !== 'medium:painting') s += (w[t] || 0) / rated; });
     s = ts.length ? s / Math.sqrt(ts.length) : 0;
-    if (e.img) s += 0.15;
+    if (e.img) s += 0.01;
     const cur = byVenue[e.v];
     if (!cur || s > cur.score) byVenue[e.v] = { ...e, score: s };
   });
-  const list = Object.values(byVenue).sort((a, b) => b.score - a.score).slice(0, n);
-  const max = Math.max(...list.map((x) => x.score), 0.01);
+  const list = Object.values(byVenue).sort((a, b) => (b.score - a.score) || ((walkMin(a.lat, a.lng) || 999) - (walkMin(b.lat, b.lng) || 999))).slice(0, n);
+  const max = Math.max(...list.map((x) => x.score));
   const min = Math.min(...list.map((x) => x.score));
   return list.map((g, i) => {
     const fav = top.length ? top[i % top.length] : all[i];
     return {
       ...g,
       match: (g.score - min) / (max - min || 1),
+      pct: Math.round(40 + 58 * (g.score - min) / (max - min || 1)),
       walk: walkMin(g.lat, g.lng),
       art: fav, // the painting you rated highest stands in when the venue has no picture
     };

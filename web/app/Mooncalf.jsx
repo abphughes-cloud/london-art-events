@@ -65,17 +65,26 @@ export default function Mooncalf() {
     } catch {}
   }, [ratings]);
 
-  // Deck: artworks with audio stories first, then a varied mix, unrated first.
+  // Deck: mixed hard (keerthi 14:55). Round-robin across kinds (old masters,
+  // photos, prints, modern, drawings, world) so no two in a row feel the same;
+  // a story-with-audio piece leads, then one every few cards.
   const deck = useMemo(() => {
     if (!all) return [];
     const unrated = all.filter((a) => ratings[a.id] == null);
+    const seed = Math.floor(Math.random() * 1e9);
+    const h = (s) => [...s].reduce((x, c) => (x * 31 + c.charCodeAt(0)) >>> 0, seed);
     const hasPod = (a) => a.pod || PODCAST_IDS.includes(a.id);
-    const withPod = unrated.filter(hasPod);
-    const rest = unrated.filter((a) => !hasPod(a));
-    // stable shuffle by id
-    const h = (s) => [...s].reduce((x, c) => (x * 31 + c.charCodeAt(0)) >>> 0, 7);
-    rest.sort((x, y) => h(x.id) - h(y.id));
-    return [...withPod, ...rest];
+    const kinds = {};
+    unrated.forEach((a) => { const k = hasPod(a) ? 'pod' : (a.kind || 'classic'); (kinds[k] = kinds[k] || []).push(a); });
+    Object.values(kinds).forEach((l) => l.sort((x, y) => h(x.id) - h(y.id)));
+    const order = ['pod', 'photo', 'classic', 'print', 'modern', 'world', 'classic', 'drawing'];
+    const out = [];
+    while (out.length < unrated.length) {
+      let moved = false;
+      for (const k of order) { const l = kinds[k]; if (l && l.length) { out.push(l.shift()); moved = true; } }
+      if (!moved) break;
+    }
+    return out;
   }, [all]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const ratedCount = Object.keys(ratings).length;

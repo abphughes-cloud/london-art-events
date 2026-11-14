@@ -1,4 +1,5 @@
 import bundled from '../data/artworks.json';
+import extra from '../data/extra-artworks.json';
 
 // Supabase is read with plain REST calls (no client library needed).
 // The teammate set the variables in Vercel; we accept the usual names.
@@ -36,7 +37,13 @@ function firstSentences(s, n = 3) {
 // Never shown again (keerthi 14 Nov): Niagara.
 const BANNED = new Set(['nga-166436']);
 export async function loadArtworks() {
-  return (await loadArtworksRaw()).filter((a) => !BANNED.has(a.id));
+  const base = await loadArtworksRaw();
+  // mix it up (keerthi 14:55): photos, prints, modern paintings, drawings and
+  // non-European works from the same NGA open-access (CC0) set
+  const ids = new Set(base.map((a) => a.id));
+  const N = 'https://api.nga.gov/iiif/';
+  const more = extra.filter((a) => !ids.has(a.id)).map((a) => ({ ...a, img: N + a.img, thumb: N + a.thumb, accent: '#e0a35a', bg: '#141110', pod: false }));
+  return [...base, ...more].filter((a) => !BANNED.has(a.id));
 }
 async function loadArtworksRaw() {
   const rows = await rest(

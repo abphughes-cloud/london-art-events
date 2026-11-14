@@ -101,8 +101,9 @@ export default function London({ all, ratings, saved, onSave, onPlan, onBack }) 
 
   if (!picks.length) return null;
   const g = picks[fi];
+  const rated = Object.keys(ratings || {}).length > 0;
   return (
-    <section className="screen london">
+    <section className={`screen london ${rated ? '' : 'bare'}`}>
       <div className={`lmap ${view === 'map' ? 'on' : ''}`}>
         <div className="lstage" style={{ transform: `translate(-50%,-50%) scale(${k})` }}>
           <svg viewBox="0 0 300 620" width="300" height="620" className="lriver">
@@ -129,7 +130,8 @@ export default function London({ all, ratings, saved, onSave, onPlan, onBack }) 
           <div key={p.id} className={`band ${i === fi ? 'focus' : ''} ${open && open.g.id !== p.id ? 'vanish' : ''}`}
             style={{ flex: i === fi ? 5 : 0.6, animationDelay: `${i * 70}ms` }} onClick={(e) => pick(i, e.currentTarget)}>
             <div className="band-img" style={{ backgroundImage: bgOf(p) }} />
-            <span className="lmeta"><Ico d={WALK_D} size={13} />{p.walk} MIN</span>
+            <span className="lrank">{i + 1}</span>
+            <span className="lmeta"><Ico d={WALK_D} size={13} />{p.walk} MIN · {p.pct}%</span>
             <span className="band-name">{p.v}</span>
           </div>
         ))}
@@ -169,33 +171,54 @@ export default function London({ all, ratings, saved, onSave, onPlan, onBack }) 
 const matchOf = (e, w) => (e.tags || []).filter((t) => /^(style|subject|mood|medium):/.test(t) && t !== 'medium:painting' && (w[t] || 0) > 0.3)
   .sort((a, b) => w[b] - w[a]).slice(0, 2).map((t) => t.split(':')[1]);
 function TopMap({ w, fav, onPlan, picks, fi, onPick }) {
-  const W = 360, H = 520;
   const [card, setCard] = useState(null); // venue name
-  const pts = VENUES.map(([, ll]) => ll).concat(picks.map((p) => [p.lat, p.lng]));
-  const la = pts.map((p) => p[0]).sort((a, b) => a - b), lo = pts.map((p) => p[1]).sort((a, b) => a - b);
-  const q = (arr, f) => arr[Math.floor((arr.length - 1) * f)];
-  const la0 = q(la, 0.04), la1 = q(la, 0.96), lo0 = q(lo, 0.04), lo1 = q(lo, 0.96);
-  const sx = Math.min((W - 30) / (lo1 - lo0), ((H - 30) / (la1 - la0)) * 0.6225), sy = sx / 0.6225;
-  const cx = (lo0 + lo1) / 2, cy = (la0 + la1) / 2;
-  const P = (lat, lng) => [W / 2 + (lng - cx) * sx, H / 2 + (cy - lat) * sy];
-  const tq = TH.map((p) => P(p[0], p[1]));
-  let d = `M${tq[0][0].toFixed(1)} ${tq[0][1].toFixed(1)}`;
-  for (let i = 1; i < tq.length - 1; i++) d += ` Q${tq[i][0].toFixed(1)} ${tq[i][1].toFixed(1)} ${((tq[i][0] + tq[i + 1][0]) / 2).toFixed(1)} ${((tq[i][1] + tq[i + 1][1]) / 2).toFixed(1)}`;
+  const el = useRef(null), map = useRef(null), layer = useRef(null);
+  const [ready, setReady] = useState(false);
+  // a regular street map (keerthi 14:55): Leaflet + CARTO Voyager tiles, loaded from the CDN
+  useEffect(() => {
+    let dead = false;
+    const go = () => {
+      if (dead || !el.current || map.current) return;
+      const L = window.L;
+      const m = L.map(el.current, { zoomControl: false, attributionControl: true }).setView([51.513, -0.11], 12);
+      // black and white streets, the Thames in yellow (keerthi 14:57)
+      // CARTO tiles now answer "API key required"; Esri's dark grey canvas needs no key
+      L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+        maxZoom: 16, attribution: 'Tiles © Esri',
+      }).addTo(m);
+      L.polyline(TH, { color: '#f0c95a', weight: 4, opacity: 0.9, lineCap: 'round', lineJoin: 'round', smoothFactor: 1.5, interactive: false }).addTo(m);
+      m.attributionControl.setPrefix(false);
+      map.current = m; layer.current = L.layerGroup().addTo(m); setReady(true);
+    };
+    if (window.L) go();
+    else {
+      if (!document.getElementById('leaflet-css')) {
+        const l = document.createElement('link'); l.id = 'leaflet-css'; l.rel = 'stylesheet'; l.href = '/vendor/leaflet/leaflet.css'; document.head.appendChild(l);
+      }
+      let sc = document.getElementById('leaflet-js');
+      if (!sc) { sc = document.createElement('script'); sc.id = 'leaflet-js'; sc.src = '/vendor/leaflet/leaflet.js'; document.head.appendChild(sc); }
+      sc.addEventListener('load', go);
+    }
+    return () => { dead = true; if (map.current) { map.current.remove(); map.current = null; } };
+  }, []);
+  useEffect(() => {
+    if (!ready) return;
+    const L = window.L, g = layer.current; g.clearLayers();
+    const ranked = new Map(picks.map((p, i) => [p.v, i]));
+    VENUES.forEach(([v, [lat, lng]], k) => {
+      if (ranked.has(v)) return;
+      const m = (SHOWS[v] || []).some((e) => matchOf(e, w).length);
+      L.marker([lat, lng], { icon: L.divIcon({ className: '', html: `<i class="mdot ${m ? 'm' : ''} ${card === v ? 'on' : ''}" style="animation-delay:${(k * 377) % 3000}ms"></i>`, iconSize: [22, 22] }) })
+        .on('click', () => { setCard(v); tick(8); }).addTo(g);
+    });
+    picks.forEach((p, i) => {
+      L.marker([p.lat, p.lng], { zIndexOffset: 1000 - i, icon: L.divIcon({ className: '', html: `<b class="mrank ${i === fi ? 'on' : ''}">${i + 1}</b>`, iconSize: [26, 26] }) })
+        .on('click', () => { setCard(p.v); onPick(i); }).addTo(g);
+    });
+  }, [ready, picks, w, card, fi]); // eslint-disable-line react-hooks/exhaustive-deps
   return (
     <div className="ltop">
-      <svg viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="xMidYMid slice" className="ltop-svg">
-        <path d={d} fill="none" stroke="#f0c95a" strokeWidth="2.2" strokeLinecap="round" opacity=".85" />
-        {VENUES.map(([v, [lat, lng]]) => { const [x, y] = P(lat, lng); return (
-          <g key={v} className="ltop-spot" onClick={() => { setCard(v); tick(8); }}>
-            <circle cx={x} cy={y} r="7" fill="transparent" />
-            <circle cx={x} cy={y} r={card === v ? 3.4 : 1.9} className={`ltop-dot ${card === v ? 'on' : ''} ${(SHOWS[v] || []).some((e) => matchOf(e, w).length) ? 'match' : ''}`} style={{ animationDelay: `${(x * 37 + y * 11) % 3000}ms` }} />
-          </g>); })}
-        {picks.map((p, i) => { const [x, y] = P(p.lat, p.lng); return (
-          <g key={p.id} className={`ltop-pick ${i === fi ? 'on' : ''}`} onClick={() => { setCard(p.v); onPick(i); }}>
-            <circle cx={x} cy={y} r="12" fill="transparent" />
-            <circle cx={x} cy={y} r={i === fi ? 4.2 : 2.8} className="ltop-glow" />
-          </g>); })}
-      </svg>
+      <div ref={el} className="ltop-map" />
       {card && (() => {
         const shows = (SHOWS[card] || []).slice(0, 3), ll = (VENUES.find(([v]) => v === card) || [])[1] || [];
         const addr = shows[0]?.addr;

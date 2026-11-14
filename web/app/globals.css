@@ -362,3 +362,38 @@ button { background: none; border: 0; color: inherit; cursor: pointer; }
 /* Plan visit and Google Maps buttons: same size, text centred (keerthi 14:56) */
 .ltop-btns { align-items: stretch; }
 .ltop-plan, .ltop-maps { flex: 1; margin: 0; padding: 12px 8px; display: flex; align-items: center; justify-content: center; text-align: center; font: 500 13px/1.2 var(--grotesk); letter-spacing: .02em; text-transform: none; white-space: nowrap; }
+/* ranked by taste overlap; before any rating, the map is the whole screen (keerthi 14:52) */
+.lrank { position: absolute; right: 18px; bottom: 12px; z-index: 2; font-family: var(--serif); font-style: italic; font-size: 30px; line-height: 1; opacity: .7; text-shadow: 0 1px 10px rgba(0,0,0,.5); }
+.band:not(.focus) .lrank { font-size: 15px; bottom: 50%; transform: translateY(50%); }
+.london.bare .ltop { height: calc(100% - env(safe-area-inset-top) - 48px); }
+.london.bare .lbands { display: none; }
+
+/* regular street map (keerthi 14:55) */
+.ltop { background: #e8e4dc; }
+.ltop-map { position: absolute; inset: 0; z-index: 0; background: #e8e4dc; }
+.ltop-map .leaflet-control-attribution { font-size: 8px; background: rgba(255,255,255,.6); }
+.mdot { display: block; width: 12px; height: 12px; margin: 5px; border-radius: 50%; background: #f2a516; box-shadow: 0 0 0 2px #fff, 0 0 10px 3px rgba(242,165,22,.7); animation: mglow 2.6s ease-in-out infinite; }
+.mdot.m { background: #e8590c; box-shadow: 0 0 0 2px #fff, 0 0 14px 5px rgba(232,89,12,.75); }
+.mdot.on { background: #111; animation: none; }
+@keyframes mglow { 50% { box-shadow: 0 0 0 2px #fff, 0 0 4px 1px rgba(242,165,22,.35); opacity: .8; } }
+.mrank { display: flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 50%; font: 600 12px/1 var(--grotesk); color: #fff; background: #d9402b; box-shadow: 0 0 0 2px #fff, 0 0 16px 5px rgba(217,64,43,.55); }
+.mrank.on { background: #111; }
+.ltop-card { z-index: 1000; }
+/* bigger card, bigger image (keerthi 14:56) */
+.ltop-card { left: 8px; right: 8px; bottom: 8px; max-height: 94%; }
+.ltop-img { height: 46vh; max-height: 340px; }
+.ltop-title { font-size: 24px; }
+/* plan / maps buttons: centred, same type (keerthi 14:56) */
+.ltop-plan, .ltop-maps { display: flex; align-items: center; justify-content: center; gap: 0; min-height: 40px; margin: 0; padding: 0 10px; font: 500 13px/1 var(--grotesk); letter-spacing: 0; text-transform: none; white-space: nowrap; }
+.ltop-btns { align-items: stretch; }
+/* clean black and white map, yellow Thames (keerthi 14:57) */
+.ltop, .ltop-map { background: #0b0b0c; }
+.ltop-map .leaflet-tile-pane { filter: grayscale(1) contrast(1.05); }
+.ltop-map .leaflet-control-attribution { background: rgba(0,0,0,.5); color: rgba(255,255,255,.45); }
+.ltop-map .leaflet-control-attribution a { color: rgba(255,255,255,.55); }
+.mdot { background: #ffd98a; box-shadow: 0 0 10px 3px rgba(255,207,106,.6); }
+.mdot.m { background: #fff3cf; box-shadow: 0 0 14px 5px rgba(255,207,106,.85); }
+.mdot.on { background: #fff; }
+@keyframes mglow { 50% { box-shadow: 0 0 3px 1px rgba(255,207,106,.3); opacity: .6; } }
+.mrank { color: #111; background: #ffd98a; box-shadow: 0 0 16px 5px rgba(255,207,106,.6); }
+.mrank.on { background: #fff; }
