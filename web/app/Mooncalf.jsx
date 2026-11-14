@@ -111,7 +111,7 @@ export default function Mooncalf() {
           ratings={ratings}
           onRate={rate}
           sessionGoal={TASTE_AFTER}
-          onDone={() => setView('taste')}
+          onDone={() => {}} // Discover stays full-page art; it never switches to the taste stack by itself (keerthi 16:35)
         />
       )}
       {tab === 'discover' && view === 'taste' && (
