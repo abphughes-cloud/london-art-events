@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 const STEPS = [
   { sel: '.tabs', text: 'Three tabs: Visit, Discover and Log.' },
   { sel: '.ltop', text: 'Each yellow dot is an art event. Tap one.', tap: true },
-  { demo: 'x', text: 'You’ll see its shows.' },
+  { demo: 'x', text: 'You’ll see the gallery and its shows.' },
   { sel: '.lbands.near .nb', alt: '.lgrab', text: 'Shows near you, nearest first. Scroll to open each one.' },
   { sel: '.lgrab', text: 'Pull this down to see the whole map.' },
   { sel: '.tabs button:nth-child(2)', text: 'Discover: rate art to sharpen your matches.' },
@@ -66,8 +66,8 @@ export default function Tour({ onDone }) {
         <div className="tour-dim" />
       )}
       {!r && s.demo === 'x' && (
-        <div className="tour-demo" style={{ top: top - 80 }}>
-          <div className="tour-demo-x"><i /></div><div className="tour-demo-x short"><i /></div>
+        <div className="tour-demo" style={{ top: top - 100 }}>
+          <div className="tour-demo-card"><b>{(typeof document !== 'undefined' && document.querySelector('.lbands.near .nb .nb-venue')?.textContent) || 'Hayward Gallery'}</b><i /><i className="short" /></div>
         </div>
       )}
       {!r && s.demo === 'speaker' && (
