@@ -49,6 +49,8 @@ export default function NearList({ w, rated, onPlan, onFocus }) {
     return [...by.values()]
       .map((e) => ({ e, d: kmTo(me, { lat: e.lat, lng: e.lng }), pct: rated ? Math.min(99, Math.round((score(e) / 4) * 100)) : null, img: e.img || (events.find((x) => x.v === e.v && x.img) || {}).img }))
       .sort((a, b) => a.d - b.d)
+      .slice(0, 30) // the nearest 30, then best matched to your taste first (keerthi 16:34)
+      .sort((a, b) => (rated ? (b.pct || 0) - (a.pct || 0) : 0) || a.d - b.d)
       .slice(0, 15);
   }, [me, w, rated]);
 

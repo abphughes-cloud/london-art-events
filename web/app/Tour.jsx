@@ -9,7 +9,7 @@ const STEPS = [
   { tab: 'discover', demo: 'speaker', text: 'Tap the speaker to hear the story.' },
   { tab: 'visit', sel: '.ltop', text: 'Each yellow dot is an art event. Tap one.', tap: true },
   { tab: 'visit', sel: '.msearch-box', text: 'Search shows, galleries and areas.' },
-  { tab: 'visit', sel: '.lbands.near .nb', text: 'Shows near you, nearest first. Scroll to open each one.' },
+  { tab: 'visit', sel: '.lbands.near .nb', text: 'Shows near you, best matched to your taste first. Scroll to open each one.' },
   { tab: 'visit', demo: 'x', text: 'You’ll see the gallery and its shows. Star the ones you like.' },
   { tab: 'log', sel: '.vl-modes', text: 'Log: your starred shows and the art you loved.' },
 ];
