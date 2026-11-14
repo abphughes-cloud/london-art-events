@@ -32,10 +32,11 @@ LBS AI Cup 2026 hackathon, **submit on Commfy by 15:30 GMT, 14 Nov**. Arthur bui
 
 `npm run seed` (all sources → `data/events.json`, `data/seed.sql`) · `npm run load` (upsert to Supabase) · `npm test` · `npm run rank` (demo picks)
 
-## Next
+## Next (source expansion plan, nothing started yet)
 
-See the "Progress" section at the bottom (kept up to date as sources are added).
-
-## Progress
-
-- (in progress) Generic readers + source expansion.
+1. **Generic readers** in `ingestion/adapters/generic.js`: iCal (.ics), JSON-LD schema.org `Event` in a page, WordPress Tribe Events (`/wp-json/tribe/events/v1/events`). Driven by a registry file `data/registry.json` (`{ name, url, method, priority }`) so a new source is one row, not new code. Wire into `ingestion/run.js`.
+2. **Probe the candidates** in `data/source-research.md` (≈33 marked "works") for those formats; anything that matches goes straight into the registry.
+3. **Custom adapters** (same pattern as `ingestion/adapters/space.js`) for the highest-value ones without a feed, in this order: Arts Calendar (~141), On View (~45), We Are Lewisham (~11, community), Cockpit Studios, Pigment Press, UAL Shows, Thames-Side, Whitechapel, South London Gallery, Lewisham Libraries. Add a small test for each.
+4. **Venue discovery** (`ingestion/discover.js`): take venue websites from GalleriesNow gallery pages and other listings, check each once for iCal / JSON-LD / Tribe, add hits to the registry. Write `data/discovery-report.json` (checked, found, by method). This is both a big long-tail win and the pitch's automation evidence.
+5. After each step: `npm run seed`, `npm run load`, report events per source and the new total; commit.
+6. Then: personalisation engine (taste input, scoring signals, learning from save/skip, wildcard pick).
