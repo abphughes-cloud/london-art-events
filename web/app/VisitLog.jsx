@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import events from '../data/events.json';
 import { tick } from '../lib/haptics';
 
@@ -7,6 +7,9 @@ import { tick } from '../lib/haptics';
 // The bar turns gold the more you liked it. Each review is about half a screen.
 const KEY = 'mooncalf.log.v1';
 const read = () => { try { return JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch { return {}; } };
+// a short written note per visit, kept apart from the slider values (keerthi 15:43)
+const NKEY = 'mooncalf.notes.v1';
+const readN = () => { try { return JSON.parse(localStorage.getItem(NKEY) || '{}') || {}; } catch { return {}; } };
 
 function Slide({ v, onChange }) {
   const set = (e) => {
@@ -26,16 +29,21 @@ function Slide({ v, onChange }) {
 export default function VisitLog({ visits = [] }) {
   const [q, setQ] = useState('');
   const [log, setLog] = useState({});
-  useEffect(() => { setLog(read()); }, []);
-  useEffect(() => { try { localStorage.setItem(KEY, JSON.stringify(log)); } catch {} }, [log]);
+  const [notes, setNotes] = useState({});
+  const [ready, setReady] = useState(false); // never save the empty start state over saved data
+  const noteRef = useRef(notes);
+  noteRef.current = notes;
+  useEffect(() => { setLog(read()); setNotes(readN()); setReady(true); }, []);
+  useEffect(() => { if (ready) try { localStorage.setItem(KEY, JSON.stringify(log)); } catch {} }, [log, ready]);
+  useEffect(() => { if (ready) try { localStorage.setItem(NKEY, JSON.stringify(notes)); } catch {} }, [notes, ready]);
 
   const list = useMemo(() => {
     const planned = new Set(visits.map((x) => x.v));
     const s = q.trim().toLowerCase();
     const hit = (e) => !s || `${e.t} ${e.v}`.toLowerCase().includes(s);
-    const rank = (e) => (log[e.id] != null ? 0 : planned.has(e.v) ? 1 : e.img ? 2 : 3);
+    const rank = (e) => (log[e.id] != null || (noteRef.current[e.id] || '').trim() ? 0 : planned.has(e.v) ? 1 : e.img ? 2 : 3);
     return events.filter(hit).sort((a, b) => rank(a) - rank(b)).slice(0, 40);
-  }, [q, visits, log]);
+  }, [q, visits, log, ready]); // notes stay out of the deps so a card never jumps while typing
 
   return (
     <section className="screen vlog">
@@ -49,6 +57,8 @@ export default function VisitLog({ visits = [] }) {
               <h3>{e.t}</h3>
               <span>{e.v}</span>
               <Slide v={log[e.id]} onChange={(v) => setLog((x) => ({ ...x, [e.id]: v }))} />
+              <textarea className="vl-note" rows={2} maxLength={280} placeholder="Write about your visit" aria-label="Write about your visit"
+                value={notes[e.id] || ''} onChange={(ev) => setNotes((x) => ({ ...x, [e.id]: ev.target.value }))} />
             </div>
           </article>
         ))}
