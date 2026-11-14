@@ -14,8 +14,8 @@ export default function RateScreen({ deck, ratings, onRate, sessionGoal, onDone 
   const [leaving, setLeaving] = useState(false);
   const [done, setDone] = useState(0);
   const g = useRef(null);
-  const art = deck[i];
-  useEffect(() => { [deck[i + 1], deck[i + 2]].forEach((a) => { if (a) { const im = new Image(); im.src = a.img || a.thumb; } }); }, [i, deck]); // next two load ahead
+  const art = deck.length ? deck[i % deck.length] : undefined; // loops round so there is always a next artwork
+  useEffect(() => { [deck[(i + 1) % (deck.length || 1)], deck[(i + 2) % (deck.length || 1)]].forEach((a) => { if (a) { const im = new Image(); im.src = a.img || a.thumb; } }); }, [i, deck]); // next two load ahead
 
   useEffect(() => {
     setValue(0);
