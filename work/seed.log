@@ -7,19 +7,20 @@ SPACE Studios: 24 records
 Cockpit Studios: 8 records
 Pigment Press: 13 records
 Goldsmiths School of Art: 1 records
+UAL Shows: 9 records
 Eat Work Art: 16 records
 Thames-Side Studios: 3 records
 Arts Calendar: 171 records
 ArtRabbit: 105 records
 We Are Lewisham: 20 records
 IanVisits: 567 records
+SET (tribe): 18 records
 Freud Museum (tribe): 3 records
 London Sculpture Workshop (tribe): 3 records
 Stanley Arts (tribe): 35 records
-SET (tribe): 18 records
 Location clean-up: 48 dropped (no venue or no findable London location), 0 new venue look-ups.
 
-470 events (2026-11-14 to 2026-12-31), 573 duplicates merged.
-exhibition: 318, workshop: 114, performance: 2, fair: 6, other: 9, screening: 2, talk: 6, tour: 3, private_view: 6, open_studio: 4
-By source (after dedupe): GalleriesNow 132, Arts Calendar 112, ArtRabbit 97, IanVisits 48, Stanley Arts 20, SET 18, We Are Lewisham 17, Cockpit Studios 8, Pigment Press 6, SPACE Studios 4, Freud Museum 3, Thames-Side Studios 2, Eat Work Art 2, Goldsmiths School of Art 1
+477 events (2026-11-14 to 2026-12-31), 573 duplicates merged.
+exhibition: 324, workshop: 114, performance: 2, fair: 6, other: 9, screening: 2, talk: 7, tour: 3, private_view: 6, open_studio: 4
+By source (after dedupe): GalleriesNow 132, Arts Calendar 112, ArtRabbit 97, IanVisits 48, Stanley Arts 20, SET 18, We Are Lewisham 17, Cockpit Studios 8, UAL Shows 7, Pigment Press 6, SPACE Studios 4, Freud Museum 3, Thames-Side Studios 2, Eat Work Art 2, Goldsmiths School of Art 1
 Wrote data/events.json and data/seed.sql

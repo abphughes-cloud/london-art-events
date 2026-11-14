@@ -140,7 +140,42 @@ const eatWorkArt = {
   },
 };
 
-export const smallSources = [cockpit, pigment, thamesSide, goldsmiths, eatWorkArt].map((s) => ({
+// ---------- UAL Shows (Camberwell, Central Saint Martins, Chelsea, LCC, LCF, Wimbledon) ----------
+const ualShows = {
+  source: { name: "UAL Shows", url: "https://www.arts.ac.uk/students/ual-shows", method: "scrape", priority: 1 },
+  parse(html, today) {
+    const COLLEGES = {
+      camberwell: { postcode: "SE5 8UF", area: "Camberwell" }, "central saint martins": { postcode: "N1C 4AA", area: "King's Cross" },
+      chelsea: { postcode: "SW1P 4JU", area: "Pimlico" }, "london college of communication": { postcode: "SE1 6SB", area: "Elephant and Castle" },
+      "london college of fashion": { postcode: "E20 2AR", area: "Stratford" }, wimbledon: { postcode: "SW19 3QA", area: "Wimbledon" },
+    };
+    const out = [];
+    for (const section of html.split(/<section class="cell text-block/).slice(1)) {
+      const college = text(section.match(/<h3>([\s\S]*?)<\/h3>/)?.[1]);
+      const site = college && Object.keys(COLLEGES).find((k) => college.toLowerCase().includes(k));
+      if (!site) continue;
+      const more = section.match(/<a href="([^"]+)">Visit [^<]*Shows/)?.[1];
+      // Free-form copy: a line with a show's name, then a line with its dates.
+      const lines = section.split("</h3>")[1].split(/<br\s*\/?>|<\/p>|<\/div>/).map(text).filter(Boolean);
+      for (let i = 1; i < lines.length; i++) {
+        const dates = /\d{4}/.test(lines[i]) && lines[i].length < 60 ? parseDateText(lines[i], today) : {};
+        const name = lines[i - 1];
+        if (!dates.start_date || /\d{4}$/.test(name) || /^visit /i.test(name)) continue;
+        out.push(base(this.source, {
+          title: `${college}: ${name.replace(/[.:]$/, "")}`.slice(0, 160),
+          event_type: /symposium|talk/i.test(name) ? "talk" : "exhibition",
+          start_date: dates.start_date, end_date: dates.end_date,
+          venue_name: college, ...COLLEGES[site], price_type: "free",
+          tags: ["art school", "student show", "emerging artists", "graduate show"],
+          source_url: `${more || this.source.url}#${dates.start_date}`,
+        }));
+      }
+    }
+    return out;
+  },
+};
+
+export const smallSources = [cockpit, pigment, thamesSide, goldsmiths, eatWorkArt, ualShows].map((s) => ({
   source: s.source,
   parse: s.parse.bind(s),
   fetchEvents: async () => s.parse(await politeGet(s.source.url)),
