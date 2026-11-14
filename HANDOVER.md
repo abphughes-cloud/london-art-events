@@ -25,9 +25,9 @@ LBS AI Cup 2026 hackathon, **submit on Commfy by 15:30 GMT, 14 Nov**. Arthur bui
 ## State right now
 
 - **Supabase** project `london-art-events` (ref `kpgigxnvoxdeavywigyf`), moved today into its own organisation **Breadcrumb** so the partner can be invited without seeing Arthur's other projects. URL and keys unchanged. Arthur invites the partner himself.
-- **586 events, 14 Nov to 31 Dec, 314 venues, 68 sources**, verified in Supabase with the publishable key. (If batch 3 below was loaded, the number is higher: check `git log` and the count.)
+- **600 events, 14 Nov to 31 Dec, 323 venues, 77 sources**, verified in Supabase with the publishable key after the third batch of venue pages.
 - **Every event has venue name, postcode, area, lat/lng.** Thinner fields: start time ~20%, description ~45%, price known ~55%, art form ~60%.
-- By type: exhibition 354, workshop 151, talk 21, private view 12, fair 10, tour 9, open studio 6, other 23.
+- By type: exhibition 359, workshop 156, talk 22, fair 13, private view 12, tour 9, open studio 6, other 23.
 - 19 tests pass. All work is committed.
 
 ## How the build works
@@ -58,7 +58,7 @@ Likely fix (not done): end `ingestion/load.js` with an explicit `process.exit(0)
 3. Read the dated lines, keep only clearly dated visual-art events, add them to `work/build-read-events.mjs`, run it, then `npm run seed`, load, prune, commit.
 4. `node ingestion/discover.js --file <file>` checks sites for a feed instead; hits can be added to the registry with `--add`. Result so far: 4 feeds out of 121 sites (`data/discovery-report.json`).
 
-Hit rates so far: batch 1 gave 68 events from 57 pages, batch 2 gave 61 from 93. Roughly a third of sites don't respond or only render in a browser.
+Hit rates so far: batch 1 gave 68 events from 57 pages, batch 2 gave 61 from 93, batch 3 (`data/venue-seeds-3.json`) gave 17 from 60 (19 sites did not respond). Returns are shrinking fast; guessed URLs are the limit, so ask Arthur for real venue links. Roughly a third of sites don't respond or only render in a browser.
 
 ## Known gaps and caveats
 
@@ -87,3 +87,13 @@ Hit rates so far: batch 1 gave 68 events from 57 pages, batch 2 gave 61 from 93.
 **Libraries:** `@anthropic-ai/sdk`, `zod` (only in the switched-off AI paths), `@supabase/supabase-js` (edge function).
 
 **AI use:** code written with Claude Code; events in `data/read-events.json` were read from venue pages by Claude inside a Claude Code session. No LLM API calls run in the pipeline. Pitch line: the same reading step becomes an automatic LLM refresh in production (`ingestion/extract.js` already exists for it).
+
+## Loader workaround that works
+
+`npm run load` failed three times in a row at the end of the last session. This did work first time:
+
+```
+node --input-type=module -e "import fs from 'node:fs';import './ingestion/env.js';import {upsertEvents} from './ingestion/load.js';console.log(await upsertEvents(JSON.parse(fs.readFileSync('data/events.json','utf8'))))"
+```
+
+Then `node ingestion/prune.js` and check the count.

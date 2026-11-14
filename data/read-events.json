@@ -59,7 +59,17 @@
   "The Photographers' Gallery": "https://thephotographersgallery.org.uk/",
   "Turf Projects": "https://turf-projects.com/",
   "Valence House": "https://valencehousecollections.co.uk/events/",
-  "William Morris Gallery": "https://www.wmgallery.org.uk/"
+  "William Morris Gallery": "https://www.wmgallery.org.uk/",
+  "Museum of Croydon": "https://www.museumofcroydon.com/",
+  "Deptford Lounge": "https://deptfordlounge.org.uk/",
+  "Hannah Barry Gallery": "https://www.hannahbarry.com/",
+  "Highgate Literary & Scientific Institution": "https://hlsi.net/",
+  "Sydenham Arts": "https://www.sydenhamarts.co.uk/",
+  "Cabinet": "https://www.cabinet.uk.com/",
+  "Morley Gallery": "https://www.morleygallery.com/",
+  "Landmark Arts Centre": "https://www.landmarkartscentre.org/",
+  "Sim Smith": "https://www.sim-smith.com/",
+  "Abney Park": "https://abneypark.org/"
  },
  "events": [
   {
@@ -2641,6 +2651,352 @@
    ],
    "source_name": "William Morris Gallery",
    "source_url": "https://www.wmgallery.org.uk/#a-room-of-one-s-own-creating-feminist-dw-2026-12-01"
+  },
+  {
+   "title": "Art Book Club",
+   "event_type": "talk",
+   "start_date": "2026-11-14",
+   "end_date": null,
+   "start_time": "11:00",
+   "end_time": "12:00",
+   "venue_name": "Museum of Croydon",
+   "postcode": "CR9 1ET",
+   "area": "Croydon",
+   "art_forms": [],
+   "tags": [
+    "community",
+    "read from venue page"
+   ],
+   "source_name": "Museum of Croydon",
+   "source_url": "https://www.museumofcroydon.com/#art-book-club-2026-11-14"
+  },
+  {
+   "title": "Dementia, Art & Joy",
+   "event_type": "workshop",
+   "start_date": "2026-11-18",
+   "end_date": null,
+   "start_time": "10:30",
+   "end_time": "12:00",
+   "venue_name": "Museum of Croydon",
+   "postcode": "CR9 1ET",
+   "area": "Croydon",
+   "art_forms": [],
+   "tags": [
+    "community",
+    "read from venue page"
+   ],
+   "source_name": "Museum of Croydon",
+   "source_url": "https://www.museumofcroydon.com/#dementia-art-joy-2026-11-18"
+  },
+  {
+   "title": "Lewisham Community Zine Library Zine Fair",
+   "event_type": "fair",
+   "start_date": "2026-12-05",
+   "end_date": null,
+   "start_time": "11:00",
+   "end_time": "16:00",
+   "venue_name": "Deptford Lounge",
+   "postcode": "SE8 4RJ",
+   "area": "Deptford",
+   "price_type": "free",
+   "price_min_gbp": 0,
+   "art_forms": [],
+   "tags": [
+    "community",
+    "zines",
+    "grassroots",
+    "read from venue page"
+   ],
+   "source_name": "Deptford Lounge",
+   "source_url": "https://deptfordlounge.org.uk/applications-for-zine-library-fair/"
+  },
+  {
+   "title": "Stevie Dix: Vyvyan",
+   "event_type": "exhibition",
+   "start_date": "2026-10-01",
+   "end_date": "2026-11-14",
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "Hannah Barry Gallery",
+   "postcode": "SE15 5DF",
+   "area": "Peckham",
+   "price_type": "free",
+   "price_min_gbp": 0,
+   "art_forms": [],
+   "tags": [
+    "independent",
+    "emerging artists",
+    "read from venue page"
+   ],
+   "source_name": "Hannah Barry Gallery",
+   "source_url": "https://www.hannahbarry.com/#stevie-dix-vyvyan-2026-10-01"
+  },
+  {
+   "title": "Leo Benavides & Ellen Poppy Hill: Triple Socket",
+   "event_type": "exhibition",
+   "start_date": "2026-11-26",
+   "end_date": "2027-01-23",
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "Hannah Barry Gallery",
+   "postcode": "SE15 5DF",
+   "area": "Peckham",
+   "price_type": "free",
+   "price_min_gbp": 0,
+   "art_forms": [],
+   "tags": [
+    "independent",
+    "emerging artists",
+    "read from venue page"
+   ],
+   "source_name": "Hannah Barry Gallery",
+   "source_url": "https://www.hannahbarry.com/#leo-benavides-ellen-poppy-hill-triple-so-2026-11-26"
+  },
+  {
+   "title": "Handmade in Highgate: Designer/Maker Winter Fair",
+   "event_type": "fair",
+   "start_date": "2026-11-20",
+   "end_date": "2026-11-22",
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "Highgate Literary & Scientific Institution",
+   "postcode": "N6 6BS",
+   "area": "Highgate",
+   "art_forms": [],
+   "tags": [
+    "community",
+    "makers",
+    "read from venue page"
+   ],
+   "source_name": "Highgate Literary & Scientific Institution",
+   "source_url": "https://hlsi.net/#handmade-in-highgate-designer-maker-wint-2026-11-20"
+  },
+  {
+   "title": "Xmas Painted Leaves Decoration with Azu Morales",
+   "event_type": "workshop",
+   "start_date": "2026-11-16",
+   "end_date": null,
+   "start_time": "12:30",
+   "end_time": null,
+   "venue_name": "Ignition Brewery",
+   "postcode": "SE26 5QX",
+   "area": "Sydenham",
+   "art_forms": [],
+   "tags": [
+    "community",
+    "craft",
+    "read from venue page"
+   ],
+   "source_name": "Sydenham Arts",
+   "source_url": "https://www.sydenhamarts.co.uk/#xmas-painted-leaves-decoration-with-azu--2026-11-16"
+  },
+  {
+   "title": "Our Sydenham, Her Place: free visual arts and creative writing workshop",
+   "event_type": "workshop",
+   "start_date": "2026-11-18",
+   "end_date": null,
+   "start_time": "14:00",
+   "end_time": null,
+   "venue_name": "Sydenham Library",
+   "postcode": "SE26 5SE",
+   "area": "Sydenham",
+   "price_type": "free",
+   "price_min_gbp": 0,
+   "art_forms": [],
+   "tags": [
+    "community",
+    "read from venue page"
+   ],
+   "source_name": "Sydenham Arts",
+   "source_url": "https://www.sydenhamarts.co.uk/#our-sydenham-her-place-free-visual-arts--2026-11-18"
+  },
+  {
+   "title": "Atiéna R. Kilfa: 114 Revolutions Per Minute",
+   "event_type": "exhibition",
+   "start_date": "2026-10-09",
+   "end_date": "2026-11-28",
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "Cabinet",
+   "postcode": "SE11 5HS",
+   "area": "Vauxhall",
+   "price_type": "free",
+   "price_min_gbp": 0,
+   "art_forms": [],
+   "tags": [
+    "independent",
+    "read from venue page"
+   ],
+   "source_name": "Cabinet",
+   "source_url": "https://cabinet.uk.com/atiena-kilfa-revolutions"
+  },
+  {
+   "title": "INK: Artists in Printmaking",
+   "event_type": "exhibition",
+   "start_date": "2026-11-03",
+   "end_date": "2026-11-14",
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "Morley Gallery",
+   "postcode": "SE1 7HT",
+   "area": "Waterloo",
+   "price_type": "free",
+   "price_min_gbp": 0,
+   "art_forms": [],
+   "tags": [
+    "art school",
+    "community",
+    "read from venue page"
+   ],
+   "source_name": "Morley Gallery",
+   "source_url": "https://www.morleygallery.com/#ink-artists-in-printmaking-2026-11-03"
+  },
+  {
+   "title": "London Potters Annual Exhibition",
+   "event_type": "exhibition",
+   "start_date": "2026-11-18",
+   "end_date": "2026-11-28",
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "Morley Gallery",
+   "postcode": "SE1 7HT",
+   "area": "Waterloo",
+   "price_type": "free",
+   "price_min_gbp": 0,
+   "art_forms": [],
+   "tags": [
+    "art school",
+    "community",
+    "read from venue page"
+   ],
+   "source_name": "Morley Gallery",
+   "source_url": "https://www.morleygallery.com/#london-potters-annual-exhibition-2026-11-18"
+  },
+  {
+   "title": "Working Knowledge: School of Visual Arts Staff Exhibition 2026",
+   "event_type": "exhibition",
+   "start_date": "2026-12-03",
+   "end_date": "2026-12-17",
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "Morley Gallery",
+   "postcode": "SE1 7HT",
+   "area": "Waterloo",
+   "price_type": "free",
+   "price_min_gbp": 0,
+   "art_forms": [],
+   "tags": [
+    "art school",
+    "community",
+    "read from venue page"
+   ],
+   "source_name": "Morley Gallery",
+   "source_url": "https://www.morleygallery.com/#working-knowledge-school-of-visual-arts--2026-12-03"
+  },
+  {
+   "title": "Sparkle Festive Fair",
+   "event_type": "fair",
+   "start_date": "2026-11-20",
+   "end_date": "2026-11-22",
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "Landmark Arts Centre",
+   "postcode": "TW11 9NN",
+   "area": "Teddington",
+   "art_forms": [],
+   "tags": [
+    "community",
+    "makers",
+    "read from venue page"
+   ],
+   "source_name": "Landmark Arts Centre",
+   "source_url": "https://www.landmarkartscentre.org/#sparkle-festive-fair-2026-11-20"
+  },
+  {
+   "title": "Mushroom Bauble Painting",
+   "event_type": "workshop",
+   "start_date": "2026-11-28",
+   "end_date": null,
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "Landmark Arts Centre",
+   "postcode": "TW11 9NN",
+   "area": "Teddington",
+   "art_forms": [],
+   "tags": [
+    "community",
+    "makers",
+    "read from venue page"
+   ],
+   "source_name": "Landmark Arts Centre",
+   "source_url": "https://www.landmarkartscentre.org/#mushroom-bauble-painting-2026-11-28"
+  },
+  {
+   "title": "Tim Garwood: Signals",
+   "event_type": "exhibition",
+   "start_date": "2026-10-08",
+   "end_date": "2026-11-21",
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "Sim Smith",
+   "postcode": "SE5 0AX",
+   "area": "Camberwell",
+   "price_type": "free",
+   "price_min_gbp": 0,
+   "art_forms": [
+    "painting"
+   ],
+   "tags": [
+    "independent",
+    "emerging artists",
+    "read from venue page"
+   ],
+   "source_name": "Sim Smith",
+   "source_url": "https://www.sim-smith.com/#tim-garwood-signals-2026-10-08"
+  },
+  {
+   "title": "Daisy Parris: Women I Love",
+   "event_type": "exhibition",
+   "start_date": "2026-11-26",
+   "end_date": "2027-01-23",
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "Sim Smith",
+   "postcode": "SE5 0AX",
+   "area": "Camberwell",
+   "price_type": "free",
+   "price_min_gbp": 0,
+   "art_forms": [
+    "painting"
+   ],
+   "tags": [
+    "independent",
+    "emerging artists",
+    "read from venue page"
+   ],
+   "source_name": "Sim Smith",
+   "source_url": "https://www.sim-smith.com/#daisy-parris-women-i-love-2026-11-26"
+  },
+  {
+   "title": "Life Drawing Theatre – Divine Comedy: Inferno",
+   "event_type": "workshop",
+   "start_date": "2026-11-15",
+   "end_date": null,
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "Abney Park",
+   "postcode": "N16 0LH",
+   "area": "Stoke Newington",
+   "art_forms": [
+    "life drawing"
+   ],
+   "tags": [
+    "community",
+    "drawing",
+    "read from venue page"
+   ],
+   "source_name": "Abney Park",
+   "source_url": "https://abneypark.org/#life-drawing-theatre-divine-comedy-infer-2026-11-15"
   }
  ]
 }

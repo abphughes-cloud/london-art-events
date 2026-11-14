@@ -250,9 +250,49 @@ const venues = [
     ["Winter Late at William Morris Gallery", "other", "2026-11-27", null, null, null, null, null],
     ["A Room of One’s Own – Creating Feminist Dwellings", "talk", "2026-12-01", null, null, null, null, null],
   ] },
+  // ---- third batch ----
+  { v: "Museum of Croydon", pc: "CR9 1ET", area: "Croydon", url: "https://www.museumofcroydon.com/", tags: ["community"], ev: [
+    ["Art Book Club", "talk", "2026-11-14", null, "11:00", "12:00", null, null],
+    ["Dementia, Art & Joy", "workshop", "2026-11-18", null, "10:30", "12:00", null, null],
+  ] },
+  { v: "Deptford Lounge", pc: "SE8 4RJ", area: "Deptford", url: "https://deptfordlounge.org.uk/", tags: ["community", "zines", "grassroots"], ev: [
+    ["Lewisham Community Zine Library Zine Fair", "fair", "2026-12-05", null, "11:00", "16:00", "free", "https://deptfordlounge.org.uk/applications-for-zine-library-fair/"],
+  ] },
+  { v: "Hannah Barry Gallery", pc: "SE15 5DF", area: "Peckham", url: "https://www.hannahbarry.com/", tags: ["independent", "emerging artists"], ev: [
+    ["Stevie Dix: Vyvyan", "exhibition", "2026-10-01", "2026-11-14", null, null, "free", null],
+    ["Leo Benavides & Ellen Poppy Hill: Triple Socket", "exhibition", "2026-11-26", "2027-01-23", null, null, "free", null],
+  ] },
+  { v: "Highgate Literary & Scientific Institution", pc: "N6 6BS", area: "Highgate", url: "https://hlsi.net/", tags: ["community", "makers"], ev: [
+    ["Handmade in Highgate: Designer/Maker Winter Fair", "fair", "2026-11-20", "2026-11-22", null, null, null, null],
+  ] },
+  { v: "Ignition Brewery", pc: "SE26 5QX", area: "Sydenham", url: "https://www.sydenhamarts.co.uk/", source: "Sydenham Arts", tags: ["community", "craft"], ev: [
+    ["Xmas Painted Leaves Decoration with Azu Morales", "workshop", "2026-11-16", null, "12:30", null, null, null],
+  ] },
+  { v: "Sydenham Library", pc: "SE26 5SE", area: "Sydenham", url: "https://www.sydenhamarts.co.uk/", source: "Sydenham Arts", tags: ["community"], ev: [
+    ["Our Sydenham, Her Place: free visual arts and creative writing workshop", "workshop", "2026-11-18", null, "14:00", null, "free", null],
+  ] },
+  { v: "Cabinet", pc: "SE11 5HS", area: "Vauxhall", url: "https://www.cabinet.uk.com/", tags: ["independent"], ev: [
+    ["Atiéna R. Kilfa: 114 Revolutions Per Minute", "exhibition", "2026-10-09", "2026-11-28", null, null, "free", "https://cabinet.uk.com/atiena-kilfa-revolutions"],
+  ] },
+  { v: "Morley Gallery", pc: "SE1 7HT", area: "Waterloo", url: "https://www.morleygallery.com/", tags: ["art school", "community"], ev: [
+    ["INK: Artists in Printmaking", "exhibition", "2026-11-03", "2026-11-14", null, null, "free", null],
+    ["London Potters Annual Exhibition", "exhibition", "2026-11-18", "2026-11-28", null, null, "free", null],
+    ["Working Knowledge: School of Visual Arts Staff Exhibition 2026", "exhibition", "2026-12-03", "2026-12-17", null, null, "free", null],
+  ] },
+  { v: "Landmark Arts Centre", pc: "TW11 9NN", area: "Teddington", url: "https://www.landmarkartscentre.org/", tags: ["community", "makers"], ev: [
+    ["Sparkle Festive Fair", "fair", "2026-11-20", "2026-11-22", null, null, null, null],
+    ["Mushroom Bauble Painting", "workshop", "2026-11-28", null, null, null, null, null],
+  ] },
+  { v: "Sim Smith", pc: "SE5 0AX", area: "Camberwell", url: "https://www.sim-smith.com/", tags: ["independent", "emerging artists"], forms: ["painting"], ev: [
+    ["Tim Garwood: Signals", "exhibition", "2026-10-08", "2026-11-21", null, null, "free", null],
+    ["Daisy Parris: Women I Love", "exhibition", "2026-11-26", "2027-01-23", null, null, "free", null],
+  ] },
+  { v: "Abney Park", pc: "N16 0LH", area: "Stoke Newington", url: "https://abneypark.org/", tags: ["community", "drawing"], forms: ["life drawing"], ev: [
+    ["Life Drawing Theatre – Divine Comedy: Inferno", "workshop", "2026-11-15", null, null, null, null, null],
+  ] },
 ];
 
-const slug =(s) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 40);
+const slug = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 40);
 const events = [], sources = {};
 for (const ven of venues) {
   const sourceName = ven.source || ven.v;
