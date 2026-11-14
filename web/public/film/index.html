@@ -44,6 +44,9 @@ html,body{margin:0!important;padding:0!important;background:#0b0b0c!important;ov
 .wrap{position:fixed;inset:0;display:block;max-width:none}
 .wrap>h1,.wrap>.sub,.wrap>.ctrl{display:none!important}
 .ph{position:absolute!important;left:50%;top:50%;border:0!important;border-radius:0!important;transform-origin:50% 50%}
+/* keerthi 15:08: no map, no lights, no glow: just the art bar on a black page */
+#map,#lights,.vig{display:none!important}
+.bar{box-shadow:none!important}.bar:before{display:none!important}
 </style>
 <div class="wrap">
 <h1>0 · Opening film</h1>
@@ -92,7 +95,7 @@ async function play(){
   if(!alive())return;await wait(1100);
   // 2 · one straight push in to the first colour at the left end
   anim(document.getElementById("map"),[{opacity:1},{opacity:.25}],{duration:2900,easing:"ease-in"});anim(document.getElementById("lights"),[{opacity:1},{opacity:0}],{duration:2400,easing:"ease-in"});
-  await anim(stage,[{transform:cam(150,310,1)},{transform:cam(cellX(0),BY,8.4)}],{duration:3100,easing:"cubic-bezier(.55,0,.75,.75)"});
+  await anim(stage,[{transform:cam(150,310,1)},{transform:cam(cellX(0),BY,21)}],{duration:3100,easing:"cubic-bezier(.6,0,.35,1)"});
   if(!alive())return;
   // 3 · that colour opens into the artwork
   const cube=bar.children[0],r=cube.getBoundingClientRect(),pr=ph.getBoundingClientRect(),bw=ph.clientLeft;
@@ -101,7 +104,7 @@ async function play(){
   const PAN=[];for(let k=0;k<42;k++)PAN.push(REAL[k%REAL.length]); // real paintings stream past
   full.innerHTML=`<div class="track">${PAN.map(c=>`<div class="panel"><i style="background:url(art/${c}.jpg) center/cover"></i></div>`).join("")}</div>`;ph.insertBefore(full,document.getElementById("glow"));
   const track=full.firstChild;buzz(14);
-  await anim(full,[{clipPath:`inset(${t}px ${Math.max(0,iw-l-r.width)}px ${Math.max(0,ih-t-r.height)}px ${l}px)`},{clipPath:"inset(0px 0px 0px 0px)"}],{duration:900,easing:"cubic-bezier(.15,.55,.25,1)"});
+  await anim(full,[{clipPath:`inset(${t}px ${Math.max(0,iw-l-r.width)}px ${Math.max(0,ih-t-r.height)}px ${l}px)`},{clipPath:"inset(0px 0px 0px 0px)"}],{duration:700,easing:"cubic-bezier(.3,0,.2,1)"});
   if(!alive())return;await wait(450);
   // 4+5 · one unbroken glide: starts very slowly and smoothly, then keeps gathering speed until the art is a rush
   const END=-(PAN.length-1)*300,T=7400,POW=3.0,N=80,kf=[];

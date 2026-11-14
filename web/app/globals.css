@@ -449,3 +449,6 @@ button { background: none; border: 0; color: inherit; cursor: pointer; }
 .g5-more .ltop-btns { margin: 10px 0 0; }
 .ltop.full { z-index: 60; }
 .ltop-map.leaflet-container { background: #0b0b0c; }
+/* no numbers (keerthi 15:09) */
+.lrank { display: none; }
+.mrank { font-size: 0; width: 16px; height: 16px; margin: 5px; }
