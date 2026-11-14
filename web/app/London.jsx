@@ -5,6 +5,7 @@ import { tick, pattern } from '../lib/haptics';
 import { Back } from './Icons';
 import Plan from './Plan';
 import NearList from './NearList';
+import Star from './Star';
 import events from '../data/events.json';
 import artists from '../data/artists.json';
 
@@ -247,6 +248,7 @@ function TopMap({ w, fav, onPlan, picks, fi, onPick }) {
                     return (
                       <div key={e.id} className={`g5-bar ${bar === i ? 'big' : ''}`} style={{ animationDelay: `${i * 70}ms` }} onClick={() => { setBar(bar === i ? -1 : i); tick(6); }}>
                         <i style={{ backgroundImage: bgi(e) }} />
+                        <Star id={e.id} />
                         <span className="g5-t">{e.t}</span>
                         {bar === i && (
                           <div className="g5-more">

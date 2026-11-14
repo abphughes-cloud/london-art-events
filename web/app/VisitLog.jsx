@@ -2,6 +2,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import events from '../data/events.json';
 import { tick } from '../lib/haptics';
+import { readStars } from '../lib/stars';
 
 // Visit log (keerthi 14:59): find an event, slide to say how much you liked it.
 // The bar turns gold the more you liked it. Each review is about half a screen.
@@ -30,29 +31,37 @@ export default function VisitLog({ visits = [] }) {
   const [q, setQ] = useState('');
   const [log, setLog] = useState({});
   const [notes, setNotes] = useState({});
+  const [stars, setStars] = useState([]);
   const [ready, setReady] = useState(false); // never save the empty start state over saved data
   const noteRef = useRef(notes);
   noteRef.current = notes;
-  useEffect(() => { setLog(read()); setNotes(readN()); setReady(true); }, []);
+  useEffect(() => { setLog(read()); setNotes(readN()); setStars(readStars()); setReady(true); }, []);
+  useEffect(() => { const f = () => setStars(readStars()); window.addEventListener('mooncalf-stars', f); return () => window.removeEventListener('mooncalf-stars', f); }, []);
   useEffect(() => { if (ready) try { localStorage.setItem(KEY, JSON.stringify(log)); } catch {} }, [log, ready]);
   useEffect(() => { if (ready) try { localStorage.setItem(NKEY, JSON.stringify(notes)); } catch {} }, [notes, ready]);
 
+  const mine = (e) => stars.includes(e.id) || log[e.id] != null || (noteRef.current[e.id] || '').trim();
   const list = useMemo(() => {
     const planned = new Set(visits.map((x) => x.v));
     const s = q.trim().toLowerCase();
     const hit = (e) => !s || `${e.t} ${e.v}`.toLowerCase().includes(s);
-    const rank = (e) => (log[e.id] != null || (noteRef.current[e.id] || '').trim() ? 0 : planned.has(e.v) ? 1 : e.img ? 2 : 3);
-    return events.filter(hit).sort((a, b) => rank(a) - rank(b)).slice(0, 40);
-  }, [q, visits, log, ready]); // notes stay out of the deps so a card never jumps while typing
+    const rank = (e) => (stars.includes(e.id) ? 0 : log[e.id] != null || (noteRef.current[e.id] || '').trim() ? 1 : planned.has(e.v) ? 2 : e.img ? 3 : 4);
+    let pool = events.filter(hit);
+    if (!s && pool.some(mine)) pool = pool.filter(mine); // starred, rated or noted shows only, starred first
+    return pool.sort((a, b) => rank(a) - rank(b)).slice(0, 40);
+  }, [q, visits, log, ready, stars]); // notes stay out of the deps so a card never jumps while typing
+  const empty = !q.trim() && !events.some(mine); // notes stay out of the deps so a card never jumps while typing
 
   return (
     <section className="screen vlog">
       <input className="vl-find" value={q} onChange={(e) => setQ(e.target.value)} placeholder="Find an event" aria-label="Find an event" />
       <div className="vl-list">
+        {empty && <p className="vl-hint">Star a show on the map and it appears here.</p>}
         {list.map((e) => (
           <article key={e.id} className="vl-card">
             <div className="vl-img" style={e.img ? { backgroundImage: `url("${e.img}")` } : undefined} />
             <div className="vl-shade" />
+            {stars.includes(e.id) && <svg className="vl-star" viewBox="0 0 24 24" aria-label="Starred"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8L3.5 9.7l5.9-.9z" /></svg>}
             <div className="vl-info">
               <h3>{e.t}</h3>
               <span>{e.v}</span>

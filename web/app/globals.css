@@ -524,3 +524,10 @@ button { background: none; border: 0; color: inherit; cursor: pointer; }
 .nb-cue.gone { opacity: 0; }
 .london.down .nb-cue { display: none; }
 @keyframes nbob { 50% { transform: translate(-50%, 4px); } }
+
+/* star a show on the gallery page (keerthi 15:43) */
+.g5-star { position: absolute; z-index: 3; top: 0; right: 0; width: 44px; height: 44px; display: grid; place-items: center; padding: 0; }
+.g5-star svg { fill: none; stroke: rgba(255,255,255,.85); stroke-width: 1.6; stroke-linejoin: round; filter: drop-shadow(0 1px 3px rgba(0,0,0,.6)); }
+.g5-star.on svg { fill: #f0c95a; stroke: #f0c95a; filter: drop-shadow(0 0 6px rgba(240,201,90,.8)); }
+.vl-star { position: absolute; z-index: 2; top: 12px; right: 12px; width: 22px; height: 22px; fill: #f0c95a; filter: drop-shadow(0 0 6px rgba(240,201,90,.8)); }
+.vl-hint { margin: 0 4px 10px; font-size: 14px; color: rgba(255,255,255,.75); }
