@@ -110,7 +110,7 @@ async function play(){
   await anim(full,[{transform:`translate(${(cx-iw*s0/2).toFixed(2)}px,${(cy-ih*s0/2).toFixed(2)}px) scale(${s0.toFixed(5)})`,clipPath:`inset(${((ih-rh/s0)/2).toFixed(1)}px ${((iw-rw/s0)/2).toFixed(1)}px)`},{transform:"translate(0px,0px) scale(1)",clipPath:"inset(0px 0px)"}],Z);
   if(!alive())return; // no pause: the glide starts straight away (keerthi 15:15)
   // 4+5 · one unbroken glide: starts very slowly and smoothly, then keeps gathering speed until the art is a rush
-  const END=-(PAN.length-1)*300,T=7000,POW=2.2,N=80,kf=[];
+  const END=-(PAN.length-1)*300,T=5300,POW=2.2,N=80,kf=[];
   for(let n=0;n<=N;n++){const u=n/N;kf.push({transform:`translateX(${(END*Math.pow(u,POW)).toFixed(1)}px)`,filter:`blur(${(u>.72?(u-.72)*14:0).toFixed(2)}px)`,offset:u})}
   const glowEl=document.getElementById("glow");buzz(6);
   const glowP=anim(glowEl,[{opacity:0,filter:"blur(30px)"},{opacity:1,filter:"blur(0)"}],{duration:1000,delay:T-1150,easing:"ease-in"}); // white rises while the art is still rushing
