@@ -1,13 +1,32 @@
 'use client';
 import { useEffect, useState } from 'react';
 
-// First-open tutorial: four taps, a few words each (keerthi 14:49)
+// Tutorial: one step per feature, one short line each (keerthi 15:42).
+// A gold ring hugs the real element; steps without an element show a small drawing instead.
 const STEPS = [
-  { sel: '.ltop', text: 'Every light is an art event.', sub: 'Tap one to see what’s on.' },
-  { sel: '.tabs button:nth-child(3)', text: 'Visit log.', sub: 'Slide to rate what you saw.' },
-  { sel: '.tabs button:nth-child(2)', text: 'Discover.', sub: 'Rate art, sharpen your matches.' },
-  { bar: true, text: 'Slide the bar to rate.', sub: 'Further right means you like it more. Let go for the next artwork.' },
+  { sel: '.tabs', text: 'Three tabs: Visit, Discover and Visit log.' },
+  { sel: '.ltop', text: 'Each light is a gallery. Tap one.', tap: true },
+  { demo: 'x', text: 'You’ll see its shows. Tap x to go back to the map.' },
+  { sel: '.lbands .band', alt: '.lgrab', text: 'Your best matches, ranked by your taste.' },
+  { sel: '.lgrab', text: 'Pull this down to see the whole map.' },
+  { sel: '.tabs button:nth-child(2)', text: 'Discover: rate art to sharpen your matches.' },
+  { bar: true, text: 'Slide right the more you like it.' },
+  { demo: 'speaker', text: 'Tap the speaker to hear the story of an artwork.' },
+  { sel: '.tabs button:nth-child(3)', text: 'Star a show, then rate it in your Visit log.' },
 ];
+
+const PAD = 8;
+
+function measure(s) {
+  const el = (s.sel && document.querySelector(s.sel)) || (s.alt && document.querySelector(s.alt));
+  if (!el) return null;
+  const b = el.getBoundingClientRect();
+  if (b.width < 2 || b.height < 2) return null; // never show an empty ring
+  const W = window.innerWidth, H = window.innerHeight;
+  const left = Math.max(4, b.left - PAD), top = Math.max(4, b.top - PAD);
+  const right = Math.min(W - 4, b.right + PAD), bottom = Math.min(H - 4, b.bottom + PAD);
+  return { left, top, width: right - left, height: bottom - top };
+}
 
 export default function Tour({ onDone }) {
   const [i, setI] = useState(0);
@@ -15,42 +34,55 @@ export default function Tour({ onDone }) {
   const s = STEPS[i];
 
   useEffect(() => {
-    const place = () => {
-      const el = s.sel && document.querySelector(s.sel);
-      if (!el) { setR(null); return; }
-      const b = el.getBoundingClientRect();
-      const big = b.width > 200;
-      const d = big ? 150 : Math.max(b.width, b.height) + 26;
-      setR({ x: b.left + b.width / 2, y: b.top + b.height / 2, d });
-    };
-    place();
+    const place = () => setR(measure(STEPS[i]));
+    setR(null);
+    const raf = requestAnimationFrame(place);
+    const t = setTimeout(place, 300);
     window.addEventListener('resize', place);
-    return () => window.removeEventListener('resize', place);
+    return () => { cancelAnimationFrame(raf); clearTimeout(t); window.removeEventListener('resize', place); };
   }, [i]);
 
-  const next = () => (i < STEPS.length - 1 ? setI(i + 1) : onDone());
-  const below = r ? r.y < window.innerHeight * 0.55 : false;
+  const last = i === STEPS.length - 1;
+  const next = () => (last ? onDone() : setI(i + 1));
+
+  // keep the text box on screen, clear of the footer row and the top edge
+  const H = typeof window !== 'undefined' ? window.innerHeight : 800;
+  const FOOT = 130, TOP = 70, TXT = 110;
+  let top = Math.round(H * 0.42);
+  if (r) {
+    if (r.height > H * 0.45) top = Math.round(r.top + r.height * 0.42);
+    else if (r.top + r.height / 2 < H * 0.5) top = r.top + r.height + 16;
+    else top = r.top - 16 - TXT;
+  } else if (s.bar) top = Math.round(H * 0.5);
+  top = Math.max(TOP, Math.min(top, H - FOOT - TXT));
 
   return (
     <div className="tour" onClick={next}>
       {r ? (
-        <div className="tour-spot" style={{ left: r.x - r.d / 2, top: r.y - r.d / 2, width: r.d, height: r.d }}>
-          {i === 0 && <span className="tour-tap" />}
+        <div className="tour-ring" style={{ left: r.left, top: r.top, width: r.width, height: r.height }}>
+          {s.tap && <span className="tour-tap" />}
         </div>
       ) : (
         <div className="tour-dim" />
       )}
+      {!r && s.demo === 'x' && (
+        <div className="tour-demo" style={{ top: top - 80 }}>
+          <div className="tour-demo-x"><i /><b>×</b></div>
+        </div>
+      )}
+      {!r && s.demo === 'speaker' && (
+        <div className="tour-demo" style={{ top: top - 80 }}>
+          <svg viewBox="0 0 24 24" width="52" height="52" className="tour-speaker"><path d="M4 9h4l5-4v14l-5-4H4z" /><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12" /></svg>
+        </div>
+      )}
       {s.bar && (
         <div className="tour-bar"><span /></div>
       )}
-      <div key={i} className="tour-text" style={r ? (below ? { top: r.y + r.d / 2 + 18 } : { bottom: window.innerHeight - r.y + r.d / 2 + 18 }) : { bottom: 140 }}>
-        <b>{s.text}</b>
-        <span>{s.sub}</span>
-      </div>
+      <div key={i} className="tour-line" style={{ top }}>{s.text}</div>
       <div className="tour-foot">
-        <button className="tiny" onClick={(e) => { e.stopPropagation(); onDone(); }}>Skip</button>
-        <span className="tiny">{i + 1} / {STEPS.length}</span>
-        <span className="tiny">{i < STEPS.length - 1 ? 'Tap' : 'Start'}</span>
+        <button className="tour-skip" onClick={(e) => { e.stopPropagation(); onDone(); }}>Skip</button>
+        <span className="tour-dots">{STEPS.map((_, k) => <i key={k} className={k === i ? 'on' : ''} />)}</span>
+        <button className="tour-next" onClick={(e) => { e.stopPropagation(); next(); }}>{last ? 'Start' : 'Next'}</button>
       </div>
     </div>
   );
