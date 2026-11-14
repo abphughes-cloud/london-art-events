@@ -191,9 +191,13 @@ function TopMap({ w, fav, onPlan, picks, fi, onPick }) {
       // black and white streets, the Thames in yellow (keerthi 14:57)
       // CARTO tiles now answer "API key required"; Esri's dark grey canvas needs no key
       L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
-        maxZoom: 16, attribution: 'Tiles © Esri',
+        maxZoom: 18, maxNativeZoom: 16, detectRetina: true, className: 'ltiles-base', attribution: 'Tiles © Esri',
       }).addTo(m);
-      L.polyline(TH, { color: '#f0c95a', weight: 4, opacity: 0.9, lineCap: 'round', lineJoin: 'round', smoothFactor: 1.5, interactive: false }).addTo(m);
+      // street and area names on top, so the map reads clearly (keerthi 15:42)
+      L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Reference/MapServer/tile/{z}/{y}/{x}', {
+        maxZoom: 18, maxNativeZoom: 16, detectRetina: true, className: 'ltiles-labels',
+      }).addTo(m);
+      // the yellow Thames line is off (keerthi 15:45); to restore: L.polyline(TH, { color: '#f0c95a', weight: 5, opacity: 0.95, lineCap: 'round', lineJoin: 'round', smoothFactor: 1.5, interactive: false }).addTo(m);
       m.attributionControl.setPrefix(false);
       map.current = m; layer.current = L.layerGroup().addTo(m); setReady(true);
     };
@@ -215,11 +219,11 @@ function TopMap({ w, fav, onPlan, picks, fi, onPick }) {
     VENUES.forEach(([v, [lat, lng]], k) => {
       if (ranked.has(v)) return;
       const m = (SHOWS[v] || []).some((e) => matchOf(e, w).length);
-      L.marker([lat, lng], { icon: L.divIcon({ className: '', html: `<i class="mdot ${m ? 'm' : ''} ${card === v ? 'on' : ''}" style="animation-delay:${(k * 377) % 3000}ms"></i>`, iconSize: [22, 22] }) })
+      L.marker([lat, lng], { icon: L.divIcon({ className: '', html: `<i class="mdot ${m ? 'm' : ''} ${card === v ? 'on' : ''}" style="animation-delay:${(k * 377) % 3000}ms"></i>`, iconSize: [32, 32] }) })
         .on('click', () => { setCard(v); setBar(0); tick(8); }).addTo(g);
     });
     picks.forEach((p, i) => {
-      L.marker([p.lat, p.lng], { zIndexOffset: 1000 - i, icon: L.divIcon({ className: '', html: `<b class="mrank ${i === fi ? 'on' : ''}">${i + 1}</b>`, iconSize: [26, 26] }) })
+      L.marker([p.lat, p.lng], { zIndexOffset: 1000 - i, icon: L.divIcon({ className: '', html: `<b class="mrank ${i === fi ? 'on' : ''}">${i + 1}</b>`, iconSize: [32, 32] }) })
         .on('click', () => { setCard(p.v); setBar(0); onPick(i); }).addTo(g);
     });
   }, [ready, picks, w, card, fi]); // eslint-disable-line react-hooks/exhaustive-deps
