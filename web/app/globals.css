@@ -531,3 +531,19 @@ button { background: none; border: 0; color: inherit; cursor: pointer; }
 .g5-star.on svg { fill: #f0c95a; stroke: #f0c95a; filter: drop-shadow(0 0 6px rgba(240,201,90,.8)); }
 .vl-star { position: absolute; z-index: 2; top: 12px; right: 12px; width: 22px; height: 22px; fill: #f0c95a; filter: drop-shadow(0 0 6px rgba(240,201,90,.8)); }
 .vl-hint { margin: 0 4px 10px; font-size: 14px; color: rgba(255,255,255,.75); }
+
+/* bigger tap targets on the map, markers above every tile layer (keerthi 15:50) */
+.ltop-map .leaflet-marker-pane { z-index: 650; }
+.mdot, .mdot.m { margin: 16px; }
+.mrank { margin: 14.5px; }
+/* Plan visit opens the show page, Directions opens Google Maps (keerthi 15:50) */
+a.ltop-plan, a.ltop-maps { text-decoration: none; }
+.ltop-plan, .ltop-maps { font-size: 14px; padding: 10px 14px; white-space: nowrap; }
+.nb-btns { position: absolute; left: 14px; right: 14px; bottom: 12px; display: flex; gap: 8px; }
+.nb-plan { position: static; text-decoration: none; padding: 10px 14px; font-size: 14px; white-space: nowrap; }
+.nb-dir { padding: 10px 14px; border-radius: 999px; font-size: 14px; font-weight: 600; color: #fff; text-decoration: none; white-space: nowrap; box-shadow: inset 0 0 0 1px rgba(255,255,255,.6); }
+.nb-venue { text-decoration: none; }
+.nb.big .nb-venue { text-decoration: underline; text-underline-offset: 2px; }
+/* what the Plan bars mean */
+.pnote { position: absolute; z-index: 5; left: 20px; right: 20px; top: calc(env(safe-area-inset-top) + 176px); margin: 0; font-size: 12px; color: rgba(255,255,255,.7); }
+.plist { top: calc(env(safe-area-inset-top) + 198px); }

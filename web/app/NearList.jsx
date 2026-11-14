@@ -92,11 +92,15 @@ export default function NearList({ w, rated, onPlan, onFocus }) {
             <div className="nb-shade" />
             <div className="nb-text">
               <b>{e.t}</b>
-              <span>{e.v} · {away(d)}{pct != null ? ` · ${pct}% match` : ''}</span>
+              <span><u className="nb-venue" onClick={(ev) => { if (i !== top) return; ev.stopPropagation(); window.dispatchEvent(new CustomEvent('mooncalf-open-gallery', { detail: e.v })); }}>{e.v}</u> · {away(d)}{pct != null ? ` · ${pct}% match` : ''}</span>
               {i === top && runs(e) && <span className="nb-dates">{runs(e)}</span>}
             </div>
             {i === top && (
-              <button className="nb-plan" onClick={(ev) => { ev.stopPropagation(); onPlan({ id: e.v, v: e.v, t: e.t, img: e.img, lat: e.lat, lng: e.lng, url: e.url, walk: Math.round(d * 12) }); }}>Plan visit</button>
+              <div className="nb-btns">
+                <a className="nb-plan" href={e.url || `https://www.google.com/search?q=${encodeURIComponent(`${e.v} London`)}`} target="_blank" rel="noopener noreferrer"
+                  onClick={(ev) => { ev.stopPropagation(); onPlan({ id: e.v, v: e.v, t: e.t, img: e.img, lat: e.lat, lng: e.lng, url: e.url, walk: Math.round(d * 12) }); }}>Plan visit</a>
+                <a className="nb-dir" href={`https://www.google.com/maps/dir/?api=1&destination=${e.lat},${e.lng}`} target="_blank" rel="noopener noreferrer" onClick={(ev) => ev.stopPropagation()}>Directions</a>
+              </div>
             )}
           </div>
         ))}

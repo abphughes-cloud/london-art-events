@@ -73,6 +73,7 @@ export default function Plan({ g, onClose, onSave }) {
     <div className="plan" onPointerDown={down} onPointerMove={move} onPointerUp={up} onPointerCancel={up}>
       <div className="pscrim" />
       <h1 className="title ptitle">{g.v}</h1>
+      <p className="pnote tiny">Bars show how busy each day usually is. Longer bar, quieter day.</p>
       <button className="back" aria-label="Back" onClick={onClose}><Back /></button>
       <button className="pok" aria-label="Save visit" onClick={save}>
         <svg viewBox="0 0 24 24" width="26" height="26" className="ico"><path d="M5 12.5l4.6 4.6L19 7" /></svg>

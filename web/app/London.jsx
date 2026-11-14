@@ -171,6 +171,7 @@ const matchOf = (e, w) => (e.tags || []).filter((t) => /^(style|subject|mood|med
 function TopMap({ w, fav, onPlan, picks, fi, onPick }) {
   const [card, setCard] = useState(null); // venue name
   const [bar, setBar] = useState(0); // which show's bar is opened on the 5.g page
+  useEffect(() => { const f = (ev) => { if (ev.detail) { setCard(ev.detail); setBar(0); tick(8); } }; window.addEventListener('mooncalf-open-gallery', f); return () => window.removeEventListener('mooncalf-open-gallery', f); }, []);
   const el = useRef(null), map = useRef(null), layer = useRef(null);
   const [ready, setReady] = useState(false);
   // a regular street map (keerthi 14:55): Leaflet + CARTO Voyager tiles, loaded from the CDN
@@ -211,11 +212,11 @@ function TopMap({ w, fav, onPlan, picks, fi, onPick }) {
     VENUES.forEach(([v, [lat, lng]], k) => {
       if (ranked.has(v)) return;
       const m = (SHOWS[v] || []).some((e) => matchOf(e, w).length);
-      L.marker([lat, lng], { icon: L.divIcon({ className: '', html: `<i class="mdot ${m ? 'm' : ''} ${card === v ? 'on' : ''}" style="animation-delay:${(k * 377) % 3000}ms"></i>`, iconSize: [32, 32] }) })
+      L.marker([lat, lng], { icon: L.divIcon({ className: '', html: `<i class="mdot ${m ? 'm' : ''} ${card === v ? 'on' : ''}" style="animation-delay:${(k * 377) % 3000}ms"></i>`, iconSize: [40, 40] }) })
         .on('click', () => { setCard(v); setBar(0); tick(8); }).addTo(g);
     });
     picks.forEach((p, i) => {
-      L.marker([p.lat, p.lng], { zIndexOffset: 1000 - i, icon: L.divIcon({ className: '', html: `<b class="mrank ${i === fi ? 'on' : ''}">${i + 1}</b>`, iconSize: [32, 32] }) })
+      L.marker([p.lat, p.lng], { zIndexOffset: 1000 - i, icon: L.divIcon({ className: '', html: `<b class="mrank ${i === fi ? 'on' : ''}">${i + 1}</b>`, iconSize: [40, 40] }) })
         .on('click', () => { setCard(p.v); setBar(0); onPick(i); }).addTo(g);
     });
   }, [ready, picks, w, card, fi]); // eslint-disable-line react-hooks/exhaustive-deps
@@ -228,7 +229,7 @@ function TopMap({ w, fav, onPlan, picks, fi, onPick }) {
         const shows = (SHOWS[card] || []).map((e) => ({ e, m: matchOf(e, w) })).sort((x, y) => y.m.length - x.m.length).slice(0, 8);
         const first = shows[0]?.e || {};
         const addr = first.addr;
-        const maps = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(addr ? `${card}, ${addr}` : `${ll[0]},${ll[1]}`)}`;
+        const maps = ll[0] != null ? `https://www.google.com/maps/dir/?api=1&destination=${ll[0]},${ll[1]}` : `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(`${card}, ${addr || 'London'}`)}`;
         const area = (addr || '').split(',').slice(-2, -1)[0]?.trim().split(' ')[0] || '';
         const g = { id: card, v: card, t: first.t, img: first.img, lat: ll[0], lng: ll[1], url: first.url, walk: walkMin(ll[0], ll[1]), art: fav };
         const others = picks.filter((p) => p.v !== card).slice(0, 4);
@@ -257,8 +258,8 @@ function TopMap({ w, fav, onPlan, picks, fi, onPick }) {
                             <p>{runs(e)}</p>
                             {(artists[e.id] || []).length > 0 && <p>{artists[e.id].slice(0, 6).join(', ')}</p>}
                             <div className="ltop-btns">
-                              <button className="ltop-plan" onClick={(ev) => { ev.stopPropagation(); onPlan({ ...g, t: e.t, img: e.img, url: e.url }); }}>Plan visit</button>
-                              <a className="ltop-maps" href={maps} target="_blank" rel="noreferrer" onClick={(ev) => ev.stopPropagation()}>Google Maps ↗</a>
+                              <a className="ltop-plan" href={e.url || `https://www.google.com/search?q=${encodeURIComponent(`${card} London`)}`} target="_blank" rel="noopener noreferrer" onClick={(ev) => { ev.stopPropagation(); onPlan({ ...g, t: e.t, img: e.img, url: e.url }); }}>Plan visit</a>
+                              <a className="ltop-maps" href={maps} target="_blank" rel="noopener noreferrer" onClick={(ev) => ev.stopPropagation()}>Directions</a>
                             </div>
                           </div>
                         )}
