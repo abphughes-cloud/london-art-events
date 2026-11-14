@@ -15,7 +15,7 @@ export default function Shell() {
   if (mode === 'app') return <Mooncalf />;
   return (
     <div className="deskwrap">
-      <iframe className="deskphone" src="/?phone=1" title="Mooncalf" allow="autoplay; vibrate" />
+      <iframe className="deskphone" src="/?phone=1" title="Palette" allow="autoplay; vibrate" />
     </div>
   );
 }

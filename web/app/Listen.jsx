@@ -45,7 +45,7 @@ export default function Listen({ art, rect, url, onClose, onLondon }) {
   function media() {
     if (!('mediaSession' in navigator)) return;
     try {
-      navigator.mediaSession.metadata = new MediaMetadata({ title: art.title, artist: art.artist, album: 'Mooncalf', artwork: [{ src: art.thumb, sizes: '512x512', type: 'image/jpeg' }] });
+      navigator.mediaSession.metadata = new MediaMetadata({ title: art.title, artist: art.artist, album: 'Palette', artwork: [{ src: art.thumb, sizes: '512x512', type: 'image/jpeg' }] });
       navigator.mediaSession.setActionHandler('play', () => play());
       navigator.mediaSession.setActionHandler('pause', () => pause());
     } catch {}

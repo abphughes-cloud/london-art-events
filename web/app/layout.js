@@ -1,10 +1,10 @@
 import './globals.css';
 
 export const metadata = {
-  title: 'Mooncalf',
+  title: 'Palette',
   description: 'Rate world art, find your taste, then find it in London.',
   manifest: '/manifest.webmanifest',
-  appleWebApp: { capable: true, statusBarStyle: 'black-translucent', title: 'Mooncalf' },
+  appleWebApp: { capable: true, statusBarStyle: 'black-translucent', title: 'Palette' },
 };
 
 export const viewport = {

@@ -37,7 +37,7 @@ export function toggleStory(art, url) {
       navigator.mediaSession.metadata = new MediaMetadata({
         title: art.title,
         artist: art.artist,
-        album: 'Mooncalf',
+        album: 'Palette',
         artwork: [{ src: art.thumb, sizes: '512x512', type: 'image/jpeg' }],
       });
       navigator.mediaSession.setActionHandler('play', () => { el.play(); current = art.id; emit(); });
