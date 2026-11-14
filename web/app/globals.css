@@ -551,3 +551,9 @@ a.ltop-plan, a.ltop-maps { text-decoration: none; }
 /* rating bars fill in solid yellow (keerthi 15:53) */
 .frost-clear { background: #ffd84d; box-shadow: 0 0 14px rgba(255,216,77,.6); }
 .tour-bar span { background: #ffd84d; box-shadow: 0 0 14px rgba(255,216,77,.6); }
+
+/* yellow hearts falling over the artwork (keerthi 15:53) */
+.hearts { position: absolute; inset: 0; z-index: 3; overflow: hidden; pointer-events: none; }
+.hearts svg { position: absolute; top: -40px; fill: #ffd84d; opacity: 0; animation-name: hfall; animation-timing-function: cubic-bezier(.35,.1,.6,1); animation-fill-mode: both; will-change: transform, opacity; }
+@keyframes hfall { 0% { opacity: 0; transform: translate(0, 0) rotate(var(--r)); } 8% { opacity: 1; } 75% { opacity: 1; } 100% { opacity: 0; transform: translate(var(--dx), 110vh) rotate(calc(var(--r) * -1)); } }
+@media (prefers-reduced-motion: reduce) { .hearts { display: none; } }

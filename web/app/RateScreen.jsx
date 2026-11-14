@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState } from 'react';
 import ArtFrame from './ArtFrame';
 import RatingSweep from './RatingSweep';
+import Hearts from './Hearts';
 import { pattern, tick } from '../lib/haptics';
 
 // Screen 1.r: full-bleed artwork, sideways drag anywhere rates it.
@@ -40,6 +41,7 @@ export default function RateScreen({ deck, ratings, onRate, sessionGoal, onDone 
   vRef.current = value;
   const wheelT = useRef(null);
   const commitRef = useRef(null);
+  const [burst, setBurst] = useState(0); // hearts when rated near the top
   useEffect(() => {
     const key = (e) => {
       if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
@@ -69,6 +71,7 @@ export default function RateScreen({ deck, ratings, onRate, sessionGoal, onDone 
 
   const commit = (v) => {
     if (leaving) return;
+    if (v >= 0.85) setBurst(Date.now());
     setDragging(false);
     pattern([12, 40, 12, 40, 12]);
     onRate(art.id, v);
@@ -157,6 +160,7 @@ export default function RateScreen({ deck, ratings, onRate, sessionGoal, onDone 
           onPointerCancel={(e) => { e.stopPropagation(); e.currentTarget._r = null; setDragging(false); }} />
       </div>
       <div className="progress" style={{ width: `${(done / sessionGoal) * 100}%` }} />
+      {burst > 0 && <Hearts key={burst} />}
     </section>
   );
 }
