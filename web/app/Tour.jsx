@@ -97,15 +97,22 @@ function TypeLine({ text }) {
   const [caret, setCaret] = useState(true);
   useEffect(() => {
     if (typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) { setN(text.length); setCaret(false); return; }
-    setN(0); setCaret(true);
-    let k = 0, iv = 0, end = 0;
-    const start = setTimeout(() => {
-      iv = setInterval(() => {
-        k += 1; setN(k);
-        if (k >= text.length) { clearInterval(iv); end = setTimeout(() => setCaret(false), 1200); }
-      }, 28);
-    }, 250);
-    return () => { clearTimeout(start); clearInterval(iv); clearTimeout(end); };
+    let k = 0, iv = 0, end = 0, start = 0;
+    const run = () => {
+      clearTimeout(start); clearInterval(iv); clearTimeout(end);
+      k = 0; setN(0); setCaret(true);
+      start = setTimeout(() => {
+        iv = setInterval(() => {
+          k += 1; setN(k);
+          if (k >= text.length) { clearInterval(iv); end = setTimeout(() => setCaret(false), 1200); }
+        }, 38);
+      }, 250);
+    };
+    // if the page was hidden when typing began, type it again once it is visible
+    const vis = () => { if (document.visibilityState === 'visible' && k < text.length) run(); };
+    if (document.visibilityState === 'visible') run(); else setN(0);
+    document.addEventListener('visibilitychange', vis);
+    return () => { clearTimeout(start); clearInterval(iv); clearTimeout(end); document.removeEventListener('visibilitychange', vis); };
   }, [text]);
   const chars = [...text];
   return (
