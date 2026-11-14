@@ -107,3 +107,10 @@ Then `node ingestion/prune.js` and check the count.
 - These are keyword rules with best-guess defaults, not judgement. Roughly 40% of events fell back to defaults (`medium:mixed media`, `style:conceptual`, `subject:identity and community`, `mood:calm`), so those values are over-represented and should be down-weighted in ranking.
 - Artworks are all historic or modern paintings, prints, drawings and photographs; events are almost all contemporary. **Match on mood, subject and style, not period or medium alone.**
 - Not done: the ranking in `ranking/rank.js` does not read the prefixed tags yet.
+
+## Personalisation engine (ranking/rank.js, refined)
+
+- `tasteFromSwipes(swipes, artworks)` turns artwork swipes (`[{ artwork_id, liked }]`) into weights on the shared taste tags; rarer traits count more. `learn(weights, event, "save" | "skip")` refines them from event feedback.
+- `rank(profile, events, { taste, home: { lat, lng }, max_km, discovery, limit, wildcard })`: hard filters (free slot from calendar, price, avoids, distance), then score = taste 0.62, distance 0.15, discovery (grassroots/emerging) 0.10, timing 0.08, price 0.05. One pick per venue; last pick is a wildcard outside their taste. Reasons like "Landscape and nature, like the art you've liked, a local find, free, 2.4 km away."
+- Contract unchanged: the extra inputs go in the options argument, output is still `Pick[]`. Copied to `supabase/functions/rank/` (edge function still not deployed and does not yet pass `taste`/`home`).
+- `node ranking/demo.js` runs two simulated swipers on the real data. They share 2 of 5 picks: event taste tags are keyword guesses, and painting dominates both personas' likes. Better event tags would sharpen this more than tuning weights.
