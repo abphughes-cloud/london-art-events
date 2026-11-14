@@ -80,7 +80,7 @@ export default function Tour({ onDone, go }) {
       {s.bar && (
         <div className="tour-bar"><span /></div>
       )}
-      <div key={i} className={`tour-line ${i === 0 ? 'welcome' : ''}`} style={{ top }}>{s.text}</div>
+      <div key={i} className={`tour-line ${i === 0 ? 'welcome' : ''}`} style={{ top }} aria-label={s.text}>{i === 0 ? <TypeLine text={s.text} /> : s.text}</div>
       <div className="tour-strip" />
       <div className="tour-foot">
         <button className="tour-skip" onClick={(e) => { e.stopPropagation(); onDone(); }}>Skip</button>
@@ -88,5 +88,35 @@ export default function Tour({ onDone, go }) {
         <button className="tour-next" onClick={(e) => { e.stopPropagation(); next(); }}>{last ? 'Start' : 'Next'}</button>
       </div>
     </div>
+  );
+}
+
+// The welcome line types itself out, fast; every letter is laid out from the start so nothing shifts (keerthi 16:39)
+function TypeLine({ text }) {
+  const [n, setN] = useState(0);
+  const [caret, setCaret] = useState(true);
+  useEffect(() => {
+    if (typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) { setN(text.length); setCaret(false); return; }
+    setN(0); setCaret(true);
+    let k = 0, iv = 0, end = 0;
+    const start = setTimeout(() => {
+      iv = setInterval(() => {
+        k += 1; setN(k);
+        if (k >= text.length) { clearInterval(iv); end = setTimeout(() => setCaret(false), 1200); }
+      }, 28);
+    }, 250);
+    return () => { clearTimeout(start); clearInterval(iv); clearTimeout(end); };
+  }, [text]);
+  const chars = [...text];
+  return (
+    <span aria-hidden="true">
+      {chars.map((c, j) => (
+        <span key={j}>
+          <span className={j < n ? 'tl-on' : 'tl-off'}>{c}</span>
+          {j === n - 1 && <i className={`tl-caret ${caret ? '' : 'gone'}`} />}
+        </span>
+      ))}
+      {n === 0 && <i className="tl-caret" />}
+    </span>
   );
 }

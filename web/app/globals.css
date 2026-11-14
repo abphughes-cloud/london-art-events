@@ -651,3 +651,9 @@ a.ltop-plan, a.ltop-maps { text-decoration: none; }
 /* welcome line in the artwork-title serif (keerthi 16:37) */
 .tour-line.welcome { font-family: var(--serif); font-style: italic; font-weight: 400; font-size: 30px; line-height: 1.15; max-width: 300px; }
 .tour-line.welcome { background: none; border: 0; box-shadow: none; -webkit-backdrop-filter: none; backdrop-filter: none; padding: 0; text-shadow: 0 2px 18px rgba(0,0,0,.65); }
+/* welcome line typing (keerthi 16:39) */
+.tl-off { opacity: 0; }
+.tl-caret { display: inline-block; position: relative; width: 0; height: 0.9em; vertical-align: -0.1em; }
+.tl-caret::after { content: ''; position: absolute; left: 1px; top: 0; bottom: 0; width: 1.5px; background: currentColor; animation: tlblink .8s steps(1) infinite; }
+.tl-caret.gone::after { opacity: 0; transition: opacity .3s; animation: none; }
+@keyframes tlblink { 50% { opacity: 0; } }
