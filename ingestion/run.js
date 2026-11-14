@@ -1,0 +1,84 @@
+// Build the seed dataset: run every source, clean, dedupe, keep the next two weeks.
+//   node ingestion/run.js                 ArtRabbit only (no API key needed)
+//   node ingestion/run.js --pages 8       more ArtRabbit pages (20 cards each)
+//   node ingestion/run.js --no-ai         skip Claude even if ANTHROPIC_API_KEY is set
+// Writes data/events.json (the app can read this until Supabase is loaded) and data/seed.sql.
+
+import fs from "node:fs";
+import "./env.js";
+import * as artrabbit from "./adapters/artrabbit.js";
+import { normalize, londonToday, addDays } from "./normalize.js";
+import { dedupe } from "./dedupe.js";
+import { extractEvents, enrichEvents } from "./extract.js";
+import { toSeedSql } from "./sql.js";
+import { keywordTags } from "./keyword-tags.js";
+
+const args = process.argv.slice(2);
+const flag = (name, dflt) => { const i = args.indexOf(name); return i === -1 ? dflt : args[i + 1]; };
+const pages = Number(flag("--pages", 5));
+const days = Number(flag("--days", 14));
+const useAI = !args.includes("--no-ai") && !!process.env.ANTHROPIC_API_KEY;
+
+const today = londonToday();
+const horizon = addDays(today, days);
+const sourcesFile = new URL("../data/sources.json", import.meta.url);
+const llmSources = fs.existsSync(sourcesFile) ? JSON.parse(fs.readFileSync(sourcesFile, "utf8")) : [];
+
+const all = [];
+const sourceRows = [];
+
+console.log(`ArtRabbit: ${pages} pages…`);
+const ar = (await artrabbit.fetchEvents({ pages })).map((r) => normalize(r)).filter(Boolean);
+console.log(`  ${ar.length} records`);
+all.push(...ar);
+sourceRows.push({ ...artrabbit.source, last_count: ar.length });
+
+if (useAI) {
+  for (const s of llmSources) {
+    try {
+      console.log(`${s.name}: extracting with Claude…`);
+      const found = await extractEvents({ url: s.url }, { sourceName: s.name, today });
+      console.log(`  ${found.length} events`);
+      all.push(...found);
+      sourceRows.push({ name: s.name, url: s.url, method: "llm_extract", priority: s.priority ?? 2, last_count: found.length });
+    } catch (err) {
+      console.warn(`  skipped: ${err.message}`); // one broken source never blocks the rest
+    }
+  }
+} else if (llmSources.length) {
+  console.log(`Skipping ${llmSources.length} AI sources (set ANTHROPIC_API_KEY in .env to include them).`);
+}
+
+const inWindow = all.filter((e) => (e.end_date || e.start_date) >= today && e.start_date <= horizon);
+let { events, merged } = dedupe(inWindow);
+
+if (useAI) {
+  console.log("Tagging art forms and tags with Claude…");
+  try { events = await enrichEvents(events); }
+  catch (err) { console.warn(`  Claude tagging failed (${err.message}); using keyword tags only.`); }
+}
+events = events.map(keywordTags);
+
+events.sort((a, b) => a.start_date.localeCompare(b.start_date) || a.title.localeCompare(b.title));
+events = events.map(({ also_listed_on, ...e }, i) => ({ id: stableId(e.dedupe_key), ...e }));
+
+fs.mkdirSync(new URL("../data/", import.meta.url), { recursive: true });
+fs.writeFileSync(new URL("../data/events.json", import.meta.url), JSON.stringify(events, null, 2));
+fs.writeFileSync(new URL("../data/seed.sql", import.meta.url), toSeedSql(events, sourceRows));
+
+const byType = Object.entries(events.reduce((m, e) => ((m[e.event_type] = (m[e.event_type] || 0) + 1), m), {}));
+console.log(`\n${events.length} events (${today} to ${horizon}), ${merged} duplicates merged.`);
+console.log(byType.map(([t, n]) => `${t}: ${n}`).join(", "));
+console.log("Wrote data/events.json and data/seed.sql");
+
+// Deterministic UUID-shaped id from the dedupe key, so re-runs keep the same ids.
+function stableId(key) {
+  let h1 = 0x811c9dc5, h2 = 0x01000193, h3 = 0x12345678, h4 = 0x9abcdef0;
+  for (let i = 0; i < key.length; i++) {
+    const c = key.charCodeAt(i);
+    h1 = Math.imul(h1 ^ c, 16777619) >>> 0; h2 = Math.imul(h2 ^ c, 2246822519) >>> 0;
+    h3 = Math.imul(h3 ^ c, 3266489917) >>> 0; h4 = Math.imul(h4 ^ c, 668265263) >>> 0;
+  }
+  const hex = [h1, h2, h3, h4].map((h) => h.toString(16).padStart(8, "0")).join("");
+  return `${hex.slice(0, 8)}-${hex.slice(8, 12)}-4${hex.slice(13, 16)}-a${hex.slice(17, 20)}-${hex.slice(20, 32)}`;
+}

@@ -1,0 +1,20 @@
+{
+  "name": "london-art-events",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "seed": "node ingestion/run.js",
+    "extract": "node ingestion/extract-cli.js",
+    "load": "node ingestion/load.js",
+    "rank": "node ranking/demo.js",
+    "test": "node --test",
+    "sync:edge": "node -e \"require('fs').copyFileSync('ranking/rank.js','supabase/functions/rank/rank.js')\""
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^1.8.0",
+    "zod": "^4.6.7"
+  }
+}
