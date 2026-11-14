@@ -397,3 +397,19 @@ button { background: none; border: 0; color: inherit; cursor: pointer; }
 @keyframes mglow { 50% { box-shadow: 0 0 3px 1px rgba(255,207,106,.3); opacity: .6; } }
 .mrank { color: #111; background: #ffd98a; box-shadow: 0 0 16px 5px rgba(255,207,106,.6); }
 .mrank.on { background: #fff; }
+
+/* Visit log tab (keerthi 14:59) */
+.tabs { gap: 18px; }
+.vlog { background: #0b0b0c; display: flex; flex-direction: column; padding-top: calc(env(safe-area-inset-top) + 52px); }
+.vl-find { margin: 0 14px 10px; padding: 11px 14px; border: 0; border-radius: 12px; outline: none; font: 400 15px var(--grotesk); color: #fff; background: rgba(255,255,255,.1); user-select: text; -webkit-user-select: text; }
+.vl-find::placeholder { color: rgba(255,255,255,.45); }
+.vl-list { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; padding: 0 14px calc(env(safe-area-inset-bottom) + 14px); }
+.vl-card { position: relative; height: 46vh; margin-bottom: 12px; border-radius: 16px; overflow: hidden; background: linear-gradient(140deg, #2a2418, #141110); }
+.vl-img { position: absolute; inset: 0; background-size: cover; background-position: center; }
+.vl-shade { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,.82), rgba(0,0,0,0) 62%); }
+.vl-info { position: absolute; left: 16px; right: 16px; bottom: 16px; }
+.vl-info h3 { margin: 0; font-family: var(--serif); font-style: italic; font-weight: 400; font-size: 26px; line-height: 1.04; color: #fff; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.vl-info span { display: block; margin-top: 4px; font-size: 12px; color: rgba(255,255,255,.7); }
+.vl-slide { position: relative; height: 22px; margin-top: 12px; border-radius: 11px; overflow: hidden; touch-action: none; cursor: pointer; background: rgba(255,255,255,.16); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); box-shadow: inset 0 0 0 1px rgba(255,255,255,.25); }
+.vl-slide i { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 11px; transition: width .08s linear; pointer-events: none; }
+.vl-none { margin: 40px 0; text-align: center; color: rgba(255,255,255,.5); }

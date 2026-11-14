@@ -1,6 +1,7 @@
 'use client';
 import { useEffect, useMemo, useState } from 'react';
 import Tour from './Tour';
+import VisitLog from './VisitLog';
 import { loadArtworks, loadPodcasts, PODCAST_IDS } from '../lib/data';
 import RateScreen from './RateScreen';
 import TasteScreen from './TasteScreen';
@@ -128,6 +129,7 @@ export default function Mooncalf() {
       {tab === 'visit' && view === 'visits' && (
         <Visits visits={visits} all={all} onBack={() => setView('london')} />
       )}
+      {tab === 'log' && <VisitLog visits={visits} />}
       {tab === 'discover' && (
         <button className="corner" aria-label={view === 'taste' ? 'Rate more' : 'Your taste'}
           onClick={() => setView(view === 'taste' ? 'rate' : 'taste')}>
@@ -142,6 +144,7 @@ export default function Mooncalf() {
       <nav className="tabs">
         <button className={tab === 'visit' ? 'on' : ''} onClick={() => { setTab('visit'); setView('london'); }}>Visit</button>
         <button className={tab === 'discover' ? 'on' : ''} onClick={() => { setTab('discover'); setView('rate'); }}>Discover</button>
+        <button className={tab === 'log' ? 'on' : ''} onClick={() => { setTab('log'); setView('log'); }}>Visit log</button>
       </nav>
       <Grain />
       {listen && (
