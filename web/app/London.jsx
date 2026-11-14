@@ -112,7 +112,7 @@ export default function London({ all, ratings, saved, onSave, onPlan, onBack }) 
       <div className={`lmap ${view === 'map' ? 'on' : ''}`}>
         <div className="lstage" style={{ transform: `translate(-50%,-50%) scale(${k})` }}>
           <svg viewBox="0 0 300 620" width="300" height="620" className="lriver">
-            <path d={RIVER} fill="none" stroke="#f0c95a" strokeWidth="3.4" strokeLinecap="round" opacity=".9" />
+            <path d={RIVER} fill="none" stroke="#ffd84d" strokeWidth="3.4" strokeLinecap="round" opacity=".9" />
           </svg>
           {picks.map((p, i) => {
             const [x, y] = XY(p.lat, p.lng);
@@ -190,7 +190,7 @@ function TopMap({ w, fav, onPlan, picks, fi, onPick }) {
       L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Reference/MapServer/tile/{z}/{y}/{x}', {
         maxZoom: 18, maxNativeZoom: 16, detectRetina: true, className: 'ltiles-labels',
       }).addTo(m);
-      // the yellow Thames line is off (keerthi 15:45); to restore: L.polyline(TH, { color: '#f0c95a', weight: 5, opacity: 0.95, lineCap: 'round', lineJoin: 'round', smoothFactor: 1.5, interactive: false }).addTo(m);
+      // the yellow Thames line is off (keerthi 15:45); to restore: L.polyline(TH, { color: '#ffd84d', weight: 5, opacity: 0.95, lineCap: 'round', lineJoin: 'round', smoothFactor: 1.5, interactive: false }).addTo(m);
       m.attributionControl.setPrefix(false);
       map.current = m; layer.current = L.layerGroup().addTo(m); setReady(true);
       // the map box changes height as the layout settles; re-measure so no dot hides under the list
@@ -274,7 +274,7 @@ function TopMap({ w, fav, onPlan, picks, fi, onPick }) {
               {others.map((p) => (
                 <div key={p.v} className="g5-vis" onClick={() => { setCard(p.v); setBar(0); tick(6); }}>
                   <h2 className="g5-g">{p.v}</h2>
-                  <div className="g5-meta">{p.walk} min walk · {p.pct}% match</div>
+                  <div className="g5-meta">{p.walk} min walk{Object.values(w || {}).some((x) => x > 0) && p.pct > 0 ? ` · ${p.pct}% match` : ''}</div>
                   <div className="g5-bars">
                     {(SHOWS[p.v] || []).slice(0, 4).map((e) => <div key={e.id} className="g5-bar thin"><i style={{ backgroundImage: bgi(e) }} /></div>)}
                   </div>
