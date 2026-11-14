@@ -6,7 +6,7 @@ const STEPS = [
   { sel: '.ltop', text: 'Every light is an art event.', sub: 'Tap one to see what’s on.' },
   { sel: '.tabs button:nth-child(3)', text: 'Visit log.', sub: 'Slide to rate what you saw.' },
   { sel: '.tabs button:nth-child(2)', text: 'Discover.', sub: 'Rate art, sharpen your matches.' },
-  { bar: true, text: 'Slide to rate.', sub: 'Let go for the next one.' },
+  { bar: true, text: 'Slide the bar to rate.', sub: 'Further right means you like it more. Let go for the next artwork.' },
 ];
 
 export default function Tour({ onDone }) {

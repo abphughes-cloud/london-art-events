@@ -452,3 +452,8 @@ button { background: none; border: 0; color: inherit; cursor: pointer; }
 /* no numbers (keerthi 15:09) */
 .lrank { display: none; }
 .mrank { font-size: 0; width: 16px; height: 16px; margin: 5px; }
+
+/* tutorial: the demo bar fills left to right and back (2s each way) with a finger dot on the edge */
+.tour-bar span { animation: tfill2 2s ease-in-out infinite alternate; min-width: 11px; }
+.tour-bar span::after { content: ''; position: absolute; right: -11px; top: 0; width: 22px; height: 22px; border-radius: 50%; background: rgba(255,255,255,.85); box-shadow: 0 1px 8px rgba(0,0,0,.35); }
+@keyframes tfill2 { from { width: 0; } to { width: 88%; } }
