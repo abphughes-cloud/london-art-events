@@ -1,7 +1,0 @@
-# Kingston Museum / Stanley Picker Gallery | Kingston | https://www.stanleypickergallery.org/
-### PAGE https://www.stanleypickergallery.org/
-stanleypickergallery: 
- F ree M ap of C reative A ctivities in K ingston [https://www.stanleypickergallery.org/wp-content/uploads/sites/8/2024/09/Connect-Create-Contemplate-Map-Online-Version.pdf] 
- D orich H ouse M useum [https://www.dorichhousemuseum.org.uk/] 
- K ingston U niversity T own H ouse [https://www.kingston.ac.uk/aboutkingstonuniversity/location/penrhyn-road/town-house/] 
- S tanley P icker T rust [https://www.stanleypickergallery.org/about/stanley-picker-trust/]
