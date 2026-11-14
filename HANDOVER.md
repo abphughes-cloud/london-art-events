@@ -1,42 +1,89 @@
-# Handover for a new chat: London art events, data side
+# Handover for Codex: London art events, data side
 
-Paste this into a new chat (Claude Code or Codex) opened **in this folder**:
-`C:\Users\artyh\OneDrive\Documents\Special projects\Breadcrumb`
-
-Last updated 14 Nov 2026 by Claude. Fuller detail: `HANDOVER-CODEX.md` (rules, file map), `README.md` (commands), `contract/HANDOVER.md` (original plan and judging).
+Open a new chat **in this folder**: `C:\Users\artyh\OneDrive\Documents\Special projects\Breadcrumb`
+Last updated 14 Nov 2026 (afternoon) by Claude. This file replaces `HANDOVER-CODEX.md` (older, kept for history).
 
 ## Situation
 
-LBS AI Cup 2026 hackathon, **submit on Commfy by 15:30 GMT, 14 Nov**. Arthur builds the data side here; partner builds the app in Lovable. Product: aggregate London art events (big and small, especially the long tail: private views, open studios, free workshops, community events), then personalise a "Your art week" feed. Only code written after Fri 13 Nov 19:00 counts; list every source and library in the submission.
+LBS AI Cup 2026 hackathon, **submit on Commfy by 15:30 GMT, 14 Nov**. Arthur builds the data side here; his partner builds the app in Lovable and reads our Supabase. Product: London art events with the emphasis on the **long tail** (grassroots venues, student shows, workshops, private views, open studios), then a personalised "Your art week". Only code written after Fri 13 Nov 19:00 counts; every source and library must be listed in the submission.
 
-## Arthur's current job
+## How Arthur wants you to work
 
-**Massively expand the sources, especially the long tail.** Personalisation comes after.
+- **Say how long anything will take before you start it**, if it's more than a few seconds, and why. Never work silently for minutes.
+- Short, plain-English updates. Report honestly, including what failed.
+- Dataset **quality over quantity**: an event with no findable location is left out.
+- Go fast: run slow commands in the background.
 
 ## Rules
 
-- No LLM API key or LLM calls yet (`ANTHROPIC_API_KEY` stays empty). All ingestion is plain parsing.
-- Never print or commit secrets. `.env` holds `SUPABASE_URL`, `SUPABASE_ANON_KEY` (publishable, shareable) and `SUPABASE_SERVICE_ROLE_KEY` (secret; never share).
+- No LLM **API** key or API calls (`ANTHROPIC_API_KEY` stays empty). Reading venue pages yourself inside the chat session is allowed and is how `data/read-events.json` was made; say so in the submission.
+- Never print or commit secrets. `.env` holds `SUPABASE_URL`, `SUPABASE_ANON_KEY` (publishable) and `SUPABASE_SERVICE_ROLE_KEY` (secret).
 - Don't change `contract/schema.sql` or `contract/event.ts` without asking.
-- ~1 request/second, don't bypass 403s/logins/robots.txt, no Instagram, keep `source_url` on every record.
-- `npm test` before committing. Repo is local git only (no GitHub remote yet).
+- Respect robots.txt; never work around a 403/404/login. Known blocked, do not fetch: Tate, Bow Arts, ACAVA, Ocula, Southbank Centre, Lewisham Libraries, Slade (UCL), ArtRabbit event detail pages. No Instagram, no Eventbrite/Meetup scraping.
+- Keep `source_url` on every record. `npm test` before committing. Local git only, no remote.
 
-## State
+## State right now
 
-- Supabase project `london-art-events` (ref `kpgigxnvoxdeavywigyf`, London). Tables `events`, `sources`. **319 events loaded and verified** with the publishable key; public key can't write.
-- Sources running (plain parsers in `ingestion/adapters/`): ArtRabbit 124, GalleriesNow 124, IanVisits 67, SPACE Studios 4 (after dedupe, window 14–28 Nov). 177 duplicates merged.
-- `data/source-research.md`: 55 candidate sources checked by Codex, with a top 10 (Arts Calendar, On View, We Are Lewisham, Cockpit Studios, Pigment Press, UAL Shows, Whitechapel, Lewisham Libraries, South London Gallery, Thames-Side).
-- Ranking (`ranking/rank.js`) works locally; edge function written, not deployed. Personalisation design not started.
+- **Supabase** project `london-art-events` (ref `kpgigxnvoxdeavywigyf`), moved today into its own organisation **Breadcrumb** so the partner can be invited without seeing Arthur's other projects. URL and keys unchanged. Arthur invites the partner himself.
+- **586 events, 14 Nov to 31 Dec, 314 venues, 68 sources**, verified in Supabase with the publishable key. (If batch 3 below was loaded, the number is higher: check `git log` and the count.)
+- **Every event has venue name, postcode, area, lat/lng.** Thinner fields: start time ~20%, description ~45%, price known ~55%, art form ~60%.
+- By type: exhibition 354, workshop 151, talk 21, private view 12, fair 10, tour 9, open studio 6, other 23.
+- 19 tests pass. All work is committed.
 
-## Commands
+## How the build works
 
-`npm run seed` (all sources → `data/events.json`, `data/seed.sql`) · `npm run load` (upsert to Supabase) · `npm test` · `npm run rank` (demo picks)
+`npm run seed` (about 1–2 minutes) runs everything and writes `data/events.json` + `data/seed.sql`:
 
-## Next (source expansion plan, nothing started yet)
+1. **Parsers** in `ingestion/adapters/`: `artrabbit`, `galleriesnow`, `ianvisits`, `space`, `artscalendar` (exhibitions + life-drawing groups + workshops), `wearelewisham` (borough community listings), and `small.js` (Cockpit Studios, Pigment Press, Thames-Side Studios, Goldsmiths, Eat Work Art, UAL Shows). Sources run in parallel.
+2. **Registry** `data/registry.json`: one row per site with a feed, read by `adapters/generic.js` (iCal, JSON-LD, WordPress Tribe). Currently SET, Stanley Arts, Freud Museum, London Sculpture Workshop.
+3. **Read events** `data/read-events.json`: events read from grassroots venues' own what's-on pages (free text no parser handles). Generated by `work/build-read-events.mjs`. **To add more, add a venue block to that file and run `node work/build-read-events.mjs`.**
+4. Window filter (default 47 days, to 31 Dec; `--days N`), then `dedupe.js`.
+5. **`locate.js` quality gate**: shares facts between listings of the same venue, postcode → coordinates and borough via postcodes.io, venue name → coordinates via OpenStreetMap Nominatim (1/second, cached in `data/venue-cache.json`), then drops anything without a venue and a London location.
+6. `keyword-tags.js` adds art forms and tags.
 
-1. **Generic readers** in `ingestion/adapters/generic.js`: iCal (.ics), JSON-LD schema.org `Event` in a page, WordPress Tribe Events (`/wp-json/tribe/events/v1/events`). Driven by a registry file `data/registry.json` (`{ name, url, method, priority }`) so a new source is one row, not new code. Wire into `ingestion/run.js`.
-2. **Probe the candidates** in `data/source-research.md` (≈33 marked "works") for those formats; anything that matches goes straight into the registry.
-3. **Custom adapters** (same pattern as `ingestion/adapters/space.js`) for the highest-value ones without a feed, in this order: Arts Calendar (~141), On View (~45), We Are Lewisham (~11, community), Cockpit Studios, Pigment Press, UAL Shows, Thames-Side, Whitechapel, South London Gallery, Lewisham Libraries. Add a small test for each.
-4. **Venue discovery** (`ingestion/discover.js`): take venue websites from GalleriesNow gallery pages and other listings, check each once for iCal / JSON-LD / Tribe, add hits to the registry. Write `data/discovery-report.json` (checked, found, by method). This is both a big long-tail win and the pitch's automation evidence.
-5. After each step: `npm run seed`, `npm run load`, report events per source and the new total; commit.
-6. Then: personalisation engine (taste input, scoring signals, learning from save/skip, wildcard pick).
+Then: `npm run load` (upsert to Supabase) and `node ingestion/prune.js` (delete rows no longer in the build).
+
+**Known bug:** on this Windows machine `npm run load` sometimes dies with `Assertion failed: !(handle->flags & UV_HANDLE_CLOSING)` after writing only part of the data. **Always check the count afterwards and re-run until it matches:**
+
+```
+node -e "import('./ingestion/env.js').then(async()=>{const a=await fetch(process.env.SUPABASE_URL+'/rest/v1/events?select=id',{headers:{apikey:process.env.SUPABASE_ANON_KEY,Prefer:'count=exact',Range:'0-0'}});console.log(a.headers.get('content-range'))})"
+```
+
+Likely fix (not done): end `ingestion/load.js` with an explicit `process.exit(0)` after the last request, or set `process.exitCode` and avoid `import.meta.main` top-level await.
+
+## Adding more long-tail venues (the main ongoing job)
+
+1. Put `{ name, url, area }` rows in a JSON file (see `data/venue-seeds.json`, `data/venue-seeds-2.json`, `work/read-batch*.json` for what has been tried).
+2. `node ingestion/fetch-pages.js <file>` saves each site's readable what's-on text to `work/read/` (git-ignored). About 1 minute for 90 sites.
+3. Read the dated lines, keep only clearly dated visual-art events, add them to `work/build-read-events.mjs`, run it, then `npm run seed`, load, prune, commit.
+4. `node ingestion/discover.js --file <file>` checks sites for a feed instead; hits can be added to the registry with `--add`. Result so far: 4 feeds out of 121 sites (`data/discovery-report.json`).
+
+Hit rates so far: batch 1 gave 68 events from 57 pages, batch 2 gave 61 from 93. Roughly a third of sites don't respond or only render in a browser.
+
+## Known gaps and caveats
+
+- **Postcodes for the read venues were mostly supplied from memory**, not taken from the page. They resolve to valid London postcodes but have not been spot-checked. Worth checking 10 at random.
+- Nominatim name matches may put a few pins in the wrong place.
+- Matt's Gallery is dropped (postcode `SW11 7AN` does not resolve at postcodes.io).
+- Not read yet / no readable dates: RCA, Royal Drawing School, City & Guilds Art School, Studio Voltaire, PEER, Print Club London, Kiln Rooms detail, Candid Arts (browser-only site), Open Art Market (Portobello), Old Diorama workshops page, Nunnery Gallery (Bow Arts is blocked; its current exhibition is in via Arts Calendar).
+- ArtRabbit reads 5 listing pages (`--pages N` for more); deeper pages would add smaller shows.
+- IanVisits start dates are approximate (first day seen open).
+- Read events are a snapshot: a rebuild keeps them but does not refresh them.
+
+## Next steps, in order
+
+1. Check the Supabase count matches `data/events.json` (see the command above).
+2. More long-tail batches if Arthur asks (method above). Good untried categories: borough "what's on" listings like We Are Lewisham for other boroughs, ceramics and print studios, art school public programmes, community centres.
+3. Fix the loader bug.
+4. Personalisation: `ranking/rank.js` works locally (`npm run rank`); the edge function in `supabase/functions/rank/` is written but **not deployed**. The app can import `ranking/rank.js` directly as a fallback.
+5. Submission write-up for Commfy (fields in `contract/HANDOVER.md`).
+
+## What to list in the submission
+
+**Sources (each record links back via `source_url`):** ArtRabbit, GalleriesNow, IanVisits, SPACE Studios, Arts Calendar, We Are Lewisham, Cockpit Studios, Pigment Press, Thames-Side Studios, Goldsmiths, Eat Work Art, UAL Shows, SET, Stanley Arts, Freud Museum, London Sculpture Workshop, plus the grassroots venues' own websites listed under `sources` in `data/read-events.json`.
+
+**Services:** Supabase (database), postcodes.io (postcode lookup), OpenStreetMap Nominatim (venue geocoding).
+
+**Libraries:** `@anthropic-ai/sdk`, `zod` (only in the switched-off AI paths), `@supabase/supabase-js` (edge function).
+
+**AI use:** code written with Claude Code; events in `data/read-events.json` were read from venue pages by Claude inside a Claude Code session. No LLM API calls run in the pipeline. Pitch line: the same reading step becomes an automatic LLM refresh in production (`ingestion/extract.js` already exists for it).
