@@ -138,3 +138,85 @@ button { background: none; border: 0; color: inherit; cursor: pointer; }
 /* opening film (screen 0): plays once per visit over the app */
 .film { position: fixed; inset: 0; width: 100%; height: 100%; border: 0; z-index: 100; background: #0b0b0c; transition: opacity .9s ease, filter .9s ease; }
 .film.out { opacity: 0; filter: blur(12px); pointer-events: none; }
+
+/* corner shortcut: Discover -> London, You -> Visits */
+.corner { position: absolute; z-index: 20; top: calc(env(safe-area-inset-top) + 14px); right: 10px; padding: 6px; }
+.tiny { font-family: var(--grotesk); font-size: 10px; letter-spacing: .09em; text-transform: uppercase; font-variant-numeric: tabular-nums; }
+
+/* 3.a London picks */
+.london { background: #0b0b0c; }
+.lbands { padding-top: 0; transition: opacity .7s ease, filter .7s ease; }
+.lbands.folded { opacity: 0; filter: blur(12px); pointer-events: none; }
+.lbands .band-name { right: 20px; max-width: 80%; }
+.lmeta { position: absolute; left: 19px; bottom: 50px; z-index: 2; display: flex; gap: 6px; align-items: center; font: 500 10px/1 var(--grotesk); letter-spacing: .09em;
+  text-shadow: 0 1px 6px rgba(0,0,0,.5); opacity: 0; transition: opacity .6s ease .2s; }
+.band.focus .lmeta, .lmeta.static { opacity: .85; }
+.lmeta.static { position: static; }
+.lmeta .ico { stroke-width: 1.7; }
+.ltog { position: absolute; z-index: 20; top: calc(env(safe-area-inset-top) + 14px); right: 10px; padding: 6px; }
+.lmap { position: absolute; inset: 0; opacity: 0; transition: opacity .8s ease .2s; pointer-events: none; overflow: hidden; }
+.lmap.on { opacity: 1; pointer-events: auto; }
+.lstage { position: absolute; left: 50%; top: 50%; width: 300px; height: 620px; }
+.lriver { position: absolute; inset: 0; filter: drop-shadow(0 0 4px rgba(240,201,90,.5)); }
+.llight { position: absolute; transform: translate(-50%,-50%); border-radius: 50%; background: #ffd98a; padding: 0;
+  box-shadow: 0 0 4px 1px rgba(255,205,110,.85), 0 0 10px 2px rgba(255,190,90,.35); animation: tw 2.4s ease-in-out infinite alternate; }
+.llight::after { content: ''; position: absolute; inset: -12px; }
+.llight.on { animation: none; transform: translate(-50%,-50%) scale(1.6); }
+@keyframes tw { 0% { opacity: .55; } 100% { opacity: 1; } }
+.llabel { position: absolute; display: flex; flex-direction: column; gap: 6px; pointer-events: none; animation: blurin .8s ease both; }
+.llabel span { font-family: var(--serif); font-style: italic; font-size: 13px; white-space: nowrap; }
+.llabel i { display: block; width: 44px; height: 5px; border-radius: 3px; background-size: cover; background-position: center; }
+.lvig { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse at 50% 50%, transparent 0 38%, rgba(11,11,12,.8) 96%); }
+.gdet { position: fixed; inset: 0; z-index: 30; background: #0b0b0c; transition: clip-path .78s cubic-bezier(.7,0,.2,1); }
+.gtop { position: absolute; left: 6px; right: 8px; top: calc(env(safe-area-inset-top) + 12px); display: flex; align-items: center; z-index: 3; }
+.gtop > * { padding: 8px; color: #fff; }
+.gtop .gold .ico { stroke: #ffd98a; fill: #ffd98a; }
+.ginfo { position: absolute; left: 22px; right: 24px; bottom: calc(env(safe-area-inset-bottom) + 96px); display: flex; flex-direction: column; gap: 12px; z-index: 2; animation: blurin 1s ease .5s both; }
+.gname { font-family: var(--serif); font-style: italic; font-weight: 400; font-size: 44px; line-height: .98; text-shadow: 0 1px 16px rgba(0,0,0,.4); }
+.gshow { font-family: var(--serif); font-style: italic; font-size: 20px; color: #fff; opacity: .9; text-decoration: none; text-shadow: 0 1px 10px rgba(0,0,0,.5); }
+
+/* 4.a plan a visit */
+.plan { position: fixed; inset: 0; z-index: 45; background: #0d0d0d; touch-action: none; animation: blurin .8s ease both; }
+.pdusk { position: absolute; inset: 0; background: linear-gradient(180deg,#0a1226,#1c0f0a); pointer-events: none; }
+.pscrim { position: absolute; inset: 0; pointer-events: none; background: linear-gradient(180deg,rgba(0,0,0,.42),rgba(0,0,0,.08) 24%,rgba(0,0,0,.1) 46%,rgba(0,0,0,.74) 78%,rgba(0,0,0,.86)); }
+.ptitle { top: calc(env(safe-area-inset-top) + 62px); right: 64px; }
+.pok { position: absolute; z-index: 5; right: 12px; top: calc(env(safe-area-inset-top) + 14px); padding: 6px; }
+.pmodes { position: absolute; z-index: 5; left: 14px; top: calc(env(safe-area-inset-top) + 140px); display: flex; }
+.pmodes button { display: flex; align-items: center; gap: 6px; padding: 6px; opacity: .38; transition: opacity .5s; }
+.pmodes button.on { opacity: 1; }
+.pmodes .tiny { display: none; }
+.pmodes .on .tiny { display: inline; }
+.pweek { position: absolute; z-index: 5; left: 17px; right: 17px; bottom: calc(env(safe-area-inset-bottom) + 190px); display: flex; justify-content: space-between; align-items: flex-end; }
+.pweek button { width: 34px; display: flex; flex-direction: column; align-items: center; gap: 7px; }
+.pweek b { display: block; width: 4px; border-radius: 6px; background: rgba(255,255,255,.36); transition: width .6s, background .5s; }
+.pweek .on b { width: 12px; }
+.pweek .tiny { opacity: .42; font-style: normal; }
+.pweek em.tiny { opacity: 0; }
+.pweek .on .tiny { opacity: 1; }
+.psemi { position: absolute; z-index: 4; left: 50%; bottom: calc(env(safe-area-inset-bottom) + 64px); width: 200px; height: 100px; transform: translateX(-50%); border-radius: 100px 100px 0 0; overflow: hidden; pointer-events: none; }
+.psemi.show { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+.ptime { position: absolute; z-index: 5; transform: translate(-50%, 50%); text-shadow: 0 1px 6px rgba(0,0,0,.6); pointer-events: none; }
+.psaved { position: absolute; inset: 0; z-index: 10; background: #0d0d0d; animation: blurin .9s ease both; }
+.pwhen { position: absolute; left: 22px; top: calc(env(safe-area-inset-top) + 66px); z-index: 3; text-shadow: 0 1px 6px rgba(0,0,0,.6); }
+
+/* 5.d visits */
+.visits { background: #0d0d0d; }
+.visits.empty { display: grid; place-items: center; }
+.vempty { opacity: .4; }
+.vscroll { position: absolute; inset: 0; overflow-y: auto; padding-bottom: 110px; }
+.vhero { position: relative; height: 62vh; overflow: hidden; }
+.vfade { position: absolute; inset: 0; background: linear-gradient(180deg,rgba(13,13,13,0) 46%,rgba(13,13,13,.72) 82%,#0d0d0d); }
+.vt { position: absolute; left: 22px; right: 22px; top: calc(env(safe-area-inset-top) + 66px); font-family: var(--serif); font-style: italic; font-weight: 400; font-size: 38px; line-height: 1; text-shadow: 0 1px 12px rgba(0,0,0,.35); }
+.vhero .vmeta { position: absolute; left: 22px; top: calc(env(safe-area-inset-top) + 150px); }
+.vmeta { opacity: .75; }
+.vtile { position: relative; overflow: hidden; border-radius: 12px; }
+.vtile i { position: absolute; inset: -6%; background-size: cover; background-position: center; animation: drift 24s ease-in-out infinite alternate; }
+.vtile span { position: absolute; left: 10px; right: 8px; bottom: 9px; font-family: var(--serif); font-style: italic; font-size: 16px; line-height: 1.02; text-shadow: 0 1px 8px rgba(0,0,0,.5); }
+.vhero .vtile { position: absolute; left: 22px; bottom: 12px; width: 46%; height: 110px; }
+.vline { position: relative; padding: 30px 0 0 0; }
+.vev { position: relative; padding: 0 0 34px 44px; }
+.vdot { position: absolute; left: 19px; top: 9px; width: 7px; height: 7px; border-radius: 50%; }
+.vg { font-family: var(--serif); font-style: italic; font-size: 25px; line-height: 1; }
+.vev .vmeta { margin-top: 7px; }
+.vstrip { display: flex; gap: 8px; margin-top: 14px; overflow-x: auto; padding-right: 22px; scrollbar-width: none; }
+.vtile.wide { flex: none; width: 150px; height: 112px; }
