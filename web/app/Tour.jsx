@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 // Tutorial: one step per feature, one short line each (keerthi 15:42).
 // A gold ring hugs the real element; steps without an element show a small drawing instead.
 const STEPS = [
-  { sel: '.tabs', text: 'Three tabs: Visit, Discover and Visit log.' },
+  { sel: '.tabs', text: 'Three tabs: Visit, Discover and Log.' },
   { sel: '.ltop', text: 'Each yellow dot is an art event. Tap one.', tap: true },
   { demo: 'x', text: 'You’ll see its shows. Tap x to go back to the map.' },
   { sel: '.lbands.near .nb', alt: '.lgrab', text: 'Shows near you, nearest first. Scroll to open each one.' },
@@ -12,7 +12,7 @@ const STEPS = [
   { sel: '.tabs button:nth-child(2)', text: 'Discover: rate art to sharpen your matches.' },
   { bar: true, text: 'Slide right the more you like it.' },
   { demo: 'speaker', text: 'Tap the speaker to hear the story of an artwork.' },
-  { sel: '.tabs button:nth-child(3)', text: 'Star a show, then rate it in your Visit log.' },
+  { sel: '.tabs button:nth-child(3)', text: 'Log: your starred shows and the art you loved.' },
 ];
 
 const PAD = 8;

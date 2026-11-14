@@ -27,8 +27,9 @@ function Slide({ v, onChange }) {
   );
 }
 
-export default function VisitLog({ visits = [] }) {
+export default function VisitLog({ visits = [], all = [], ratings = {} }) {
   const [q, setQ] = useState('');
+  const [mode, setMode] = useState('visits'); // Visits | Art (keerthi 15:54)
   const [log, setLog] = useState({});
   const [notes, setNotes] = useState({});
   const [stars, setStars] = useState([]);
@@ -54,6 +55,12 @@ export default function VisitLog({ visits = [] }) {
 
   return (
     <section className="screen vlog">
+      <div className="vl-modes">
+        <button className={mode === 'visits' ? 'on' : ''} onClick={() => { setMode('visits'); tick(6); }}>Visits</button>
+        <button className={mode === 'art' ? 'on' : ''} onClick={() => { setMode('art'); tick(6); }}>Art</button>
+      </div>
+      {mode === 'art' && <ArtGrid all={all} ratings={ratings} />}
+      {mode === 'visits' && <>
       <input className="vl-find" value={q} onChange={(e) => setQ(e.target.value)} placeholder="Find an event" aria-label="Find an event" />
       <div className="vl-list">
         {empty && <p className="vl-hint">Star a show on the map and it appears here.</p>}
@@ -73,6 +80,24 @@ export default function VisitLog({ visits = [] }) {
         ))}
         {!list.length && <p className="vl-none">Nothing found</p>}
       </div>
+      </>}
     </section>
+  );
+}
+
+// Art: everything rated near the top in Discover (same 0.85 line as the hearts), newest first
+function ArtGrid({ all, ratings }) {
+  const byId = new Map((all || []).map((a) => [String(a.id), a]));
+  const loved = Object.keys(ratings || {}).filter((id) => ratings[id] >= 0.85).reverse().map((id) => byId.get(String(id))).filter(Boolean);
+  if (!loved.length) return <p className="vl-hint vl-art-empty">Rate art near the top in Discover and it lands here.</p>;
+  return (
+    <div className="vl-art">
+      {loved.map((a) => (
+        <figure key={a.id} className="vl-tile">
+          <div className="vl-tile-img" style={{ backgroundImage: `url("${a.thumb || a.img}")` }} />
+          <figcaption><b>{a.title}</b><span>{a.artist}</span></figcaption>
+        </figure>
+      ))}
+    </div>
   );
 }

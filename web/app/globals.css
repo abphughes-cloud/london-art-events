@@ -557,3 +557,15 @@ a.ltop-plan, a.ltop-maps { text-decoration: none; }
 .hearts svg { position: absolute; top: -40px; fill: #ffd84d; opacity: 0; animation-name: hfall; animation-timing-function: cubic-bezier(.35,.1,.6,1); animation-fill-mode: both; will-change: transform, opacity; }
 @keyframes hfall { 0% { opacity: 0; transform: translate(0, 0) rotate(var(--r)); } 8% { opacity: 1; } 75% { opacity: 1; } 100% { opacity: 0; transform: translate(var(--dx), 110vh) rotate(calc(var(--r) * -1)); } }
 @media (prefers-reduced-motion: reduce) { .hearts { display: none; } }
+
+/* Log: Visits | Art (keerthi 15:54) */
+.vl-modes { display: flex; gap: 22px; margin: 4px 18px 12px; }
+.vl-modes button { font-size: 16px; color: rgba(255,255,255,.55); padding: 4px 0; border-bottom: 2px solid transparent; }
+.vl-modes button.on { color: #fff; border-bottom-color: #ffd84d; }
+.vl-art { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; align-content: start; padding: 0 14px calc(env(safe-area-inset-bottom) + 14px); }
+.vl-tile { margin: 0; }
+.vl-tile-img { aspect-ratio: 3 / 4; border-radius: 10px; background-size: cover; background-position: center; background-color: #1b1915; }
+.vl-tile figcaption { margin-top: 6px; }
+.vl-tile b { display: block; font-size: 12px; font-weight: 500; color: #fff; line-height: 1.25; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.vl-tile span { display: block; font-size: 11px; color: rgba(255,255,255,.6); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.vl-art-empty { margin: 8px 18px; }
