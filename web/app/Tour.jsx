@@ -80,7 +80,7 @@ export default function Tour({ onDone, go }) {
       {s.bar && (
         <div className="tour-bar"><span /></div>
       )}
-      <div key={i} className="tour-line" style={{ top }}>{s.text}</div>
+      <div key={i} className={`tour-line ${i === 0 ? 'welcome' : ''}`} style={{ top }}>{s.text}</div>
       <div className="tour-strip" />
       <div className="tour-foot">
         <button className="tour-skip" onClick={(e) => { e.stopPropagation(); onDone(); }}>Skip</button>

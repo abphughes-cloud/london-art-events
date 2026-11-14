@@ -647,3 +647,6 @@ a.ltop-plan, a.ltop-maps { text-decoration: none; }
 .msearch-row b { color: #fff; font-size: 15px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .msearch-row span { color: rgba(255,255,255,.6); font-size: 13px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .msearch-row.none { color: rgba(255,255,255,.7); font-size: 14px; }
+
+/* welcome line in the artwork-title serif (keerthi 16:37) */
+.tour-line.welcome { font-family: var(--serif); font-style: italic; font-weight: 400; font-size: 30px; line-height: 1.15; max-width: 300px; }
