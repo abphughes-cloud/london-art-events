@@ -20,7 +20,7 @@ LBS AI Cup 2026 hackathon, **submit on Commfy by 15:30 GMT, 14 Nov**. Arthur bui
 - Never print or commit secrets. `.env` holds `SUPABASE_URL`, `SUPABASE_ANON_KEY` (publishable) and `SUPABASE_SERVICE_ROLE_KEY` (secret).
 - Don't change `contract/schema.sql` or `contract/event.ts` without asking.
 - Respect robots.txt; never work around a 403/404/login. Known blocked, do not fetch: Tate, Bow Arts, ACAVA, Ocula, Southbank Centre, Lewisham Libraries, Slade (UCL), ArtRabbit event detail pages. No Instagram, no Eventbrite/Meetup scraping.
-- Keep `source_url` on every record. `npm test` before committing. Local git only, no remote.
+- Keep `source_url` on every record. `npm test` before committing. GitHub: private repo https://github.com/abphughes-cloud/london-art-events (branch `main`); push after committing.
 
 ## State right now
 
