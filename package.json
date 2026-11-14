@@ -1,14 +1,20 @@
 {
-  "name": "mooncalf-web",
+  "name": "london-art-events",
   "private": true,
+  "type": "module",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
+    "seed": "node ingestion/run.js",
+    "extract": "node ingestion/extract-cli.js",
+    "load": "node ingestion/load.js",
+    "rank": "node ranking/demo.js",
+    "test": "node --test",
+    "sync:edge": "node -e \"require('fs').copyFileSync('ranking/rank.js','supabase/functions/rank/rank.js')\""
+  },
+  "engines": {
+    "node": ">=20"
   },
   "dependencies": {
-    "next": "16.4.6",
-    "react": "19.3.1",
-    "react-dom": "19.3.1"
+    "@anthropic-ai/sdk": "^1.8.0",
+    "zod": "^4.6.7"
   }
 }
