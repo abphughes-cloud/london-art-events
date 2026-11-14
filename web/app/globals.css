@@ -632,3 +632,18 @@ a.ltop-plan, a.ltop-maps { text-decoration: none; }
 .tour-demo-card b { color: #fff; font-size: 16px; font-weight: 600; line-height: 1.2; }
 .tour-demo-card i { display: block; height: 8px; border-radius: 4px; background: #ffd84d; }
 .tour-demo-card i.short { width: 70%; opacity: .7; }
+
+/* search at the top of the map (keerthi 16:24) */
+.msearch { position: absolute; z-index: 1000; left: 12px; right: 12px; top: 10px; }
+.msearch-box { position: relative; height: 44px; border-radius: 22px; background: rgba(12,12,12,.82); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,.18); display: flex; align-items: center; box-sizing: border-box; }
+.msearch-ico { flex: none; margin: 0 8px 0 14px; fill: none; stroke: rgba(255,255,255,.7); stroke-width: 1.8; stroke-linecap: round; }
+.msearch-box input { flex: 1; min-width: 0; height: 100%; border: 0; outline: none; background: none; color: #fff; font: 400 16px var(--grotesk); user-select: text; -webkit-user-select: text; }
+.msearch-box input::placeholder { color: rgba(255,255,255,.55); }
+.msearch-x { flex: none; width: 44px; height: 44px; display: grid; place-items: center; padding: 0; }
+.msearch-x svg { fill: none; stroke: #fff; stroke-width: 2; stroke-linecap: round; }
+.msearch-list { margin-top: 6px; max-height: calc(45vh - 70px); overflow-y: auto; border-radius: 14px; background: rgba(12,12,12,.92); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,.14); }
+.msearch-row { display: flex; flex-direction: column; justify-content: center; width: 100%; min-height: 52px; padding: 6px 16px; box-sizing: border-box; text-align: left; border-bottom: 1px solid rgba(255,255,255,.08); }
+.msearch-row:last-child { border-bottom: 0; }
+.msearch-row b { color: #fff; font-size: 15px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.msearch-row span { color: rgba(255,255,255,.6); font-size: 13px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.msearch-row.none { color: rgba(255,255,255,.7); font-size: 14px; }

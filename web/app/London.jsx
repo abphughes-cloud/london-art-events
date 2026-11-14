@@ -228,6 +228,11 @@ function TopMap({ w, fav, onPlan, picks, fi, onPick }) {
   return (
     <div className={`ltop ${card ? 'full' : ''}`}>
       <div ref={el} className="ltop-map" />
+      {!card && <MapSearch onPick={(v) => {
+        const ll = (VENUES.find(([x]) => x === v) || [])[1];
+        if (ll && map.current) map.current.flyTo(ll, 15, { animate: true, duration: 0.8 });
+        setCard(v); setBar(0); tick(8);
+      }} />}
       {card && (() => {
         // 5.g (keerthi 15:03): thin bars that bloom, one bar per show; x closes back to the map
         const ll = (VENUES.find(([v]) => v === card) || [])[1] || [];
@@ -287,6 +292,47 @@ function TopMap({ w, fav, onPlan, picks, fi, onPick }) {
           </div>
         );
       })()}
+    </div>
+  );
+}
+
+// Search at the top of the map: shows, galleries and areas (keerthi 16:24)
+function MapSearch({ onPick }) {
+  const [q, setQ] = useState('');
+  const inp = useRef(null);
+  const words = q.trim().toLowerCase().split(/\s+/).filter(Boolean);
+  const rows = useMemo(() => {
+    if (!words.length) return [];
+    const out = new Map();
+    for (const e of events) {
+      if (!e.lat || !e.lng) continue;
+      const hay = `${e.t} ${e.v} ${e.addr || ''}`.toLowerCase();
+      if (!words.every((w) => hay.includes(w))) continue;
+      if (out.has(e.v)) continue;
+      const inName = words.every((w) => e.v.toLowerCase().includes(w));
+      const area = (e.addr || '').split(',').slice(-2).join(',').trim();
+      out.set(e.v, { v: e.v, sub: inName ? (area || e.t) : e.t });
+      if (out.size >= 6) break;
+    }
+    return [...out.values()];
+  }, [q]); // eslint-disable-line react-hooks/exhaustive-deps
+  const stop = (ev) => ev.stopPropagation();
+  return (
+    <div className="msearch" onPointerDown={stop} onMouseDown={stop} onTouchStart={stop} onWheel={stop} onClick={stop} onDoubleClick={stop}>
+      <div className="msearch-box">
+        <svg viewBox="0 0 24 24" width="18" height="18" className="msearch-ico"><circle cx="11" cy="11" r="6.5" /><path d="M16 16l4.5 4.5" /></svg>
+        <input ref={inp} value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search shows, galleries, areas" aria-label="Search shows, galleries, areas" enterKeyHint="search" />
+        {q && <button className="msearch-x" aria-label="Clear" onClick={() => { setQ(''); inp.current?.focus(); }}><svg viewBox="0 0 24 24" width="16" height="16"><path d="M6 6l12 12M18 6L6 18" /></svg></button>}
+      </div>
+      {words.length > 0 && (
+        <div className="msearch-list">
+          {rows.length ? rows.map((r) => (
+            <button key={r.v} className="msearch-row" onClick={() => { inp.current?.blur(); setQ(''); onPick(r.v); }}>
+              <b>{r.v}</b><span>{r.sub}</span>
+            </button>
+          )) : <div className="msearch-row none">Nothing found</div>}
+        </div>
+      )}
     </div>
   );
 }
