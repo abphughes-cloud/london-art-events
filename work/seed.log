@@ -2,12 +2,12 @@
 > seed
 > node ingestion/run.js
 
-SPACE Studios: 24 records
 GalleriesNow: 151 records
+SPACE Studios: 24 records
 Cockpit Studios: 8 records
 Pigment Press: 13 records
-Goldsmiths School of Art: 1 records
 UAL Shows: 9 records
+Goldsmiths School of Art: 1 records
 Eat Work Art: 16 records
 Thames-Side Studios: 3 records
 Arts Calendar: 171 records
@@ -18,10 +18,10 @@ SET (tribe): 18 records
 Freud Museum (tribe): 3 records
 London Sculpture Workshop (tribe): 3 records
 Stanley Arts (tribe): 35 records
-Read from venue pages: 68 records from 27 venues
-Location clean-up: 47 dropped (no venue or no findable London location), 1 new venue look-ups.
+Read from venue pages: 129 records from 58 venues
+Location clean-up: 46 dropped (no venue or no findable London location), 1 new venue look-ups.
 
-538 events (2026-11-14 to 2026-12-31), 581 duplicates merged.
-exhibition: 336, workshop: 135, performance: 4, fair: 8, other: 11, screening: 4, talk: 17, tour: 6, private_view: 11, open_studio: 6
-By source (after dedupe): GalleriesNow 132, Arts Calendar 112, ArtRabbit 97, IanVisits 49, Stanley Arts 20, SET 18, We Are Lewisham 17, Cockpit Studios 8, The Mosaic Rooms 7, UAL Shows 7, Pigment Press 6, Blackhorse Workshop 5, Camden Art Centre 5, SPACE Studios 4, South London Gallery 4, Drawing Room 4, iniva 3, Lauderdale House 3, APT Gallery 3, arebyte Gallery 3, Freud Museum 3, Auto Italia 3, Gasworks 2, Autograph 2, Whitechapel Gallery 2, The Showroom 2, Thames-Side Studios 2, Eat Work Art 2, The Koppel Project 2, Old Diorama Arts Centre 2, Lewisham Arthouse 1, Heatherley School of Fine Art 1, Goldsmiths School of Art 1, Southwark Park Galleries 1, East London Printmakers 1, Poplar Union 1, UAL Camberwell Shows 1, The Kiln Rooms 1, Chisenhale Gallery 1
+586 events (2026-11-14 to 2026-12-31), 595 duplicates merged.
+exhibition: 354, workshop: 151, performance: 4, fair: 10, other: 15, screening: 4, talk: 21, tour: 9, private_view: 12, open_studio: 6
+By source (after dedupe): GalleriesNow 132, Arts Calendar 112, ArtRabbit 97, IanVisits 50, Stanley Arts 20, SET 18, We Are Lewisham 17, Cockpit Studios 8, The Mosaic Rooms 7, UAL Shows 7, Pigment Press 6, Blackhorse Workshop 5, William Morris Gallery 5, Camden Art Centre 5, SPACE Studios 4, South London Gallery 4, Drawing Room 4, iniva 3, Lauderdale House 3, The Mill E17 3, APT Gallery 3, arebyte Gallery 3, The Photographers' Gallery 3, Fashion and Textile Museum 3, Freud Museum 3, Auto Italia 3, Gasworks 2, Rose Easton 2, The Cartoon Museum 2, Harrow Arts Centre 2, Peckham Levels 2, Gunnersbury Park Museum 2, Autograph 2, Whitechapel Gallery 2, The Showroom 2, Thames-Side Studios 2, Copperfield 2, Orleans House Gallery 2, Photofusion 2, Eat Work Art 2, The Koppel Project 2, Old Diorama Arts Centre 2, Delfina Foundation 1, Lewisham Arthouse 1, Cell Project Space 1, Four Corners 1, Soft Opening 1, Bankside Gallery 1, Museum of the Home 1, Horniman Museum 1, Heatherley School of Fine Art 1, Estorick Collection 1, Goldsmiths School of Art 1, Turf Projects 1, Jealous Gallery 1, TACO! 1, Southwark Park Galleries 1, Quentin Blake Centre for Illustration 1, East London Printmakers 1, Poplar Union 1, UAL Camberwell Shows 1, The Kiln Rooms 1, Valence House 1, Chisenhale Gallery 1, Espacio Gallery 1, Art Hub Studios 1, Chisenhale Art Place 1, Mall Galleries 1
 Wrote data/events.json and data/seed.sql

@@ -126,9 +126,133 @@ const venues = [
     ["Art Futures: Platforms for Dissent with Tania Bruguera and Pankaj Mishra", "talk", "2026-11-19", null, null, null, 15, "https://www.whitechapelgallery.org/events/art-futures-platforms-for-dissent/"],
     ["BSL Tour: Cecilia Vicuña", "tour", "2026-11-25", null, null, null, null, "https://www.whitechapelgallery.org/events/bsl-tour-cecilia-vicuna/"],
   ] },
+  // ---- second batch ----
+  { v: "Arcadia Missa", pc: "W1U 1LH", area: "Marylebone", url: "https://arcadiamissa.com/", tags: ["independent", "emerging artists"], ev: [
+    ["Coumba Samba: Big Nation", "exhibition", "2026-11-06", "2026-12-19", null, null, "free", "https://arcadiamissa.com/coumba-samba-big-nation/"],
+    ["Artists Support: Asking for a Friend", "exhibition", "2026-11-06", "2026-12-19", null, null, "free", "https://arcadiamissa.com/artists-support-asking-for-a-friend/"],
+  ] },
+  { v: "Art Hub Studios", pc: "SE8 4SA", area: "Deptford", url: "https://www.arthub.org.uk/events", tags: ["artist-run", "artist studios", "makers"], ev: [
+    ["Art Hub Xmas Market 2026: A Maker's Christmas", "fair", "2026-12-05", null, null, null, "free", "https://www.arthub.org.uk/events/xmas-market-2026"],
+  ] },
+  { v: "Bankside Gallery", pc: "SE1 9JH", area: "Bankside", url: "https://www.banksidegallery.com/", tags: ["printmaking"], forms: ["printmaking"], ev: [
+    ["International Original Print Exhibition 2026", "exhibition", "2026-11-05", "2026-11-15", "11:00", "18:00", "free", "https://www.banksidegallery.com/exhibitions/159-international-original-print-exhibition-2026/overview/"],
+  ] },
+  { v: "Cell Project Space", pc: "E2 9DA", area: "Bethnal Green", url: "https://www.cellprojects.org/", tags: ["artist-run", "artist studios"], ev: [
+    ["Jeff Preiss: Orchard Documents", "exhibition", "2026-10-08", "2026-12-13", null, null, "free", null],
+  ] },
+  { v: "Chisenhale Gallery", pc: "E3 5QZ", area: "Bow", url: "https://www.chisenhale.co.uk/", source: "Chisenhale Art Place", tags: ["community"], ev: [
+    ["Community View at Chisenhale Gallery", "tour", "2026-12-06", null, "10:00", "12:00", "free", null],
+  ] },
+  { v: "Copperfield", pc: "SE1 0EP", area: "Borough", url: "https://www.copperfieldgallery.com/", tags: ["independent"], ev: [
+    ["Vytautas Kumža: Room Temperature", "exhibition", "2026-11-25", "2027-02-13", null, null, "free", null],
+    ["Opening: Vytautas Kumža: Room Temperature", "private_view", "2026-11-25", null, "18:00", "20:30", "free", null],
+  ] },
+  { v: "Delfina Foundation", pc: "SW1E 6DY", area: "Victoria", url: "https://www.delfinafoundation.com/", tags: ["artist residencies"], ev: [
+    ["Mohammad Alfaraj: Solo Exhibition", "exhibition", "2026-09-29", "2026-11-22", null, null, "free", null],
+  ] },
+  { v: "Espacio Gallery", pc: "E2 7DG", area: "Shoreditch", url: "https://www.espaciogallery.com/", tags: ["artist-run", "open submission"], forms: ["photography"], ev: [
+    ["THE BIG PICTURE: group photography exhibition", "exhibition", "2026-12-03", "2026-12-07", null, null, "free", null],
+  ] },
+  { v: "Estorick Collection", pc: "N1 2AN", area: "Islington", url: "https://www.estorickcollection.com/", tags: [], ev: [
+    ["Wanda and Marion Wulz: Avant-garde Photography in 20th-Century Italy", "exhibition", "2026-09-16", "2026-12-20", null, null, null, "https://www.estorickcollection.com/exhibitions/wanda-and-marion-wulz-avant-garde-photography-in-20th-century-italy"],
+    ["Tino Stefanoni: Between Vision and Memory", "exhibition", "2026-10-28", "2026-12-20", null, null, null, "https://www.estorickcollection.com/exhibitions/tino-stefanoni-between-vision-and-memory"],
+    ["Life Drawing at the Museum", "workshop", "2026-11-18", null, "18:30", "20:30", null, "https://www.estorickcollection.com/events/life-drawing-at-the-museum-18-november"],
+  ] },
+  { v: "Fashion and Textile Museum", pc: "SE1 3XF", area: "Bermondsey", url: "https://fashiontextilemuseum.org/", tags: ["textiles", "hands-on"], forms: ["textiles"], ev: [
+    ["Hand-Painted Floral Repeat Patterns", "workshop", "2026-11-18", null, null, null, null, null],
+    ["Fabric Painting with Sarah Campbell – Stencils", "workshop", "2026-11-25", null, null, null, null, null],
+    ["Silk Painting", "workshop", "2026-12-02", null, null, null, null, null],
+  ] },
+  { v: "Four Corners", pc: "E2 0QN", area: "Bethnal Green", url: "https://www.fourcornersfilm.co.uk/", tags: ["photography", "community"], forms: ["photography"], ev: [
+    ["Cultivating Diasporic Presence: Side A // Side B", "exhibition", "2026-10-21", "2026-11-14", null, null, "free", null],
+    ["WOMEN AT WORK: Sarah Ainslie’s East End Portraits 1992-2025", "exhibition", "2026-11-20", "2026-12-12", null, null, "free", null],
+  ] },
+  { v: "Gunnersbury Park Museum", pc: null, area: "Acton", url: "https://www.visitgunnersbury.org/", tags: ["community"], ev: [
+    ["London Sculpture Prize", "exhibition", "2026-11-18", "2026-11-22", null, null, null, null],
+    ["Gunnersbury Christmas Craft Market", "fair", "2026-11-28", "2026-11-29", null, null, null, null],
+  ] },
+  { v: "Harrow Arts Centre", pc: "HA5 4EA", area: "Hatch End", url: "https://harrowarts.com/", tags: ["community"], ev: [
+    ["Madhubani Art - A Celebration of Nature", "exhibition", "2026-11-05", "2026-12-05", null, null, null, "https://harrowarts.com/events/madhubani-art-a-celebration-of-nature"],
+    ["Crafty Christmas Elf Puppetry Workshop", "workshop", "2026-12-05", null, null, null, null, "https://harrowarts.com/events/crafty-christmas-elf-puppetry-course"],
+  ] },
+  { v: "Horniman Museum", pc: "SE23 3PQ", area: "Forest Hill", url: "https://www.horniman.ac.uk/", tags: [], forms: ["photography"], ev: [
+    ["Meeting Mohini (photography display)", "exhibition", "2026-11-14", "2026-11-15", null, null, "free", "https://www.horniman.ac.uk/event/meeting-mohini/"],
+  ] },
+  { v: "Jealous Gallery", pc: "EC2A 3PT", area: "Shoreditch", url: "https://www.jealousgallery.com/", tags: ["print studio", "independent"], forms: ["printmaking"], ev: [
+    ["Dave Buonaguidi: End of the World Clearance Sale", "exhibition", "2026-11-21", "2026-12-24", null, null, "free", "https://www.jealousgallery.com/blogs/exhibitions/end-of-the-world-clearance-sale"],
+  ] },
+  { v: "Mall Galleries", pc: null, area: "St James's", url: "https://www.mallgalleries.org.uk/", tags: ["open submission"], ev: [
+    ["Discerning Eye 2026", "exhibition", "2026-11-13", "2026-11-21", null, null, null, "https://www.mallgalleries.org.uk/exhibitions-events/discerning-eye-2026"],
+    ["Silk-Thin Universes - Fang Chenzi: Playing in Earnest", "exhibition", "2026-12-14", "2026-12-19", null, null, null, "https://www.mallgalleries.org.uk/exhibitions-events/silk-thin-universes-fang-chenzi-playing-earnest"],
+  ] },
+  { v: "Museum of the Home", pc: "E2 8EA", area: "Hoxton", url: "https://www.museumofthehome.org.uk/", tags: ["community"], ev: [
+    ["Changing Rooms: Celebrating Trans+ Domesticities (display launch, day to night)", "other", "2026-11-14", null, null, null, "free", null],
+  ] },
+  { v: "Orleans House Gallery", pc: "TW1 3BL", area: "Twickenham", url: "https://www.orleanshousegallery.org/", tags: ["community"], ev: [
+    ["Ronald Moody: Sculpting Life", "exhibition", "2026-10-02", "2027-02-28", null, null, "free", "https://orleanshousegallery.org/events/ronald-moody-sculpting-life/"],
+    ["Paola Estrella: Deep Time Currents", "exhibition", "2026-10-02", "2026-11-29", null, null, "free", "https://orleanshousegallery.org/events/paola-estrella-deep-time-currents/"],
+    ["Play: Make: Art (family session)", "workshop", "2026-11-27", null, null, null, null, "https://orleanshousegallery.org/events/play-make-art/2026-11-27/"],
+    ["Play: Make: Art (family session)", "workshop", "2026-12-11", null, null, null, null, "https://orleanshousegallery.org/events/play-make-art/2026-12-11/"],
+  ] },
+  { v: "Peckham Levels", pc: "SE15 4ST", area: "Peckham", url: "https://peckhamlevels.org/", tags: ["community", "grassroots"], ev: [
+    ["Sunday Brush Club: a relaxed open art session", "workshop", "2026-11-15", null, null, null, null, "https://peckhamlevels.org/events/brushclub-sept20th-l89l7-j7njt-3h7je-ch6bw"],
+    ["Club Bananas: Festive Making Workshop", "workshop", "2026-11-18", null, null, null, null, "https://peckhamlevels.org/events/friday-selector-deckore-c2fbh-bb46x-xkbh4-49bmm"],
+  ] },
+  { v: "Photofusion", pc: null, area: "Brixton", url: "https://www.photofusion.org/", tags: ["photography", "community"], forms: ["photography"], ev: [
+    ["RPS Documentary Photography Awards", "exhibition", "2026-11-10", "2026-11-21", null, null, "free", "https://www.photofusion.org/gallery/rps-documentary-photography-awards"],
+    ["Salon/26", "exhibition", "2026-12-03", "2027-01-09", null, null, "free", "https://www.photofusion.org/gallery/salon26"],
+    ["Photobook Group - LIP x Photofusion", "talk", "2026-11-28", null, "10:30", null, null, "https://www.photofusion.org/event-s/photobook-group-lip-x-photofusion-b9gtm-5ybd9-rbpe9-ne89m"],
+  ] },
+  { v: "Quentin Blake Centre for Illustration", pc: null, area: "Clerkenwell", url: "https://www.qbcentre.org.uk/", tags: ["illustration"], forms: ["illustration"], ev: [
+    ["Tove Jansson and her Families", "exhibition", "2026-11-21", null, null, null, null, "https://www.qbcentre.org.uk/exhibitions/tove-jansson-and-her-families"],
+  ] },
+  { v: "Rose Easton", pc: "E2 0EL", area: "Bethnal Green", url: "https://www.roseeaston.com/", tags: ["independent", "emerging artists"], ev: [
+    ["Parker Ito: Happiness is a Butterfly, Full Metal Bunny", "exhibition", "2026-10-03", "2026-12-12", null, null, "free", "https://www.roseeaston.com/exhibitions/happiness-is-a-butterfly,-full-metal-bunny"],
+    ["Caitlin MacQueen: Lumps and Bumps", "exhibition", "2026-10-03", "2026-12-12", null, null, "free", "https://www.roseeaston.com/exhibitions/lumps-and-bumps"],
+  ] },
+  { v: "Soft Opening", pc: "E2 9EH", area: "Bethnal Green", url: "https://softopening.london/", tags: ["independent", "emerging artists"], ev: [
+    ["Aidan Duffy: My Darling Stadium", "exhibition", "2026-10-30", "2026-12-19", null, null, "free", "https://softopening.london/exhibitions/my-darling-stadium"],
+  ] },
+  { v: "Somerset House", pc: "WC2R 1LA", area: "Strand", url: "https://www.somersethouse.org.uk/", tags: [], ev: [
+    ["Jenkin van Zyl: Enclosure", "exhibition", "2026-09-24", "2026-11-29", null, null, null, null],
+  ] },
+  { v: "TACO!", pc: "SE28 8BA", area: "Thamesmead", url: "https://taco.org.uk/", tags: ["artist-run", "community"], ev: [
+    ["Laura Grace Ford: Loud Spirits", "exhibition", "2026-11-06", "2026-12-20", null, null, "free", "https://taco.org.uk/Loud-Spirits"],
+    ["Handle With Care: The Hundred Club", "other", "2026-11-21", null, null, null, null, "https://taco.org.uk/HANDLE-WITH-CARE"],
+  ] },
+  { v: "The Cartoon Museum", pc: "W1A 3AE", area: "Fitzrovia", url: "https://www.cartoonmuseum.org/", tags: ["illustration", "comics"], forms: ["illustration"], ev: [
+    ["‘The Sad Ghost Club’: Lize Meddings", "exhibition", "2026-10-06", "2026-12-06", null, null, null, null],
+    ["Pop-up Print Shop!", "other", "2026-11-12", "2026-12-20", null, null, null, "https://www.cartoonmuseum.org/whats-on-exhibitions/pop-up-print-shop"],
+  ] },
+  { v: "The Mill E17", pc: "E17 7HA", area: "Walthamstow", url: "https://themille17.org/events/", tags: ["community", "grassroots", "drop-in"], ev: [
+    ["Get Drawing (Sundays)", "workshop", "2026-11-01", "2026-12-20", "11:00", "13:00", null, "https://themille17.org/events/get-drawing/"],
+    ["Knitting at The Mill", "workshop", "2026-11-20", null, "10:00", "12:00", null, "https://themille17.org/events/knitting-at-the-mill-3-2026-11-20/"],
+    ["Junior Art Club", "workshop", "2026-11-12", "2026-11-17", "16:00", "17:00", null, "https://themille17.org/events/junior-art-club-2/"],
+  ] },
+  { v: "The Photographers' Gallery", pc: "W1F 7LW", area: "Soho", url: "https://thephotographersgallery.org.uk/", tags: ["photography"], forms: ["photography"], ev: [
+    ["Roots (Print Sales Gallery group exhibition)", "exhibition", "2026-09-18", "2026-11-15", null, null, null, "https://thephotographersgallery.org.uk/whats-on/roots"],
+    ["Exhibition Tour: Snap Happy!", "tour", "2026-11-14", null, "11:00", null, null, "https://thephotographersgallery.org.uk/whats-on/exhibition-tour-snap-happy"],
+    ["Photo Walk | Using Colour", "workshop", "2026-11-21", null, "13:00", null, null, "https://thephotographersgallery.org.uk/whats-on/photo-walk-using-colour"],
+    ["Discussion: How to read a face", "talk", "2026-11-26", null, "18:30", null, null, null],
+  ] },
+  { v: "Turf Projects", pc: null, area: "Croydon", url: "https://turf-projects.com/", tags: ["artist-run", "community", "emerging artists"], ev: [
+    ["Canny Valley (group exhibition)", "exhibition", "2026-11-04", "2027-01-30", null, null, "free", null],
+    ["Family Art Fun Day – The imagination of your imagination", "workshop", "2026-11-14", null, "14:00", null, null, "https://turf-projects.com/event/family-art-fun-day-the-imagination-of-your-imagination/"],
+    ["Artist Brunch with Ana Kazaroff", "talk", "2026-11-21", null, "11:00", null, null, "https://turf-projects.com/event/artist-brunch-with-ana-kazaroff/"],
+  ] },
+  { v: "Valence House", pc: "RM8 3HT", area: "Dagenham", url: "https://valencehousecollections.co.uk/events/", tags: ["community", "craft"], ev: [
+    ["Festive Wreath Making with Valence House's gardener", "workshop", "2026-11-28", null, "12:00", "15:30", 25, null],
+  ] },
+  { v: "William Morris Gallery", pc: "E17 4PP", area: "Walthamstow", url: "https://www.wmgallery.org.uk/", tags: ["community", "craft"], ev: [
+    ["Family Day: Useful and Beautiful (metal embossing)", "workshop", "2026-11-14", null, null, null, "free", null],
+    ["Mini Morris: Wonderful Windows (toddler crafting)", "workshop", "2026-11-19", null, null, null, null, null],
+    ["An Introduction to Earthly Paradise, with the curators", "tour", "2026-11-24", null, null, null, "free", null],
+    ["Winter Late at William Morris Gallery", "other", "2026-11-27", null, null, null, null, null],
+    ["A Room of One’s Own – Creating Feminist Dwellings", "talk", "2026-12-01", null, null, null, null, null],
+  ] },
 ];
 
-const slug = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 40);
+const slug =(s) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 40);
 const events = [], sources = {};
 for (const ven of venues) {
   const sourceName = ven.source || ven.v;

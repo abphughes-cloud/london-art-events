@@ -28,7 +28,38 @@
   "The Mosaic Rooms": "https://mosaicrooms.org/",
   "The Showroom": "https://www.theshowroom.org/",
   "UAL Camberwell Shows": "https://www.arts.ac.uk/colleges/camberwell-college-of-arts/whats-on/camberwell-shows",
-  "Whitechapel Gallery": "https://www.whitechapelgallery.org/"
+  "Whitechapel Gallery": "https://www.whitechapelgallery.org/",
+  "Arcadia Missa": "https://arcadiamissa.com/",
+  "Art Hub Studios": "https://www.arthub.org.uk/events",
+  "Bankside Gallery": "https://www.banksidegallery.com/",
+  "Cell Project Space": "https://www.cellprojects.org/",
+  "Chisenhale Art Place": "https://www.chisenhale.co.uk/",
+  "Copperfield": "https://www.copperfieldgallery.com/",
+  "Delfina Foundation": "https://www.delfinafoundation.com/",
+  "Espacio Gallery": "https://www.espaciogallery.com/",
+  "Estorick Collection": "https://www.estorickcollection.com/",
+  "Fashion and Textile Museum": "https://fashiontextilemuseum.org/",
+  "Four Corners": "https://www.fourcornersfilm.co.uk/",
+  "Gunnersbury Park Museum": "https://www.visitgunnersbury.org/",
+  "Harrow Arts Centre": "https://harrowarts.com/",
+  "Horniman Museum": "https://www.horniman.ac.uk/",
+  "Jealous Gallery": "https://www.jealousgallery.com/",
+  "Mall Galleries": "https://www.mallgalleries.org.uk/",
+  "Museum of the Home": "https://www.museumofthehome.org.uk/",
+  "Orleans House Gallery": "https://www.orleanshousegallery.org/",
+  "Peckham Levels": "https://peckhamlevels.org/",
+  "Photofusion": "https://www.photofusion.org/",
+  "Quentin Blake Centre for Illustration": "https://www.qbcentre.org.uk/",
+  "Rose Easton": "https://www.roseeaston.com/",
+  "Soft Opening": "https://softopening.london/",
+  "Somerset House": "https://www.somersethouse.org.uk/",
+  "TACO!": "https://taco.org.uk/",
+  "The Cartoon Museum": "https://www.cartoonmuseum.org/",
+  "The Mill E17": "https://themille17.org/events/",
+  "The Photographers' Gallery": "https://thephotographersgallery.org.uk/",
+  "Turf Projects": "https://turf-projects.com/",
+  "Valence House": "https://valencehousecollections.co.uk/events/",
+  "William Morris Gallery": "https://www.wmgallery.org.uk/"
  },
  "events": [
   {
@@ -1383,6 +1414,1233 @@
    ],
    "source_name": "Whitechapel Gallery",
    "source_url": "https://www.whitechapelgallery.org/events/bsl-tour-cecilia-vicuna/"
+  },
+  {
+   "title": "Coumba Samba: Big Nation",
+   "event_type": "exhibition",
+   "start_date": "2026-11-06",
+   "end_date": "2026-12-19",
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "Arcadia Missa",
+   "postcode": "W1U 1LH",
+   "area": "Marylebone",
+   "price_type": "free",
+   "price_min_gbp": 0,
+   "art_forms": [],
+   "tags": [
+    "independent",
+    "emerging artists",
+    "read from venue page"
+   ],
+   "source_name": "Arcadia Missa",
+   "source_url": "https://arcadiamissa.com/coumba-samba-big-nation/"
+  },
+  {
+   "title": "Artists Support: Asking for a Friend",
+   "event_type": "exhibition",
+   "start_date": "2026-11-06",
+   "end_date": "2026-12-19",
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "Arcadia Missa",
+   "postcode": "W1U 1LH",
+   "area": "Marylebone",
+   "price_type": "free",
+   "price_min_gbp": 0,
+   "art_forms": [],
+   "tags": [
+    "independent",
+    "emerging artists",
+    "read from venue page"
+   ],
+   "source_name": "Arcadia Missa",
+   "source_url": "https://arcadiamissa.com/artists-support-asking-for-a-friend/"
+  },
+  {
+   "title": "Art Hub Xmas Market 2026: A Maker's Christmas",
+   "event_type": "fair",
+   "start_date": "2026-12-05",
+   "end_date": null,
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "Art Hub Studios",
+   "postcode": "SE8 4SA",
+   "area": "Deptford",
+   "price_type": "free",
+   "price_min_gbp": 0,
+   "art_forms": [],
+   "tags": [
+    "artist-run",
+    "artist studios",
+    "makers",
+    "read from venue page"
+   ],
+   "source_name": "Art Hub Studios",
+   "source_url": "https://www.arthub.org.uk/events/xmas-market-2026"
+  },
+  {
+   "title": "International Original Print Exhibition 2026",
+   "event_type": "exhibition",
+   "start_date": "2026-11-05",
+   "end_date": "2026-11-15",
+   "start_time": "11:00",
+   "end_time": "18:00",
+   "venue_name": "Bankside Gallery",
+   "postcode": "SE1 9JH",
+   "area": "Bankside",
+   "price_type": "free",
+   "price_min_gbp": 0,
+   "art_forms": [
+    "printmaking"
+   ],
+   "tags": [
+    "printmaking",
+    "read from venue page"
+   ],
+   "source_name": "Bankside Gallery",
+   "source_url": "https://www.banksidegallery.com/exhibitions/159-international-original-print-exhibition-2026/overview/"
+  },
+  {
+   "title": "Jeff Preiss: Orchard Documents",
+   "event_type": "exhibition",
+   "start_date": "2026-10-08",
+   "end_date": "2026-12-13",
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "Cell Project Space",
+   "postcode": "E2 9DA",
+   "area": "Bethnal Green",
+   "price_type": "free",
+   "price_min_gbp": 0,
+   "art_forms": [],
+   "tags": [
+    "artist-run",
+    "artist studios",
+    "read from venue page"
+   ],
+   "source_name": "Cell Project Space",
+   "source_url": "https://www.cellprojects.org/#jeff-preiss-orchard-documents-2026-10-08"
+  },
+  {
+   "title": "Community View at Chisenhale Gallery",
+   "event_type": "tour",
+   "start_date": "2026-12-06",
+   "end_date": null,
+   "start_time": "10:00",
+   "end_time": "12:00",
+   "venue_name": "Chisenhale Gallery",
+   "postcode": "E3 5QZ",
+   "area": "Bow",
+   "price_type": "free",
+   "price_min_gbp": 0,
+   "art_forms": [],
+   "tags": [
+    "community",
+    "read from venue page"
+   ],
+   "source_name": "Chisenhale Art Place",
+   "source_url": "https://www.chisenhale.co.uk/#community-view-at-chisenhale-gallery-2026-12-06"
+  },
+  {
+   "title": "Vytautas Kumža: Room Temperature",
+   "event_type": "exhibition",
+   "start_date": "2026-11-25",
+   "end_date": "2027-02-13",
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "Copperfield",
+   "postcode": "SE1 0EP",
+   "area": "Borough",
+   "price_type": "free",
+   "price_min_gbp": 0,
+   "art_forms": [],
+   "tags": [
+    "independent",
+    "read from venue page"
+   ],
+   "source_name": "Copperfield",
+   "source_url": "https://www.copperfieldgallery.com/#vytautas-kum-a-room-temperature-2026-11-25"
+  },
+  {
+   "title": "Opening: Vytautas Kumža: Room Temperature",
+   "event_type": "private_view",
+   "start_date": "2026-11-25",
+   "end_date": null,
+   "start_time": "18:00",
+   "end_time": "20:30",
+   "venue_name": "Copperfield",
+   "postcode": "SE1 0EP",
+   "area": "Borough",
+   "price_type": "free",
+   "price_min_gbp": 0,
+   "art_forms": [],
+   "tags": [
+    "independent",
+    "read from venue page"
+   ],
+   "source_name": "Copperfield",
+   "source_url": "https://www.copperfieldgallery.com/#opening-vytautas-kum-a-room-temperature-2026-11-25"
+  },
+  {
+   "title": "Mohammad Alfaraj: Solo Exhibition",
+   "event_type": "exhibition",
+   "start_date": "2026-09-29",
+   "end_date": "2026-11-22",
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "Delfina Foundation",
+   "postcode": "SW1E 6DY",
+   "area": "Victoria",
+   "price_type": "free",
+   "price_min_gbp": 0,
+   "art_forms": [],
+   "tags": [
+    "artist residencies",
+    "read from venue page"
+   ],
+   "source_name": "Delfina Foundation",
+   "source_url": "https://www.delfinafoundation.com/#mohammad-alfaraj-solo-exhibition-2026-09-29"
+  },
+  {
+   "title": "THE BIG PICTURE: group photography exhibition",
+   "event_type": "exhibition",
+   "start_date": "2026-12-03",
+   "end_date": "2026-12-07",
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "Espacio Gallery",
+   "postcode": "E2 7DG",
+   "area": "Shoreditch",
+   "price_type": "free",
+   "price_min_gbp": 0,
+   "art_forms": [
+    "photography"
+   ],
+   "tags": [
+    "artist-run",
+    "open submission",
+    "read from venue page"
+   ],
+   "source_name": "Espacio Gallery",
+   "source_url": "https://www.espaciogallery.com/#the-big-picture-group-photography-exhibi-2026-12-03"
+  },
+  {
+   "title": "Wanda and Marion Wulz: Avant-garde Photography in 20th-Century Italy",
+   "event_type": "exhibition",
+   "start_date": "2026-09-16",
+   "end_date": "2026-12-20",
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "Estorick Collection",
+   "postcode": "N1 2AN",
+   "area": "Islington",
+   "art_forms": [],
+   "tags": [
+    "read from venue page"
+   ],
+   "source_name": "Estorick Collection",
+   "source_url": "https://www.estorickcollection.com/exhibitions/wanda-and-marion-wulz-avant-garde-photography-in-20th-century-italy"
+  },
+  {
+   "title": "Tino Stefanoni: Between Vision and Memory",
+   "event_type": "exhibition",
+   "start_date": "2026-10-28",
+   "end_date": "2026-12-20",
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "Estorick Collection",
+   "postcode": "N1 2AN",
+   "area": "Islington",
+   "art_forms": [],
+   "tags": [
+    "read from venue page"
+   ],
+   "source_name": "Estorick Collection",
+   "source_url": "https://www.estorickcollection.com/exhibitions/tino-stefanoni-between-vision-and-memory"
+  },
+  {
+   "title": "Life Drawing at the Museum",
+   "event_type": "workshop",
+   "start_date": "2026-11-18",
+   "end_date": null,
+   "start_time": "18:30",
+   "end_time": "20:30",
+   "venue_name": "Estorick Collection",
+   "postcode": "N1 2AN",
+   "area": "Islington",
+   "art_forms": [],
+   "tags": [
+    "read from venue page"
+   ],
+   "source_name": "Estorick Collection",
+   "source_url": "https://www.estorickcollection.com/events/life-drawing-at-the-museum-18-november"
+  },
+  {
+   "title": "Hand-Painted Floral Repeat Patterns",
+   "event_type": "workshop",
+   "start_date": "2026-11-18",
+   "end_date": null,
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "Fashion and Textile Museum",
+   "postcode": "SE1 3XF",
+   "area": "Bermondsey",
+   "art_forms": [
+    "textiles"
+   ],
+   "tags": [
+    "textiles",
+    "hands-on",
+    "read from venue page"
+   ],
+   "source_name": "Fashion and Textile Museum",
+   "source_url": "https://fashiontextilemuseum.org/#hand-painted-floral-repeat-patterns-2026-11-18"
+  },
+  {
+   "title": "Fabric Painting with Sarah Campbell – Stencils",
+   "event_type": "workshop",
+   "start_date": "2026-11-25",
+   "end_date": null,
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "Fashion and Textile Museum",
+   "postcode": "SE1 3XF",
+   "area": "Bermondsey",
+   "art_forms": [
+    "textiles"
+   ],
+   "tags": [
+    "textiles",
+    "hands-on",
+    "read from venue page"
+   ],
+   "source_name": "Fashion and Textile Museum",
+   "source_url": "https://fashiontextilemuseum.org/#fabric-painting-with-sarah-campbell-sten-2026-11-25"
+  },
+  {
+   "title": "Silk Painting",
+   "event_type": "workshop",
+   "start_date": "2026-12-02",
+   "end_date": null,
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "Fashion and Textile Museum",
+   "postcode": "SE1 3XF",
+   "area": "Bermondsey",
+   "art_forms": [
+    "textiles"
+   ],
+   "tags": [
+    "textiles",
+    "hands-on",
+    "read from venue page"
+   ],
+   "source_name": "Fashion and Textile Museum",
+   "source_url": "https://fashiontextilemuseum.org/#silk-painting-2026-12-02"
+  },
+  {
+   "title": "Cultivating Diasporic Presence: Side A // Side B",
+   "event_type": "exhibition",
+   "start_date": "2026-10-21",
+   "end_date": "2026-11-14",
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "Four Corners",
+   "postcode": "E2 0QN",
+   "area": "Bethnal Green",
+   "price_type": "free",
+   "price_min_gbp": 0,
+   "art_forms": [
+    "photography"
+   ],
+   "tags": [
+    "photography",
+    "community",
+    "read from venue page"
+   ],
+   "source_name": "Four Corners",
+   "source_url": "https://www.fourcornersfilm.co.uk/#cultivating-diasporic-presence-side-a-si-2026-10-21"
+  },
+  {
+   "title": "WOMEN AT WORK: Sarah Ainslie’s East End Portraits 1992-2025",
+   "event_type": "exhibition",
+   "start_date": "2026-11-20",
+   "end_date": "2026-12-12",
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "Four Corners",
+   "postcode": "E2 0QN",
+   "area": "Bethnal Green",
+   "price_type": "free",
+   "price_min_gbp": 0,
+   "art_forms": [
+    "photography"
+   ],
+   "tags": [
+    "photography",
+    "community",
+    "read from venue page"
+   ],
+   "source_name": "Four Corners",
+   "source_url": "https://www.fourcornersfilm.co.uk/#women-at-work-sarah-ainslie-s-east-end-p-2026-11-20"
+  },
+  {
+   "title": "London Sculpture Prize",
+   "event_type": "exhibition",
+   "start_date": "2026-11-18",
+   "end_date": "2026-11-22",
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "Gunnersbury Park Museum",
+   "postcode": null,
+   "area": "Acton",
+   "art_forms": [],
+   "tags": [
+    "community",
+    "read from venue page"
+   ],
+   "source_name": "Gunnersbury Park Museum",
+   "source_url": "https://www.visitgunnersbury.org/#london-sculpture-prize-2026-11-18"
+  },
+  {
+   "title": "Gunnersbury Christmas Craft Market",
+   "event_type": "fair",
+   "start_date": "2026-11-28",
+   "end_date": "2026-11-29",
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "Gunnersbury Park Museum",
+   "postcode": null,
+   "area": "Acton",
+   "art_forms": [],
+   "tags": [
+    "community",
+    "read from venue page"
+   ],
+   "source_name": "Gunnersbury Park Museum",
+   "source_url": "https://www.visitgunnersbury.org/#gunnersbury-christmas-craft-market-2026-11-28"
+  },
+  {
+   "title": "Madhubani Art - A Celebration of Nature",
+   "event_type": "exhibition",
+   "start_date": "2026-11-05",
+   "end_date": "2026-12-05",
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "Harrow Arts Centre",
+   "postcode": "HA5 4EA",
+   "area": "Hatch End",
+   "art_forms": [],
+   "tags": [
+    "community",
+    "read from venue page"
+   ],
+   "source_name": "Harrow Arts Centre",
+   "source_url": "https://harrowarts.com/events/madhubani-art-a-celebration-of-nature"
+  },
+  {
+   "title": "Crafty Christmas Elf Puppetry Workshop",
+   "event_type": "workshop",
+   "start_date": "2026-12-05",
+   "end_date": null,
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "Harrow Arts Centre",
+   "postcode": "HA5 4EA",
+   "area": "Hatch End",
+   "art_forms": [],
+   "tags": [
+    "community",
+    "read from venue page"
+   ],
+   "source_name": "Harrow Arts Centre",
+   "source_url": "https://harrowarts.com/events/crafty-christmas-elf-puppetry-course"
+  },
+  {
+   "title": "Meeting Mohini (photography display)",
+   "event_type": "exhibition",
+   "start_date": "2026-11-14",
+   "end_date": "2026-11-15",
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "Horniman Museum",
+   "postcode": "SE23 3PQ",
+   "area": "Forest Hill",
+   "price_type": "free",
+   "price_min_gbp": 0,
+   "art_forms": [
+    "photography"
+   ],
+   "tags": [
+    "read from venue page"
+   ],
+   "source_name": "Horniman Museum",
+   "source_url": "https://www.horniman.ac.uk/event/meeting-mohini/"
+  },
+  {
+   "title": "Dave Buonaguidi: End of the World Clearance Sale",
+   "event_type": "exhibition",
+   "start_date": "2026-11-21",
+   "end_date": "2026-12-24",
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "Jealous Gallery",
+   "postcode": "EC2A 3PT",
+   "area": "Shoreditch",
+   "price_type": "free",
+   "price_min_gbp": 0,
+   "art_forms": [
+    "printmaking"
+   ],
+   "tags": [
+    "print studio",
+    "independent",
+    "read from venue page"
+   ],
+   "source_name": "Jealous Gallery",
+   "source_url": "https://www.jealousgallery.com/blogs/exhibitions/end-of-the-world-clearance-sale"
+  },
+  {
+   "title": "Discerning Eye 2026",
+   "event_type": "exhibition",
+   "start_date": "2026-11-13",
+   "end_date": "2026-11-21",
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "Mall Galleries",
+   "postcode": null,
+   "area": "St James's",
+   "art_forms": [],
+   "tags": [
+    "open submission",
+    "read from venue page"
+   ],
+   "source_name": "Mall Galleries",
+   "source_url": "https://www.mallgalleries.org.uk/exhibitions-events/discerning-eye-2026"
+  },
+  {
+   "title": "Silk-Thin Universes - Fang Chenzi: Playing in Earnest",
+   "event_type": "exhibition",
+   "start_date": "2026-12-14",
+   "end_date": "2026-12-19",
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "Mall Galleries",
+   "postcode": null,
+   "area": "St James's",
+   "art_forms": [],
+   "tags": [
+    "open submission",
+    "read from venue page"
+   ],
+   "source_name": "Mall Galleries",
+   "source_url": "https://www.mallgalleries.org.uk/exhibitions-events/silk-thin-universes-fang-chenzi-playing-earnest"
+  },
+  {
+   "title": "Changing Rooms: Celebrating Trans+ Domesticities (display launch, day to night)",
+   "event_type": "other",
+   "start_date": "2026-11-14",
+   "end_date": null,
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "Museum of the Home",
+   "postcode": "E2 8EA",
+   "area": "Hoxton",
+   "price_type": "free",
+   "price_min_gbp": 0,
+   "art_forms": [],
+   "tags": [
+    "community",
+    "read from venue page"
+   ],
+   "source_name": "Museum of the Home",
+   "source_url": "https://www.museumofthehome.org.uk/#changing-rooms-celebrating-trans-domesti-2026-11-14"
+  },
+  {
+   "title": "Ronald Moody: Sculpting Life",
+   "event_type": "exhibition",
+   "start_date": "2026-10-02",
+   "end_date": "2027-02-28",
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "Orleans House Gallery",
+   "postcode": "TW1 3BL",
+   "area": "Twickenham",
+   "price_type": "free",
+   "price_min_gbp": 0,
+   "art_forms": [],
+   "tags": [
+    "community",
+    "read from venue page"
+   ],
+   "source_name": "Orleans House Gallery",
+   "source_url": "https://orleanshousegallery.org/events/ronald-moody-sculpting-life/"
+  },
+  {
+   "title": "Paola Estrella: Deep Time Currents",
+   "event_type": "exhibition",
+   "start_date": "2026-10-02",
+   "end_date": "2026-11-29",
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "Orleans House Gallery",
+   "postcode": "TW1 3BL",
+   "area": "Twickenham",
+   "price_type": "free",
+   "price_min_gbp": 0,
+   "art_forms": [],
+   "tags": [
+    "community",
+    "read from venue page"
+   ],
+   "source_name": "Orleans House Gallery",
+   "source_url": "https://orleanshousegallery.org/events/paola-estrella-deep-time-currents/"
+  },
+  {
+   "title": "Play: Make: Art (family session)",
+   "event_type": "workshop",
+   "start_date": "2026-11-27",
+   "end_date": null,
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "Orleans House Gallery",
+   "postcode": "TW1 3BL",
+   "area": "Twickenham",
+   "art_forms": [],
+   "tags": [
+    "community",
+    "read from venue page"
+   ],
+   "source_name": "Orleans House Gallery",
+   "source_url": "https://orleanshousegallery.org/events/play-make-art/2026-11-27/"
+  },
+  {
+   "title": "Play: Make: Art (family session)",
+   "event_type": "workshop",
+   "start_date": "2026-12-11",
+   "end_date": null,
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "Orleans House Gallery",
+   "postcode": "TW1 3BL",
+   "area": "Twickenham",
+   "art_forms": [],
+   "tags": [
+    "community",
+    "read from venue page"
+   ],
+   "source_name": "Orleans House Gallery",
+   "source_url": "https://orleanshousegallery.org/events/play-make-art/2026-12-11/"
+  },
+  {
+   "title": "Sunday Brush Club: a relaxed open art session",
+   "event_type": "workshop",
+   "start_date": "2026-11-15",
+   "end_date": null,
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "Peckham Levels",
+   "postcode": "SE15 4ST",
+   "area": "Peckham",
+   "art_forms": [],
+   "tags": [
+    "community",
+    "grassroots",
+    "read from venue page"
+   ],
+   "source_name": "Peckham Levels",
+   "source_url": "https://peckhamlevels.org/events/brushclub-sept20th-l89l7-j7njt-3h7je-ch6bw"
+  },
+  {
+   "title": "Club Bananas: Festive Making Workshop",
+   "event_type": "workshop",
+   "start_date": "2026-11-18",
+   "end_date": null,
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "Peckham Levels",
+   "postcode": "SE15 4ST",
+   "area": "Peckham",
+   "art_forms": [],
+   "tags": [
+    "community",
+    "grassroots",
+    "read from venue page"
+   ],
+   "source_name": "Peckham Levels",
+   "source_url": "https://peckhamlevels.org/events/friday-selector-deckore-c2fbh-bb46x-xkbh4-49bmm"
+  },
+  {
+   "title": "RPS Documentary Photography Awards",
+   "event_type": "exhibition",
+   "start_date": "2026-11-10",
+   "end_date": "2026-11-21",
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "Photofusion",
+   "postcode": null,
+   "area": "Brixton",
+   "price_type": "free",
+   "price_min_gbp": 0,
+   "art_forms": [
+    "photography"
+   ],
+   "tags": [
+    "photography",
+    "community",
+    "read from venue page"
+   ],
+   "source_name": "Photofusion",
+   "source_url": "https://www.photofusion.org/gallery/rps-documentary-photography-awards"
+  },
+  {
+   "title": "Salon/26",
+   "event_type": "exhibition",
+   "start_date": "2026-12-03",
+   "end_date": "2027-01-09",
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "Photofusion",
+   "postcode": null,
+   "area": "Brixton",
+   "price_type": "free",
+   "price_min_gbp": 0,
+   "art_forms": [
+    "photography"
+   ],
+   "tags": [
+    "photography",
+    "community",
+    "read from venue page"
+   ],
+   "source_name": "Photofusion",
+   "source_url": "https://www.photofusion.org/gallery/salon26"
+  },
+  {
+   "title": "Photobook Group - LIP x Photofusion",
+   "event_type": "talk",
+   "start_date": "2026-11-28",
+   "end_date": null,
+   "start_time": "10:30",
+   "end_time": null,
+   "venue_name": "Photofusion",
+   "postcode": null,
+   "area": "Brixton",
+   "art_forms": [
+    "photography"
+   ],
+   "tags": [
+    "photography",
+    "community",
+    "read from venue page"
+   ],
+   "source_name": "Photofusion",
+   "source_url": "https://www.photofusion.org/event-s/photobook-group-lip-x-photofusion-b9gtm-5ybd9-rbpe9-ne89m"
+  },
+  {
+   "title": "Tove Jansson and her Families",
+   "event_type": "exhibition",
+   "start_date": "2026-11-21",
+   "end_date": null,
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "Quentin Blake Centre for Illustration",
+   "postcode": null,
+   "area": "Clerkenwell",
+   "art_forms": [
+    "illustration"
+   ],
+   "tags": [
+    "illustration",
+    "read from venue page"
+   ],
+   "source_name": "Quentin Blake Centre for Illustration",
+   "source_url": "https://www.qbcentre.org.uk/exhibitions/tove-jansson-and-her-families"
+  },
+  {
+   "title": "Parker Ito: Happiness is a Butterfly, Full Metal Bunny",
+   "event_type": "exhibition",
+   "start_date": "2026-10-03",
+   "end_date": "2026-12-12",
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "Rose Easton",
+   "postcode": "E2 0EL",
+   "area": "Bethnal Green",
+   "price_type": "free",
+   "price_min_gbp": 0,
+   "art_forms": [],
+   "tags": [
+    "independent",
+    "emerging artists",
+    "read from venue page"
+   ],
+   "source_name": "Rose Easton",
+   "source_url": "https://www.roseeaston.com/exhibitions/happiness-is-a-butterfly,-full-metal-bunny"
+  },
+  {
+   "title": "Caitlin MacQueen: Lumps and Bumps",
+   "event_type": "exhibition",
+   "start_date": "2026-10-03",
+   "end_date": "2026-12-12",
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "Rose Easton",
+   "postcode": "E2 0EL",
+   "area": "Bethnal Green",
+   "price_type": "free",
+   "price_min_gbp": 0,
+   "art_forms": [],
+   "tags": [
+    "independent",
+    "emerging artists",
+    "read from venue page"
+   ],
+   "source_name": "Rose Easton",
+   "source_url": "https://www.roseeaston.com/exhibitions/lumps-and-bumps"
+  },
+  {
+   "title": "Aidan Duffy: My Darling Stadium",
+   "event_type": "exhibition",
+   "start_date": "2026-10-30",
+   "end_date": "2026-12-19",
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "Soft Opening",
+   "postcode": "E2 9EH",
+   "area": "Bethnal Green",
+   "price_type": "free",
+   "price_min_gbp": 0,
+   "art_forms": [],
+   "tags": [
+    "independent",
+    "emerging artists",
+    "read from venue page"
+   ],
+   "source_name": "Soft Opening",
+   "source_url": "https://softopening.london/exhibitions/my-darling-stadium"
+  },
+  {
+   "title": "Jenkin van Zyl: Enclosure",
+   "event_type": "exhibition",
+   "start_date": "2026-09-24",
+   "end_date": "2026-11-29",
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "Somerset House",
+   "postcode": "WC2R 1LA",
+   "area": "Strand",
+   "art_forms": [],
+   "tags": [
+    "read from venue page"
+   ],
+   "source_name": "Somerset House",
+   "source_url": "https://www.somersethouse.org.uk/#jenkin-van-zyl-enclosure-2026-09-24"
+  },
+  {
+   "title": "Laura Grace Ford: Loud Spirits",
+   "event_type": "exhibition",
+   "start_date": "2026-11-06",
+   "end_date": "2026-12-20",
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "TACO!",
+   "postcode": "SE28 8BA",
+   "area": "Thamesmead",
+   "price_type": "free",
+   "price_min_gbp": 0,
+   "art_forms": [],
+   "tags": [
+    "artist-run",
+    "community",
+    "read from venue page"
+   ],
+   "source_name": "TACO!",
+   "source_url": "https://taco.org.uk/Loud-Spirits"
+  },
+  {
+   "title": "Handle With Care: The Hundred Club",
+   "event_type": "other",
+   "start_date": "2026-11-21",
+   "end_date": null,
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "TACO!",
+   "postcode": "SE28 8BA",
+   "area": "Thamesmead",
+   "art_forms": [],
+   "tags": [
+    "artist-run",
+    "community",
+    "read from venue page"
+   ],
+   "source_name": "TACO!",
+   "source_url": "https://taco.org.uk/HANDLE-WITH-CARE"
+  },
+  {
+   "title": "‘The Sad Ghost Club’: Lize Meddings",
+   "event_type": "exhibition",
+   "start_date": "2026-10-06",
+   "end_date": "2026-12-06",
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "The Cartoon Museum",
+   "postcode": "W1A 3AE",
+   "area": "Fitzrovia",
+   "art_forms": [
+    "illustration"
+   ],
+   "tags": [
+    "illustration",
+    "comics",
+    "read from venue page"
+   ],
+   "source_name": "The Cartoon Museum",
+   "source_url": "https://www.cartoonmuseum.org/#the-sad-ghost-club-lize-meddings-2026-10-06"
+  },
+  {
+   "title": "Pop-up Print Shop!",
+   "event_type": "other",
+   "start_date": "2026-11-12",
+   "end_date": "2026-12-20",
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "The Cartoon Museum",
+   "postcode": "W1A 3AE",
+   "area": "Fitzrovia",
+   "art_forms": [
+    "illustration"
+   ],
+   "tags": [
+    "illustration",
+    "comics",
+    "read from venue page"
+   ],
+   "source_name": "The Cartoon Museum",
+   "source_url": "https://www.cartoonmuseum.org/whats-on-exhibitions/pop-up-print-shop"
+  },
+  {
+   "title": "Get Drawing (Sundays)",
+   "event_type": "workshop",
+   "start_date": "2026-11-01",
+   "end_date": "2026-12-20",
+   "start_time": "11:00",
+   "end_time": "13:00",
+   "venue_name": "The Mill E17",
+   "postcode": "E17 7HA",
+   "area": "Walthamstow",
+   "art_forms": [],
+   "tags": [
+    "community",
+    "grassroots",
+    "drop-in",
+    "read from venue page"
+   ],
+   "source_name": "The Mill E17",
+   "source_url": "https://themille17.org/events/get-drawing/"
+  },
+  {
+   "title": "Knitting at The Mill",
+   "event_type": "workshop",
+   "start_date": "2026-11-20",
+   "end_date": null,
+   "start_time": "10:00",
+   "end_time": "12:00",
+   "venue_name": "The Mill E17",
+   "postcode": "E17 7HA",
+   "area": "Walthamstow",
+   "art_forms": [],
+   "tags": [
+    "community",
+    "grassroots",
+    "drop-in",
+    "read from venue page"
+   ],
+   "source_name": "The Mill E17",
+   "source_url": "https://themille17.org/events/knitting-at-the-mill-3-2026-11-20/"
+  },
+  {
+   "title": "Junior Art Club",
+   "event_type": "workshop",
+   "start_date": "2026-11-12",
+   "end_date": "2026-11-17",
+   "start_time": "16:00",
+   "end_time": "17:00",
+   "venue_name": "The Mill E17",
+   "postcode": "E17 7HA",
+   "area": "Walthamstow",
+   "art_forms": [],
+   "tags": [
+    "community",
+    "grassroots",
+    "drop-in",
+    "read from venue page"
+   ],
+   "source_name": "The Mill E17",
+   "source_url": "https://themille17.org/events/junior-art-club-2/"
+  },
+  {
+   "title": "Roots (Print Sales Gallery group exhibition)",
+   "event_type": "exhibition",
+   "start_date": "2026-09-18",
+   "end_date": "2026-11-15",
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "The Photographers' Gallery",
+   "postcode": "W1F 7LW",
+   "area": "Soho",
+   "art_forms": [
+    "photography"
+   ],
+   "tags": [
+    "photography",
+    "read from venue page"
+   ],
+   "source_name": "The Photographers' Gallery",
+   "source_url": "https://thephotographersgallery.org.uk/whats-on/roots"
+  },
+  {
+   "title": "Exhibition Tour: Snap Happy!",
+   "event_type": "tour",
+   "start_date": "2026-11-14",
+   "end_date": null,
+   "start_time": "11:00",
+   "end_time": null,
+   "venue_name": "The Photographers' Gallery",
+   "postcode": "W1F 7LW",
+   "area": "Soho",
+   "art_forms": [
+    "photography"
+   ],
+   "tags": [
+    "photography",
+    "read from venue page"
+   ],
+   "source_name": "The Photographers' Gallery",
+   "source_url": "https://thephotographersgallery.org.uk/whats-on/exhibition-tour-snap-happy"
+  },
+  {
+   "title": "Photo Walk | Using Colour",
+   "event_type": "workshop",
+   "start_date": "2026-11-21",
+   "end_date": null,
+   "start_time": "13:00",
+   "end_time": null,
+   "venue_name": "The Photographers' Gallery",
+   "postcode": "W1F 7LW",
+   "area": "Soho",
+   "art_forms": [
+    "photography"
+   ],
+   "tags": [
+    "photography",
+    "read from venue page"
+   ],
+   "source_name": "The Photographers' Gallery",
+   "source_url": "https://thephotographersgallery.org.uk/whats-on/photo-walk-using-colour"
+  },
+  {
+   "title": "Discussion: How to read a face",
+   "event_type": "talk",
+   "start_date": "2026-11-26",
+   "end_date": null,
+   "start_time": "18:30",
+   "end_time": null,
+   "venue_name": "The Photographers' Gallery",
+   "postcode": "W1F 7LW",
+   "area": "Soho",
+   "art_forms": [
+    "photography"
+   ],
+   "tags": [
+    "photography",
+    "read from venue page"
+   ],
+   "source_name": "The Photographers' Gallery",
+   "source_url": "https://thephotographersgallery.org.uk/#discussion-how-to-read-a-face-2026-11-26"
+  },
+  {
+   "title": "Canny Valley (group exhibition)",
+   "event_type": "exhibition",
+   "start_date": "2026-11-04",
+   "end_date": "2027-01-30",
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "Turf Projects",
+   "postcode": null,
+   "area": "Croydon",
+   "price_type": "free",
+   "price_min_gbp": 0,
+   "art_forms": [],
+   "tags": [
+    "artist-run",
+    "community",
+    "emerging artists",
+    "read from venue page"
+   ],
+   "source_name": "Turf Projects",
+   "source_url": "https://turf-projects.com/#canny-valley-group-exhibition-2026-11-04"
+  },
+  {
+   "title": "Family Art Fun Day – The imagination of your imagination",
+   "event_type": "workshop",
+   "start_date": "2026-11-14",
+   "end_date": null,
+   "start_time": "14:00",
+   "end_time": null,
+   "venue_name": "Turf Projects",
+   "postcode": null,
+   "area": "Croydon",
+   "art_forms": [],
+   "tags": [
+    "artist-run",
+    "community",
+    "emerging artists",
+    "read from venue page"
+   ],
+   "source_name": "Turf Projects",
+   "source_url": "https://turf-projects.com/event/family-art-fun-day-the-imagination-of-your-imagination/"
+  },
+  {
+   "title": "Artist Brunch with Ana Kazaroff",
+   "event_type": "talk",
+   "start_date": "2026-11-21",
+   "end_date": null,
+   "start_time": "11:00",
+   "end_time": null,
+   "venue_name": "Turf Projects",
+   "postcode": null,
+   "area": "Croydon",
+   "art_forms": [],
+   "tags": [
+    "artist-run",
+    "community",
+    "emerging artists",
+    "read from venue page"
+   ],
+   "source_name": "Turf Projects",
+   "source_url": "https://turf-projects.com/event/artist-brunch-with-ana-kazaroff/"
+  },
+  {
+   "title": "Festive Wreath Making with Valence House's gardener",
+   "event_type": "workshop",
+   "start_date": "2026-11-28",
+   "end_date": null,
+   "start_time": "12:00",
+   "end_time": "15:30",
+   "venue_name": "Valence House",
+   "postcode": "RM8 3HT",
+   "area": "Dagenham",
+   "price_type": "paid",
+   "price_min_gbp": 25,
+   "art_forms": [],
+   "tags": [
+    "community",
+    "craft",
+    "read from venue page"
+   ],
+   "source_name": "Valence House",
+   "source_url": "https://valencehousecollections.co.uk/events/#festive-wreath-making-with-valence-house-2026-11-28"
+  },
+  {
+   "title": "Family Day: Useful and Beautiful (metal embossing)",
+   "event_type": "workshop",
+   "start_date": "2026-11-14",
+   "end_date": null,
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "William Morris Gallery",
+   "postcode": "E17 4PP",
+   "area": "Walthamstow",
+   "price_type": "free",
+   "price_min_gbp": 0,
+   "art_forms": [],
+   "tags": [
+    "community",
+    "craft",
+    "read from venue page"
+   ],
+   "source_name": "William Morris Gallery",
+   "source_url": "https://www.wmgallery.org.uk/#family-day-useful-and-beautiful-metal-em-2026-11-14"
+  },
+  {
+   "title": "Mini Morris: Wonderful Windows (toddler crafting)",
+   "event_type": "workshop",
+   "start_date": "2026-11-19",
+   "end_date": null,
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "William Morris Gallery",
+   "postcode": "E17 4PP",
+   "area": "Walthamstow",
+   "art_forms": [],
+   "tags": [
+    "community",
+    "craft",
+    "read from venue page"
+   ],
+   "source_name": "William Morris Gallery",
+   "source_url": "https://www.wmgallery.org.uk/#mini-morris-wonderful-windows-toddler-cr-2026-11-19"
+  },
+  {
+   "title": "An Introduction to Earthly Paradise, with the curators",
+   "event_type": "tour",
+   "start_date": "2026-11-24",
+   "end_date": null,
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "William Morris Gallery",
+   "postcode": "E17 4PP",
+   "area": "Walthamstow",
+   "price_type": "free",
+   "price_min_gbp": 0,
+   "art_forms": [],
+   "tags": [
+    "community",
+    "craft",
+    "read from venue page"
+   ],
+   "source_name": "William Morris Gallery",
+   "source_url": "https://www.wmgallery.org.uk/#an-introduction-to-earthly-paradise-with-2026-11-24"
+  },
+  {
+   "title": "Winter Late at William Morris Gallery",
+   "event_type": "other",
+   "start_date": "2026-11-27",
+   "end_date": null,
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "William Morris Gallery",
+   "postcode": "E17 4PP",
+   "area": "Walthamstow",
+   "art_forms": [],
+   "tags": [
+    "community",
+    "craft",
+    "read from venue page"
+   ],
+   "source_name": "William Morris Gallery",
+   "source_url": "https://www.wmgallery.org.uk/#winter-late-at-william-morris-gallery-2026-11-27"
+  },
+  {
+   "title": "A Room of One’s Own – Creating Feminist Dwellings",
+   "event_type": "talk",
+   "start_date": "2026-12-01",
+   "end_date": null,
+   "start_time": null,
+   "end_time": null,
+   "venue_name": "William Morris Gallery",
+   "postcode": "E17 4PP",
+   "area": "Walthamstow",
+   "art_forms": [],
+   "tags": [
+    "community",
+    "craft",
+    "read from venue page"
+   ],
+   "source_name": "William Morris Gallery",
+   "source_url": "https://www.wmgallery.org.uk/#a-room-of-one-s-own-creating-feminist-dw-2026-12-01"
   }
  ]
 }

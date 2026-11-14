@@ -102,5 +102,11 @@
   "lng": -0.0669787,
   "postcode": "SE15 3SN",
   "area": "Peckham"
+ },
+ "gunnersbury park museum": {
+  "lat": 51.4995706,
+  "lng": -0.2863303,
+  "postcode": "W5 4AZ",
+  "area": "London Borough of Ealing"
  }
 }

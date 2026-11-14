@@ -1,0 +1,41 @@
+# Chisenhale Gallery | Bow | https://chisenhale.org.uk/
+### PAGE https://chisenhale.org.uk/
+02-molecules/related/callout.tpl -->
+ 2027 Exhibition Programme [https://chisenhale.org.uk/whats-on/] 
+ 02-molecules/related/event.tpl -->
+ Past Panel Discussion 
+ 29 October 2026, 7–8:30pm 
+ Panel discussion with Dr Iain Robert Smith, Nadia Denton, and Dr Samantha Iwowo, chaired by Dr Sarah Jilani. [https://chisenhale.org.uk/whats-on/panel-discussion-with-dr-iain-robert-smith-nadia-denton-and-dr-samantha-iwowo-chaired-by-d/] 
+ 02-molecules/related/event.tpl -->
+ Past Panel Discussion 
+ 5 November 2026, 7–8:30pm 
+ Panel discussion with Mati Diop, Dr Eva Namusoke, and Dr Jennifer Nansubuga Makumbi, chaired by Dr Nobunye Levin. [https://chisenhale.org.uk/whats-on/panel-discussion-with-mati-diop-dr-eva-namusoke-and-dr-jennifer-nansubuga-makumbi-chaired/] 
+ 02-molecules/related/event.tpl -->
+ Past Panel Discussion 
+ 12 November 2026, 7–8:30pm 
+ Panel discussion with Dr Bernadette Buckley, Dr Vivienne Jabri, and Abiba Coulibaly, chaired by Dr Anna Adima. [https://chisenhale.org.uk/whats-on/panel-discussion-with-dr-bernadette-buckley-dr-vivienne-jabri-and-abiba-coulibaly-chaired/] 
+ 02-molecules/related/callout.tpl -->
+ Support Us [https://chisenhale.org.uk/support-us/]
+
+### PAGE https://chisenhale.org.uk/whats-on/
+Current
+ Exhibition 
+ Until 6 December 
+ Kibuuka Omumbaale 
+ Wakaliga Uganda [https://chisenhale.org.uk/project/wakaliga-uganda/] 
+ Curatorial Tour 
+ 3 December, 7–8:30pm 
+ Tour of Kibuuka Omumbaale with Tosia Leniarska, Curator: Exhibitions and Events 
+ Wakaliga Uganda [https://chisenhale.org.uk/whats-on/tour-of-kibuuka-omumbaale-with-tosia-leniarska-curator-exhibitions-and-events/] 
+ Exhibition 
+ 16 January – 14 March 2027 
+ Wisrah C. V. da R. Celestino [https://chisenhale.org.uk/whats-on/wisrahc.v.dar.celestino/] 
+ Exhibition 
+ 9 April – 13 June 2027 
+ Diane Severin Nguyen [https://chisenhale.org.uk/whats-on/diane-severin-nguyen-1/] 
+ Exhibition 
+ 9 July – 5 September 2027 
+ Coumba Samba [https://chisenhale.org.uk/whats-on/coumba-samba-1/] 
+ Exhibition 
+ 1 October – 5 December 2027 
+ Deborah-Joyce Holman [https://chisenhale.org.uk/whats-on/deborah-joyce-holman-1/]
