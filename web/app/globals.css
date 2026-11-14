@@ -353,3 +353,8 @@ button { background: none; border: 0; color: inherit; cursor: pointer; }
 @keyframes tfill { 0% { width: 0; } 65% { width: 78%; } 80%,100% { width: 78%; opacity: 0; } }
 .tour-foot { position: absolute; left: 22px; right: 22px; bottom: calc(env(safe-area-inset-bottom) + 66px); display: flex; justify-content: space-between; align-items: center; color: rgba(255,255,255,.6); }
 .tour-foot button { color: rgba(255,255,255,.75); padding: 8px 0; }
+
+/* bigger gallery card: the picture leads (keerthi 14 Nov 14:56) */
+.ltop-card { left: 6px; right: 6px; bottom: 6px; max-height: 96%; }
+.ltop-img { height: min(46vh, 300px); }
+.ltop-title { font-size: 1.25em; }
