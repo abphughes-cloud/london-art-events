@@ -16,7 +16,7 @@ cp .env.example .env      # add ANTHROPIC_API_KEY, SUPABASE_URL, SUPABASE_SERVIC
 
 | Command | What it does |
 |---|---|
-| `npm run seed` | Scrape ArtRabbit (6 pages ≈ 120 events), run the Claude sources in `data/sources.json` if a key is set, dedupe, keep the next 14 days, tag. Writes `data/events.json` + `data/seed.sql` |
+| `npm run seed` | Scrape ArtRabbit, GalleriesNow, IanVisits and SPACE (no key needed), dedupe, keep the next 14 days, tag. Adds Claude sources and tagging if a key is set. Writes `data/events.json` + `data/seed.sql` |
 | `npm run seed -- --no-ai` | Same, without Claude (ArtRabbit + keyword tags only) |
 | `npm run extract -- <url \| flyer.jpg \| --text "…">` | **The live demo.** Messy page, flyer image/PDF or pasted text → clean event cards. Add `--load` to push them to Supabase |
 | `npm run load` | Upsert `data/events.json` into Supabase (service role key) |
@@ -54,12 +54,19 @@ Deploy: `npm run sync:edge`, then `supabase functions deploy rank --no-verify-jw
 
 ## Sources (list these in the submission)
 
-| Source | Method | Status |
+All four run as plain parsers, no API key needed. Last run (14 Nov): 319 events for 14–28 Nov after merging 177 duplicates.
+
+| Source | Method | Events kept |
 |---|---|---|
-| ArtRabbit, London listings | Parse listing pages, ~1 request/second, 6 pages | Working. Event detail pages return 403 to scripts, so we don't fetch them |
-| GalleriesNow, IanVisits, SPACE Studios | Claude extraction from the what's-on page | Need `ANTHROPIC_API_KEY` |
+| ArtRabbit, London listings | Listing cards, 6 pages, ~1 request/second. Event detail pages return 403 to scripts, so we don't fetch them | 124 |
+| GalleriesNow, London exhibitions | One page, ~150 cards: dates, gallery, address + postcode, opening hours, short quote | 124 |
+| IanVisits, exhibitions by date | Date pages every 4 days across the window; keyword filter drops non-art shows | 67 |
+| SPACE Studios, what's on | Studio events: open studios, free workshops, pop-ups | 4 |
 | Bow Arts, ACAVA | — | 403 to scripts; skipped |
 | Lewisham Arthouse, Acme, Thames-Side | — | What's-on URLs return 404; need the right page |
+
+Extra pages can go in `data/sources.json` (`[{ "name", "url" }]`); those are read by Claude when a key is set.
+Without a key, art forms and tags come from keywords (`ingestion/keyword-tags.js`): about 120 of 319 events get an art form.
 
 Every record keeps `source_url`; descriptions are written by Claude in its own words.
 

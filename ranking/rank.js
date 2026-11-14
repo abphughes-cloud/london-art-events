@@ -62,7 +62,8 @@ export function scoreEvent(profile, e, today) {
   const words = eventWords(e);
   const evForms = lower(e.art_forms), evTags = lower(e.tags);
 
-  const formHit = evForms.filter((f) => forms.has(f) || [...forms].some((x) => f.includes(x))).length;
+  const matchedForms = evForms.filter((f) => forms.has(f) || [...forms].some((x) => f.includes(x)));
+  const formHit = matchedForms.length;
   const tagHit = evTags.filter((t) => likedTags.has(t)).length;
   const wordHit = [...likeWords].filter((w) => words.has(w)).length;
   const days = Math.max(0, (Date.parse(e.start_date) - Date.parse(today)) / DAY_MS);
@@ -75,7 +76,7 @@ export function scoreEvent(profile, e, today) {
     soon: e.end_date ? (Date.parse(e.end_date) - Date.parse(today) < 7 * DAY_MS ? 1 : 0.5) : Math.max(0, 1 - days / 14),
   };
   const score = Object.entries(WEIGHTS).reduce((s, [k, w]) => s + w * parts[k], 0);
-  return { score: Math.round(score * 100) / 100, parts, formHit, tagHit, wordHit };
+  return { score: Math.round(score * 100) / 100, parts, formHit, matchedForms, tagHit, wordHit };
 }
 
 export function rank(profile, events, { limit = 5, today = new Date().toISOString().slice(0, 10) } = {}) {
@@ -92,12 +93,15 @@ export function rank(profile, events, { limit = 5, today = new Date().toISOStrin
   }
   candidates.sort((a, b) => b.score - a.score || a.e.start_date.localeCompare(b.e.start_date));
 
-  // Variety: one pick per venue, and no more than two of the same event type.
+  // Variety: one pick per venue, and at most limit-2 of one event type, but only among
+  // candidates that score close to the best (variety shouldn't promote poor matches).
+  const best = candidates[0]?.score ?? 0;
   const picks = [], venues = new Set(), types = {};
   for (const c of candidates) {
     if (picks.length >= limit) break;
     const v = (c.e.venue_name || c.e.id).toLowerCase();
-    if (venues.has(v) || (types[c.e.event_type] || 0) >= 2) continue;
+    const typeFull = (types[c.e.event_type] || 0) >= Math.max(1, limit - 2) && c.score < best * 0.9;
+    if (venues.has(v) || typeFull) continue;
     venues.add(v); types[c.e.event_type] = (types[c.e.event_type] || 0) + 1;
     picks.push(c);
   }
@@ -108,10 +112,10 @@ export function rank(profile, events, { limit = 5, today = new Date().toISOStrin
 }
 
 const WEEKDAY = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-function templateReason(profile, { e, slot, formHit }) {
+function templateReason(profile, { e, slot, matchedForms }) {
   const bits = [];
-  const form = lower(e.art_forms)[0];
-  if (formHit && form) bits.push(`${form[0].toUpperCase()}${form.slice(1)}, which you like`);
+  const form = matchedForms?.[0] || lower(e.art_forms)[0];
+  if (matchedForms?.length) bits.push(`${form[0].toUpperCase()}${form.slice(1)}, which you like`);
   else if (form) bits.push(`${form[0].toUpperCase()}${form.slice(1)}`);
   if (e.event_type === "private_view") bits.push("an opening night");
   if (e.price_type === "free") bits.push("free");

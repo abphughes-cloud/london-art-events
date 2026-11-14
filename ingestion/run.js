@@ -1,12 +1,17 @@
 // Build the seed dataset: run every source, clean, dedupe, keep the next two weeks.
-//   node ingestion/run.js                 ArtRabbit only (no API key needed)
+//   node ingestion/run.js                 ArtRabbit, GalleriesNow, IanVisits, SPACE (no API key needed)
 //   node ingestion/run.js --pages 8       more ArtRabbit pages (20 cards each)
+// With ANTHROPIC_API_KEY set, it also reads any extra pages in data/sources.json with Claude and
+// tags art forms with Claude on top of the keyword tags.
 //   node ingestion/run.js --no-ai         skip Claude even if ANTHROPIC_API_KEY is set
 // Writes data/events.json (the app can read this until Supabase is loaded) and data/seed.sql.
 
 import fs from "node:fs";
 import "./env.js";
 import * as artrabbit from "./adapters/artrabbit.js";
+import * as galleriesnow from "./adapters/galleriesnow.js";
+import * as ianvisits from "./adapters/ianvisits.js";
+import * as space from "./adapters/space.js";
 import { normalize, londonToday, addDays } from "./normalize.js";
 import { dedupe } from "./dedupe.js";
 import { extractEvents, enrichEvents } from "./extract.js";
@@ -27,11 +32,24 @@ const llmSources = fs.existsSync(sourcesFile) ? JSON.parse(fs.readFileSync(sourc
 const all = [];
 const sourceRows = [];
 
-console.log(`ArtRabbit: ${pages} pages…`);
-const ar = (await artrabbit.fetchEvents({ pages })).map((r) => normalize(r)).filter(Boolean);
-console.log(`  ${ar.length} records`);
-all.push(...ar);
-sourceRows.push({ ...artrabbit.source, last_count: ar.length });
+// Plain parsers, no AI. Each runs on its own so one broken source never blocks the rest.
+const adapters = [
+  [artrabbit, { pages }],
+  [galleriesnow, {}],
+  [ianvisits, { days }],
+  [space, {}],
+];
+for (const [adapter, opts] of adapters) {
+  try {
+    console.log(`${adapter.source.name}…`);
+    const rows = (await adapter.fetchEvents(opts)).map((r) => normalize(r)).filter(Boolean);
+    console.log(`  ${rows.length} records`);
+    all.push(...rows);
+    sourceRows.push({ ...adapter.source, last_count: rows.length });
+  } catch (err) {
+    console.warn(`  skipped: ${err.message}`);
+  }
+}
 
 if (useAI) {
   for (const s of llmSources) {

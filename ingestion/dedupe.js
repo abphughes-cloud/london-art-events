@@ -20,15 +20,23 @@ const overlaps = (a, b) => {
 
 export function isSameEvent(a, b) {
   if (a.dedupe_key === b.dedupe_key) return true;
+  // Same page on the same site (IanVisits lists a show again on every date page).
+  if (a.source_name === b.source_name && a.source_url === b.source_url) return true;
   if ((a.event_type === "private_view") !== (b.event_type === "private_view")) return false;
-  if (!a.venue_name || !b.venue_name) return false;
-  return similarity(a.venue_name, b.venue_name) >= 0.6 && overlaps(a, b) && similarity(a.title, b.title) >= 0.8;
+  if (!overlaps(a, b)) return false;
+  const titleSim = similarity(a.title, b.title);
+  if (a.venue_name && b.venue_name && similarity(a.venue_name, b.venue_name) >= 0.6) return titleSim >= 0.8;
+  // Venue missing or named differently ("V&A South Kensington" / "Victoria and Albert (V&A) Museum"):
+  // only merge when the titles are near-identical and specific enough to be unambiguous.
+  return titleSim >= 0.9 && Math.min(words(a.title).size, words(b.title).size) >= 3;
 }
 
 // Keep the more confident record and fill its gaps from the other.
 export function merge(a, b) {
   const [keep, other] = (b.confidence ?? 0) > (a.confidence ?? 0) ? [b, a] : [a, b];
   const out = { ...keep };
+  // The earliest known start wins (IanVisits only knows "open on the day we looked").
+  if (other.start_date < out.start_date) { out.start_date = other.start_date; out.dedupe_key = keep.dedupe_key.replace(/\|[^|]*$/, `|${other.start_date}`); }
   for (const [k, v] of Object.entries(other)) {
     if (out[k] == null || (Array.isArray(out[k]) && !out[k].length)) out[k] = v;
     else if (Array.isArray(out[k]) && Array.isArray(v)) out[k] = [...new Set([...out[k], ...v])];

@@ -79,3 +79,48 @@ test("seed SQL escapes quotes and casts enums", () => {
   assert.match(sql, /'other'::event_type/);
   assert.match(sql, /on conflict \(dedupe_key\)/);
 });
+
+import { parseDateText, parsePrice, looksLikeArt } from "../ingestion/html.js";
+import * as galleriesnow from "../ingestion/adapters/galleriesnow.js";
+import * as ianvisits from "../ingestion/adapters/ianvisits.js";
+
+test("free-text dates and times from listings", () => {
+  const t = "2026-11-14";
+  assert.deepEqual(parseDateText("6 - 15 NOV 2026, FRI - SUN, 12 - 6PM", t),
+    { start_date: "2026-11-06", end_date: "2026-11-15", start_time: "12:00", end_time: "18:00" });
+  assert.equal(parseDateText("Wed 25 Nov 2026 - Sat 23 Jan 2027", t).end_date, "2027-01-23");
+  assert.equal(parseDateText("15 - 18 Oct", t).start_date, "2026-10-15"); // past, not next year
+  assert.equal(parseDateText("19 SEPT 2026 11am - 2:30pm", t).end_time, "14:30");
+  assert.equal(parseDateText("Exhibition ends on Sunday 14th Feb 2027", t).start_date, "2027-02-14");
+  assert.deepEqual(parsePrice("&pound;15".replace("&pound;", "£")), { price_type: "paid", price_min_gbp: 15 });
+  assert.equal(parsePrice("Free and all welcome").price_type, "free");
+  assert.ok(looksLikeArt("Monet and the sea", "paintings from"));
+  assert.ok(!looksLikeArt("Dogs in jumpers parade along the Mall"));
+});
+
+test("GalleriesNow card", () => {
+  const html = `<div class="exhibition-panel grid-item x"><a href="https://g/shows/a/" class="exhibition-panel__image fixed">
+    <img src="https://g/a.webp" alt="" class="listing-image" /></a><div class="exhibition-panel__gallery__logo__text">
+    <a href="https://g/gallery/x/" class="link-default">Albion Jeune</a><small>London West End</small></div>
+    <a href="https://g/shows/a/" class="exhibition-panel__info__main__text__title link-default">Victor Bengtsson: Bagatelle</a>
+    <p class="exhibition-panel__info__main__text__date">Wed 25 Nov 2026 - Sat 23 Jan 2027</p>
+    <p class="exhibition-panel__info__main__text__address mt-10">16-17 Little Portland Street, W1W 8BP, London</p>
+    <p class="exhibition-panel__info__main__text__opening-times">Thu until 8pm</p></div>`;
+  const [e] = galleriesnow.parseListing(html, "2026-11-14").map(normalize);
+  assert.equal(e.venue_name, "Albion Jeune");
+  assert.equal(e.postcode, "W1W 8BP");
+  assert.equal(e.area, "West End");
+  assert.deepEqual(e.artists, ["Victor Bengtsson"]);
+  assert.ok(e.tags.includes("late"));
+});
+
+test("IanVisits: drops non-art, keeps end date and price", () => {
+  const block = (title, ex, when, price) => `<div class="event_wrapper"><h3><a href="https://iv/${title.length}">${title}</a></h3><div class="event_exerpt"><p>${ex}<div class="read-more"></div></p></div><div class="event_time">${when}</div><div class="event_price">${price}</div><div class="event_location">Old Royal Naval College, Greenwich</div></div>`;
+  const html = block("Lost Worlds", "A light installation by artists", "Exhibition ends on Sunday 15th Nov", "&pound;22")
+    + block("Dogs in jumpers", "A parade", "Exhibition ends on Sunday 15th Nov", "Free");
+  const rows = ianvisits.parseDay(html, "2026-11-14").map(normalize);
+  assert.equal(rows.length, 1);
+  assert.equal(rows[0].end_date, "2026-11-15");
+  assert.equal(rows[0].price_min_gbp, 22);
+  assert.equal(rows[0].area, "Greenwich");
+});
