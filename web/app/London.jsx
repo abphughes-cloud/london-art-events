@@ -63,9 +63,41 @@ export default function London({ all, ratings, saved, onSave, onPlan, onBack }) 
   const RIVER = useMemo(() => { fitTo(picks); return thames(); }, [picks]);
   const [fi, setFi] = useState(0);
   const [view, setView] = useState('list');
-  const [down, setDown] = useState(false); // bars pushed down so the map fills the screen (keerthi 15:04)
+  const [pos, setPos] = useState('mid'); // list sheet: down (map fills), mid, up (list covers the map) (keerthi 17:00)
+  const down = pos === 'down';
+  const sec = useRef(null);
   const gy = useRef(null);
-  const flip = (d) => { setDown(d); tick(8); [120, 480, 700].forEach((t) => setTimeout(() => window.dispatchEvent(new Event('resize')), t)); };
+  const snapTo = (p) => { setPos(p); tick(8); [120, 300, 480, 700].forEach((t) => setTimeout(() => window.dispatchEvent(new Event('resize')), t)); };
+  const flip = (d) => snapTo(d ? 'down' : 'mid');
+  const sheetTops = () => {
+    const el = sec.current; const H = el ? el.clientHeight : window.innerHeight;
+    const tabs = (document.querySelector('.tabs')?.getBoundingClientRect().bottom) || 48;
+    return { up: tabs, mid: tabs + window.innerHeight * 0.45, down: H - 40 };
+  };
+  const drag = useRef(null);
+  const gDown = (e) => {
+    const list = sec.current?.querySelector('.lbands.near'); if (!list) return;
+    e.currentTarget.setPointerCapture?.(e.pointerId);
+    drag.current = { y: e.clientY, t: performance.now(), top: list.getBoundingClientRect().top, moved: false };
+  };
+  const gMove = (e) => {
+    const d = drag.current; if (!d) return;
+    const dy = e.clientY - d.y; if (Math.abs(dy) > 6) d.moved = true; if (!d.moved) return;
+    const T = sheetTops(); const top = Math.max(T.up, Math.min(T.down, d.top + dy));
+    sec.current.classList.add('dragging');
+    sec.current.style.setProperty('--sheet', `${top}px`);
+  };
+  const gUp = (e) => {
+    const d = drag.current; drag.current = null; if (!d) return;
+    sec.current.classList.remove('dragging'); sec.current.style.removeProperty('--sheet');
+    const order = ['up', 'mid', 'down'];
+    if (!d.moved) { snapTo(pos === 'up' ? 'mid' : pos === 'mid' ? 'up' : 'mid'); return; } // tap: up one, from the top back to the middle
+    const dy = e.clientY - d.y, v = dy / Math.max(1, performance.now() - d.t);
+    const T = sheetTops(); const at = d.top + dy;
+    let p = order.reduce((b, k) => (Math.abs(T[k] - at) < Math.abs(T[b] - at) ? k : b), 'mid');
+    if (Math.abs(v) > 0.6 && p === pos) p = order[Math.max(0, Math.min(2, order.indexOf(pos) + Math.sign(dy)))]; // a quick flick moves one step
+    snapTo(p);
+  };
   const [open, setOpen] = useState(null); // {g, rect}
   const [clip, setClip] = useState(null);
   const [plan, setPlan] = useState(null);
@@ -110,7 +142,7 @@ export default function London({ all, ratings, saved, onSave, onPlan, onBack }) 
   const g = picks[fi];
   const rated = Object.keys(ratings || {}).length > 0;
   return (
-    <section className={`screen london ${rated ? '' : 'bare'} ${down ? 'down' : ''}`}>
+    <section ref={sec} className={`screen london ${rated ? '' : 'bare'} ${pos === 'down' ? 'down' : ''} ${pos === 'up' ? 'up' : ''}`}>
       <div className={`lmap ${view === 'map' ? 'on' : ''}`}>
         <div className="lstage" style={{ transform: `translate(-50%,-50%) scale(${k})` }}>
           <svg viewBox="0 0 300 620" width="300" height="620" className="lriver">
@@ -133,9 +165,8 @@ export default function London({ all, ratings, saved, onSave, onPlan, onBack }) 
       </div>
       <TopMap w={W8} fav={picks[0]?.art} onPlan={setPlan} picks={picks} fi={fi} onPick={(i) => { setFi(i); tick(6); }} />
       <NearList w={W8} rated={rated} onPlan={setPlan} />
-      <button className="lgrab" aria-label={down ? 'Show the list' : 'Push the list down'}
-        onPointerDown={(e) => { gy.current = e.clientY; }}
-        onPointerUp={(e) => { const d = e.clientY - (gy.current ?? e.clientY); gy.current = null; flip(Math.abs(d) < 8 ? !down : d > 0); }}><i /></button>
+      <button className="lgrab" aria-label={pos === 'up' ? 'Lower the list' : 'Pull the list up'}
+        onPointerDown={gDown} onPointerMove={gMove} onPointerUp={gUp} onPointerCancel={gUp}><i /></button>
       <button className="ltog" aria-label="Bars or map" onClick={() => { setView(view === 'map' ? 'list' : 'map'); pattern([10]); }}>
         <Ico d={view === 'map' ? BARS_D : MAP_D} />
       </button>

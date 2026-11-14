@@ -662,3 +662,13 @@ a.ltop-plan, a.ltop-maps { text-decoration: none; }
 .tour-line { font-family: var(--serif); font-style: italic; font-weight: 400; font-size: 26px; line-height: 1.18; color: #fff; }
 .tour-line.welcome { font-size: 30px; line-height: 1.15; }
 .tour-demo-card b { font-family: var(--serif); font-style: italic; font-weight: 400; font-size: 22px; }
+
+/* list sheet: down, mid, up, dragged by a full-width handle (keerthi 17:00) */
+.london .lgrab, .london.bare .lgrab { left: 0; right: 0; width: auto; margin-left: 0; height: 44px; top: calc(env(safe-area-inset-top, 0px) + 48px + 45vh - 22px); transition: top .25s ease; }
+.london .lbands.near { transition: top .25s ease; }
+.london.down .lgrab { top: calc(100% - 40px - 22px); }
+.london.up .lbands.near { top: calc(env(safe-area-inset-top, 0px) + 48px); padding-top: 44px; z-index: 5; }
+.london.up .lgrab { top: calc(env(safe-area-inset-top, 0px) + 48px); z-index: 31; }
+.london.dragging .lbands.near { top: var(--sheet) !important; transition: none; z-index: 5; }
+.london.dragging .lgrab { top: calc(var(--sheet) - 22px) !important; transition: none; }
+.london.up .nb-cue { display: none; }
