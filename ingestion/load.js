@@ -6,12 +6,15 @@ import "./env.js";
 
 export async function upsertEvents(events, { url = process.env.SUPABASE_URL, key = process.env.SUPABASE_SERVICE_ROLE_KEY } = {}) {
   if (!url || !key) throw new Error("Set SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY in .env (or paste data/seed.sql into the SQL editor).");
-  const rows = events.map(({ id, also_listed_on, ...e }) => e); // let the database keep its own ids
+  // Keep our stable ids (made from dedupe_key) so data/events.json and the database agree.
+  const rows = events.map(({ also_listed_on, ...e }) => e);
   for (let i = 0; i < rows.length; i += 200) {
     const res = await fetch(`${url}/rest/v1/events?on_conflict=dedupe_key`, {
       method: "POST",
       headers: {
-        apikey: key, Authorization: `Bearer ${key}`, "Content-Type": "application/json",
+        apikey: key, "Content-Type": "application/json",
+        // Legacy JWT keys also go in Authorization; new sb_secret_ keys only in apikey.
+        ...(key.startsWith("eyJ") ? { Authorization: `Bearer ${key}` } : {}),
         Prefer: "resolution=merge-duplicates,return=minimal",
       },
       body: JSON.stringify(rows.slice(i, i + 200)),
