@@ -67,6 +67,11 @@ test("small sources: Cockpit, Pigment Press, Thames-Side, Goldsmiths", () => {
   assert.equal(market.event_type, "fair");
   assert.equal(market.end_date, "2026-11-22");
 
+  const [pv] = small("Eat Work Art").parse(`<a class="card-simple var3" href="https://eatworkart.com/hackney-downs-studios/events/x"><div class="date">3 December 2026 18:00</div><p class="title">Hackney Downs Studios</p><p class="location">Jo Bloggs Exhibition Opening Night</p></a>`, T).map(normalize);
+  assert.equal(pv.event_type, "private_view");
+  assert.equal(pv.start_time, "18:00:00");
+  assert.equal(pv.postcode, "E8 2BT");
+
   const [screening] = small("Goldsmiths School of Art").parse(`<div class="ODcontainer"><h3>Works in Progress Screening</h3><div class="event-date">18 November 2026</div><div class="event-time">6:00pm - 8:00pm</div><a href="https://www.gold.ac.uk/calendar/?id=1">More</a></div>`, T).map(normalize);
   assert.equal(screening.event_type, "screening");
   assert.equal(screening.start_time, "18:00:00");

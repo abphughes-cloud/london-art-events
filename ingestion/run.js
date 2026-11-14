@@ -26,7 +26,7 @@ import { keywordTags } from "./keyword-tags.js";
 const args = process.argv.slice(2);
 const flag = (name, dflt) => { const i = args.indexOf(name); return i === -1 ? dflt : args[i + 1]; };
 const pages = Number(flag("--pages", 5));
-const days = Number(flag("--days", 14));
+const days = Number(flag("--days", 47)); // to 31 Dec: grassroots venues list few events, mostly weeks ahead
 const useAI = !args.includes("--no-ai") && !!process.env.ANTHROPIC_API_KEY;
 
 const today = londonToday();

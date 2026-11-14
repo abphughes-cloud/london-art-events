@@ -109,7 +109,38 @@ const goldsmiths = {
   },
 };
 
-export const smallSources = [cockpit, pigment, thamesSide, goldsmiths].map((s) => ({
+// ---------- Eat Work Art (Hackney Downs Studios, Netil House, Cornerstone Studios) ----------
+const eatWorkArt = {
+  source: { name: "Eat Work Art", url: "https://eatworkart.com/events", method: "scrape", priority: 2 },
+  parse(html, today) {
+    const SITES = {
+      "hackney downs studios": { address: "17 Amhurst Terrace, London", postcode: "E8 2BT", area: "Hackney Downs" },
+      "netil house": { address: "1 Westgate Street, London", postcode: "E8 3RL", area: "London Fields" },
+      "netil market": { address: "13-23 Westgate Street, London", postcode: "E8 3RL", area: "London Fields" },
+      "cornerstone studios": { address: "1 Addington Square, London", postcode: "SE5 7JZ", area: "Camberwell" },
+    };
+    const out = [], seen = new Set();
+    for (const m of html.matchAll(/<a class="card-simple[^"]*" href="([^"]+\/events\/[^"]+)">[\s\S]*?<div class="date">([^<]+)<[\s\S]*?<p class="title">([^<]*)<[\s\S]*?<p class="location">([^<]*)</g)) {
+      if (seen.has(m[1])) continue;
+      seen.add(m[1]);
+      const venue = text(m[3]), name = text(m[4]);
+      const { start_date } = parseDateText(m[2], today);
+      const time = m[2].match(/(\d{2}:\d{2})\s*$/)?.[1];
+      if (!name || !venue || !start_date) continue;
+      out.push(base(this.source, {
+        title: name,
+        event_type: /four corners/i.test(name) ? "talk" : /opening night/i.test(name) ? "private_view" : inferType(name) || "other",
+        start_date, start_time: time && time !== "00:00" ? time : null,
+        venue_name: venue, ...(SITES[venue.toLowerCase()] || {}),
+        tags: ["creative community", "independent", "grassroots"],
+        source_url: m[1],
+      }));
+    }
+    return out;
+  },
+};
+
+export const smallSources = [cockpit, pigment, thamesSide, goldsmiths, eatWorkArt].map((s) => ({
   source: s.source,
   parse: s.parse.bind(s),
   fetchEvents: async () => s.parse(await politeGet(s.source.url)),
