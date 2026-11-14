@@ -40,9 +40,8 @@ export default function Mooncalf() {
     setRatings(readRatings());
     setVisits(readJ(VSTORE, []));
     setSaved(readJ(SSTORE, {}));
-    let seen = false;
-    try { seen = sessionStorage.getItem('mooncalf.film') === '1'; } catch {}
-    if (!seen) setFilm(1);
+    // the Ross Long intro opens the app every time (keerthi 14 Nov 14:57)
+    setFilm(1);
     try { if (localStorage.getItem('mooncalf.tour.v1') !== '1' || /tour=1/.test(location.search)) setTour(true); } catch {}
     const onMsg = (e) => {
       if (e.data === 'mooncalf-film-done') {
