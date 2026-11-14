@@ -86,7 +86,9 @@ export default function Mooncalf() {
       for (const k of order) { const l = kinds[k]; if (l && l.length) { out.push(l.shift()); moved = true; } }
       if (!moved) break;
     }
-    return out;
+    // Discover always opens on Rousseau's Tropical Forest with Monkeys (keerthi 16:44)
+    const first = all.find((a) => a.id === 'nga-61253');
+    return first ? [first, ...out.filter((a) => a.id !== first.id)] : out;
   }, [all]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const ratedCount = Object.keys(ratings).length;
