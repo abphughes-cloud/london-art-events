@@ -12,6 +12,7 @@ import * as artrabbit from "./adapters/artrabbit.js";
 import * as galleriesnow from "./adapters/galleriesnow.js";
 import * as ianvisits from "./adapters/ianvisits.js";
 import * as space from "./adapters/space.js";
+import { fetchRegistryEntry, toSourceRow } from "./adapters/generic.js";
 import { normalize, londonToday, addDays } from "./normalize.js";
 import { dedupe } from "./dedupe.js";
 import { extractEvents, enrichEvents } from "./extract.js";
@@ -51,6 +52,20 @@ for (const [adapter, opts] of adapters) {
   }
 }
 
+// Registry sources: one row in data/registry.json each, read by the generic iCal / JSON-LD / Tribe readers.
+const registryFile = new URL("../data/registry.json", import.meta.url);
+const registry = fs.existsSync(registryFile) ? JSON.parse(fs.readFileSync(registryFile, "utf8")) : [];
+for (const entry of registry) {
+  try {
+    const rows = (await fetchRegistryEntry(entry, { today, horizon })).map((r) => normalize(r)).filter(Boolean);
+    console.log(`${entry.name} (${entry.method}): ${rows.length} records`);
+    all.push(...rows);
+    sourceRows.push(toSourceRow(entry, rows.length));
+  } catch (err) {
+    console.warn(`${entry.name}: skipped: ${err.message}`);
+  }
+}
+
 if (useAI) {
   for (const s of llmSources) {
     try {
@@ -87,6 +102,8 @@ fs.writeFileSync(new URL("../data/seed.sql", import.meta.url), toSeedSql(events,
 const byType = Object.entries(events.reduce((m, e) => ((m[e.event_type] = (m[e.event_type] || 0) + 1), m), {}));
 console.log(`\n${events.length} events (${today} to ${horizon}), ${merged} duplicates merged.`);
 console.log(byType.map(([t, n]) => `${t}: ${n}`).join(", "));
+const bySource = Object.entries(events.reduce((m, e) => ((m[e.source_name] = (m[e.source_name] || 0) + 1), m), {})).sort((a, b) => b[1] - a[1]);
+console.log(`By source (after dedupe): ${bySource.map(([t, n]) => `${t} ${n}`).join(", ")}`);
 console.log("Wrote data/events.json and data/seed.sql");
 
 // Deterministic UUID-shaped id from the dedupe key, so re-runs keep the same ids.
