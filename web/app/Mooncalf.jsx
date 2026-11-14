@@ -161,7 +161,7 @@ export default function Mooncalf() {
         <Tour onDone={() => setTour(false)} />
       )}
       {film > 0 && (
-        <iframe className={`film ${film === 2 ? 'out' : ''}`} src="/film/index.html?v=4" title="Palette" />
+        <iframe className={`film ${film === 2 ? 'out' : ''}`} src="/film/index.html?v=5" title="Palette" />
       )}
     </main>
   );
