@@ -59,6 +59,9 @@ export default function London({ all, ratings, saved, onSave, onPlan, onBack }) 
   const RIVER = useMemo(() => { fitTo(picks); return thames(); }, [picks]);
   const [fi, setFi] = useState(0);
   const [view, setView] = useState('list');
+  const [down, setDown] = useState(false); // bars pushed down so the map fills the screen (keerthi 15:04)
+  const gy = useRef(null);
+  const flip = (d) => { setDown(d); tick(8); [120, 480, 700].forEach((t) => setTimeout(() => window.dispatchEvent(new Event('resize')), t)); };
   const [open, setOpen] = useState(null); // {g, rect}
   const [clip, setClip] = useState(null);
   const [plan, setPlan] = useState(null);
@@ -103,7 +106,7 @@ export default function London({ all, ratings, saved, onSave, onPlan, onBack }) 
   const g = picks[fi];
   const rated = Object.keys(ratings || {}).length > 0;
   return (
-    <section className={`screen london ${rated ? '' : 'bare'}`}>
+    <section className={`screen london ${rated ? '' : 'bare'} ${down ? 'down' : ''}`}>
       <div className={`lmap ${view === 'map' ? 'on' : ''}`}>
         <div className="lstage" style={{ transform: `translate(-50%,-50%) scale(${k})` }}>
           <svg viewBox="0 0 300 620" width="300" height="620" className="lriver">
@@ -136,6 +139,9 @@ export default function London({ all, ratings, saved, onSave, onPlan, onBack }) 
           </div>
         ))}
       </div>
+      <button className="lgrab" aria-label={down ? 'Show the list' : 'Push the list down'}
+        onPointerDown={(e) => { gy.current = e.clientY; }}
+        onPointerUp={(e) => { const d = e.clientY - (gy.current ?? e.clientY); gy.current = null; flip(Math.abs(d) < 8 ? !down : d > 0); }}><i /></button>
       <button className="ltog" aria-label="Bars or map" onClick={() => { setView(view === 'map' ? 'list' : 'map'); pattern([10]); }}>
         <Ico d={view === 'map' ? BARS_D : MAP_D} />
       </button>
@@ -172,6 +178,7 @@ const matchOf = (e, w) => (e.tags || []).filter((t) => /^(style|subject|mood|med
   .sort((a, b) => w[b] - w[a]).slice(0, 2).map((t) => t.split(':')[1]);
 function TopMap({ w, fav, onPlan, picks, fi, onPick }) {
   const [card, setCard] = useState(null); // venue name
+  const [bar, setBar] = useState(0); // which show's bar is opened on the 5.g page
   const el = useRef(null), map = useRef(null), layer = useRef(null);
   const [ready, setReady] = useState(false);
   // a regular street map (keerthi 14:55): Leaflet + CARTO Voyager tiles, loaded from the CDN
@@ -209,42 +216,69 @@ function TopMap({ w, fav, onPlan, picks, fi, onPick }) {
       if (ranked.has(v)) return;
       const m = (SHOWS[v] || []).some((e) => matchOf(e, w).length);
       L.marker([lat, lng], { icon: L.divIcon({ className: '', html: `<i class="mdot ${m ? 'm' : ''} ${card === v ? 'on' : ''}" style="animation-delay:${(k * 377) % 3000}ms"></i>`, iconSize: [22, 22] }) })
-        .on('click', () => { setCard(v); tick(8); }).addTo(g);
+        .on('click', () => { setCard(v); setBar(0); tick(8); }).addTo(g);
     });
     picks.forEach((p, i) => {
       L.marker([p.lat, p.lng], { zIndexOffset: 1000 - i, icon: L.divIcon({ className: '', html: `<b class="mrank ${i === fi ? 'on' : ''}">${i + 1}</b>`, iconSize: [26, 26] }) })
-        .on('click', () => { setCard(p.v); onPick(i); }).addTo(g);
+        .on('click', () => { setCard(p.v); setBar(0); onPick(i); }).addTo(g);
     });
   }, [ready, picks, w, card, fi]); // eslint-disable-line react-hooks/exhaustive-deps
   return (
-    <div className="ltop">
+    <div className={`ltop ${card ? 'full' : ''}`}>
       <div ref={el} className="ltop-map" />
       {card && (() => {
-        const shows = (SHOWS[card] || []).slice(0, 3), ll = (VENUES.find(([v]) => v === card) || [])[1] || [];
-        const addr = shows[0]?.addr;
+        // 5.g (keerthi 15:03): thin bars that bloom, one bar per show; x closes back to the map
+        const ll = (VENUES.find(([v]) => v === card) || [])[1] || [];
+        const shows = (SHOWS[card] || []).map((e) => ({ e, m: matchOf(e, w) })).sort((x, y) => y.m.length - x.m.length).slice(0, 8);
+        const first = shows[0]?.e || {};
+        const addr = first.addr;
         const maps = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(addr ? `${card}, ${addr}` : `${ll[0]},${ll[1]}`)}`;
-        const first = shows[0] || {};
+        const area = (addr || '').split(',').slice(-2, -1)[0]?.trim().split(' ')[0] || '';
         const g = { id: card, v: card, t: first.t, img: first.img, lat: ll[0], lng: ll[1], url: first.url, walk: walkMin(ll[0], ll[1]), art: fav };
-        const score = Math.max(0, Math.min(1, Math.max(0, ...shows.map((e) => (e.tags || []).reduce((a, t) => a + Math.max(0, w[t] || 0), 0))) / 4));
-        const soon = shows.some((e) => e.e && (new Date(e.e) - Date.now()) / 864e5 <= 5);
-        const best = shows.map((e) => ({ e, m: matchOf(e, w) })).sort((x, y) => y.m.length - x.m.length)[0] || { e: first, m: [] };
-        const ev = best.e;
-        const days = ev.e ? Math.ceil((new Date(ev.e + 'T18:00:00') - Date.now()) / 864e5) : 99;
-        const area = (ev.addr || '').split(',').slice(-2, -1)[0]?.trim().split(' ')[0] || '';
+        const others = picks.filter((p) => p.v !== card).slice(0, 4);
+        const bgi = (e) => (e.img ? `url("${e.img}"), url("${fav?.thumb}")` : `url("${fav?.thumb}")`);
         return (
-          <div className="ltop-card" onClick={() => setCard(null)}>
-            <div className="ltop-img" style={{ backgroundImage: ev.img ? `url("${ev.img}"), url("${fav?.thumb}")` : `url("${fav?.thumb}")` }}>
-              {best.m.length > 0 && <i className="ltop-pill">Matched for you · {best.m[0]}</i>}
-              {days <= 5 && <i className="ltop-pill end">Ends in {days} day{days === 1 ? '' : 's'}</i>}
-            </div>
-            <h3 className="ltop-title">{ev.t}</h3>
-            <div className="ltop-sub">{card}{area ? ` · ${area}` : ''}</div>
-            {(artists[ev.id] || []).length > 0 && <div className="ltop-sub">{artists[ev.id].join(', ')}</div>}
-            <div className="ltop-row"><span>{runs(ev)}</span></div>
-            <div className="ltop-fitrow"><span>Your match</span><div className="ltop-fit"><i style={{ width: `${Math.round(score * 100)}%` }} /></div></div>
-            <div className="ltop-btns">
-              <button className="ltop-plan" onClick={(e) => { e.stopPropagation(); onPlan({ ...g, t: ev.t, img: ev.img, url: ev.url }); }}>Plan visit</button>
-              <a className="ltop-maps" href={maps} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()}>Open in Google Maps ↗</a>
+          <div className="g5">
+            <button className="g5-x" aria-label="Close" onClick={() => { setCard(null); setBar(0); tick(8); }}>
+              <svg viewBox="0 0 24 24" width="22" height="22" className="ico"><path d="M6 6l12 12M18 6L6 18" /></svg>
+            </button>
+            <div className="g5-col">
+              <div className="g5-vis open">
+                <h2 className="g5-g">{card}</h2>
+                <div className="g5-meta">{[area, `${walkMin(ll[0], ll[1])} min walk`, `${shows.length} on now`].filter(Boolean).join(' · ')}</div>
+                <div className="g5-bars">
+                  {shows.map(({ e, m }, i) => {
+                    const days = e.e ? Math.ceil((new Date(e.e + 'T18:00:00') - Date.now()) / 864e5) : 99;
+                    return (
+                      <div key={e.id} className={`g5-bar ${bar === i ? 'big' : ''}`} style={{ animationDelay: `${i * 70}ms` }} onClick={() => { setBar(bar === i ? -1 : i); tick(6); }}>
+                        <i style={{ backgroundImage: bgi(e) }} />
+                        <span className="g5-t">{e.t}</span>
+                        {bar === i && (
+                          <div className="g5-more">
+                            {m.length > 0 && <em>Matched for you · {m[0]}</em>}
+                            {days <= 5 && days >= 0 && <em className="end">Ends in {days} day{days === 1 ? '' : 's'}</em>}
+                            <p>{runs(e)}</p>
+                            {(artists[e.id] || []).length > 0 && <p>{artists[e.id].slice(0, 6).join(', ')}</p>}
+                            <div className="ltop-btns">
+                              <button className="ltop-plan" onClick={(ev) => { ev.stopPropagation(); onPlan({ ...g, t: e.t, img: e.img, url: e.url }); }}>Plan visit</button>
+                              <a className="ltop-maps" href={maps} target="_blank" rel="noreferrer" onClick={(ev) => ev.stopPropagation()}>Google Maps ↗</a>
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+              {others.map((p) => (
+                <div key={p.v} className="g5-vis" onClick={() => { setCard(p.v); setBar(0); tick(6); }}>
+                  <h2 className="g5-g">{p.v}</h2>
+                  <div className="g5-meta">{p.walk} min walk · {p.pct}% match</div>
+                  <div className="g5-bars">
+                    {(SHOWS[p.v] || []).slice(0, 4).map((e) => <div key={e.id} className="g5-bar thin"><i style={{ backgroundImage: bgi(e) }} /></div>)}
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         );
