@@ -4,6 +4,10 @@ import { londonPicks } from '../lib/taste';
 import { tick, pattern } from '../lib/haptics';
 import { Back } from './Icons';
 import Plan from './Plan';
+import events from '../data/events.json';
+
+// every venue with something free on, for the map across the top
+const VENUES = (() => { const m = new Map(); events.forEach((e) => { if (e.lat && e.lng && !m.has(e.v)) m.set(e.v, [e.lat, e.lng]); }); return [...m.entries()]; })();
 
 // Screen 3 (3.a): free London galleries ranked by how well what's on matches
 // your taste. Bars first; the top-right icon folds them into lights on a map.
@@ -114,6 +118,7 @@ export default function London({ all, ratings, saved, onSave, onPlan, onBack }) 
         </div>
         <div className="lvig" />
       </div>
+      <TopMap picks={picks} fi={fi} onPick={(i, el) => pick(i, el)} />
       <div ref={box} className={`bands lbands ${view === 'map' ? 'folded' : ''} ${open ? 'fading' : ''}`}>
         {picks.map((p, i) => (
           <div key={p.id} className={`band ${i === fi ? 'focus' : ''} ${open && open.g.id !== p.id ? 'vanish' : ''}`}
@@ -124,7 +129,6 @@ export default function London({ all, ratings, saved, onSave, onPlan, onBack }) 
           </div>
         ))}
       </div>
-      <button className="back" aria-label="Back to rating" onClick={onBack}><Back /></button>
       <button className="ltog" aria-label="Bars or map" onClick={() => { setView(view === 'map' ? 'list' : 'map'); pattern([10]); }}>
         <Ico d={view === 'map' ? BARS_D : MAP_D} />
       </button>
@@ -151,5 +155,34 @@ export default function London({ all, ratings, saved, onSave, onPlan, onBack }) 
       )}
       {plan && <Plan g={plan} onClose={() => setPlan(null)} onSave={(v) => { onPlan(v); setPlan(null); }} />}
     </section>
+  );
+}
+
+// Map across the top: black, the gold Thames, a light for every London spot;
+// your taste-matched picks glow brighter and open on tap.
+function TopMap({ picks, fi, onPick }) {
+  const W = 360, H = 200;
+  const pts = VENUES.map(([, ll]) => ll).concat(picks.map((p) => [p.lat, p.lng]));
+  const la = pts.map((p) => p[0]).sort((a, b) => a - b), lo = pts.map((p) => p[1]).sort((a, b) => a - b);
+  const q = (arr, f) => arr[Math.floor((arr.length - 1) * f)];
+  const la0 = q(la, 0.04), la1 = q(la, 0.96), lo0 = q(lo, 0.04), lo1 = q(lo, 0.96);
+  const sx = Math.min((W - 30) / (lo1 - lo0), ((H - 30) / (la1 - la0)) * 0.6225), sy = sx / 0.6225;
+  const cx = (lo0 + lo1) / 2, cy = (la0 + la1) / 2;
+  const P = (lat, lng) => [W / 2 + (lng - cx) * sx, H / 2 + (cy - lat) * sy];
+  const tq = TH.map((p) => P(p[0], p[1]));
+  let d = `M${tq[0][0].toFixed(1)} ${tq[0][1].toFixed(1)}`;
+  for (let i = 1; i < tq.length - 1; i++) d += ` Q${tq[i][0].toFixed(1)} ${tq[i][1].toFixed(1)} ${((tq[i][0] + tq[i + 1][0]) / 2).toFixed(1)} ${((tq[i][1] + tq[i + 1][1]) / 2).toFixed(1)}`;
+  return (
+    <div className="ltop">
+      <svg viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="xMidYMid slice" className="ltop-svg">
+        <path d={d} fill="none" stroke="#f0c95a" strokeWidth="2.2" strokeLinecap="round" opacity=".85" />
+        {VENUES.map(([v, [lat, lng]]) => { const [x, y] = P(lat, lng); return <circle key={v} cx={x} cy={y} r="1.3" className="ltop-dot" style={{ animationDelay: `${(x * 37 + y * 11) % 3000}ms` }} />; })}
+        {picks.map((p, i) => { const [x, y] = P(p.lat, p.lng); return (
+          <g key={p.id} className={`ltop-pick ${i === fi ? 'on' : ''}`} onClick={(e) => onPick(i, e.currentTarget)}>
+            <circle cx={x} cy={y} r="12" fill="transparent" />
+            <circle cx={x} cy={y} r={i === fi ? 4.2 : 2.8} className="ltop-glow" />
+          </g>); })}
+      </svg>
+    </div>
   );
 }

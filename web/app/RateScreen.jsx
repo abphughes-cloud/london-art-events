@@ -150,9 +150,11 @@ export default function RateScreen({ deck, ratings, onRate, sessionGoal, onDone 
           </div>
         </div>
         <RatingSweep value={value} dragging={dragging} accent={art.accent} />
-        <button className="fantap" aria-label="Love it"
-          onPointerDown={(e) => e.stopPropagation()} onPointerUp={(e) => e.stopPropagation()}
-          onClick={(e) => { e.stopPropagation(); stopHint(); setValue(0.8); commit(0.8); }} />
+        <div className="frosthit"
+          onPointerDown={(e) => { e.stopPropagation(); stopHint(); e.currentTarget.setPointerCapture?.(e.pointerId); const r = e.currentTarget.getBoundingClientRect(); e.currentTarget._r = r; setDragging(true); setValue(Math.max(0, Math.min(1, (e.clientX - r.left - 12) / (r.width - 24)))); tick(8); }}
+          onPointerMove={(e) => { e.stopPropagation(); const r = e.currentTarget._r; if (!r) return; setValue(Math.max(0, Math.min(1, (e.clientX - r.left - 12) / (r.width - 24)))); }}
+          onPointerUp={(e) => { e.stopPropagation(); if (!e.currentTarget._r) return; e.currentTarget._r = null; commit(vRef.current); }}
+          onPointerCancel={(e) => { e.stopPropagation(); e.currentTarget._r = null; setDragging(false); }} />
       </div>
       <div className="progress" style={{ width: `${(done / sessionGoal) * 100}%` }} />
     </section>

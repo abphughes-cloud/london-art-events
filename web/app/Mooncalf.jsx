@@ -91,49 +91,48 @@ export default function Mooncalf() {
 
   return (
     <main className="app">
-      {tab === 'discover' && view !== 'london' && (
+      {tab === 'discover' && view === 'rate' && (
         <RateScreen
           deck={deck}
           ratings={ratings}
           onRate={rate}
           sessionGoal={TASTE_AFTER}
-          onDone={() => { setTab('you'); setView('taste'); }}
+          onDone={() => setView('taste')}
         />
       )}
-      {tab === 'discover' && view === 'london' && (
+      {tab === 'discover' && view === 'taste' && (
+        <TasteScreen all={all} ratings={ratings} pods={pods} onRate={rate} onEmpty={() => setView('rate')} />
+      )}
+      {tab === 'visit' && view !== 'visits' && (
         <London
           all={all}
           ratings={ratings}
           saved={saved}
           onSave={(g) => setSaved((x) => ({ ...x, [g.v]: !x[g.v] }))}
           onPlan={(v) => setVisits((x) => [...x.filter((y) => y.v !== v.v), v])}
-          onBack={() => setView('rate')}
+          onBack={() => { setTab('discover'); setView('rate'); }}
         />
       )}
-      {tab === 'you' && view !== 'visits' && (
-        <TasteScreen all={all} ratings={ratings} pods={pods} onRate={rate} onEmpty={() => { setTab('discover'); setView('rate'); }} />
+      {tab === 'visit' && view === 'visits' && (
+        <Visits visits={visits} all={all} onBack={() => setView('london')} />
       )}
-      {tab === 'you' && view === 'visits' && (
-        <Visits visits={visits} all={all} onBack={() => setView('taste')} />
-      )}
-      {((tab === 'discover' && view !== 'london') || (tab === 'you' && view !== 'visits')) && (
-        <button className="corner" aria-label={tab === 'discover' ? 'London' : 'Visits'}
-          onClick={() => setView(tab === 'discover' ? 'london' : 'visits')}>
-          {tab === 'discover' ? (
-            <svg viewBox="0 0 24 24" width="24" height="24" className="ico"><path d="M12 21s-6.5-6-6.5-11.2a6.5 6.5 0 0113 0C18.5 15 12 21 12 21zM12 7.6a2.2 2.2 0 110 4.4 2.2 2.2 0 010-4.4z" /></svg>
-          ) : (
+      {(tab === 'discover' || view !== 'visits') && (
+        <button className="corner" aria-label={tab === 'discover' ? (view === 'taste' ? 'Rate more' : 'Your taste') : 'Visits'}
+          onClick={() => setView(tab === 'discover' ? (view === 'taste' ? 'rate' : 'taste') : 'visits')}>
+          {tab === 'discover' && view === 'rate' && (
+            <svg viewBox="0 0 24 24" width="24" height="24" className="ico"><path d="M4 5h16M4 10h11M4 15h14M4 20h8" /></svg>
+          )}
+          {tab === 'discover' && view === 'taste' && (
+            <svg viewBox="0 0 24 24" width="24" height="24" className="ico"><path d="M12 3l2.2 6.8L21 12l-6.8 2.2L12 21l-2.2-6.8L3 12l6.8-2.2z" /></svg>
+          )}
+          {tab === 'visit' && (
             <svg viewBox="0 0 24 24" width="24" height="24" className="ico"><path d="M4.5 5.5h15v14h-15zM4.5 10h15M9 3.5v3.6M15 3.5v3.6" /></svg>
           )}
         </button>
       )}
       <nav className="tabs">
-        <button aria-label="Discover" className={tab === 'discover' ? 'on' : ''} onClick={() => { setTab('discover'); setView('rate'); }}>
-          <svg viewBox="0 0 24 24" width="26" height="26"><path d="M12 3l2.2 6.8L21 12l-6.8 2.2L12 21l-2.2-6.8L3 12l6.8-2.2z" /></svg>
-        </button>
-        <button aria-label="You" className={tab === 'you' ? 'on' : ''} onClick={() => { setTab('you'); setView('taste'); }}>
-          <svg viewBox="0 0 24 24" width="26" height="26"><path d="M4 5h16M4 10h11M4 15h14M4 20h8" /></svg>
-          {ratedCount > 0 && tab !== 'you' && <span className="dot" />}
-        </button>
+        <button className={tab === 'discover' ? 'on' : ''} onClick={() => { setTab('discover'); setView('rate'); }}>Discover</button>
+        <button className={tab === 'visit' ? 'on' : ''} onClick={() => { setTab('visit'); setView('london'); }}>Visit</button>
       </nav>
       <Grain />
       {listen && (
@@ -143,7 +142,7 @@ export default function Mooncalf() {
           rect={listen.rect}
           url={pods[listen.art.id]}
           onClose={() => setListen(null)}
-          onLondon={() => { setListen(null); setTab('discover'); setView('london'); }}
+          onLondon={() => { setListen(null); setTab('visit'); setView('london'); }}
         />
       )}
       {film > 0 && (

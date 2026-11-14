@@ -33,7 +33,12 @@ function firstSentences(s, n = 3) {
   return s.split(/(?<=[.!?])\s+/).slice(0, n).join(' ');
 }
 
+// Never shown again (keerthi 14 Nov): Niagara.
+const BANNED = new Set(['nga-166436']);
 export async function loadArtworks() {
+  return (await loadArtworksRaw()).filter((a) => !BANNED.has(a.id));
+}
+async function loadArtworksRaw() {
   const rows = await rest(
     'artworks?select=id,title,artist,year,image_url,thumb_url,image_width,image_height,tags,story'
   );
@@ -61,7 +66,7 @@ export async function loadArtworks() {
 // one file per artwork named <artwork id>.mp3. A table audio_url wins if readable.
 const STORAGE = 'https://kpgigxnvoxdeavywigyf.supabase.co/storage/v1/object/public/podcasts/';
 export const PODCAST_IDS = [
-  'nga-166436', 'nga-46', 'nga-43626', 'nga-56101', 'nga-1138',
+  'nga-46', 'nga-43626', 'nga-56101', 'nga-1138',
   'nga-121096', 'nga-231465', 'nga-50215', 'nga-51140', 'nga-61253',
 ];
 
