@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 // Tutorial: one step per feature, one short line each (keerthi 15:42).
 // A gold ring hugs the real element; steps without an element show a small drawing instead.
 const STEPS = [
-  { tab: 'discover', text: 'Welcome to Palette. Rate art, find shows you’ll love.' },
+  { tab: 'discover', text: 'Welcome to Palette, a place to explore London’s art and your own taste.' },
   { tab: 'discover', bar: true, text: 'Slide right the more you like it.' },
   { tab: 'discover', demo: 'speaker', text: 'Tap the speaker to hear the story.' },
   { tab: 'visit', sel: '.ltop', text: 'Each yellow dot is an art event. Tap one.', tap: true },
