@@ -358,3 +358,7 @@ button { background: none; border: 0; color: inherit; cursor: pointer; }
 .ltop-card { left: 6px; right: 6px; bottom: 6px; max-height: 96%; }
 .ltop-img { height: min(46vh, 300px); }
 .ltop-title { font-size: 1.25em; }
+
+/* Plan visit and Google Maps buttons: same size, text centred (keerthi 14:56) */
+.ltop-btns { align-items: stretch; }
+.ltop-plan, .ltop-maps { flex: 1; margin: 0; padding: 12px 8px; display: flex; align-items: center; justify-content: center; text-align: center; font: 500 13px/1.2 var(--grotesk); letter-spacing: .02em; text-transform: none; white-space: nowrap; }
