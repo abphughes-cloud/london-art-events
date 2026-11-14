@@ -65,7 +65,7 @@ export default function VisitLog({ visits = [], all = [], ratings = {} }) {
       <div className="vl-list">
         {empty && <p className="vl-hint">Star a show on the map and it appears here.</p>}
         {list.map((e) => (
-          <article key={e.id} className="vl-card">
+          <article key={e.id} className={`vl-card ${e.img ? '' : 'noimg'}`}>
             <div className="vl-img" style={e.img ? { backgroundImage: `url("${e.img}")` } : undefined} />
             <div className="vl-shade" />
             {stars.includes(e.id) && <svg className="vl-star" viewBox="0 0 24 24" aria-label="Starred"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8L3.5 9.7l5.9-.9z" /></svg>}

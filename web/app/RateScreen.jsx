@@ -15,6 +15,7 @@ export default function RateScreen({ deck, ratings, onRate, sessionGoal, onDone 
   const [done, setDone] = useState(0);
   const g = useRef(null);
   const art = deck[i];
+  useEffect(() => { [deck[i + 1], deck[i + 2]].forEach((a) => { if (a) { const im = new Image(); im.src = a.img || a.thumb; } }); }, [i, deck]); // next two load ahead
 
   useEffect(() => {
     setValue(0);

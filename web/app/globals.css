@@ -590,3 +590,15 @@ a.ltop-plan, a.ltop-maps { text-decoration: none; }
 .ltop-btns, .nb-btns { gap: 8px; }
 .ltop-plan, .ltop-maps, .nb-plan, .nb-dir { box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center; height: 44px; min-height: 44px; padding: 0 12px; font-size: 14px; white-space: nowrap; flex: 1 1 auto; border-radius: 22px; }
 .nb-plan { background: #ffd84d; color: #151515; font-weight: 600; }
+
+/* slow first pictures: soft placeholder with a shimmer, then fade in (keerthi 16:01) */
+@keyframes shimmer { from { background-position: -150% 0; } to { background-position: 250% 0; } }
+.artframe.loading { background: var(--ph, #161616); }
+.artframe.loading::after, .vl-card::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(100deg, transparent 30%, rgba(255,255,255,.07) 50%, transparent 70%) 0 0 / 60% 100% no-repeat; animation: shimmer 1.6s ease-in-out infinite; }
+.artframe > div { transition: opacity .3s ease; }
+.artframe.loading > div { opacity: 0; }
+.vl-card { background: #161616; }
+.vl-card .vl-img { z-index: 0; }
+.vl-card.noimg { min-height: 190px; }
+.vl-card.noimg::before { display: none; }
+@media (prefers-reduced-motion: reduce) { .artframe.loading::after, .vl-card::before { animation: none; } }
