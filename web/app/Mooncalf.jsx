@@ -1,5 +1,6 @@
 'use client';
 import { useEffect, useMemo, useState } from 'react';
+import Tour from './Tour';
 import { loadArtworks, loadPodcasts, PODCAST_IDS } from '../lib/data';
 import RateScreen from './RateScreen';
 import TasteScreen from './TasteScreen';
@@ -27,12 +28,13 @@ export default function Mooncalf() {
   const [all, setAll] = useState(null);
   const [pods, setPods] = useState({});
   const [ratings, setRatings] = useState({});
-  const [tab, setTab] = useState('discover');
-  const [view, setView] = useState('rate'); // discover: rate | london ; you: taste | visits
+  const [tab, setTab] = useState('visit');
+  const [view, setView] = useState('london'); // discover: rate | london ; you: taste | visits
   const [visits, setVisits] = useState([]);
   const [saved, setSaved] = useState({});
   const [listen, setListen] = useState(null);
   const [film, setFilm] = useState(0); // 0 none, 1 playing, 2 fading out
+  const [tour, setTour] = useState(false);
 
   useEffect(() => {
     setRatings(readRatings());
@@ -41,6 +43,7 @@ export default function Mooncalf() {
     let seen = false;
     try { seen = sessionStorage.getItem('mooncalf.film') === '1'; } catch {}
     if (!seen) setFilm(1);
+    try { if (localStorage.getItem('mooncalf.tour.v1') !== '1' || /tour=1/.test(location.search)) setTour(true); } catch {}
     const onMsg = (e) => {
       if (e.data === 'mooncalf-film-done') {
         try { sessionStorage.setItem('mooncalf.film', '1'); } catch {}
@@ -131,8 +134,8 @@ export default function Mooncalf() {
         </button>
       )}
       <nav className="tabs">
-        <button className={tab === 'discover' ? 'on' : ''} onClick={() => { setTab('discover'); setView('rate'); }}>Discover</button>
         <button className={tab === 'visit' ? 'on' : ''} onClick={() => { setTab('visit'); setView('london'); }}>Visit</button>
+        <button className={tab === 'discover' ? 'on' : ''} onClick={() => { setTab('discover'); setView('rate'); }}>Discover</button>
       </nav>
       <Grain />
       {listen && (
@@ -144,6 +147,9 @@ export default function Mooncalf() {
           onClose={() => setListen(null)}
           onLondon={() => { setListen(null); setTab('visit'); setView('london'); }}
         />
+      )}
+      {tour && film === 0 && !listen && tab === 'visit' && view === 'london' && (
+        <Tour onDone={() => { setTour(false); try { localStorage.setItem('mooncalf.tour.v1', '1'); } catch {} }} />
       )}
       {film > 0 && (
         <iframe className={`film ${film === 2 ? 'out' : ''}`} src="/film/index.html" title="Mooncalf" />

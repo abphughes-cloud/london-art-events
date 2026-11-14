@@ -169,7 +169,7 @@ export default function London({ all, ratings, saved, onSave, onPlan, onBack }) 
 const matchOf = (e, w) => (e.tags || []).filter((t) => /^(style|subject|mood|medium):/.test(t) && t !== 'medium:painting' && (w[t] || 0) > 0.3)
   .sort((a, b) => w[b] - w[a]).slice(0, 2).map((t) => t.split(':')[1]);
 function TopMap({ w, fav, onPlan, picks, fi, onPick }) {
-  const W = 360, H = 200;
+  const W = 360, H = 520;
   const [card, setCard] = useState(null); // venue name
   const pts = VENUES.map(([, ll]) => ll).concat(picks.map((p) => [p.lat, p.lng]));
   const la = pts.map((p) => p[0]).sort((a, b) => a - b), lo = pts.map((p) => p[1]).sort((a, b) => a - b);
@@ -188,7 +188,7 @@ function TopMap({ w, fav, onPlan, picks, fi, onPick }) {
         {VENUES.map(([v, [lat, lng]]) => { const [x, y] = P(lat, lng); return (
           <g key={v} className="ltop-spot" onClick={() => { setCard(v); tick(8); }}>
             <circle cx={x} cy={y} r="7" fill="transparent" />
-            <circle cx={x} cy={y} r={card === v ? 3 : 1.3} className={`ltop-dot ${card === v ? 'on' : ''} ${(SHOWS[v] || []).some((e) => matchOf(e, w).length) ? 'match' : ''}`} style={{ animationDelay: `${(x * 37 + y * 11) % 3000}ms` }} />
+            <circle cx={x} cy={y} r={card === v ? 3.4 : 1.9} className={`ltop-dot ${card === v ? 'on' : ''} ${(SHOWS[v] || []).some((e) => matchOf(e, w).length) ? 'match' : ''}`} style={{ animationDelay: `${(x * 37 + y * 11) % 3000}ms` }} />
           </g>); })}
         {picks.map((p, i) => { const [x, y] = P(p.lat, p.lng); return (
           <g key={p.id} className={`ltop-pick ${i === fi ? 'on' : ''}`} onClick={() => { setCard(p.v); onPick(i); }}>
