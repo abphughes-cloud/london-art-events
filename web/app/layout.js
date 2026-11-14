@@ -4,6 +4,10 @@ export const metadata = {
   title: 'Palette',
   description: 'Rate world art, find your taste, then find it in London.',
   manifest: '/manifest.webmanifest',
+  icons: {
+    icon: [{ url: '/palette-icon.svg', type: 'image/svg+xml' }, { url: '/palette-icon-192.png', sizes: '192x192', type: 'image/png' }],
+    apple: [{ url: '/palette-icon-180.png', sizes: '180x180' }],
+  },
   appleWebApp: { capable: true, statusBarStyle: 'black-translucent', title: 'Palette' },
 };
 
@@ -12,7 +16,7 @@ export const viewport = {
   initialScale: 1,
   maximumScale: 1,
   viewportFit: 'cover',
-  themeColor: '#0b0a09',
+  themeColor: '#000000',
 };
 
 export default function RootLayout({ children }) {
