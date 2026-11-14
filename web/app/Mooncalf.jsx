@@ -42,7 +42,8 @@ export default function Mooncalf() {
     setSaved(readJ(SSTORE, {}));
     // the Ross Long intro opens the app every time (keerthi 14 Nov 14:57)
     setFilm(1);
-    try { if (localStorage.getItem('mooncalf.tour.v1') !== '1' || /tour=1/.test(location.search)) setTour(true); } catch {}
+    // open order every time: intro film, then the tutorial, then the app (keerthi 14 Nov 14:57)
+    setTour(true);
     const onMsg = (e) => {
       if (e.data === 'mooncalf-film-done') {
         try { sessionStorage.setItem('mooncalf.film', '1'); } catch {}
@@ -148,7 +149,7 @@ export default function Mooncalf() {
         />
       )}
       {tour && film === 0 && !listen && tab === 'visit' && view === 'london' && (
-        <Tour onDone={() => { setTour(false); try { localStorage.setItem('mooncalf.tour.v1', '1'); } catch {} }} />
+        <Tour onDone={() => setTour(false)} />
       )}
       {film > 0 && (
         <iframe className={`film ${film === 2 ? 'out' : ''}`} src="/film/index.html" title="Mooncalf" />
