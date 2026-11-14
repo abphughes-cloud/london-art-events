@@ -128,17 +128,14 @@ export default function Mooncalf() {
       {tab === 'visit' && view === 'visits' && (
         <Visits visits={visits} all={all} onBack={() => setView('london')} />
       )}
-      {(tab === 'discover' || view !== 'visits') && (
-        <button className="corner" aria-label={tab === 'discover' ? (view === 'taste' ? 'Rate more' : 'Your taste') : 'Visits'}
-          onClick={() => setView(tab === 'discover' ? (view === 'taste' ? 'rate' : 'taste') : 'visits')}>
-          {tab === 'discover' && view === 'rate' && (
+      {tab === 'discover' && (
+        <button className="corner" aria-label={view === 'taste' ? 'Rate more' : 'Your taste'}
+          onClick={() => setView(view === 'taste' ? 'rate' : 'taste')}>
+          {view === 'rate' && (
             <svg viewBox="0 0 24 24" width="24" height="24" className="ico"><path d="M4 5h16M4 10h11M4 15h14M4 20h8" /></svg>
           )}
-          {tab === 'discover' && view === 'taste' && (
+          {view === 'taste' && (
             <svg viewBox="0 0 24 24" width="24" height="24" className="ico"><path d="M12 3l2.2 6.8L21 12l-6.8 2.2L12 21l-2.2-6.8L3 12l6.8-2.2z" /></svg>
-          )}
-          {tab === 'visit' && (
-            <svg viewBox="0 0 24 24" width="24" height="24" className="ico"><path d="M4.5 5.5h15v14h-15zM4.5 10h15M9 3.5v3.6M15 3.5v3.6" /></svg>
           )}
         </button>
       )}
