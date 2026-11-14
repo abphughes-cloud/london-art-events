@@ -67,6 +67,7 @@ export default function Plan({ g, onClose, onSave }) {
     onSave({ v: g.v, t: g.t, img: g.img, art: g.art?.id, thumb: g.art?.thumb, date: day.date.toISOString().slice(0, 10), day: `${day.label} ${day.n}`, time: clock(at(s)), leave: clock(at(s) - mins), mode: MODES[m][0], url: g.url });
     setSaved(true);
     pattern([10, 40, 10, 40, 30]);
+    setTimeout(onClose, 700); // close by itself after a short confirmation
   };
 
   return (

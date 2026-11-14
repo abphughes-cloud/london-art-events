@@ -33,6 +33,7 @@ export default function VisitLog({ visits = [], all = [], ratings = {} }) {
   const [log, setLog] = useState({});
   const [notes, setNotes] = useState({});
   const [stars, setStars] = useState([]);
+  const [openId, setOpenId] = useState(null); // one card open at a time (keerthi 16:17)
   const [ready, setReady] = useState(false); // never save the empty start state over saved data
   const noteRef = useRef(notes);
   noteRef.current = notes;
@@ -65,16 +66,31 @@ export default function VisitLog({ visits = [], all = [], ratings = {} }) {
       <div className="vl-list">
         {empty && <p className="vl-hint">Star a show on the map and it appears here.</p>}
         {list.map((e) => (
-          <article key={e.id} className={`vl-card ${e.img ? '' : 'noimg'}`}>
+          <article key={e.id} className={`vl-card ${e.img ? '' : 'noimg'} ${openId === e.id ? 'open' : 'compact'}`}
+            onClick={() => { if (openId !== e.id) { setOpenId(e.id); tick(6); } }}>
             <div className="vl-img" style={e.img ? { backgroundImage: `url("${e.img}")` } : undefined} />
             <div className="vl-shade" />
             {stars.includes(e.id) && <svg className="vl-star" viewBox="0 0 24 24" aria-label="Starred"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8L3.5 9.7l5.9-.9z" /></svg>}
+            {openId === e.id && (
+              <button className="vl-x" aria-label="Close" onClick={(ev) => { ev.stopPropagation(); setOpenId(null); tick(6); }}>
+                <svg viewBox="0 0 24 24" width="20" height="20"><path d="M6 6l12 12M18 6L6 18" /></svg>
+              </button>
+            )}
             <div className="vl-info">
               <h3>{e.t}</h3>
               <span>{e.v}</span>
-              <Slide v={log[e.id]} onChange={(v) => setLog((x) => ({ ...x, [e.id]: v }))} />
-              <textarea className="vl-note" rows={2} maxLength={280} placeholder="Write about your visit" aria-label="Write about your visit"
-                value={notes[e.id] || ''} onChange={(ev) => setNotes((x) => ({ ...x, [e.id]: ev.target.value }))} />
+              {openId === e.id ? (
+                <>
+                  <Slide v={log[e.id]} onChange={(v) => setLog((x) => ({ ...x, [e.id]: v }))} />
+                  <textarea className="vl-note" rows={2} maxLength={280} placeholder="Write about your visit" aria-label="Write about your visit"
+                    value={notes[e.id] || ''} onChange={(ev) => setNotes((x) => ({ ...x, [e.id]: ev.target.value }))} />
+                </>
+              ) : (
+                <>
+                  {log[e.id] != null && <i className="vl-line" style={{ width: `${Math.round(log[e.id] * 100)}%` }} />}
+                  {(notes[e.id] || '').trim() && <em className="vl-peek">{notes[e.id]}</em>}
+                </>
+              )}
             </div>
           </article>
         ))}

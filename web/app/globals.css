@@ -602,3 +602,19 @@ a.ltop-plan, a.ltop-maps { text-decoration: none; }
 .vl-card.noimg { min-height: 190px; }
 .vl-card.noimg::before { display: none; }
 @media (prefers-reduced-motion: reduce) { .artframe.loading::after, .vl-card::before { animation: none; } }
+
+/* Log cards: compact until tapped, x closes (keerthi 16:17) */
+.vl-card.compact { min-height: 0; height: 72px; cursor: pointer; }
+.vl-card.compact::before { display: none; }
+.vl-card.compact .vl-img { inset: 8px auto 8px 8px; width: 56px; height: 56px; border-radius: 8px; }
+.vl-card.compact .vl-shade { display: none; }
+.vl-card.compact .vl-info { left: 76px; right: 44px; top: 10px; bottom: auto; }
+.vl-card.compact .vl-info h3 { font-family: inherit; font-style: normal; font-weight: 600; font-size: 15px; line-height: 1.25; -webkit-line-clamp: 1; }
+.vl-card.compact .vl-info span { margin-top: 2px; }
+.vl-card.compact .vl-star { top: 24px; right: 14px; }
+.vl-line { display: block; height: 3px; margin-top: 6px; border-radius: 2px; background: #ffd84d; max-width: 100%; }
+.vl-peek { display: block; margin-top: 4px; font-style: normal; font-size: 12px; color: rgba(255,255,255,.6); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.vl-card.compact:has(.vl-line, .vl-peek) { height: 84px; }
+.vl-card.open .vl-star { right: 60px; }
+.vl-x { position: absolute; z-index: 3; top: 4px; right: 4px; width: 44px; height: 44px; display: grid; place-items: center; padding: 0; }
+.vl-x svg { fill: none; stroke: #fff; stroke-width: 2; stroke-linecap: round; filter: drop-shadow(0 1px 3px rgba(0,0,0,.6)); }
