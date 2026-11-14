@@ -547,3 +547,7 @@ a.ltop-plan, a.ltop-maps { text-decoration: none; }
 /* what the Plan bars mean */
 .pnote { position: absolute; z-index: 5; left: 20px; right: 20px; top: calc(env(safe-area-inset-top) + 176px); margin: 0; font-size: 12px; color: rgba(255,255,255,.7); }
 .plist { top: calc(env(safe-area-inset-top) + 198px); }
+
+/* rating bars fill in solid yellow (keerthi 15:53) */
+.frost-clear { background: #ffd84d; box-shadow: 0 0 14px rgba(255,216,77,.6); }
+.tour-bar span { background: #ffd84d; box-shadow: 0 0 14px rgba(255,216,77,.6); }

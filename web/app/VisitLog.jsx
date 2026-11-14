@@ -22,7 +22,7 @@ function Slide({ v, onChange }) {
       onPointerDown={(e) => { e.currentTarget.setPointerCapture(e.pointerId); set(e); }}
       onPointerMove={(e) => { if (e.buttons || e.pointerType === 'touch') set(e); }}
       onPointerUp={() => tick(8)}>
-      <i style={{ width: `${(v || 0) * 100}%`, background: `rgba(240,201,90,${0.25 + 0.75 * (v || 0)})`, boxShadow: v > 0.6 ? `0 0 ${Math.round(18 * v)}px rgba(240,201,90,${v * 0.7})` : 'none' }} />
+      <i style={{ width: `${(v || 0) * 100}%`, background: '#ffd84d', opacity: 0.95, boxShadow: v > 0.6 ? `0 0 ${Math.round(18 * v)}px rgba(240,201,90,${v * 0.7})` : 'none' }} />
     </div>
   );
 }
