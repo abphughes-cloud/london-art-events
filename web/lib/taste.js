@@ -47,7 +47,7 @@ export function walkMin(lat, lng, from = CENTRE) {
   return Math.max(3, Math.round(km * 1.25 * 12));
 }
 
-// Free London galleries ranked by how well what's on matches your taste.
+// London galleries ranked by how well what's on matches your taste.
 export function londonPicks(all, ratings, n = 8) {
   const w = tasteWeights(all, ratings);
   const top = all.filter((a) => ratings[a.id] != null).sort((x, y) => ratings[y.id] - ratings[x.id]);

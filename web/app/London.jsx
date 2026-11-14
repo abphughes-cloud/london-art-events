@@ -7,13 +7,13 @@ import Plan from './Plan';
 import events from '../data/events.json';
 import artists from '../data/artists.json';
 
-// every venue with something free on, for the map across the top
+// every venue with an art event on, for the map across the top
 const VENUES = (() => { const m = new Map(); events.forEach((e) => { if (e.lat && e.lng && !m.has(e.v)) m.set(e.v, [e.lat, e.lng]); }); return [...m.entries()]; })();
 const SHOWS = (() => { const m = {}; events.forEach((e) => { (m[e.v] = m[e.v] || []).push(e); }); return m; })();
 const fmtD = (d) => { if (!d) return ''; const x = new Date(d + 'T12:00:00'); return x.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' }) + (x.getFullYear() > new Date().getFullYear() ? ` ${x.getFullYear()}` : ''); };
 const runs = (e) => (e.e && e.e < '2030' ? `${fmtD(e.s)} – ${fmtD(e.e)}` : e.s ? `From ${fmtD(e.s)}` : '');
 
-// Screen 3 (3.a): free London galleries ranked by how well what's on matches
+// Screen 3 (3.a): London galleries ranked by how well what's on matches
 // your taste. Bars first; the top-right icon folds them into lights on a map.
 const LON0 = -0.1265, LAT0 = 51.505, SX = 2362, SY = SX / 0.6225;
 let FIT = { lon0: LON0, lat0: LAT0, sx: SX, sy: SY };
@@ -217,7 +217,7 @@ function TopMap({ w, fav, onPlan, picks, fi, onPick }) {
             <h3 className="ltop-title">{ev.t}</h3>
             <div className="ltop-sub">{card}{area ? ` · ${area}` : ''}</div>
             {(artists[ev.id] || []).length > 0 && <div className="ltop-sub">{artists[ev.id].join(', ')}</div>}
-            <div className="ltop-row"><span>{runs(ev)}</span><b>Free</b></div>
+            <div className="ltop-row"><span>{runs(ev)}</span></div>
             <div className="ltop-fitrow"><span>Your match</span><div className="ltop-fit"><i style={{ width: `${Math.round(score * 100)}%` }} /></div></div>
             <div className="ltop-btns">
               <button className="ltop-plan" onClick={(e) => { e.stopPropagation(); onPlan({ ...g, t: ev.t, img: ev.img, url: ev.url }); }}>Plan visit</button>
