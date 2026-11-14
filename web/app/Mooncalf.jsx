@@ -29,13 +29,14 @@ export default function Mooncalf() {
   const [all, setAll] = useState(null);
   const [pods, setPods] = useState({});
   const [ratings, setRatings] = useState({});
-  const [tab, setTab] = useState('visit');
-  const [view, setView] = useState('london'); // discover: rate | london ; you: taste | visits
+  const [tab, setTab] = useState('discover'); // the app opens on Discover (keerthi 16:27)
+  const [view, setView] = useState('rate'); // discover: rate | london ; you: taste | visits
   const [visits, setVisits] = useState([]);
   const [saved, setSaved] = useState({});
   const [listen, setListen] = useState(null);
   const [film, setFilm] = useState(0); // 0 none, 1 playing, 2 fading out
   const [tour, setTour] = useState(false);
+  const go = (t) => { setTab(t); setView(t === 'discover' ? 'rate' : t === 'visit' ? 'london' : 'log'); };
 
   useEffect(() => {
     setRatings(readRatings());
@@ -142,9 +143,9 @@ export default function Mooncalf() {
         </button>
       )}
       <nav className="tabs">
-        <button className={tab === 'visit' ? 'on' : ''} onClick={() => { setTab('visit'); setView('london'); }}>Visit</button>
-        <button className={tab === 'discover' ? 'on' : ''} onClick={() => { setTab('discover'); setView('rate'); }}>Discover</button>
-        <button className={tab === 'log' ? 'on' : ''} onClick={() => { setTab('log'); setView('log'); }}>Log</button>
+        <button data-tab="discover" className={tab === 'discover' ? 'on' : ''} onClick={() => go('discover')}>Discover</button>
+        <button data-tab="visit" className={tab === 'visit' ? 'on' : ''} onClick={() => go('visit')}>Visit</button>
+        <button data-tab="log" className={tab === 'log' ? 'on' : ''} onClick={() => go('log')}>Log</button>
       </nav>
       <Grain />
       {listen && (
@@ -157,8 +158,8 @@ export default function Mooncalf() {
           onLondon={() => { setListen(null); setTab('visit'); setView('london'); }}
         />
       )}
-      {tour && film === 0 && !listen && tab === 'visit' && view === 'london' && (
-        <Tour onDone={() => setTour(false)} />
+      {tour && film === 0 && !listen && (
+        <Tour go={go} onDone={() => { setTour(false); go('discover'); }} />
       )}
       {film > 0 && (
         <iframe className={`film ${film === 2 ? 'out' : ''}`} src="/film/index.html?v=5" title="Palette" />

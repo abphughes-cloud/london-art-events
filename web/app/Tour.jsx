@@ -4,15 +4,14 @@ import { useEffect, useState } from 'react';
 // Tutorial: one step per feature, one short line each (keerthi 15:42).
 // A gold ring hugs the real element; steps without an element show a small drawing instead.
 const STEPS = [
-  { sel: '.tabs', text: 'Three tabs: Visit, Discover and Log.' },
-  { sel: '.ltop', text: 'Each yellow dot is an art event. Tap one.', tap: true },
-  { demo: 'x', text: 'You’ll see the gallery and its shows.' },
-  { sel: '.lbands.near .nb', alt: '.lgrab', text: 'Shows near you, nearest first. Scroll to open each one.' },
-  { sel: '.lgrab', text: 'Pull this down to see the whole map.' },
-  { sel: '.tabs button:nth-child(2)', text: 'Discover: rate art to sharpen your matches.' },
-  { bar: true, text: 'Slide right the more you like it.' },
-  { demo: 'speaker', text: 'Tap the speaker to hear the story of an artwork.' },
-  { sel: '.tabs button:nth-child(3)', text: 'Log: your starred shows and the art you loved.' },
+  { tab: 'discover', text: 'Welcome to Palette. Rate art, find shows you’ll love.' },
+  { tab: 'discover', bar: true, text: 'Slide right the more you like it.' },
+  { tab: 'discover', demo: 'speaker', text: 'Tap the speaker to hear the story.' },
+  { tab: 'visit', sel: '.ltop', text: 'Each yellow dot is an art event. Tap one.', tap: true },
+  { tab: 'visit', sel: '.msearch-box', text: 'Search shows, galleries and areas.' },
+  { tab: 'visit', sel: '.lbands.near .nb', text: 'Shows near you, nearest first. Scroll to open each one.' },
+  { tab: 'visit', demo: 'x', text: 'You’ll see the gallery and its shows. Star the ones you like.' },
+  { tab: 'log', sel: '.vl-modes', text: 'Log: your starred shows and the art you loved.' },
 ];
 
 const PAD = 8;
@@ -28,19 +27,22 @@ function measure(s) {
   return { left, top, width: right - left, height: bottom - top };
 }
 
-export default function Tour({ onDone }) {
+export default function Tour({ onDone, go }) {
   const [i, setI] = useState(0);
   const [r, setR] = useState(null);
   const s = STEPS[i];
 
+  // each step opens its own tab first, then the ring is placed once that screen has drawn (keerthi 16:27)
   useEffect(() => {
     const place = () => setR(measure(STEPS[i]));
     setR(null);
-    const raf = requestAnimationFrame(place);
-    const t = setTimeout(place, 300);
+    if (go && STEPS[i].tab) go(STEPS[i].tab);
+    let raf = 0;
+    const t1 = setTimeout(() => { raf = requestAnimationFrame(place); }, 350);
+    const t2 = setTimeout(place, 700);
     window.addEventListener('resize', place);
-    return () => { cancelAnimationFrame(raf); clearTimeout(t); window.removeEventListener('resize', place); };
-  }, [i]);
+    return () => { cancelAnimationFrame(raf); clearTimeout(t1); clearTimeout(t2); window.removeEventListener('resize', place); };
+  }, [i]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const last = i === STEPS.length - 1;
   const next = () => (last ? onDone() : setI(i + 1));
