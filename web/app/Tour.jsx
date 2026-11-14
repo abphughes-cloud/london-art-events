@@ -49,7 +49,7 @@ export default function Tour({ onDone, go }) {
 
   // keep the text box on screen, clear of the footer row and the top edge
   const H = typeof window !== 'undefined' ? window.innerHeight : 800;
-  const FOOT = 130, TOP = 70, TXT = 110;
+  const FOOT = 130, TOP = 70, TXT = 130;
   let top = Math.round(H * 0.42);
   if (r) {
     if (r.height > H * 0.45) top = Math.round(r.top + r.height * 0.42);

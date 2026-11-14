@@ -657,3 +657,8 @@ a.ltop-plan, a.ltop-maps { text-decoration: none; }
 .tl-caret::after { content: ''; position: absolute; left: 1px; top: 0; bottom: 0; width: 1.5px; background: currentColor; animation: tlblink .8s steps(1) infinite; }
 .tl-caret.gone::after { opacity: 0; transition: opacity .3s; animation: none; }
 @keyframes tlblink { 50% { opacity: 0; } }
+
+/* all tutorial text in the italic serif (keerthi 16:45) */
+.tour-line { font-family: var(--serif); font-style: italic; font-weight: 400; font-size: 26px; line-height: 1.18; color: #fff; }
+.tour-line.welcome { font-size: 30px; line-height: 1.15; }
+.tour-demo-card b { font-family: var(--serif); font-style: italic; font-weight: 400; font-size: 22px; }
