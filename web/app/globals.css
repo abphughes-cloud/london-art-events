@@ -650,3 +650,4 @@ a.ltop-plan, a.ltop-maps { text-decoration: none; }
 
 /* welcome line in the artwork-title serif (keerthi 16:37) */
 .tour-line.welcome { font-family: var(--serif); font-style: italic; font-weight: 400; font-size: 30px; line-height: 1.15; max-width: 300px; }
+.tour-line.welcome { background: none; border: 0; box-shadow: none; -webkit-backdrop-filter: none; backdrop-filter: none; padding: 0; text-shadow: 0 2px 18px rgba(0,0,0,.65); }
