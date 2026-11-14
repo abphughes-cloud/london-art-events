@@ -4,6 +4,7 @@ import { londonPicks, tasteWeights, walkMin } from '../lib/taste';
 import { tick, pattern } from '../lib/haptics';
 import { Back } from './Icons';
 import Plan from './Plan';
+import NearList from './NearList';
 import events from '../data/events.json';
 import artists from '../data/artists.json';
 
@@ -128,17 +129,7 @@ export default function London({ all, ratings, saved, onSave, onPlan, onBack }) 
         <div className="lvig" />
       </div>
       <TopMap w={W8} fav={picks[0]?.art} onPlan={setPlan} picks={picks} fi={fi} onPick={(i) => { setFi(i); tick(6); }} />
-      <div ref={box} className={`bands lbands ${view === 'map' ? 'folded' : ''} ${open ? 'fading' : ''}`}>
-        {picks.map((p, i) => (
-          <div key={p.id} className={`band ${i === fi ? 'focus' : ''} ${open && open.g.id !== p.id ? 'vanish' : ''}`}
-            style={{ flex: i === fi ? 5 : 0.6, animationDelay: `${i * 70}ms` }} onClick={(e) => pick(i, e.currentTarget)}>
-            <div className="band-img" style={{ backgroundImage: bgOf(p) }} />
-            <span className="lrank">{i + 1}</span>
-            <span className="lmeta"><Ico d={WALK_D} size={13} />{p.walk} MIN · {p.pct}%</span>
-            <span className="band-name">{p.v}</span>
-          </div>
-        ))}
-      </div>
+      <NearList w={W8} rated={rated} onPlan={setPlan} />
       <button className="lgrab" aria-label={down ? 'Show the list' : 'Push the list down'}
         onPointerDown={(e) => { gy.current = e.clientY; }}
         onPointerUp={(e) => { const d = e.clientY - (gy.current ?? e.clientY); gy.current = null; flip(Math.abs(d) < 8 ? !down : d > 0); }}><i /></button>
